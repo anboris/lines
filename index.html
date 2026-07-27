@@ -11,8 +11,6 @@
   <body>
     <header class="site-header">
       <div class="container">
-        <a class="logo" href="/"> ЛИНИИ </a>
-
         <nav class="main-nav">
           <a href="#about">О студии</a>
           <a href="#programs">Направления</a>
@@ -20,19 +18,52 @@
           <a href="#contacts">Контакты</a>
         </nav>
 
-        <a class="button" href="#"> Записаться </a>
+        <a class="logo" href="/" aria-label="Home">
+          <img src="logo.svg" alt="Company Logo" width="120" height="40" />
+        </a>
+
+        <div class="header-actions">
+          <a class="button" href="#">Записаться</a>
+        </div>
       </div>
     </header>
-
     <main>
       <section class="hero" id="hero">
         <div class="container">
           <div class="hero-content">
-            <h1>Студия осозннаного движения</h1>
 
-            <p>Мягкое движение, здоровье и красивые линии тела.</p>
+            <h1 class="hero-title">Студия осознанного движения</h1>
 
-            <a class="button" href="#"> Бесплатное занятие </a>
+            <p class="hero-subtitle">Мы помогаем не просто стать гибче, а научиться двигаться свободно,
+естественно и без лишнего напряжения.</p>
+
+            <div class="hero-actions">
+              <a href="#pricing" class="button button-primary">
+                Записаться на занятие</a
+              >
+
+              <p class="hero-badge">
+                Пробное — <strong>700₽</strong> или бесплатно при покупке
+                абонемента
+              </p>
+            </div>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat">
+              <span class="stat-value">95% учеников</span>
+              <span class="stat-label">садятся на шпагат за 3 месяца</span>
+            </div>
+
+            <div class="stat">
+              <span class="stat-value">500+</span>
+              <span class="stat-label">довольных учеников</span>
+            </div>
+
+            <div class="stat">
+              <span class="stat-value">4.9</span>
+              <span class="stat-label">средний рейтинг</span>
+            </div>
           </div>
         </div>
       </section>
