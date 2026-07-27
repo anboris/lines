@@ -1,164 +1,265 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>ЛИНИИ</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js" defer></script>
-  </head>
 
-  <body>
-    <header class="site-header">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ЛИНИИ</title>
+  <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="main-nav">
+        <a href="#about">О студии</a>
+        <a href="#programs">Направления</a>
+        <a href="#prices">Цены</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+
+      <a class="logo" href="/" aria-label="Home">
+        <img src="logo.svg" alt="Company Logo" width="120" height="40" />
+      </a>
+
+      <div class="header-actions">
+        <a class="button" href="#">Записаться</a>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="hero" id="hero">
       <div class="container">
-        <nav class="main-nav">
-          <a href="#about">О студии</a>
-          <a href="#programs">Направления</a>
-          <a href="#prices">Цены</a>
-          <a href="#contacts">Контакты</a>
-        </nav>
+        <div class="hero-content">
+          <h1 class="hero-title">Студия осознанного движения</h1>
 
-        <a class="logo" href="/" aria-label="Home">
-          <img src="logo.svg" alt="Company Logo" width="120" height="40" />
-        </a>
+          <p class="hero-subtitle">
+            Мы помогаем не просто стать гибче, а научиться двигаться свободно,
+            естественно и без лишнего напряжения.
+          </p>
 
-        <div class="header-actions">
-          <a class="button" href="#">Записаться</a>
+          <div class="hero-actions">
+            <a href="#pricing" class="button button-primary">
+              Записаться на занятие</a>
+
+            <p class="hero-badge">
+              Пробное — <strong>700₽</strong> или бесплатно при покупке
+              абонемента
+            </p>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-value">95% учеников</span>
+            <span class="stat-label">садятся на шпагат за 3 месяца</span>
+          </div>
+
+          <div class="stat">
+            <span class="stat-value">500+</span>
+            <span class="stat-label">довольных учеников</span>
+          </div>
+
+          <div class="stat">
+            <span class="stat-value">4.9</span>
+            <span class="stat-label">средний рейтинг</span>
+          </div>
         </div>
       </div>
-    </header>
-    <main>
-      <section class="hero" id="hero">
-        <div class="container">
-          <div class="hero-content">
-            <h1 class="hero-title">Студия осознанного движения</h1>
+    </section>
 
-            <p class="hero-subtitle">
-              Мы помогаем не просто стать гибче, а научиться двигаться свободно,
-              естественно и без лишнего напряжения.
+    <section class="about" id="about">
+      <div class="container">
+        <p class="section-eyebrow">ПОЧЕМУ МЫ</p>
+
+        <h2 class="section-title">
+          ЛИНИИ — это пространство, где движение становится осознанным, а тело
+          начинает работать как единая взаимосвязанная система.
+        </h2>
+
+        <div class="features">
+          <article class="feature">
+            <span class="feature-number">01</span>
+            <h3>Комплексный подход</h3>
+            <p>
+              Мы используем комплексный подход для Вашего развития и
+              оздоровления.
             </p>
+          </article>
 
-            <div class="hero-actions">
-              <a href="#pricing" class="button button-primary">
-                Записаться на занятие</a
-              >
+          <article class="feature">
+            <span class="feature-number">02</span>
+            <h3>Индивидуальное внимание</h3>
+            <p>
+              Тренеры учитывают Ваши цели и особенности организма даже на
+              групповых занятиях.
+            </p>
+          </article>
 
-              <p class="hero-badge">
-                Пробное — <strong>700₽</strong> или бесплатно при покупке
-                абонемента
-              </p>
-            </div>
+          <article class="feature">
+            <span class="feature-number">03</span>
+            <h3>Для любого уровня</h3>
+            <p>
+              Наши занятия подходят как новичкам, так и тем, кто уже имеет
+              опыт тренировок.
+            </p>
+          </article>
+
+          <article class="feature">
+            <span class="feature-number">04</span>
+            <h3>Безопасная практика</h3>
+            <p>
+              Мы научим Вас работать с телом безопасно, эффективно и
+              осознанно.
+            </p>
+          </article>
+
+          <article class="feature">
+            <span class="feature-number">05</span>
+            <h3>Авторские программы</h3>
+            <p>
+              Вас ждут уникальные направления и программы тренировок для
+              разных целей.
+            </p>
+          </article>
+
+          <article class="feature">
+            <span class="feature-number">06</span>
+            <h3>Комфортная атмосфера</h3>
+            <p>
+              Студия, в которой приятно проводить время, восстанавливаться и
+              развиваться.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="programs" id="programs">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="section-eyebrow">НАПРАВЛЕНИЯ</p>
+
+            <h2 class="section-title">
+              Одно тело. Одна система.<br>
+              Разные способы движения.
+            </h2>
           </div>
 
-          <div class="hero-stats">
-            <div class="stat">
-              <span class="stat-value">95% учеников</span>
-              <span class="stat-label">садятся на шпагат за 3 месяца</span>
-            </div>
+          <p class="section-description">
+            Каждое направление раскрывает движение с новой стороны.
+            Независимо от выбранной практики, вы развиваете подвижность,
+            силу, координацию и осознанность через единую методику.
+          </p>
+        </div>
 
-            <div class="stat">
-              <span class="stat-value">500+</span>
-              <span class="stat-label">довольных учеников</span>
-            </div>
+        <div class="program-carousel">
 
-            <div class="stat">
-              <span class="stat-value">4.9</span>
-              <span class="stat-label">средний рейтинг</span>
-            </div>
+          <div class="program-list">
+
+            <!-- Replacing JS modal click listeners -->
+            <article class="program-card">
+              <p class="program-category">Комплексная тренировка</p>
+              <h3 class="program-title">Базовый уровень</h3>
+
+              <!-- Invokes the dialog natively -->
+              <button class="program-more" type="button" commandfor="dialog-1" command="show-modal">+</button>
+
+              <dialog id="dialog-1" class="program-dialog">
+                <!-- Closes the dialog natively -->
+                <button class="dialog-close" type="button" commandfor="dialog-1" command="close">×</button>
+
+                <h3>Комплексная тренировка — базовый уровень</h3>
+                <p>Занятие подойдет для любого уровня подготовки...</p>
+              </dialog>
+            </article>
+
+            <article class="program-card">
+              <p class="program-category">Комплексная тренировка</p>
+              <h3 class="program-title">Средний уровень</h3>
+
+              <button class="program-more" type="button">+</button>
+
+              <dialog class="program-dialog">
+                <button class="dialog-close" type="button">×</button>
+
+                <h3>Комплексная тренировка — средний уровень</h3>
+
+                <p>
+                  Занятие подойдет тем, у кого уже есть небольшой опыт.
+                  Выполняются упражнения для развития силы, мобильности
+                  и координации.
+                </p>
+              </dialog>
+            </article>
+
+            <article class="program-card">
+              <p class="program-category">Комплексная тренировка</p>
+              <h3 class="program-title">Продолжающие</h3>
+
+              <button class="program-more" type="button">+</button>
+
+              <dialog class="program-dialog">
+                <button class="dialog-close" type="button">×</button>
+
+                <h3>Комплексная тренировка — продолжающие</h3>
+
+                <p>
+                  Для тех, кто уже обладает хорошим тренировочным опытом
+                  и готов выполнять упражнения повышенной сложности.
+                </p>
+              </dialog>
+            </article>
+
+            <article class="program-card">
+              <p class="program-category">Оздоровление</p>
+              <h3 class="program-title">Здоровая спина</h3>
+
+              <button class="program-more" type="button">+</button>
+
+              <dialog class="program-dialog">
+                <button class="dialog-close" type="button">×</button>
+
+                <h3>Здоровая спина и осанка</h3>
+
+                <p>
+                  Работа над осанкой, дыханием, мобильностью позвоночника
+                  и укреплением мышечного корсета.
+                </p>
+              </dialog>
+            </article>
+
           </div>
-        </div>
-      </section>
 
-      <section class="about" id="about">
-        <div class="container">
-          <p class="section-eyebrow">ПОЧЕМУ МЫ</p>
-
-          <h2 class="section-title">
-            ЛИНИИ — это пространство, где движение становится осознанным, а тело
-            начинает работать как единая взаимосвязанная система.
-          </h2>
-
-          <div class="features">
-            <article class="feature">
-              <span class="feature-number">01</span>
-              <h3>Комплексный подход</h3>
-              <p>
-                Мы используем комплексный подход для Вашего развития и
-                оздоровления.
-              </p>
-            </article>
-
-            <article class="feature">
-              <span class="feature-number">02</span>
-              <h3>Индивидуальное внимание</h3>
-              <p>
-                Тренеры учитывают Ваши цели и особенности организма даже на
-                групповых занятиях.
-              </p>
-            </article>
-
-            <article class="feature">
-              <span class="feature-number">03</span>
-              <h3>Для любого уровня</h3>
-              <p>
-                Наши занятия подходят как новичкам, так и тем, кто уже имеет
-                опыт тренировок.
-              </p>
-            </article>
-
-            <article class="feature">
-              <span class="feature-number">04</span>
-              <h3>Безопасная практика</h3>
-              <p>
-                Мы научим Вас работать с телом безопасно, эффективно и
-                осознанно.
-              </p>
-            </article>
-
-            <article class="feature">
-              <span class="feature-number">05</span>
-              <h3>Авторские программы</h3>
-              <p>
-                Вас ждут уникальные направления и программы тренировок для
-                разных целей.
-              </p>
-            </article>
-
-            <article class="feature">
-              <span class="feature-number">06</span>
-              <h3>Комфортная атмосфера</h3>
-              <p>
-                Студия, в которой приятно проводить время, восстанавливаться и
-                развиваться.
-              </p>
-            </article>
+          <div class="carousel-controls">
+            <button class="carousel-arrow prev" type="button">←</button>
+            <button class="carousel-arrow next" type="button">→</button>
           </div>
+
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="spacer" id="programs">
-        <div class="container">
-          <h2>Направления</h2>
+    <section class="about" id="prices">
+      <div class="container">
+        <h2>Цены</h2>
 
-          <p>Еще немного контента, чтобы проверить поведение меню.</p>
-        </div>
-      </section>
+        <p>Стоимость занятий.</p>
+      </div>
+    </section>
 
-      <section class="about" id="prices">
-        <div class="container">
-          <h2>Цены</h2>
+    <section class="spacer" id="contacts">
+      <div class="container">
+        <h2>Контакты</h2>
 
-          <p>Стоимость занятий.</p>
-        </div>
-      </section>
+        <p>Адрес, телефон и карта.</p>
+      </div>
+    </section>
+  </main>
 
-      <section class="spacer" id="contacts">
-        <div class="container">
-          <h2>Контакты</h2>
+  <script src="script.js" defer></script>
+</body>
 
-          <p>Адрес, телефон и карта.</p>
-        </div>
-      </section>
-    </main>
-  </body>
 </html>
