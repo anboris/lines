@@ -1,10 +1,9 @@
-// Controls for carousel left/right buttons
-const list = document.querySelector(".program-list");
+const header = document.getElementById('header');
 
-document.querySelector(".next")?.addEventListener("click", () => {
-  list.scrollBy({ left: list.clientWidth * 0.8, behavior: "smooth" });
-});
-
-document.querySelector(".prev")?.addEventListener("click", () => {
-  list.scrollBy({ left: -list.clientWidth * 0.8, behavior: "smooth" });
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
 });
