@@ -247,6 +247,12 @@
 
 /* Popover API — all 9 cards */
 .info-popover {
+  /* Modern 2026 approach using anchor positioning */
+  position: fixed;
+  inset-area: center;
+  margin: auto;
+
+  /* Keep your existing styles */
   background: white;
   border-radius: 24px;
   max-inline-size: 480px;
@@ -255,30 +261,33 @@
   border: none;
   box-shadow: 0 24px 48px rgba(0, 0, 0, 0.15);
 
+  /* Transitions */
   opacity: 0;
-  transform: scale(0.95) translateY(10px);
+  transform: scale(0.95);
   transition:
     opacity 0.3s ease,
     transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
-    overlay 0.3s ease;
+    overlay 0.3s ease,
+    display 0.3s ease;
   transition-behavior: allow-discrete;
 }
 
 .info-popover:popover-open {
   opacity: 1;
-  transform: scale(1) translateY(0);
+  transform: scale(1);
 }
 
 @starting-style {
   .info-popover:popover-open {
     opacity: 0;
-    transform: scale(0.95) translateY(10px);
+    transform: scale(0.95);
   }
 }
 
 .info-popover::backdrop {
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px); /* Reduced from 4px to 2px */
+  -webkit-backdrop-filter: blur(2px); /* For Safari */
   opacity: 0;
   transition: opacity 0.3s ease;
   transition-behavior: allow-discrete;
