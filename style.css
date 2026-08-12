@@ -1,3 +1,7 @@
+:root {
+  --color-text: #111;
+}
+
 @font-face {
   font-family: "Inter";
   src: url("fonts/InterVariable.woff2") format("woff2");
@@ -140,22 +144,41 @@
     z-index: 1;
     padding: 24px;
     margin-block-start: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(120, 156, 127, 0.9) 0%,
+      rgba(120, 156, 127, 0.4) 50%,
+      rgba(120, 156, 127, 0) 100%
+    );
+    border-radius: 0 0 20px 20px;
+  }
+
+  .card-kicker {
+    font-size: 17px;
+    letter-spacing: -0.013em;
+    line-height: 24px;
+    color: rgba(255, 255, 255, 1);
+    margin-block-end: 6px;
+    line-height: 1.4;
+    text-shadow: 0 1px 2px rgba(120, 156, 127, 0.25);
   }
 
   .card-title {
-    font-size: 21px;
-    font-weight: 600;
+    font-size: 30px;
+    letter-spacing: -0.021em;
+    line-height: 36px;
+    font-weight: 500;
     color: white;
-    margin-block-end: 6px;
-    letter-spacing: -0.01em;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    margin-block-end: 12px;
+    text-shadow: 0 1px 2px rgba(21, 29, 22, 0.2);
   }
 
   .card-desc {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.9);
-    line-height: 1.4;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    letter-spacing: -0.011em;
+    line-height: 22px;
+    color: rgba(255, 255, 255, 1);
+    text-shadow: 0 1px 2px rgba(120, 156, 127, 0.25);
   }
 
   .plus-btn {
