@@ -9,7 +9,74 @@
 </head>
 
 <body>
-  <!-- MASONRY SECTION -->
+  <!-- ===== HEADER / NAV ===== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="#" class="nav-logo" aria-label="Home">
+        <img src="images/logo.svg" alt="Линии" class="logo-img" />
+      </a>
+
+      <div class="nav-desktop">
+        <a href="#programs" class="nav-link">О нас</a>
+        <a href="#about" class="nav-link">Направления</a>
+        <a href="#pricing" class="nav-link">Цены</a>
+        <a href="#contacts" class="nav-link nav-cta">Записаться</a>
+      </div>
+
+      <button class="nav-mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false"
+        aria-controls="mobileMenu" popovertarget="mobileMenu" popovertargetaction="toggle">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </nav>
+
+    <!-- Mobile menu via Popover API -->
+    <div class="mobile-menu" id="mobileMenu" popover>
+      <div class="mobile-menu-header">
+        <img src="images/logo.svg" alt="Линии" class="logo-img-mobile" />
+        <button class="mobile-close" popovertarget="mobileMenu" popovertargetaction="hide" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </div>
+      <div class="mobile-links">
+        <a href="#programs" class="mobile-link">Programs</a>
+        <a href="#about" class="mobile-link">About</a>
+        <a href="#schedule" class="mobile-link">Schedule</a>
+        <a href="#pricing" class="mobile-link">Pricing</a>
+        <a href="#contacts" class="mobile-link mobile-cta">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section class="hero-section" id="hero">
+    <div class="hero-image-wrapper">
+      <img src="images/hero.png" alt="Yoga and stretching" class="hero-image" loading="eager" />
+      <div class="hero-overlay"></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-kicker"></p>
+      <h1 class="hero-title">
+        Студия <br>осознанного <br>движения
+      </h1>
+      <p class="hero-subtitle">
+        Мы помогаем не просто стать гибче, а научиться двигаться свободно, естественно и без лишнего напряжения.
+      </p>
+      <div class="hero-actions">
+        <a href="#programs" class="hero-btn hero-btn-primary">Записаться</a>
+        <a href="#about" class="hero-btn hero-btn-secondary">Узнать больше</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <span class="scroll-line"></span>
+    </div>
+  </section>
   <!-- MASONRY SECTION -->
   <section class="masonry-section">
     <h2 class="section-headline">Почему выбирают нас</h2>
