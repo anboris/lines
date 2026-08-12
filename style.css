@@ -1,25 +1,381 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+@layer reset, layout, components, utilities;
+
+@layer reset {
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 }
 
-@font-face {
-  font-family: "InterVariable";
-  src: url("fonts/InterVariable.woff2") format("woff2");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
+@layer layout {
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+    background: #f5f5f7;
+    min-block-size: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 20px;
+  }
+
+  .carousel-section {
+    container-type: inline-size;
+    container-name: carousel;
+    max-inline-size: 1200px;
+    inline-size: 100%;
+    margin-inline: auto;
+    padding-block: 60px 40px;
+    background: #f5f5f7;
+    border-radius: 20px;
+    overflow: clip;
+  }
+
+  .section-headline {
+    font-size: clamp(32px, 5cqi, 48px);
+    font-weight: 600;
+    text-align: center;
+    color: #1d1d1f;
+    margin-block-end: 48px;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+  }
+
+  .carousel-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-inline: 20px;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+    will-change: transform;
+    cursor: grab;
+    padding-block: 10px;
+  }
+
+  .carousel-track:active { cursor: grabbing; }
 }
 
-@font-face {
-  font-family: "InterVariable";
-  src: url("fonts/InterVariable-Italic.woff2") format("woff2");
-  font-weight: 100 900;
-  font-style: italic;
-  font-display: swap;
+@layer components {
+  .card {
+    flex: 0 0 calc((100% - 40px) / 3.5);
+    min-inline-size: 260px;
+    max-inline-size: 360px;
+    background: white;
+    border-radius: 20px;
+    overflow: clip;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.04);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  .card-image-wrapper {
+    inline-size: 100%;
+    aspect-ratio: 1;
+    overflow: clip;
+  }
+
+  .card-image {
+    inline-size: 100%;
+    block-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.5s ease;
+  }
+
+  .card:hover .card-image { transform: scale(1.03); }
+
+  .card-svg {
+    inline-size: 80%;
+    block-size: 80%;
+    object-fit: contain;
+  }
+
+  .card-content {
+    padding: 20px 24px 28px;
+  }
+
+  .card-title {
+    font-size: 19px;
+    font-weight: 600;
+    color: #1d1d1f;
+    margin-block-end: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .card-desc {
+    font-size: 14px;
+    color: #6e6e73;
+    line-height: 1.4;
+  }
+
+  .plus-btn {
+    position: absolute;
+    inset-block-end: 20px;
+    inset-inline-end: 20px;
+    inline-size: 36px;
+    block-size: 36px;
+    border-radius: 50%;
+    border: 1.5px solid #d2d2d7;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: #1d1d1f;
+  }
+
+  .plus-btn:hover {
+    background: #1d1d1f;
+    border-color: #1d1d1f;
+    color: white;
+    transform: scale(1.1);
+  }
+
+  .plus-btn svg {
+    inline-size: 14px;
+    block-size: 14px;
+  }
+
+  .nav-arrow {
+    position: absolute;
+    inset-block-start: 50%;
+    transform: translateY(-50%);
+    inline-size: 44px;
+    block-size: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.2s ease;
+    color: #1d1d1f;
+  }
+
+  .nav-arrow:hover:not(:disabled) {
+    background: white;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    transform: translateY(-50%) scale(1.05);
+  }
+
+  .nav-arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .nav-arrow svg {
+    inline-size: 20px;
+    block-size: 20px;
+  }
+
+  .nav-prev { inset-inline-start: 8px; }
+  .nav-next { inset-inline-end: 8px; }
+
+  .pagination-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-block-start: 32px;
+  }
+
+  .dot {
+    inline-size: 8px;
+    block-size: 8px;
+    border-radius: 50%;
+    border: none;
+    background: #d2d2d7;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+
+  .dot.active {
+    background: #1d1d1f;
+    transform: scale(1.2);
+  }
 }
 
-body {
-  font-family: 'InterVariable', sans-serif;
+/* Popover API — declarative popovers */
+.info-popover {
+  background: white;
+  border-radius: 24px;
+  max-inline-size: 480px;
+  inline-size: 90%;
+  padding: 40px;
+  border: none;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.15);
+  
+  /* Exit animation */
+  opacity: 0;
+  transform: scale(0.95) translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), overlay 0.3s ease;
+  transition-behavior: allow-discrete;
+}
+
+/* :popover-open pseudo-class for open state */
+.info-popover:popover-open {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* @starting-style for entry animation */
+@starting-style {
+  .info-popover:popover-open {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+}
+
+/* Popover backdrop */
+.info-popover::backdrop {
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transition-behavior: allow-discrete;
+}
+
+.info-popover:popover-open::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  .info-popover:popover-open::backdrop {
+    opacity: 0;
+  }
+}
+
+.popover-close, .dialog-close {
+  position: absolute;
+  inset-block-start: 16px;
+  inset-inline-end: 16px;
+  inline-size: 36px;
+  block-size: 36px;
+  border-radius: 50%;
+  border: none;
+  background: #f5f5f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  color: #1d1d1f;
+}
+
+.popover-close:hover, .dialog-close:hover { background: #e5e5ea; }
+
+.popover-close svg, .dialog-close svg {
+  inline-size: 16px;
+  block-size: 16px;
+}
+
+.popover-title, .dialog-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-block-end: 16px;
+  letter-spacing: -0.02em;
+}
+
+.popover-body, .dialog-body {
+  font-size: 16px;
+  color: #6e6e73;
+  line-height: 1.5;
+  margin-block-end: 24px;
+}
+
+.popover-cta, .dialog-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #0066cc;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: gap 0.2s;
+}
+
+.popover-cta:hover, .dialog-cta:hover { gap: 10px; }
+
+.popover-cta svg, .dialog-cta svg {
+  inline-size: 14px;
+  block-size: 14px;
+}
+
+/* Native <dialog> element */
+.info-dialog {
+  background: white;
+  border-radius: 24px;
+  max-inline-size: 480px;
+  inline-size: 90%;
+  padding: 40px;
+  border: none;
+  box-shadow: 0 24px 48px rgba(0,0,0,0.15);
+  
+  opacity: 0;
+  transform: scale(0.95) translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), overlay 0.3s ease;
+  transition-behavior: allow-discrete;
+}
+
+.info-dialog[open] {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+@starting-style {
+  .info-dialog[open] {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+}
+
+.info-dialog::backdrop {
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transition-behavior: allow-discrete;
+}
+
+.info-dialog[open]::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  .info-dialog[open]::backdrop {
+    opacity: 0;
+  }
+}
+
+/* Container Queries for responsive card sizing */
+@container carousel (max-width: 900px) {
+  .card {
+    flex: 0 0 calc((100% - 20px) / 2.5);
+    min-inline-size: 220px;
+  }
+}
+
+@container carousel (max-width: 640px) {
+  .card {
+    flex: 0 0 calc((100% - 10px) / 1.5);
+    min-inline-size: 200px;
+  }
+  .section-headline {
+    font-size: 28px;
+    padding-inline: 20px;
+  }
+  .nav-arrow { display: none; }
 }
