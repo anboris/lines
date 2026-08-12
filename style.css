@@ -58,12 +58,26 @@
 
   .section-headline {
     font-size: clamp(32px, 5cqi, 48px);
-    font-weight: 600;
+    font-weight: 500;
+    font-feature-settings: "ss02" on;
     text-align: center;
     color: #1d1d1f;
-    margin-block-end: 48px;
+    margin-block-end: 16px; /* reduced from 48px */
     line-height: 1.1;
     letter-spacing: -0.015em;
+  }
+
+  .section-description {
+    font-size: clamp(16px, 1.8cqi, 22px); /* MUCH smaller */
+    font-weight: 400;
+    font-feature-settings: "ss02" on;
+    text-align: center;
+    color: #6e6e73; /* softer gray, not black */
+    max-width: 960px; /* limits line length for readability */
+    margin-inline: auto; /* centers the block */
+    margin-block-end: 48px;
+    line-height: 1.4; /* more breathing room for text */
+    letter-spacing: 0.01em; /* slightly wider for readability */
   }
 
   .carousel-wrapper {
