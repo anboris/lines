@@ -453,29 +453,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  grid-auto-rows: minmax(
-    100px,
-    auto
-  ); /* Allows content to expand if text overflows */
-  grid-auto-flow: dense;
-  padding-inline: 20px;
-}
-
-/* ===== MASONRY SECTION ===== */
-.masonry-section {
-  container-type: inline-size;
-  container-name: masonry;
-  max-inline-size: 1200px;
-  inline-size: 100%;
-  margin-inline: auto;
-  padding-block: 60px 80px;
-  background: #f5f5f7;
-}
-
-.masonry-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
   grid-auto-rows: minmax(110px, auto);
   grid-auto-flow: dense;
   padding-inline: 20px;
