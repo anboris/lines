@@ -437,3 +437,265 @@
     display: none;
   }
 }
+
+/* ===== MASONRY SECTION ===== */
+.masonry-section {
+  container-type: inline-size;
+  container-name: masonry;
+  max-inline-size: 1200px;
+  inline-size: 100%;
+  margin-inline: auto;
+  padding-block: 60px 80px;
+  background: #f5f5f7;
+}
+
+.masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  grid-auto-rows: minmax(
+    100px,
+    auto
+  ); /* Allows content to expand if text overflows */
+  grid-auto-flow: dense;
+  padding-inline: 20px;
+}
+
+/* ===== MASONRY SECTION ===== */
+.masonry-section {
+  container-type: inline-size;
+  container-name: masonry;
+  max-inline-size: 1200px;
+  inline-size: 100%;
+  margin-inline: auto;
+  padding-block: 60px 80px;
+  background: #f5f5f7;
+}
+
+.masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  grid-auto-rows: minmax(110px, auto);
+  grid-auto-flow: dense;
+  padding-inline: 20px;
+}
+
+/* ===== MASONRY CARDS ===== */
+.masonry-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 24px;
+  padding: 32px 28px; /* Slightly wider padding for larger typography */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.04),
+    0 2px 8px rgba(0, 0, 0, 0.02),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Ensures content groups flow naturally downward */
+  align-items: flex-start;
+  container-type: inline-size;
+  container-name: card;
+  will-change: transform, box-shadow;
+  grid-row: span 2;
+}
+
+/* Card layout configurations */
+.card-tall {
+  grid-row: span 4;
+}
+
+.card-wide {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* ===== CARD CONTENT & SCALING ===== */
+.card-icon {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tweak SVG sizing parameters safely here */
+.card-icon svg {
+  width: clamp(32px, 4cqi, 44px);
+  height: clamp(32px, 4cqi, 44px);
+  object-fit: contain;
+  display: block;
+}
+
+.card-number {
+  font-size: clamp(56px, 5cqi, 72px); /* Scaled up baseline */
+  font-weight: 600;
+  color: #1d1d1f;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  font-feature-settings: "ss02" on;
+}
+
+.masonry-card .card-label {
+  font-size: clamp(34px, 5cqi, 56px); /* Scaled up baseline */
+  line-height: 1.1;
+  font-weight: 500;
+  color: #1d1d1f;
+  margin-bottom: 12px;
+}
+
+/* Pushes exclusively the description text down to block bottom boundary */
+.masonry-card .card-desc {
+  /* 16px is now the absolute minimum, fluid sizing tracks container queries up to 18px */
+  font-size: clamp(16px, 1.4cqi, 18px);
+  color: #6e6e73;
+  line-height: 1.4;
+  font-weight: 400;
+  opacity: 0.9;
+  margin-block-start: auto; /* Keeps description pinned to the bottom */
+  padding-block-start: 16px; /* Prevents text collision */
+}
+
+/* ===== HOVER EFFECTS ===== */
+.masonry-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.masonry-card:active {
+  transform: translateY(0px) scale(0.98);
+  transition-duration: 0.1s;
+}
+
+/* ===== SVG COLOR ACCENTS (Using currentcolor control fallback) ===== */
+/* Новые мягкие, женственные акценты для иконок */
+.masonry-card:nth-child(1) .card-icon {
+  color: #a3b899; /* Приглушенный оливковый/зеленый для направлений */
+  filter: drop-shadow(0 4px 12px rgba(163, 184, 153, 0.25));
+}
+.masonry-card:nth-child(2) .card-icon {
+  color: #e8a7a1; /* Мягкий розово-пудровый для анатомического подхода */
+  filter: drop-shadow(0 4px 12px rgba(232, 167, 161, 0.25));
+}
+.masonry-card:nth-child(6) .card-icon {
+  color: #cca7c1; /* Нежно-лавандовый для комьюнити */
+  filter: drop-shadow(0 4px 12px rgba(204, 167, 193, 0.25));
+}
+
+/* ===== ENTRY ANIMATION ===== */
+.masonry-card {
+  opacity: 0;
+  animation: cardFadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.masonry-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.masonry-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.masonry-card:nth-child(3) {
+  animation-delay: 0.15s;
+}
+.masonry-card:nth-child(4) {
+  animation-delay: 0.2s;
+}
+.masonry-card:nth-child(5) {
+  animation-delay: 0.25s;
+}
+.masonry-card:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+@keyframes cardFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ===== RESPONSIVENESS ===== */
+
+/* Tablets */
+@container masonry (max-width: 900px) {
+  .masonry-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .masonry-card {
+    grid-row: span 2;
+    grid-column: span 1;
+  }
+
+  .card-wide {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .card-tall {
+    grid-row: span 4;
+  }
+}
+
+/* Mobile */
+@container masonry (max-width: 600px) {
+  .masonry-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    padding-inline: 12px;
+    grid-auto-rows: auto;
+  }
+
+  .masonry-card,
+  .card-wide,
+  .card-tall {
+    grid-row: auto;
+    grid-column: auto;
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+
+  .masonry-section {
+    padding-block: 40px 60px;
+  }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+  .masonry-section {
+    background: #111112;
+  }
+
+  .masonry-card {
+    background: rgba(30, 30, 35, 0.75);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+
+  .masonry-card:hover {
+    background: rgba(40, 40, 48, 0.88);
+  }
+
+  .card-number,
+  .card-label {
+    color: #f5f5f7;
+  }
+
+  .masonry-card .card-desc .card-desc {
+    color: #a1a1a6;
+  }
+}
