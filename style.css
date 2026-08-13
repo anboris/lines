@@ -1436,3 +1436,169 @@
 .sub-pane.active {
   display: block;
 }
+
+/* ===== BADGES ===== */
+.badge {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 4px 14px;
+  border-radius: 100px;
+  background: rgba(0, 0, 0, 0.05);
+  color: #6e6e73;
+  margin-bottom: 12px;
+  align-self: flex-start;
+}
+
+.badge.popular {
+  background: #1d1d1f;
+  color: white;
+}
+
+.price-card.featured .badge:not(.popular) {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.price-card.featured .badge.popular {
+  background: white;
+  color: #1d1d1f;
+}
+
+/* ===== WORKOUT SELECTOR ===== */
+.workout-selector {
+  margin-block: 12px 8px;
+  width: 100%;
+}
+
+.workout-selector label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6e6e73;
+  margin-bottom: 6px;
+}
+
+.workout-selector select {
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #f5f5f7;
+  font-size: 14px;
+  font-family: inherit;
+  font-weight: 450;
+  color: #1d1d1f;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236e6e73' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 40px;
+}
+
+.workout-selector select:hover {
+  border-color: rgba(0, 0, 0, 0.15);
+  background-color: #efeff1;
+}
+
+.workout-selector select:focus {
+  outline: none;
+  border-color: #1d1d1f;
+  box-shadow: 0 0 0 3px rgba(29, 29, 31, 0.08);
+}
+
+.price-card.featured .workout-selector select {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ffffff' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+.price-card.featured .workout-selector select option {
+  background: #1d1d1f;
+  color: white;
+}
+
+.price-card.featured .workout-selector label {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===== PRICE DISPLAY ===== */
+.price-display {
+  margin-block: 8px 4px;
+}
+
+.price-display .price-amount {
+  font-size: 42px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #1d1d1f;
+  line-height: 1.1;
+}
+
+.price-display .price-period {
+  font-size: 14px;
+  color: #6e6e73;
+}
+
+.price-card.featured .price-display .price-amount {
+  color: white;
+}
+
+.price-card.featured .price-display .price-period {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* ===== PRICE FEATURES (override for cleaner look) ===== */
+.price-features {
+  list-style: none;
+  margin-block: 12px 20px;
+  flex: 1;
+}
+
+.price-features li {
+  padding-block: 5px;
+  font-size: 14px;
+  color: #6e6e73;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.price-features li:last-child {
+  border-bottom: none;
+}
+
+.price-features li::before {
+  content: "✓";
+  color: #34c759;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.price-card.featured .price-features li {
+  color: rgba(255, 255, 255, 0.8);
+}
+.price-card.featured .price-features li::before {
+  color: #34c759;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  .price-display .price-amount {
+    font-size: 34px;
+  }
+  .workout-selector select {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+  .badge {
+    font-size: 10px;
+    padding: 3px 12px;
+  }
+}

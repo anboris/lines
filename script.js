@@ -189,3 +189,81 @@ function updatePrice(selectElement, cardPrefix) {
   document.getElementById(`${cardPrefix}-price`).innerText = totalPrice;
   document.getElementById(`${cardPrefix}-per-class`).innerText = perClassText;
 }
+
+// ===== PRICE UPDATER for dropdowns =====
+function updatePrice(selectElement, cardPrefix) {
+  // Get selected option values
+  const totalPrice =
+    parseInt(selectElement.value).toLocaleString("ru-RU") + " ₽";
+  const selectedOption = selectElement.options[selectElement.selectedIndex];
+  const perClassValue = selectedOption.getAttribute("data-per-class");
+
+  // Format per-class subtitle text
+  const perClassText =
+    perClassValue === "Без лимита"
+      ? "Безлимитные посещения"
+      : `${parseInt(perClassValue).toLocaleString("ru-RU")} ₽ / занятие`;
+
+  // Apply real-time DOM updates
+  document.getElementById(`${cardPrefix}-price`).innerText = totalPrice;
+  document.getElementById(`${cardPrefix}-per-class`).innerText = perClassText;
+}
+
+// ===== MAIN TABS =====
+document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelectorAll(".pricing-tab");
+  const panes = {
+    group: document.getElementById("pane-group"),
+    individual: document.getElementById("pane-individual"),
+    single: document.getElementById("pane-single"),
+  };
+
+  function activatePane(paneId) {
+    Object.values(panes).forEach((pane) => pane.classList.remove("active"));
+    tabs.forEach((tab) => {
+      tab.classList.remove("active");
+      tab.setAttribute("aria-selected", "false");
+    });
+
+    const target = document.getElementById(paneId);
+    if (target) target.classList.add("active");
+
+    const matchingTab = document.querySelector(
+      `.pricing-tab[data-pane="${paneId}"]`,
+    );
+    if (matchingTab) {
+      matchingTab.classList.add("active");
+      matchingTab.setAttribute("aria-selected", "true");
+    }
+  }
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const paneId = tab.dataset.pane;
+      if (paneId) activatePane(paneId);
+    });
+  });
+
+  // ===== SUB-TABS (Individual pane) =====
+  document.querySelectorAll(".sub-tab").forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const parent = tab.closest(".pricing-pane");
+      const targetId = tab.dataset.subpane;
+
+      parent.querySelectorAll(".sub-tab").forEach((t) => {
+        t.classList.remove("active");
+        t.setAttribute("aria-selected", "false");
+      });
+
+      tab.classList.add("active");
+      tab.setAttribute("aria-selected", "true");
+
+      parent.querySelectorAll(".sub-pane").forEach((pane) => {
+        pane.classList.remove("active");
+      });
+
+      const targetPane = document.getElementById(targetId);
+      if (targetPane) targetPane.classList.add("active");
+    });
+  });
+});
