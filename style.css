@@ -1105,3 +1105,234 @@
     }
   }
 }
+
+/* ===== PRICING TABS ===== */
+.pricing-section {
+  max-inline-size: 1200px;
+  margin-inline: auto;
+  padding-block: 60px 80px;
+  background: #f5f5f7;
+}
+
+.pricing-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-block-end: 48px;
+  flex-wrap: wrap;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 6px;
+  border-radius: 100px;
+  max-inline-size: fit-content;
+  margin-inline: auto;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.pricing-tab {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 500;
+  font-family: inherit;
+  color: #6e6e73;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  letter-spacing: -0.01em;
+}
+
+.pricing-tab:hover {
+  color: #1d1d1f;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.pricing-tab.active {
+  background: #1d1d1f;
+  color: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.pricing-tab.active:hover {
+  background: #1d1d1f;
+}
+
+/* ===== PANES ===== */
+.pricing-panes {
+  position: relative;
+}
+
+.pricing-pane {
+  display: none;
+  animation: paneFade 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pricing-pane.active {
+  display: block;
+}
+
+@keyframes paneFade {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== PRICE CARDS ===== */
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  padding-inline: 20px;
+}
+
+.price-card {
+  background: white;
+  border-radius: 24px;
+  padding: 32px 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.price-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+.price-card.featured {
+  background: #1d1d1f;
+  color: white;
+  border-color: #1d1d1f;
+}
+
+.price-card.featured .price-amount,
+.price-card.featured .price-name,
+.price-card.featured .price-desc {
+  color: white;
+}
+
+.price-name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-block-end: 6px;
+  color: #1d1d1f;
+}
+
+.price-desc {
+  font-size: 14px;
+  color: #6e6e73;
+  line-height: 1.5;
+  margin-block-end: 20px;
+}
+
+.price-amount {
+  font-size: 42px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #1d1d1f;
+  margin-block-end: 4px;
+}
+
+.price-period {
+  font-size: 14px;
+  color: #6e6e73;
+  margin-block-end: 20px;
+}
+
+.price-card.featured .price-period {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.price-features {
+  list-style: none;
+  margin-block-end: 24px;
+  flex: 1;
+}
+
+.price-features li {
+  padding-block: 6px;
+  font-size: 14px;
+  color: #6e6e73;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.price-features li:last-child {
+  border-bottom: none;
+}
+
+.price-features li::before {
+  content: "✓";
+  color: #34c759;
+  font-weight: 600;
+}
+
+.price-card.featured .price-features li {
+  color: rgba(255, 255, 255, 0.8);
+}
+.price-card.featured .price-features li::before {
+  color: #34c759;
+}
+
+.price-btn {
+  padding: 14px 24px;
+  border-radius: 100px;
+  border: none;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  width: 100%;
+}
+
+.price-btn:hover {
+  background: #e5e5ea;
+  transform: scale(1.02);
+}
+
+.price-card.featured .price-btn {
+  background: white;
+  color: #1d1d1f;
+}
+
+.price-card.featured .price-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  .pricing-tabs {
+    border-radius: 16px;
+    padding: 4px;
+    gap: 4px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .pricing-tab {
+    padding: 10px 18px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .price-grid {
+    grid-template-columns: 1fr;
+    padding-inline: 12px;
+  }
+  .price-card {
+    padding: 24px 20px;
+  }
+}

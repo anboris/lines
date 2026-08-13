@@ -100,3 +100,47 @@
     { passive: true },
   );
 })();
+
+// ===== PRICING TABS =====
+document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelectorAll(".pricing-tab");
+  const panes = {
+    single: document.getElementById("pane-single"),
+    individual: document.getElementById("pane-individual"),
+    group: document.getElementById("pane-group"),
+  };
+
+  function activatePane(paneId) {
+    // Deactivate all panes
+    Object.values(panes).forEach((pane) => pane.classList.remove("active"));
+    // Deactivate all tabs
+    tabs.forEach((tab) => {
+      tab.classList.remove("active");
+      tab.setAttribute("aria-selected", "false");
+    });
+
+    // Activate target pane
+    const target = document.getElementById(paneId);
+    if (target) target.classList.add("active");
+
+    // Activate matching tab
+    const matchingTab = document.querySelector(
+      `.pricing-tab[data-pane="${paneId}"]`,
+    );
+    if (matchingTab) {
+      matchingTab.classList.add("active");
+      matchingTab.setAttribute("aria-selected", "true");
+    }
+  }
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      const paneId = tab.dataset.pane;
+      if (paneId) activatePane(paneId);
+    });
+  });
+
+  // (Optional) set default from URL hash
+  const hash = window.location.hash.replace("#", "");
+  if (hash && panes[hash]) activatePane(hash);
+});
