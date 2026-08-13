@@ -307,7 +307,7 @@ const fitnessQuiz = {
       ],
     },
     4: {
-      text: "Комплексная тренировка базовый уровень. Здоровая спина и осанка. МФР.",
+      text: "Комплексная тренировка базовый уровень. Здоровая спина и осанка. МФР",
       type: "outcome",
     },
     5: {
@@ -374,10 +374,24 @@ const fitnessQuiz = {
       type: "outcome",
     },
     17: {
-      text: "Здоровая спина и осанка. Тренировка стоп. МФР.",
+      text: "Здоровая спина и осанка. Тренировка стоп. МФР",
       type: "outcome",
     },
   },
+};
+
+// ===== POPOVER MAPPING =====
+// Maps recommendation text → popover ID
+const recommendationPopovers = {
+  "Комплексная тренировка базовый уровень": "popover-0",
+  "Комплексная тренировка средний уровень": "popover-1",
+  "Комплексная тренировка продолжающие": "popover-2",
+  "Здоровая спина и осанка": "popover-3",
+  МФР: "popover-4",
+  "Растяжка у станка": "popover-5",
+  "Тренировка стоп": "popover-6",
+  "Гимнастические элементы": "popover-7",
+  "Вертикальные шпагаты": "popover-8",
 };
 
 // ===== RENDER ENGINE =====
@@ -413,14 +427,59 @@ function renderQuestion(quiz, id, depth = 1) {
     outcomeBox.className = "outcome-box";
 
     let html = `
-      <strong>Вам подойдут:</strong>
+      <div class="outcome-header">
+        <span class="outcome-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-check-icon lucide-user-round-check"><path d="M2 21a8 8 0 0 1 13.292-6"/><circle cx="10" cy="8" r="5"/><path d="m16 19 2 2 4-4"/></svg></span>
+        <strong>Вам подойдут:</strong>
+      </div>
       <div class="outcome-tags">
     `;
 
     recommendations.forEach((rec) => {
-      if (rec.trim()) {
-        html += `<span class="outcome-tag">${rec.trim()}</span>`;
+      const trimmed = rec.trim();
+      if (!trimmed) return;
+
+      // Find matching popover ID
+      let popoverId = null;
+      for (const [key, value] of Object.entries(recommendationPopovers)) {
+        if (trimmed.includes(key) || key.includes(trimmed)) {
+          popoverId = value;
+          break;
+        }
       }
+
+      // If no exact match, try partial match
+      if (!popoverId) {
+        for (const [key, value] of Object.entries(recommendationPopovers)) {
+          if (
+            trimmed.toLowerCase().includes(key.toLowerCase()) ||
+            key.toLowerCase().includes(trimmed.toLowerCase())
+          ) {
+            popoverId = value;
+            break;
+          }
+        }
+      }
+
+      html += `<span class="outcome-tag">${trimmed}`;
+
+      if (popoverId) {
+        html += `
+          <button 
+            class="tag-info-btn" 
+            popovertarget="${popoverId}" 
+            popovertargetaction="toggle"
+            aria-label="Подробнее о ${trimmed}"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="16" x2="12" y2="12" />
+              <line x1="12" y1="8" x2="12.01" y2="8" />
+            </svg>
+          </button>
+        `;
+      }
+
+      html += `</span>`;
     });
 
     html += `
