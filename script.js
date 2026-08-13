@@ -381,7 +381,7 @@ const fitnessQuiz = {
 };
 
 // ===== RENDER ENGINE =====
-const MAX_DEPTH = 4; // Adjusted to 4 since the longest question path is 4 steps before the outcome
+const MAX_DEPTH = 4;
 
 function renderQuestion(quiz, id, depth = 1) {
   const container = document.getElementById("quiz-container");
@@ -393,67 +393,69 @@ function renderQuestion(quiz, id, depth = 1) {
   const currentData = quiz.questions[id];
   container.innerHTML = "";
 
-  // Dynamic progress calculation
-  let progress = 0;
+  // ===== PROGRESS UPDATE =====
   if (currentData.type === "outcome") {
-    progress = 100; // Force 100% on the results screen
-    if (stepEl) stepEl.textContent = `Готово!`;
+    if (progressFill) progressFill.style.width = "100%";
+    if (stepEl) stepEl.textContent = "Готово";
   } else {
-    // Standard step progression capped right below 100%
-    progress = Math.min((depth / (MAX_DEPTH + 1)) * 100, 90);
+    const progress = Math.min((depth / (MAX_DEPTH + 1)) * 100, 90);
+    if (progressFill) progressFill.style.width = `${progress}%`;
     if (stepEl) stepEl.textContent = `Шаг ${depth} из ${MAX_DEPTH}`;
   }
 
-  // Animate the progress bar fill
-  if (progressFill) progressFill.style.width = `${progress}%`;
-
-  // Build Question Title
-  const title = document.createElement("h3");
-  title.innerText = currentData.text;
-  container.appendChild(title);
-
-  // Handle Outcome (Recommendation)
+  // ===== OUTCOME (recommendation) =====
   if (currentData.type === "outcome") {
-    const outcomeBox = document.createElement("div");
-    outcomeBox.className = "outcome-box";
-
     const recommendations = currentData.text
       .split(". ")
       .filter((s) => s.trim());
 
-    let html = `<strong>✨ Рекомендуем:</strong>`;
-    html += `<div class="outcome-tags">`;
+    const outcomeBox = document.createElement("div");
+    outcomeBox.className = "outcome-box";
+
+    let html = `
+      <strong>Вам подойдут:</strong>
+      <div class="outcome-tags">
+    `;
+
     recommendations.forEach((rec) => {
       if (rec.trim()) {
         html += `<span class="outcome-tag">${rec.trim()}</span>`;
       }
     });
-    html += `</div>`;
 
-    html += `<button class="quiz-restart" onclick="restartQuiz()">↻ Пройти заново</button>`;
+    html += `
+      </div>
+      <div class="outcome-actions">
+        <a href="#contacts" class="outcome-cta">Записаться сегодня</a>
+        <button class="quiz-restart" onclick="restartQuiz()">↻ Пройти заново</button>
+      </div>
+    `;
 
     outcomeBox.innerHTML = html;
     container.appendChild(outcomeBox);
     return;
   }
 
-  // Handle Choice Buttons
-  if (currentData.type === "choice") {
-    const btnContainer = document.createElement("div");
-    btnContainer.className = "btn-container";
+  // ===== CHOICE (question with buttons) =====
+  const title = document.createElement("h3");
+  title.className = "quiz-question";
+  title.innerText = currentData.text;
+  container.appendChild(title);
 
-    currentData.options.forEach((option) => {
-      const button = document.createElement("button");
-      button.innerText = option.text;
-      button.className = "quiz-btn";
-      button.onclick = () => {
-        renderQuestion(quiz, option.next, depth + 1);
-      };
-      btnContainer.appendChild(button);
-    });
+  const btnContainer = document.createElement("div");
+  btnContainer.className = "btn-container";
 
-    container.appendChild(btnContainer);
-  }
+  currentData.options.forEach((option) => {
+    const button = document.createElement("button");
+    button.innerText = option.text;
+    button.className = "quiz-btn";
+    button.onclick = () => {
+      renderQuestion(quiz, option.next, depth + 1);
+    };
+    btnContainer.appendChild(button);
+  });
+
+  container.appendChild(btnContainer);
 }
 
 // ===== RESTART =====
