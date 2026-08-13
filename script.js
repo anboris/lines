@@ -270,3 +270,198 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// ===== QUIZ DATA =====
+const fitnessQuiz = {
+  questions: {
+    1: {
+      text: "У Вас есть опыт тренировок?",
+      type: "choice",
+      options: [
+        { text: "Да", next: 2 },
+        { text: "Нет", next: 33 },
+      ],
+    },
+    2: {
+      text: "Был ли у Вас длительный перерыв (от месяца) в тренировках?",
+      type: "choice",
+      options: [
+        { text: "Да", next: 3 },
+        { text: "Нет", next: 6 },
+      ],
+    },
+    3: {
+      text: "Вас беспокоит боль в спине или суставах?",
+      type: "choice",
+      options: [
+        { text: "Да", next: 4 },
+        { text: "Нет", next: 5 },
+      ],
+    },
+    33: {
+      text: "Вас беспокоит боль в спине или суставах?",
+      type: "choice",
+      options: [
+        { text: "Да", next: 11 },
+        { text: "Нет", next: 111 },
+      ],
+    },
+    4: {
+      text: "Комплексная тренировка базовый уровень. Здоровая спина и осанка. МФР.",
+      type: "outcome",
+    },
+    5: {
+      text: "Комплексная тренировка базовый уровень. Комплексная тренировка средний уровень.",
+      type: "outcome",
+    },
+    6: {
+      text: "Вам интересны оздоровительные тренировки?",
+      type: "choice",
+      options: [
+        { text: "Да", next: 7 },
+        { text: "Нет", next: 8 },
+      ],
+    },
+    7: {
+      text: "Комплексная тренировка базовый уровень. Комплексная тренировка средний уровень. Здоровая спина и осанка. МФР.",
+      type: "outcome",
+    },
+    8: {
+      text: "Вам интересны тренировки повышенного уровня сложности?",
+      type: "choice",
+      options: [
+        { text: "Да", next: 9 },
+        { text: "Нет", next: 10 },
+      ],
+    },
+    9: {
+      text: "Комплексная тренировка продолжающие. Растяжка у станка. Гимнастические элементы.",
+      type: "outcome",
+    },
+    10: {
+      text: "Комплексная тренировка средний уровень. Комплексная тренировка продолжающие. Растяжка у станка.",
+      type: "outcome",
+    },
+    11: {
+      text: "Вам хотелось бы научиться садиться на шпагат?",
+      type: "choice",
+      options: [
+        { text: "Да", next: 12 },
+        { text: "Нет", next: 13 },
+      ],
+    },
+    111: {
+      text: "Вам хотелось бы научиться садиться на шпагат?",
+      type: "choice",
+      options: [
+        { text: "Да", next: 16 },
+        { text: "Нет", next: 17 },
+      ],
+    },
+    12: { text: "Комплексная тренировка базовый уровень.", type: "outcome" },
+    13: {
+      text: "Вам хотелось бы поработать над осанкой?",
+      type: "choice",
+      options: [
+        { text: "Да", next: 14 },
+        { text: "Нет", next: 15 },
+      ],
+    },
+    14: { text: "Здоровая спина и осанка. МФР.", type: "outcome" },
+    15: { text: "МФР.", type: "outcome" },
+    16: {
+      text: "Комплексная тренировка базовый уровень. Комплексная тренировка средний уровень.",
+      type: "outcome",
+    },
+    17: {
+      text: "Здоровая спина и осанка. Тренировка стоп. МФР.",
+      type: "outcome",
+    },
+  },
+};
+
+// ===== RENDER ENGINE =====
+const MAX_DEPTH = 4; // Adjusted to 4 since the longest question path is 4 steps before the outcome
+
+function renderQuestion(quiz, id, depth = 1) {
+  const container = document.getElementById("quiz-container");
+  const stepEl = document.getElementById("quiz-step");
+  const progressFill = document.getElementById("progress-fill");
+
+  if (!container) return;
+
+  const currentData = quiz.questions[id];
+  container.innerHTML = "";
+
+  // Dynamic progress calculation
+  let progress = 0;
+  if (currentData.type === "outcome") {
+    progress = 100; // Force 100% on the results screen
+    if (stepEl) stepEl.textContent = `Готово!`;
+  } else {
+    // Standard step progression capped right below 100%
+    progress = Math.min((depth / (MAX_DEPTH + 1)) * 100, 90);
+    if (stepEl) stepEl.textContent = `Шаг ${depth} из ${MAX_DEPTH}`;
+  }
+
+  // Animate the progress bar fill
+  if (progressFill) progressFill.style.width = `${progress}%`;
+
+  // Build Question Title
+  const title = document.createElement("h3");
+  title.innerText = currentData.text;
+  container.appendChild(title);
+
+  // Handle Outcome (Recommendation)
+  if (currentData.type === "outcome") {
+    const outcomeBox = document.createElement("div");
+    outcomeBox.className = "outcome-box";
+
+    const recommendations = currentData.text
+      .split(". ")
+      .filter((s) => s.trim());
+
+    let html = `<strong>✨ Рекомендуем:</strong>`;
+    html += `<div class="outcome-tags">`;
+    recommendations.forEach((rec) => {
+      if (rec.trim()) {
+        html += `<span class="outcome-tag">${rec.trim()}</span>`;
+      }
+    });
+    html += `</div>`;
+
+    html += `<button class="quiz-restart" onclick="restartQuiz()">↻ Пройти заново</button>`;
+
+    outcomeBox.innerHTML = html;
+    container.appendChild(outcomeBox);
+    return;
+  }
+
+  // Handle Choice Buttons
+  if (currentData.type === "choice") {
+    const btnContainer = document.createElement("div");
+    btnContainer.className = "btn-container";
+
+    currentData.options.forEach((option) => {
+      const button = document.createElement("button");
+      button.innerText = option.text;
+      button.className = "quiz-btn";
+      button.onclick = () => {
+        renderQuestion(quiz, option.next, depth + 1);
+      };
+      btnContainer.appendChild(button);
+    });
+
+    container.appendChild(btnContainer);
+  }
+}
+
+// ===== RESTART =====
+function restartQuiz() {
+  renderQuestion(fitnessQuiz, 1, 1);
+}
+
+// ===== INIT =====
+document.addEventListener("DOMContentLoaded", function () {
+  renderQuestion(fitnessQuiz, 1, 1);
+});
