@@ -1381,3 +1381,58 @@
     padding: 24px 20px;
   }
 }
+
+/* ===== SUB-TABS (inside Individual pane) ===== */
+.sub-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-block-end: 32px;
+  background: rgba(255, 255, 255, 0.4);
+  padding: 4px;
+  border-radius: 100px;
+  max-inline-size: fit-content;
+  margin-inline: auto;
+}
+
+.sub-tab {
+  padding: 8px 24px;
+  border: none;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  color: #6e6e73;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.sub-tab:hover {
+  color: #1d1d1f;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.sub-tab.active {
+  background: #1d1d1f;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sub-tab.active:hover {
+  background: #1d1d1f;
+}
+
+/* ===== SUB-PANES ===== */
+.sub-panes {
+  position: relative;
+}
+
+.sub-pane {
+  display: none;
+  animation: paneFade 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sub-pane.active {
+  display: block;
+}

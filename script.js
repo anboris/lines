@@ -144,3 +144,48 @@ document.addEventListener("DOMContentLoaded", () => {
   const hash = window.location.hash.replace("#", "");
   if (hash && panes[hash]) activatePane(hash);
 });
+
+// ===== SUB-TABS (Individual pane) =====
+document.querySelectorAll(".sub-tab").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const parent = tab.closest(".pricing-pane");
+    const targetId = tab.dataset.subpane;
+
+    // Deactivate all sub-tabs in this pane
+    parent.querySelectorAll(".sub-tab").forEach((t) => {
+      t.classList.remove("active");
+      t.setAttribute("aria-selected", "false");
+    });
+
+    // Activate clicked sub-tab
+    tab.classList.add("active");
+    tab.setAttribute("aria-selected", "true");
+
+    // Deactivate all sub-panes in this pane
+    parent.querySelectorAll(".sub-pane").forEach((pane) => {
+      pane.classList.remove("active");
+    });
+
+    // Activate target sub-pane
+    const targetPane = document.getElementById(targetId);
+    if (targetPane) targetPane.classList.add("active");
+  });
+});
+
+function updatePrice(selectElement, cardPrefix) {
+  // Get selected option values
+  const totalPrice =
+    parseInt(selectElement.value).toLocaleString("ru-RU") + " ₽";
+  const selectedOption = selectElement.options[selectElement.selectedIndex];
+  const perClassValue = selectedOption.getAttribute("data-per-class");
+
+  // Format per-class subtitle text
+  const perClassText =
+    perClassValue === "Без лимита"
+      ? "Безлимитные посещения"
+      : `${parseInt(perClassValue).toLocaleString("ru-RU")} ₽ / занятие`;
+
+  // Apply real-time DOM updates
+  document.getElementById(`${cardPrefix}-price`).innerText = totalPrice;
+  document.getElementById(`${cardPrefix}-per-class`).innerText = perClassText;
+}
