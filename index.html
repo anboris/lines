@@ -530,116 +530,66 @@
       <!-- ============================================================ -->
       <!-- PANE 2: ИНДИВИДУАЛЬНЫЕ ТРЕНИРОВКИ -->
       <!-- ============================================================ -->
+      <!-- PRIVATE TRAINING CARDS -->
       <div class="pricing-pane" id="pane-individual" role="tabpanel">
+        <div class="price-grid">
 
-        <!-- Sub-tabs: 60 / 90 min -->
-        <div class="sub-tabs" role="tablist">
-          <button class="sub-tab active" role="tab" data-subpane="ind-60" aria-selected="true">
-            60 минут
-          </button>
-          <button class="sub-tab" role="tab" data-subpane="ind-90" aria-selected="false">
-            90 минут
-          </button>
-        </div>
+          <!-- CARD 1: Персональная тренировка (1-on-1) -->
+          <div class="price-card">
+            <span class="badge">Максимум внимания</span>
+            <div class="price-name">Персонально <span class="small-tag">1-на-1</span></div>
+            <div class="price-desc">Индивидуальная программа под ваши личные цели</div>
 
-        <div class="sub-panes">
-
-          <!-- 60 MIN -->
-          <div class="sub-pane active" id="ind-60" role="tabpanel">
-            <div class="price-grid">
-
-              <div class="price-card">
-                <div class="price-name">Индивидуальное</div>
-                <div class="price-desc">Только вы и тренер</div>
-                <div class="price-display" style="margin-block: 8px 4px;">
-                  <div class="price-amount">2 900 ₽</div>
-                  <div class="price-period">60 минут</div>
-                </div>
-                <ul class="price-features">
-                  <li>Персональная программа</li>
-                  <li>Работа над техникой</li>
-                </ul>
-                <button class="price-btn">Записаться</button>
-              </div>
-
-              <div class="price-card featured">
-                <div class="price-name">Для двоих</div>
-                <div class="price-desc">С партнёром или другом</div>
-                <div class="price-display" style="margin-block: 8px 4px;">
-                  <div class="price-amount">4 500 ₽</div>
-                  <div class="price-period">60 минут</div>
-                </div>
-                <ul class="price-features">
-                  <li>Два человека, один тренер</li>
-                  <li>Индивидуальный подход к каждому</li>
-                </ul>
-                <button class="price-btn">Записаться</button>
-              </div>
-
-              <div class="price-card">
-                <div class="price-name">Пакет 5 занятий</div>
-                <div class="price-desc">Интенсивный курс</div>
-                <div class="price-display" style="margin-block: 8px 4px;">
-                  <div class="price-amount">14 500 ₽</div>
-                  <div class="price-period">~2 900 ₽ / занятие</div>
-                </div>
-                <ul class="price-features">
-                  <li>5 персональных тренировок</li>
-                  <li>Приоритетное бронирование</li>
-                </ul>
-                <button class="price-btn">Купить пакет</button>
-              </div>
-
+            <div class="workout-selector">
+              <label for="private-sessions">Количество занятий:</label>
+              <select id="private-sessions" onchange="updatePrice(this, 'private')">
+                <option value="2900" data-per-class="2900">1 занятие (Разовое)</option>
+                <option value="10400" data-per-class="2600">4 занятия (Пакет)</option>
+                <option value="15000" data-per-class="2500">6 занятий (Пакет)</option>
+                <option value="19200" data-per-class="2400">8 занятий (Пакет)</option>
+              </select>
             </div>
+
+            <div class="price-display">
+              <div class="price-amount" id="private-price">2 900 ₽</div>
+              <div class="price-period" id="private-per-class">2 900 ₽ / занятие</div>
+            </div>
+
+            <ul class="price-features">
+              <li>Продолжительность: 1 час</li>
+              <li>Индивидуальный график и подбор тренера</li>
+              <li>Адаптация нагрузки под ваш уровень</li>
+            </ul>
+            <button class="price-btn">Записаться</button>
           </div>
 
-          <!-- 90 MIN -->
-          <div class="sub-pane" id="ind-90" role="tabpanel">
-            <div class="price-grid">
+          <!-- CARD 2: Сплит-тренировка (2-on-1) -->
+          <div class="price-card featured">
+            <span class="badge popular">Для двоих</span>
+            <div class="price-name">Сплит <span class="small-tag">2-на-1</span></div>
+            <div class="price-desc">Тренируйтесь в паре с подругой, партнёром или коллегой</div>
 
-              <div class="price-card">
-                <div class="price-name">Индивидуальное</div>
-                <div class="price-desc">Углублённая работа</div>
-                <div class="price-display" style="margin-block: 8px 4px;">
-                  <div class="price-amount">3 900 ₽</div>
-                  <div class="price-period">90 минут</div>
-                </div>
-                <ul class="price-features">
-                  <li>Детальный разбор техники</li>
-                  <li>Видео-анализ движений</li>
-                </ul>
-                <button class="price-btn">Записаться</button>
-              </div>
-
-              <div class="price-card featured">
-                <div class="price-name">Для двоих</div>
-                <div class="price-desc">Совместная углублённая тренировка</div>
-                <div class="price-display" style="margin-block: 8px 4px;">
-                  <div class="price-amount">5 900 ₽</div>
-                  <div class="price-period">90 минут</div>
-                </div>
-                <ul class="price-features">
-                  <li>Больше времени на каждого</li>
-                  <li>Комплексный разбор движений</li>
-                </ul>
-                <button class="price-btn">Записаться</button>
-              </div>
-
-              <div class="price-card">
-                <div class="price-name">Пакет 5 занятий</div>
-                <div class="price-desc">Максимальный прогресс</div>
-                <div class="price-display" style="margin-block: 8px 4px;">
-                  <div class="price-amount">17 500 ₽</div>
-                  <div class="price-period">~3 500 ₽ / занятие</div>
-                </div>
-                <ul class="price-features">
-                  <li>5 персональных тренировок</li>
-                  <li>Видео-разбор движений</li>
-                </ul>
-                <button class="price-btn">Купить пакет</button>
-              </div>
-
+            <div class="workout-selector">
+              <label for="split-sessions">Количество занятий:</label>
+              <select id="split-sessions" onchange="updatePrice(this, 'split')">
+                <option value="3900" data-per-class="1950">1 занятие (Разовое)</option>
+                <option value="14400" data-per-class="1800">4 занятия (Пакет)</option>
+                <option value="21000" data-per-class="1750">6 занятий (Пакет)</option>
+                <option value="27200" data-per-class="1700">8 занятий (Пакет)</option>
+              </select>
             </div>
+
+            <div class="price-display">
+              <div class="price-amount" id="split-price">3 900 ₽</div>
+              <div class="price-period" id="split-per-class">1 950 ₽ за человека</div>
+            </div>
+
+            <ul class="price-features">
+              <li>Продолжительность: 1 час</li>
+              <li>Цена указана за двоих человек одновременно</li>
+              <li>Идеально для совместной мотивации</li>
+            </ul>
+            <button class="price-btn">Записаться вдвоём</button>
           </div>
 
         </div>
@@ -651,48 +601,61 @@
       <div class="pricing-pane" id="pane-single" role="tabpanel">
         <div class="price-grid">
 
-          <div class="price-card">
-            <span class="badge">Пробное</span>
+          <!-- CARD 1: Пробная тренировка -->
+          <div class="price-card trial-card">
+            <span class="badge startup">Первый визит</span>
             <div class="price-name">Пробное занятие</div>
-            <div class="price-desc">Знакомство с пространством и методикой</div>
-            <div class="price-display" style="margin-block: 8px 4px;">
+            <div class="price-desc">Знакомство со студией, тренерами и направлениями</div>
+
+            <div class="price-display">
+              <div class="price-amount">700 ₽</div>
+              <div class="price-period promo">Бесплатно при покупке абонемента!</div>
+            </div>
+
+            <ul class="price-features">
+              <li>60–90 минут тренировки</li>
+              <li>Аренда коврика/инвентаря включена</li>
+              <li>Индивидуальные рекомендации тренера</li>
+            </ul>
+            <button class="price-btn primary-btn">Записаться</button>
+          </div>
+
+          <!-- CARD 2: Пробная неделя (FEATURED HOOK) -->
+          <div class="price-card featured trial-card">
+            <span class="badge popular">Хит для новичков</span>
+            <div class="price-name">Пробная неделя</div>
+            <div class="price-desc">Тест-драйв студии без ограничений по времени</div>
+
+            <div class="price-display">
+              <div class="price-amount">3 000 ₽</div>
+              <div class="price-period">7 дней тест-драйва</div>
+            </div>
+
+            <ul class="price-features">
+              <li>Включает 3 групповых занятия</li>
+              <li>Доступ к любым направлениям</li>
+              <li>Сгорает ровно через 7 дней</li>
+            </ul>
+            <button class="price-btn primary-btn">Попробовать</button>
+          </div>
+
+          <!-- CARD 3: Разовая тренировка -->
+          <div class="price-card trial-card">
+            <span class="badge">Без обязательств</span>
+            <div class="price-name">Разовый визит</div>
+            <div class="price-desc">Для тех, кто тренируется редко или проездом</div>
+
+            <div class="price-display">
               <div class="price-amount">1 500 ₽</div>
-              <div class="price-period">60 минут</div>
+              <div class="price-period">Оплата за один визит</div>
             </div>
-            <ul class="price-features">
-              <li>Любое направление</li>
-              <li>Консультация тренера</li>
-            </ul>
-            <button class="price-btn">Записаться</button>
-          </div>
 
-          <div class="price-card featured">
-            <span class="badge popular">Рекомендуем</span>
-            <div class="price-name">Полноценное занятие</div>
-            <div class="price-desc">Групповое или индивидуальное</div>
-            <div class="price-display" style="margin-block: 8px 4px;">
-              <div class="price-amount">2 200 ₽</div>
-              <div class="price-period">75 минут</div>
-            </div>
             <ul class="price-features">
-              <li>Все направления</li>
-              <li>Инвентарь включён</li>
+              <li>Любое время: с 9:00 до 22:00</li>
+              <li>Все направления и тренеры студии</li>
+              <li>1 200 ₽ в дневное время (до 17:00)</li>
             </ul>
-            <button class="price-btn">Выбрать</button>
-          </div>
-
-          <div class="price-card">
-            <div class="price-name">Абонемент на 4 занятия</div>
-            <div class="price-desc">Гибкий формат для регулярных тренировок</div>
-            <div class="price-display" style="margin-block: 8px 4px;">
-              <div class="price-amount">7 800 ₽</div>
-              <div class="price-period">~1 950 ₽ / занятие</div>
-            </div>
-            <ul class="price-features">
-              <li>Срок 1 месяц</li>
-              <li>Замораживание</li>
-            </ul>
-            <button class="price-btn">Купить</button>
+            <button class="price-btn">Купить визит</button>
           </div>
 
         </div>

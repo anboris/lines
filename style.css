@@ -1602,3 +1602,78 @@
     padding: 3px 12px;
   }
 }
+
+/* ===== EXTRA BADGE STYLES ===== */
+.badge.startup {
+  background: #e8f0fe;
+  color: #1a5c9e;
+}
+
+.price-card.featured .badge.startup {
+  background: rgba(232, 240, 254, 0.2);
+  color: #8ab4f8;
+}
+
+/* ===== SMALL TAG (on card titles) ===== */
+.small-tag {
+  font-size: 14px;
+  font-weight: 400;
+  color: #6e6e73;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2px 10px;
+  border-radius: 100px;
+  margin-left: 6px;
+}
+
+.price-card.featured .small-tag {
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== PROMO TEXT (trial card) ===== */
+.price-period.promo {
+  color: #1a7a3a;
+  font-weight: 500;
+}
+
+.price-card.featured .price-period.promo {
+  color: #66d98b;
+}
+
+/* ===== PRIMARY BUTTON (dark, high contrast) ===== */
+.price-btn.primary-btn {
+  background: #1d1d1f;
+  color: white;
+}
+
+.price-btn.primary-btn:hover {
+  background: #333;
+  transform: scale(1.02);
+}
+
+.price-card.featured .price-btn.primary-btn {
+  background: white;
+  color: #1d1d1f;
+}
+
+.price-card.featured .price-btn.primary-btn:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* ===== TRIAL CARDS (slightly different visual weight) ===== */
+.trial-card .price-amount {
+  font-size: 38px; /* slightly smaller, more friendly */
+}
+
+/* ===== PRIVATE PANE: Grid adjustments (if needed) ===== */
+#pane-private .price-grid {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+@media (max-width: 640px) {
+  #pane-private .price-grid {
+    grid-template-columns: 1fr;
+  }
+}

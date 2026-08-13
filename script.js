@@ -192,19 +192,22 @@ function updatePrice(selectElement, cardPrefix) {
 
 // ===== PRICE UPDATER for dropdowns =====
 function updatePrice(selectElement, cardPrefix) {
-  // Get selected option values
   const totalPrice =
     parseInt(selectElement.value).toLocaleString("ru-RU") + " ₽";
   const selectedOption = selectElement.options[selectElement.selectedIndex];
   const perClassValue = selectedOption.getAttribute("data-per-class");
 
-  // Format per-class subtitle text
-  const perClassText =
-    perClassValue === "Без лимита"
-      ? "Безлимитные посещения"
-      : `${parseInt(perClassValue).toLocaleString("ru-RU")} ₽ / занятие`;
+  let perClassText = "";
 
-  // Apply real-time DOM updates
+  // Custom label handling for split (price per person)
+  if (cardPrefix === "split") {
+    perClassText = `${parseInt(perClassValue).toLocaleString("ru-RU")} ₽ за человека`;
+  } else if (perClassValue === "Без лимита") {
+    perClassText = "Безлимитные посещения";
+  } else {
+    perClassText = `${parseInt(perClassValue).toLocaleString("ru-RU")} ₽ / занятие`;
+  }
+
   document.getElementById(`${cardPrefix}-price`).innerText = totalPrice;
   document.getElementById(`${cardPrefix}-per-class`).innerText = perClassText;
 }
