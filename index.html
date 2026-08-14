@@ -455,14 +455,14 @@
 
     <!-- TABS -->
     <div class="pricing-tabs" role="tablist">
-      <button class="pricing-tab active" role="tab" data-pane="pane-group" aria-selected="true">
+      <button class="pricing-tab active" role="tab" data-pane="pane-single" aria-selected="true">
+        Разовое занятие
+      </button>
+      <button class="pricing-tab" role="tab" data-pane="pane-group" aria-selected="false">
         Групповые
       </button>
       <button class="pricing-tab" role="tab" data-pane="pane-individual" aria-selected="false">
         Индивидуальные
-      </button>
-      <button class="pricing-tab" role="tab" data-pane="pane-single" aria-selected="false">
-        Разовое занятие
       </button>
     </div>
 
@@ -472,7 +472,7 @@
       <!-- ============================================================ -->
       <!-- PANE 1: ГРУППОВЫЕ ТРЕНИРОВКИ -->
       <!-- ============================================================ -->
-      <div class="pricing-pane active" id="pane-group" role="tabpanel">
+      <div class="pricing-pane" id="pane-group" role="tabpanel">
         <div class="price-grid">
 
           <!-- Card: Дневной -->
@@ -644,7 +644,7 @@
       <!-- ============================================================ -->
       <!-- PANE 3: РАЗОВОЕ ЗАНЯТИЕ -->
       <!-- ============================================================ -->
-      <div class="pricing-pane" id="pane-single" role="tabpanel">
+      <div class="pricing-pane active" id="pane-single" role="tabpanel">
         <div class="price-grid">
 
           <!-- CARD 1: Пробная тренировка -->
