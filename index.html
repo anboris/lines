@@ -781,80 +781,89 @@
     </div>
   </section>
 
-  <!-- ===== STUDIO OVERVIEW SECTION ===== -->
+  <!-- ===== STUDIO SECTION (Redesigned) ===== -->
   <section class="studio-section" id="studio">
     <div class="studio-container">
-      <div class="studio-grid">
+      <h2 class="section-headline">Студия</h2>
+      <p class="section-description">
+        Уютное пространство в центре города
+      </p>
 
-        <!-- Left: Image -->
-        <div class="studio-image-wrapper">
-          <div class="studio-image">
-            <img src="images/studio.png" alt="Интерьер студии" loading="lazy" />
-            <div class="studio-image-overlay"></div>
-          </div>
-          <div class="studio-badge">
-            <span class="badge-icon">✦</span>
-            Открыты ежедневно
-          </div>
+      <div class="studio-layout">
+        <!-- Left: Studio Photo -->
+        <div class="studio-photo">
+          <img src="images/studio.png" alt="Интерьер студии" loading="lazy" />
         </div>
 
-        <!-- Right: Info -->
-        <div class="studio-info">
-          <span class="studio-tag">О студии</span>
-          <h2 class="studio-title">Пространство для осознанного движения</h2>
-          <p class="studio-desc">
-            Наша студия — это уютное пространство в центре города, где каждый найдёт свой путь к здоровью и гармонии. Мы
-            создаём атмосферу, в которой комфортно начинать и приятно продолжать.
-          </p>
-
-          <div class="studio-details">
-            <div class="studio-detail">
-              <div class="detail-icon">📍</div>
-              <div>
-                <div class="detail-label">Адрес</div>
-                <div class="detail-value">ул. Тверская, 15, Москва</div>
-              </div>
-            </div>
-            <div class="studio-detail">
-              <div class="detail-icon">🕐</div>
-              <div>
-                <div class="detail-label">Часы работы</div>
-                <div class="detail-value">Пн–Вс: 9:00 – 22:00</div>
-              </div>
-            </div>
-            <div class="studio-detail">
-              <div class="detail-icon">📞</div>
-              <div>
-                <div class="detail-label">Телефон</div>
-                <div class="detail-value">
-                  <a href="tel:+74951234567" class="detail-link">+7 (495) 123-45-67</a>
-                </div>
-              </div>
-            </div>
-            <div class="studio-detail">
-              <div class="detail-icon">✉️</div>
-              <div>
-                <div class="detail-label">Email</div>
-                <div class="detail-value">
-                  <a href="mailto:hello@studio.ru" class="detail-link">hello@studio.ru</a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="studio-actions">
-            <a href="#contacts" class="studio-btn primary">Связаться</a>
-            <a href="https://yandex.ru/maps" target="_blank" rel="noopener" class="studio-btn secondary">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        <!-- Right: Map -->
+        <div class="studio-map">
+          <div class="studio-map-placeholder">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path
+                d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <span>г. Москва, ул. Тверская, 15</span>
+            <a href="#" class="studio-map-link">
+              Показать на карте
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
                 stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                <circle cx="12" cy="10" r="3" />
+                <polyline points="9 18 15 12 9 6" />
               </svg>
-              Проложить маршрут
             </a>
           </div>
         </div>
+      </div>
 
+      <!-- Address & Hours bar -->
+      <div class="studio-info">
+        <div class="studio-info-item">
+          <span class="studio-info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path
+                d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </span>
+          <div>
+            <span class="studio-info-label">Адрес</span>
+            <span class="studio-info-value">ул. Тверская, 15, Москва</span>
+          </div>
+        </div>
+
+        <div class="studio-info-item">
+          <span class="studio-info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+              stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+          </span>
+          <div>
+            <span class="studio-info-label">Часы работы</span>
+            <span class="studio-info-value">Пн–Пт 9:00–22:00, Сб 10:00–18:00</span>
+          </div>
+        </div>
+
+        <div class="studio-info-item">
+          <span class="studio-info-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path
+                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.574 2.81.7A2 2 0 0 1 22 16.92z" />
+            </svg>
+          </span>
+          <div>
+            <span class="studio-info-label">Контакты</span>
+            <span class="studio-info-value">
+              <a href="tel:+74951234567">+7 (495) 123-45-67</a>
+              <span class="studio-info-divider">,</span>
+              <a href="mailto:hello@studio.ru">hello@studio.ru</a>
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
