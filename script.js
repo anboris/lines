@@ -604,9 +604,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// ===== BLOCK PHONES ONLY (Allow Tablets) =====
+// ===== БЛОКИРОВКА ТОЛЬКО ТЕЛЕФОНОВ (Планшеты разрешены) =====
 (function () {
-  // Only block phones, not tablets
+  // Блокируем только телефоны, не планшеты
   const isPhone =
     /Android(?!.*Mobile)|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
       navigator.userAgent,
@@ -614,7 +614,7 @@ document.addEventListener("DOMContentLoaded", function () {
     (navigator.userAgent.includes("Android") &&
       navigator.userAgent.includes("Mobile"));
 
-  // Check screen width (phones are typically under 768px)
+  // Проверяем ширину экрана (телефоны обычно меньше 768px)
   const isPhoneScreen = window.innerWidth < 768;
 
   if (isPhone || ("ontouchstart" in window && isPhoneScreen)) {
@@ -642,16 +642,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     overlay.innerHTML = `
       <div style="max-width:440px;">
-        <div style="font-size:72px;margin-bottom:24px;line-height:1;">📱</div>
+        <div style="font-size:72px;margin-bottom:24px;line-height:1;">🚧</div>
         <h1 style="font-size:26px;font-weight:600;color:#1d1d1f;margin-bottom:12px;letter-spacing:-0.02em;">
-          Mobile View Disabled
+          Мобильная версия в разработке
         </h1>
         <p style="font-size:17px;color:#6e6e73;line-height:1.6;margin-bottom:8px;">
-          Please open this site on a desktop computer.
+          Это демо-версия сайта, которая ещё не опубликована.
         </p>
-        <p style="font-size:15px;color:#a1a1a6;line-height:1.5;">
-          Thank you for understanding.
+        <p style="font-size:15px;color:#a1a1a6;line-height:1.5;margin-bottom:24px;">
+          Пожалуйста, откройте сайт на компьютере для просмотра.
         </p>
+        <div style="padding:16px 24px;background:rgba(0,0,0,0.03);border-radius:16px;">
+          <span style="font-size:13px;color:#6e6e73;">💡 Скоро мобильная версия будет доступна</span>
+        </div>
       </div>
     `;
 
