@@ -96,6 +96,7 @@
 
   <!-- MASONRY SECTION -->
   <section class="masonry-section">
+    <span class="section-badge">О нас</span>
     <h2 class="section-headline">Почему выбирают нас</h2>
     <p class="section-description">
       Пространство, где движение становится осознанным, а тело начинает работать
@@ -174,6 +175,7 @@
 
 
   <section class="carousel-section">
+    <span class="section-badge">Программы тренировок</span>
     <h2 class="section-headline">Одно тело. Одна система.<br>Разные способы движения</h2>
     <p class="section-description">
       Независимо от выбранной практики, вы работаете по единой методике, развивая подвижность,
@@ -419,6 +421,7 @@
 
   <!-- ===== PRICING SECTION ===== -->
   <section class="pricing-section" id="pricing">
+    <span class="section-badge">абонементы</span>
     <h2 class="section-headline">Выберите формат занятий</h2>
     <p class="section-description">
       Гибкая система тренировок — от разовых посещений до абонементов с выбором пакета
@@ -684,6 +687,7 @@
   <!-- ===== FAQ SECTION ===== -->
   <section class="faq-section" id="faq">
     <div class="faq-container">
+      <span class="section-badge">FAQ</span>
       <h2 class="section-headline">Частые вопросы</h2>
       <p class="section-description">
         Ответы на самые популярные вопросы о тренировках, возрасте, стеснении и прогрессе
@@ -798,172 +802,50 @@
     </div>
   </section>
 
-  <!-- ===== STUDIO SECTION (Redesigned) ===== -->
+  <!-- ===== STUDIO SECTION ===== -->
   <section class="studio-section" id="studio">
     <div class="studio-container">
-      <h2 class="section-headline">Студия</h2>
+      <span class="section-badge">Студия</span>
+      <h2 class="section-headline">Мы рядом</h2>
       <p class="section-description">
         Уютное пространство в центре города
       </p>
 
       <div class="studio-layout">
-        <!-- Left: Studio Photo -->
+        <!-- Left: Studio Photo with "Открыты ежедневно" Pill -->
         <div class="studio-photo">
           <img src="images/studio.png" alt="Интерьер студии" loading="lazy" />
-        </div>
-
-        <!-- Right: Map -->
-        <div class="studio-map">
-          <div class="studio-map-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path
-                d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-            <span>г. Москва, ул. Тверская, 15</span>
-            <a href="#" class="studio-map-link">
-              Показать на карте
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Address & Hours bar -->
-      <div class="studio-info">
-        <div class="studio-info-item">
-          <span class="studio-info-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path
-                d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-          </span>
-          <div>
-            <span class="studio-info-label">Адрес</span>
-            <span class="studio-info-value">ул. Тверская, 15, Москва</span>
-          </div>
-        </div>
-
-        <div class="studio-info-item">
-          <span class="studio-info-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+          <div class="studio-photo-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round">
               <circle cx="12" cy="12" r="10" />
               <polyline points="12 6 12 12 16 14" />
             </svg>
-          </span>
-          <div>
-            <span class="studio-info-label">Часы работы</span>
-            <span class="studio-info-value">Пн–Пт 9:00–22:00, Сб 10:00–18:00</span>
+            <span>Открыты ежедневно</span>
           </div>
         </div>
 
-        <div class="studio-info-item">
-          <span class="studio-info-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+        <!-- Right: Yandex Map (dimmed) -->
+        <div class="studio-map">
+          <div class="studio-map-wrapper">
+            <iframe
+              src="https://yandex.ru/map-widget/v1/?ll=30.376289%2C59.927134&z=17&pt=30.376289%2C59.927134%2Cflag&l=map"
+              width="100%" height="100%" frameborder="0" allowfullscreen="true" loading="lazy" class="studio-map-iframe"
+              title="Карта студии на Яндекс.Картах"></iframe>
+            <!-- Dim overlay -->
+            <div class="studio-map-overlay"></div>
+          </div>
+          <!-- Map Badge (bottom-right) -->
+          <div class="studio-map-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
               stroke-linejoin="round">
               <path
-                d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.574 2.81.7A2 2 0 0 1 22 16.92z" />
+                d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+              <circle cx="12" cy="10" r="3" />
             </svg>
-          </span>
-          <div>
-            <span class="studio-info-label">Контакты</span>
-            <span class="studio-info-value">
-              <a href="tel:+74951234567">+7 (495) 123-45-67</a>
-              <span class="studio-info-divider">,</span>
-              <a href="mailto:hello@studio.ru">hello@studio.ru</a>
-            </span>
+            <span>Невский пр-т, 160</span>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== APP & TELEGRAM PROMO ===== -->
-  <section class="promo-section" id="promo">
-    <div class="promo-container">
-      <div class="promo-header">
-        <span class="promo-badge">📱 Будьте с нами на связи</span>
-        <h2 class="section-headline">Скачивайте приложение <br>и подписывайтесь на чат</h2>
-        <p class="section-description">
-          В приложении — расписание, запись и эксклюзивные предложения. В Telegram-чате — анонсы, общение и поддержка
-        </p>
-      </div>
-
-      <div class="promo-grid">
-
-        <!-- Card 1: Mobile App -->
-        <div class="promo-card">
-          <div class="promo-card-icon">📲</div>
-          <h3 class="promo-card-title">Мобильное приложение</h3>
-          <p class="promo-card-desc">Записывайтесь на тренировки, следите за прогрессом и получайте уведомления</p>
-          <div class="promo-buttons">
-            <a href="#" class="app-btn" aria-label="Скачать в App Store">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-              </svg>
-              App Store
-            </a>
-            <a href="#" class="app-btn" aria-label="Скачать в Google Play">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path
-                  d="M3.71 1.29C3.28 1.5 3 1.95 3 2.45v19.1c0 .5.28.95.71 1.16l.14.07L14.2 12 3.85 1.22l-.14.07zM15.5 11.29l-3.56 3.56 2.28 2.28c.96.96 1.92.96 2.88 0l.08-.08 2.64-2.64c.96-.96.96-1.92 0-2.88l-4.32-4.32-2.28 2.28 3.28 3.28-.64.64z" />
-                <path
-                  d="M4.5 4.22l2.28 2.28L5.5 7.78 3.22 5.5l1.28-1.28zM20.5 8.5l-2.64 2.64-2.28-2.28 2.64-2.64L20.5 8.5z" />
-              </svg>
-              Google Play
-            </a>
-          </div>
-          <div class="promo-qr">
-            <span class="qr-label">Сканируйте QR-код</span>
-            <div class="qr-placeholder">
-              <svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="5" y="5" width="20" height="20" />
-                <rect x="55" y="5" width="20" height="20" />
-                <rect x="5" y="55" width="20" height="20" />
-                <line x1="35" y1="5" x2="45" y2="5" />
-                <line x1="35" y1="75" x2="45" y2="75" />
-                <line x1="5" y1="35" x2="5" y2="45" />
-                <line x1="75" y1="35" x2="75" y2="45" />
-                <rect x="35" y="35" width="10" height="10" />
-                <rect x="55" y="35" width="10" height="10" />
-                <rect x="35" y="55" width="10" height="10" />
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <!-- Card 2: Telegram -->
-        <div class="promo-card telegram">
-          <div class="promo-card-icon">💬</div>
-          <h3 class="promo-card-title">Telegram-чат</h3>
-          <p class="promo-card-desc">Анонсы мероприятий, полезные советы и живое общение с единомышленниками</p>
-          <a href="#" class="telegram-btn" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path
-                d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-            </svg>
-            Присоединиться
-          </a>
-          <div class="promo-stats">
-            <div class="stat">
-              <span class="stat-number">1.2K</span>
-              <span class="stat-label">участников</span>
-            </div>
-            <div class="stat">
-              <span class="stat-number">24/7</span>
-              <span class="stat-label">общение</span>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>

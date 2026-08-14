@@ -3557,3 +3557,240 @@
     font-size: 12px;
   }
 }
+
+/* ── Studio Photo with Pill ── */
+.studio-photo {
+  border-radius: 24px;
+  overflow: hidden;
+  background: #e5e5ea;
+  aspect-ratio: 4 / 3;
+  position: relative;
+}
+
+.studio-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Photo Address Pill (bottom-left) ── */
+.studio-photo-pill {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  color: #1d1d1f;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 10;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.studio-photo:hover .studio-photo-pill {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+.studio-photo-pill svg {
+  width: 18px;
+  height: 18px;
+  stroke: #0066cc;
+  flex-shrink: 0;
+}
+
+/* ── Map with Badge ── */
+.studio-map {
+  border-radius: 24px;
+  overflow: hidden;
+  background: #e5e5ea;
+  aspect-ratio: 4 / 3;
+  position: relative;
+}
+
+.studio-map-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* ── Map Badge (bottom-center) ── */
+.studio-map-badge {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 100px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  color: #1d1d1f;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 10;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.studio-map:hover .studio-map-badge {
+  transform: translateX(-50%) translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+.studio-map-badge svg {
+  width: 18px;
+  height: 18px;
+  stroke: #0066cc;
+  flex-shrink: 0;
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+  .studio-photo {
+    background: #1c1c1e;
+  }
+
+  .studio-map {
+    background: #1c1c1e;
+  }
+
+  .studio-photo-pill {
+    background: rgba(30, 30, 35, 0.92);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #f5f5f7;
+  }
+
+  .studio-photo-pill svg {
+    stroke: #4a9eff;
+  }
+
+  .studio-map-badge {
+    background: rgba(30, 30, 35, 0.92);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: #f5f5f7;
+  }
+
+  .studio-map-badge svg {
+    stroke: #4a9eff;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .studio-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .studio-photo,
+  .studio-map {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 640px) {
+  .studio-section {
+    padding-block: 40px 60px;
+  }
+
+  .studio-photo,
+  .studio-map {
+    aspect-ratio: 4 / 3;
+    border-radius: 20px;
+  }
+
+  .studio-photo-pill {
+    bottom: 12px;
+    left: 12px;
+    padding: 8px 14px;
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .studio-photo-pill svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .studio-map-badge {
+    bottom: 12px;
+    padding: 8px 14px;
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  .studio-map-badge svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* ============================================================
+   REUSABLE SECTION BADGE (Centered)
+   ============================================================ */
+.section-badge {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 6px 18px;
+  border-radius: 100px;
+  background: rgba(29, 29, 31, 0.06);
+  color: #6e6e73;
+  margin: 0 auto 12px;
+  width: fit-content;
+  max-width: 100%;
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+  .section-badge {
+    background: rgba(255, 255, 255, 0.06);
+    color: #8e8e93;
+  }
+}
+
+/* ── Variants (optional) ── */
+.section-badge--light {
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.section-badge--dark {
+  background: #1d1d1f;
+  color: white;
+}
+
+.section-badge--green {
+  background: rgba(52, 199, 89, 0.12);
+  color: #1a7a3a;
+}
+
+.section-badge--blue {
+  background: rgba(0, 102, 204, 0.08);
+  color: #0066cc;
+}
