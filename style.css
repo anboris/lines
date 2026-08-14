@@ -31,6 +31,13 @@
 }
 
 @layer layout {
+  html {
+    scroll-behavior: smooth;
+  }
+  /* Add padding to each section to account for fixed header */
+  section[id] {
+    scroll-margin-top: 60px; /* Matches your header height */
+  }
   body {
     font-family:
       "Inter",
@@ -753,7 +760,7 @@
   }
 
   .nav-link {
-    padding: 10px 24px;
+    padding: 10px 14px;
     border-radius: 100px;
     text-decoration: none;
     font-size: 15px;

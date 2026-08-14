@@ -66,26 +66,13 @@
   updateCarousel();
 })();
 
-// Smart navbar: hide on scroll down, show on scroll up
+// ===== HEADER: Toggle transparent/frosted =====
 (function () {
   const header = document.getElementById("siteHeader");
-  let lastScroll = 0;
   let ticking = false;
 
   function updateHeader() {
-    const currentScroll = window.scrollY;
-
-    // Toggle scrolled class for background change
-    header.classList.toggle("scrolled", currentScroll > 50);
-
-    // Hide when scrolling down, show when scrolling up
-    if (currentScroll > lastScroll && currentScroll > 100) {
-      header.classList.add("hidden");
-    } else {
-      header.classList.remove("hidden");
-    }
-
-    lastScroll = currentScroll;
+    header.classList.toggle("scrolled", window.scrollY > 50);
     ticking = false;
   }
 
