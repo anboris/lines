@@ -10,16 +10,19 @@
 
 <body>
   <!-- ===== HEADER / NAV ===== -->
+  <!-- ===== HEADER / NAV ===== -->
   <header class="site-header" id="siteHeader">
     <nav class="main-nav" aria-label="Main navigation">
-      <a href="#" class="nav-logo" aria-label="Home">
-        <img src="images/logo.svg" alt="Линии" class="logo-img" />
+      <a href="#hero" class="nav-logo" aria-label="Home">
+        <img src="images/logo.svg" alt="Нини" class="logo-img" />
       </a>
 
       <div class="nav-desktop">
-        <a href="#programs" class="nav-link">О нас</a>
-        <a href="#about" class="nav-link">Направления</a>
-        <a href="#pricing" class="nav-link">Цены</a>
+        <a href="#about" class="nav-link">О нас</a>
+        <a href="#programs" class="nav-link">Направления</a>
+        <a href="#pricing" class="nav-link">Абонементы</a>
+        <a href="#faq" class="nav-link">Вопросы</a>
+        <a href="#studio" class="nav-link">Студия</a>
         <a href="#contacts" class="nav-link nav-cta">Записаться</a>
       </div>
 
@@ -34,7 +37,7 @@
     <!-- Mobile menu via Popover API -->
     <div class="mobile-menu" id="mobileMenu" popover>
       <div class="mobile-menu-header">
-        <img src="images/logo.svg" alt="Линии" class="logo-img-mobile" />
+        <img src="images/logo.svg" alt="Нини" class="logo-img-mobile" />
         <button class="mobile-close" popovertarget="mobileMenu" popovertargetaction="hide" aria-label="Close menu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
             <line x1="18" y1="6" x2="6" y2="18" />
@@ -43,11 +46,12 @@
         </button>
       </div>
       <div class="mobile-links">
-        <a href="#programs" class="mobile-link">Programs</a>
-        <a href="#about" class="mobile-link">About</a>
-        <a href="#schedule" class="mobile-link">Schedule</a>
-        <a href="#pricing" class="mobile-link">Pricing</a>
-        <a href="#contacts" class="mobile-link mobile-cta">Contact</a>
+        <a href="#about" class="mobile-link">О нас</a>
+        <a href="#programs" class="mobile-link">Программы</a>
+        <a href="#pricing" class="mobile-link">Цены</a>
+        <a href="#faq" class="mobile-link">FAQ</a>
+        <a href="#studio" class="mobile-link">Студия</a>
+        <a href="#contacts" class="mobile-link mobile-cta">Записаться</a>
       </div>
     </div>
   </header>
@@ -95,7 +99,7 @@
 
 
   <!-- MASONRY SECTION -->
-  <section class="masonry-section">
+  <section class="masonry-section" id="about">
     <span class="section-badge">О нас</span>
     <h2 class="section-headline">Почему выбирают нас</h2>
     <p class="section-description">
@@ -174,7 +178,8 @@
   </section>
 
 
-  <section class="carousel-section">
+  <section class="carousel-section" id="programs">
+
     <span class="section-badge">Программы тренировок</span>
     <h2 class="section-headline">Одно тело. Одна система.<br>Разные способы движения</h2>
     <p class="section-description">
