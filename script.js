@@ -603,3 +603,58 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+// ===== BLOCK PHONES ONLY (Allow Tablets) =====
+(function () {
+  // Only block phones, not tablets
+  const isPhone =
+    /Android(?!.*Mobile)|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent,
+    ) ||
+    (navigator.userAgent.includes("Android") &&
+      navigator.userAgent.includes("Mobile"));
+
+  // Check screen width (phones are typically under 768px)
+  const isPhoneScreen = window.innerWidth < 768;
+
+  if (isPhone || ("ontouchstart" in window && isPhoneScreen)) {
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    const overlay = document.createElement("div");
+    overlay.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(30px) saturate(180%);
+      -webkit-backdrop-filter: blur(30px) saturate(180%);
+      z-index: 999999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+      padding: 24px;
+      text-align: center;
+    `;
+
+    overlay.innerHTML = `
+      <div style="max-width:440px;">
+        <div style="font-size:72px;margin-bottom:24px;line-height:1;">📱</div>
+        <h1 style="font-size:26px;font-weight:600;color:#1d1d1f;margin-bottom:12px;letter-spacing:-0.02em;">
+          Mobile View Disabled
+        </h1>
+        <p style="font-size:17px;color:#6e6e73;line-height:1.6;margin-bottom:8px;">
+          Please open this site on a desktop computer.
+        </p>
+        <p style="font-size:15px;color:#a1a1a6;line-height:1.5;">
+          Thank you for understanding.
+        </p>
+      </div>
+    `;
+
+    document.body.prepend(overlay);
+  }
+})();
