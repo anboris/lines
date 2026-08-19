@@ -19,12 +19,12 @@
 }
 
 @font-face {
-	font-family: 'TildaSansWebRegular';
-	src: 
-		url('fonts/tilda-sans_regular.woff2') format('woff2'),
-		url('fonts/tilda-sans_regular.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
+  font-family: "TildaSansWebRegular";
+  src:
+    url("fonts/tilda-sans_regular.woff2") format("woff2"),
+    url("fonts/tilda-sans_regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 @layer reset, layout, components, utilities;
