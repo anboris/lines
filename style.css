@@ -73,7 +73,7 @@
 
   .section-headline {
     font-size: clamp(32px, 5cqi, 48px);
-    font-weight: 500;
+    font-weight: 550;
     font-feature-settings: "ss02" on;
     text-align: center;
     color: #1d1d1f;
@@ -2339,7 +2339,7 @@
   }
 }
 
-/* ===== STUDIO SECTION (Redesigned) ===== */
+/* ===== STUDIO SECTION ===== */
 .studio-section {
   max-inline-size: 1200px;
   margin-inline: auto;
@@ -2351,15 +2351,16 @@
   padding-inline: 20px;
 }
 
-/* ── Layout: photo + map side by side ── */
+/* ── Layout ── */
 .studio-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  margin-block-end: 32px;
+  margin-block-end: 24px;
 }
 
-.studio-photo {
+.studio-card {
+  position: relative;
   border-radius: 24px;
   overflow: hidden;
   background: #e5e5ea;
@@ -2373,77 +2374,72 @@
   display: block;
 }
 
-.studio-map {
-  border-radius: 24px;
-  overflow: hidden;
-  background: #e5e5ea;
-  aspect-ratio: 4 / 3;
-}
-
-.studio-map-placeholder {
+/* ── Map Wrapper & Overlay ── */
+.studio-map-wrapper {
+  position: relative;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 20px;
-  background: #e5e5ea;
-  color: #6e6e73;
-  text-align: center;
 }
 
-.studio-map-placeholder svg {
-  width: 48px;
-  height: 48px;
-  stroke: #6e6e73;
+.studio-map-iframe {
+  border: 0;
 }
 
-.studio-map-placeholder span {
-  font-size: 16px;
-  font-weight: 450;
+.studio-map-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.05);
+  pointer-events: none;
 }
 
-.studio-map-link {
+/* ── Badges / Pills ── */
+.studio-pill {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  color: #0066cc;
-  text-decoration: none;
+  gap: 8px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  border-radius: 100px;
+  font-size: 14px;
   font-weight: 500;
-  font-size: 15px;
-  transition: gap 0.2s;
+  color: #1d1d1f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
 }
 
-.studio-map-link:hover {
-  gap: 10px;
+.studio-pill-badge {
+  left: auto;
+  right: 16px;
 }
 
-.studio-map-link svg {
-  width: 14px;
-  height: 14px;
-  stroke: currentColor;
+.studio-pill svg {
+  width: 16px;
+  height: 16px;
 }
 
-/* ── Info bar ── */
+/* ── Info Islands ── */
 .studio-info {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-radius: 24px;
-  padding: 28px 32px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
-.studio-info-item {
+.studio-info-card {
   display: flex;
   align-items: flex-start;
   gap: 14px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 20px;
+  padding: 20px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .studio-info-icon {
@@ -2455,25 +2451,24 @@
 .studio-info-icon svg {
   width: 22px;
   height: 22px;
-  stroke: currentColor;
 }
 
-.studio-info-item > div {
+.studio-info-card > div {
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 
 .studio-info-label {
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 600;
   color: #6e6e73;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 
 .studio-info-value {
-  font-size: 16px;
+  font-size: 15px;
   color: #1d1d1f;
   line-height: 1.4;
 }
@@ -2488,44 +2483,16 @@
   color: #0066cc;
 }
 
-.studio-info-divider {
-  color: #d2d2d7;
-  margin-inline: 4px;
-}
-
-/* ── Dark mode ── */
+/* ── Dark Mode ── */
 @media (prefers-color-scheme: dark) {
-  .studio-section {
-    background: #111112;
-  }
-
-  .studio-photo {
-    background: #1c1c1e;
-  }
-
-  .studio-map {
-    background: #1c1c1e;
-  }
-
-  .studio-map-placeholder {
-    background: #1c1c1e;
-    color: #a1a1a6;
-  }
-
-  .studio-map-placeholder svg {
-    stroke: #a1a1a6;
-  }
-
-  .studio-map-link {
-    color: #4a9eff;
-  }
-
-  .studio-info {
+  .studio-info-card {
     background: rgba(30, 30, 35, 0.75);
     border-color: rgba(255, 255, 255, 0.06);
   }
 
-  .studio-info-icon {
+  .studio-info-icon,
+  .studio-info-value,
+  .studio-info-value a {
     color: #f5f5f7;
   }
 
@@ -2533,23 +2500,25 @@
     color: #8e8e93;
   }
 
-  .studio-info-value {
-    color: #f5f5f7;
-  }
-
-  .studio-info-value a {
-    color: #f5f5f7;
-  }
-
   .studio-info-value a:hover {
     color: #4a9eff;
   }
+}
 
-  .studio-info-divider {
-    color: #48484a;
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .studio-info {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 }
 
+@media (max-width: 640px) {
+  .studio-info-card {
+    padding: 16px 20px;
+    border-radius: 16px;
+  }
+}
 /* ── Responsive ── */
 @media (max-width: 900px) {
   .studio-layout {
@@ -2557,8 +2526,7 @@
     gap: 16px;
   }
 
-  .studio-photo,
-  .studio-map {
+  .studio-card {
     aspect-ratio: 16 / 9;
   }
 
@@ -2574,8 +2542,7 @@
     padding-block: 40px 60px;
   }
 
-  .studio-photo,
-  .studio-map {
+  .studio-card {
     aspect-ratio: 4 / 3;
     border-radius: 20px;
   }
@@ -2583,19 +2550,6 @@
   .studio-info {
     padding: 20px 16px;
     border-radius: 20px;
-  }
-
-  .studio-info-item {
-    gap: 12px;
-  }
-
-  .studio-info-icon svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .studio-info-value {
-    font-size: 14px;
   }
 }
 

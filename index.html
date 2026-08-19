@@ -454,12 +454,9 @@
   <div class="instructors-container">
     <span class="section-badge">Трененры</span>
     <h2 class="section-headline">
-      Профессионалы своего дела
+      Команда студии
         </h2>
-    <p class="section-description">
-      Наши инструкторы — это не просто тренеры, а наставники, которые помогут вам раскрыть свой потенциал.
-      Индивидуальный подход, внимание к деталям и любовь к своему делу — вот что объединяет нашу команду.
-    </p>
+    <p class="section-description">Подберем индивидуальный подход, поможем развить гибкость и безопасно прийти к вашим целям.</p>
 
     <div class="instructors-grid">
       <!-- Instructor 1 -->
@@ -472,9 +469,9 @@
           <p class="instructor-title">Ведущий тренер студии</p>
           <p class="instructor-bio">Мастер спорта по художественной гимнастике, выпускница НГУ им. П.Ф. Лесгафта с красным дипломом. Опыт преподавания более 10 лет. Специализируется на гармоничном развитии тела, осознанном движении и эффективном достижении спортивных целей.</p>
           <div class="instructor-tags">
-            <span class="instructor-tag">Хатха-йога</span>
-            <span class="instructor-tag">Йога-терапия</span>
-            <span class="instructor-tag">Медитация</span>
+            <span class="instructor-tag">Растяжка</span>
+            <span class="instructor-tag">Шпагаты</span>
+            <span class="instructor-tag">Вертикальные шпагаты</span>
           </div>
         </div>
       </div>
@@ -489,9 +486,9 @@
           <p class="instructor-title">Тренер студии</p>
           <p class="instructor-bio">Выпускница НГУ им. П.Ф. Лесгафта с красным дипломом, КМС по спортивной акробатике и чир-спорту. Спортивный стаж 15 лет. Специализируется на растяжке, развитии гибкости и свободе движений через разносторонний спортивный опыт.</p>
           <div class="instructor-tags">
-            <span class="instructor-tag">Силовой фитнес</span>
-            <span class="instructor-tag">Стретчинг</span>
-            <span class="instructor-tag">Функциональный тренинг</span>
+            <span class="instructor-tag">Силовые тренировки</span>
+            <span class="instructor-tag">Акробатика</span>
+            <span class="instructor-tag">Растяжка</span>
           </div>
         </div>
       </div>
@@ -875,53 +872,89 @@
     </div>
   </section>
 
-  <!-- ===== STUDIO SECTION ===== -->
-  <section class="studio-section" id="studio">
-    <div class="studio-container">
-      <span class="section-badge">Студия</span>
-      <h2 class="section-headline">Мы рядом</h2>
-      <p class="section-description">
-        Уютное пространство в центре города
-      </p>
+<!-- ===== STUDIO SECTION ===== -->
+<section class="studio-section" id="studio">
+  <div class="studio-container">
+    <span class="section-badge">Студия</span>
+    <h2 class="section-headline">Мы рядом</h2>
+    <p class="section-description">Уютное пространство в центре города</p>
 
-      <div class="studio-layout">
-        <!-- Left: Studio Photo with "Открыты ежедневно" Pill -->
-        <div class="studio-photo">
-          <img src="images/studio.png" alt="Интерьер студии" loading="lazy" />
-          <div class="studio-photo-pill">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 16 14" />
-            </svg>
-            <span>Открыты ежедневно</span>
-          </div>
+    <div class="studio-layout">
+      <!-- Photo Block -->
+      <div class="studio-card studio-photo">
+        <img src="images/studio.png" alt="Интерьер студии" loading="lazy" />
+        <div class="studio-pill">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          <span>Открыты ежедневно</span>
         </div>
+      </div>
 
-        <!-- Right: Yandex Map (dimmed) -->
-        <div class="studio-map">
-          <div class="studio-map-wrapper">
-            <iframe
-              src="https://yandex.ru/map-widget/v1/?ll=30.376289%2C59.927134&z=17&pt=30.376289%2C59.927134%2Cflag&l=map"
-              width="100%" height="100%" frameborder="0" allowfullscreen="true" loading="lazy" class="studio-map-iframe"
-              title="Карта студии на Яндекс.Картах"></iframe>
-            <!-- Dim overlay -->
-            <div class="studio-map-overlay"></div>
-          </div>
-          <!-- Map Badge (bottom-right) -->
-          <div class="studio-map-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path
-                d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-            <span>Невский пр-т, 160</span>
-          </div>
+      <!-- Map Block -->
+      <div class="studio-card studio-map">
+        <div class="studio-map-wrapper">
+          <iframe
+            src="https://yandex.ru/map-widget/v1/?ll=30.376289%2C59.927134&z=17&pt=30.376289%2C59.927134%2Cflag&l=map"
+            width="100%" height="100%" frameborder="0" allowfullscreen="true" loading="lazy" class="studio-map-iframe"
+            title="Карта студии на Яндекс.Картах"></iframe>
+          <div class="studio-map-overlay"></div>
+        </div>
+        <div class="studio-pill studio-pill-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <span>Невский пр-т, 160</span>
         </div>
       </div>
     </div>
-  </section>
+    
+<!-- Info Islands -->
+<div class="studio-info">
+  <div class="studio-info-card">
+    <div class="studio-info-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+        <circle cx="12" cy="10" r="3" />
+      </svg>
+    </div>
+    <div>
+      <span class="studio-info-label">Адрес</span>
+      <span class="studio-info-value">Санкт-Петербург, Невский пр-т, 160</span>
+    </div>
+  </div>
+
+  <div class="studio-info-card">
+    <div class="studio-info-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <polyline points="12 6 12 12 16 14" />
+      </svg>
+    </div>
+    <div>
+      <span class="studio-info-label">Режим работы</span>
+      <span class="studio-info-value">Пн-Вс: 08:00 – 22:00</span>
+    </div>
+  </div>
+
+  <div class="studio-info-card">
+    <div class="studio-info-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+      </svg>
+    </div>
+    <div>
+      <span class="studio-info-label">Контакты</span>
+      <span class="studio-info-value">
+        <a href="tel:+78120000000">+7 (812) 000-00-00</a>
+      </span>
+    </div>
+  </div>
+</div>
+  </div>
+</section>
 
   <!-- ===== CONTACT FORM ===== -->
   <section class="contact-section" id="contacts">
