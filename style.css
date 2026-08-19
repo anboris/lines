@@ -18,6 +18,15 @@
   font-display: swap;
 }
 
+@font-face {
+	font-family: 'TildaSansWebRegular';
+	src: 
+		url('fonts/tilda-sans_regular.woff2') format('woff2'),
+		url('fonts/tilda-sans_regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
 @layer reset, layout, components, utilities;
 
 @layer reset {
@@ -985,6 +994,7 @@
     margin-block-end: 20px;
     max-inline-size: 800px;
     text-wrap: balance;
+    font-family: "TildaSansWebRegular", sans-serif !important;
   }
 
   .hero-subtitle {
@@ -3353,6 +3363,7 @@
   letter-spacing: -0.03em;
   margin-block-end: 20px;
   text-wrap: balance;
+  font-family: "TildaSansWebRegular", sans-serif !important;
 }
 
 .hero-subtitle {
