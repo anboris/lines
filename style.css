@@ -2280,9 +2280,14 @@
 
 .studio-pills-bottom {
   top: auto;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
-  justify-content: space-between;
+  justify-content: space-between; /* Pushes pills to opposite sides */
+  gap: 8px;
 }
 
 .studio-pill {
@@ -2290,7 +2295,7 @@
   align-items: center;
   gap: 8px;
   padding: 10px 16px;
-  background: rgba(255, 255, 255, 0.82);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.4);
@@ -2301,9 +2306,59 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   pointer-events: auto;
   text-decoration: none;
-  transition:
-    transform 0.2s ease,
-    background-color 0.2s ease;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex: 0 1 auto; /* Allow pills to shrink if needed */
+  max-width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .studio-pills {
+    inset: 12px;
+  }
+
+  .studio-pills-bottom {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    justify-content: space-between;
+    gap: 6px;
+  }
+
+  .studio-pill {
+    padding: 8px 12px;
+    font-size: 12px;
+    gap: 5px;
+    flex: 0 1 auto;
+    max-width: 48%; /* Each pill takes about half the width */
+  }
+
+  .studio-pill svg {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+  }
+
+  /* If pills need to wrap due to long text */
+  .studio-pill span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 380px) {
+  .studio-pill {
+    font-size: 10px;
+    padding: 6px 10px;
+  }
+
+  .studio-pill svg {
+    width: 11px;
+    height: 11px;
+  }
 }
 
 .studio-pill svg {
