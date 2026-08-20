@@ -2351,12 +2351,10 @@
   padding-inline: 20px;
 }
 
-/* ── Layout ── */
 .studio-layout {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  margin-block-end: 24px;
 }
 
 .studio-card {
@@ -2374,7 +2372,7 @@
   display: block;
 }
 
-/* ── Map Wrapper & Overlay ── */
+/* Map Wrapper */
 .studio-map-wrapper {
   position: relative;
   width: 100%;
@@ -2392,134 +2390,80 @@
   pointer-events: none;
 }
 
-/* ── Badges / Pills ── */
-.studio-pill {
+/* Overlay Pills Layer */
+.studio-pills {
   position: absolute;
-  bottom: 16px;
-  left: 16px;
+  inset: 16px;
+  display: flex;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.studio-pills-bottom {
+  top: auto;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.studio-pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 10px 16px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 100px;
   font-size: 14px;
   font-weight: 500;
   color: #1d1d1f;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  pointer-events: none;
-}
-
-.studio-pill-badge {
-  left: auto;
-  right: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  pointer-events: auto;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
 }
 
 .studio-pill svg {
   width: 16px;
   height: 16px;
-}
-
-/* ── Info Islands ── */
-.studio-info {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.studio-info-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-radius: 20px;
-  padding: 20px 24px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-}
-
-.studio-info-icon {
   flex-shrink: 0;
-  margin-top: 2px;
-  color: #1d1d1f;
 }
 
-.studio-info-icon svg {
-  width: 22px;
-  height: 22px;
+.studio-pill-link:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
 }
 
-.studio-info-card > div {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.studio-info-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: #6e6e73;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.studio-info-value {
-  font-size: 15px;
-  color: #1d1d1f;
-  line-height: 1.4;
-}
-
-.studio-info-value a {
-  color: #1d1d1f;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.studio-info-value a:hover {
-  color: #0066cc;
-}
-
-/* ── Dark Mode ── */
+/* Dark Mode */
 @media (prefers-color-scheme: dark) {
-  .studio-info-card {
-    background: rgba(30, 30, 35, 0.75);
-    border-color: rgba(255, 255, 255, 0.06);
+  .studio-section {
+    background: #111112;
   }
 
-  .studio-info-icon,
-  .studio-info-value,
-  .studio-info-value a {
+  .studio-card {
+    background: #1c1c1e;
+  }
+
+  .studio-map-overlay {
+    background: rgba(0, 0, 0, 0.2);
+  }
+
+  .studio-pill {
+    background: rgba(30, 30, 35, 0.82);
+    border-color: rgba(255, 255, 255, 0.08);
     color: #f5f5f7;
   }
 
-  .studio-info-label {
-    color: #8e8e93;
-  }
-
-  .studio-info-value a:hover {
-    color: #4a9eff;
+  .studio-pill-link:hover {
+    background: rgba(45, 45, 50, 0.95);
   }
 }
 
-/* ── Responsive ── */
-@media (max-width: 900px) {
-  .studio-info {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-}
-
-@media (max-width: 640px) {
-  .studio-info-card {
-    padding: 16px 20px;
-    border-radius: 16px;
-  }
-}
-/* ── Responsive ── */
+/* Responsive */
 @media (max-width: 900px) {
   .studio-layout {
     grid-template-columns: 1fr;
@@ -2528,12 +2472,6 @@
 
   .studio-card {
     aspect-ratio: 16 / 9;
-  }
-
-  .studio-info {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 24px 20px;
   }
 }
 
@@ -2547,9 +2485,13 @@
     border-radius: 20px;
   }
 
-  .studio-info {
-    padding: 20px 16px;
-    border-radius: 20px;
+  .studio-pills {
+    inset: 12px;
+  }
+
+  .studio-pill {
+    padding: 8px 12px;
+    font-size: 13px;
   }
 }
 
