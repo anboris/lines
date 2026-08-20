@@ -93,6 +93,7 @@
     margin-block-end: 48px;
     line-height: 1.4; /* more breathing room for text */
     letter-spacing: 0.01em; /* slightly wider for readability */
+    padding-inline: 20px;
   }
 
   .carousel-wrapper {
@@ -454,6 +455,10 @@
 
   .section-headline {
     font-size: 28px;
+    padding-inline: 20px;
+  }
+
+  .section-description {
     padding-inline: 20px;
   }
 
