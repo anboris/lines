@@ -4137,20 +4137,28 @@
 .community-promo {
   max-inline-size: 1200px;
   margin-inline: auto;
-  padding-block: 60px 40px;
-  background: #1d1d1f;
-  color: #f5f5f7;
-  padding-inline: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
   border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  overflow: hidden;
 }
 
 .community-promo-content {
-  max-inline-size: 820px;
-  margin: 0 auto 32px;
-  text-align: center;
+  flex: 1;
+  min-width: 240px;
 }
 
-.community-badge {
+/* Pill design */
+.community-pill {
   display: inline-block;
   font-size: 13px;
   font-weight: 600;
@@ -4158,136 +4166,142 @@
   letter-spacing: 0.06em;
   padding: 6px 18px;
   border-radius: 100px;
-  background: rgba(255, 255, 255, 0.06);
-  color: rgba(255, 255, 255, 0.6);
-  margin-bottom: 16px;
+  background: rgba(29, 29, 31, 0.06);
+  color: #6e6e73;
+  margin-block-end: 12px;
 }
 
-.community-title {
-  font-size: clamp(28px, 4vw, 40px);
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  color: #f5f5f7;
-  margin: 0 0 16px;
+.community-promo-content strong {
+  display: block;
+  font-size: clamp(22px, 2.8vw, 32px);
+  font-weight: 550;
+  letter-spacing: -0.015em;
+  color: #1d1d1f;
+  margin-bottom: 8px;
   line-height: 1.1;
 }
 
-.community-desc {
-  font-size: clamp(16px, 1.6vw, 18px);
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.55);
-  max-width: 720px;
-  margin: 0 auto 12px;
-}
-
-.community-sub {
+.community-promo-content p {
   font-size: clamp(15px, 1.4vw, 17px);
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.75);
-  margin-top: 1.5rem;
+  line-height: 1.6;
+  color: #6e6e73;
+  margin: 0;
+  max-width: 600px;
 }
 
 .community-buttons {
   display: flex;
-  justify-content: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
+  flex-shrink: 0;
 }
 
 /* ===== COMMUNITY BUTTONS ===== */
 .community-btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 32px;
+  gap: 8px;
+  padding: 10px 20px;
   border-radius: 100px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 500;
-  text-decoration: none;
-  transition: all 0.25s ease;
-  border: none;
-  cursor: pointer;
   font-family: inherit;
+  text-decoration: none;
+  color: #ffffff;
+  background: #1d1d1f;
+  border: 1px solid rgba(29, 29, 31, 0.08);
+  transition: all 0.25s ease;
+  cursor: pointer;
 }
 
 .community-btn svg {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
 }
 
-/* Telegram button */
-.community-btn.telegram-btn {
-  background: rgba(41, 113, 193, 0.85);
-  color: #fff;
+.community-btn:hover {
+  transform: scale(1.05);
 }
 
-.community-btn.telegram-btn:hover {
-  background: #2979c1;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(41, 113, 193, 0.3);
+.community-btn:active {
+  transform: scale(0.97);
 }
 
-/* VK button */
-.community-btn.vk-btn {
-  background: rgba(79, 120, 184, 0.85);
-  color: #fff;
-}
-
-.community-btn.vk-btn:hover {
-  background: #4f78b8;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(79, 120, 184, 0.3);
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .community-promo {
-    padding-block: 40px 32px;
+/* ===== DARK MODE ===== */
+@media (prefers-color-scheme: dark) {
+  .community-pill {
+    color: #f5f5f7;
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.06);
   }
 
-  .community-title {
-    font-size: 24px;
+  .community-promo-content strong {
+    color: #f5f5f7;
   }
 
-  .community-buttons {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+  .community-promo-content p {
+    color: #a1a1a6;
   }
 
   .community-btn {
+    color: #f5f5f7;
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .community-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 820px) {
+  .community-promo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding-block: 40px 32px;
+  }
+
+  .community-promo-content p {
+    max-width: 100%;
+  }
+
+  .community-buttons {
     width: 100%;
-    justify-content: center;
-    max-width: 320px;
   }
 }
 
 @media (max-width: 480px) {
   .community-promo {
     padding-block: 32px 24px;
+    padding-inline: 16px;
   }
 
-  .community-title {
+  .community-promo-content strong {
     font-size: 20px;
   }
 
-  .community-desc {
-    font-size: 14px;
-  }
-
-  .community-sub {
-    font-size: 14px;
-  }
-
-  .community-badge {
+  .community-pill {
     font-size: 11px;
-    padding: 4px 14px;
+    padding: 3px 12px;
   }
 
   .community-btn {
-    padding: 12px 24px;
-    font-size: 14px;
-    max-width: 100%;
+    padding: 8px 16px;
+    font-size: 13px;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .community-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .community-buttons {
+    flex-direction: column;
   }
 }
