@@ -1,4 +1,4 @@
-// ===== CAROUSEL with Touch Support =====
+// ===== CAROUSEL with Smooth Touch Support - FIXED =====
 (function () {
   const track = document.getElementById("carouselTrack");
   const prevBtn = document.getElementById("prevBtn");
@@ -8,56 +8,164 @@
   const totalCards = cards.length;
 
   let currentIndex = 0;
-  const cardsPerView = 3.5;
-  const maxIndex = totalCards - Math.floor(cardsPerView);
+  let maxIndex = 0;
+  let cardWidth = 0;
+  let gap = 20;
+  let isTransitioning = false;
 
-  // Create dots
-  for (let i = 0; i <= maxIndex; i++) {
-    const dot = document.createElement("button");
-    dot.className = "dot" + (i === 0 ? " active" : "");
-    dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
-    dot.addEventListener("click", () => goToSlide(i));
-    dotsContainer.appendChild(dot);
+  // Create dots (will be updated after dimensions are calculated)
+  function createDots() {
+    dotsContainer.innerHTML = "";
+    for (let i = 0; i <= maxIndex; i++) {
+      const dot = document.createElement("button");
+      dot.className = "dot" + (i === 0 ? " active" : "");
+      dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+      dot.addEventListener("click", () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    }
   }
-  const dots = dotsContainer.querySelectorAll(".dot");
+  let dots = [];
 
-  function updateCarousel() {
-    const cardWidth = cards[0].offsetWidth;
-    const gap = parseFloat(getComputedStyle(track).gap) || 20;
-    const offset = currentIndex * (cardWidth + gap);
+  function getDimensions() {
+    if (cards.length === 0) return;
+    cardWidth = cards[0].offsetWidth;
+    const computedStyle = getComputedStyle(track);
+    gap = parseFloat(computedStyle.gap) || 20;
+
+    // Get the actual visible width of the track container
+    const trackWrapper = track.parentElement;
+    const trackWrapperStyles = getComputedStyle(trackWrapper);
+    const paddingLeft = parseFloat(trackWrapperStyles.paddingLeft) || 0;
+    const paddingRight = parseFloat(trackWrapperStyles.paddingRight) || 0;
+    const trackWidth = trackWrapper.clientWidth - paddingLeft - paddingRight;
+
+    // Calculate how many full cards can fit
+    const fullCardsVisible = Math.floor(trackWidth / (cardWidth + gap));
+
+    // Calculate if there's a partial card visible
+    const remainingSpace = trackWidth - fullCardsVisible * (cardWidth + gap);
+    const hasPartialCard = remainingSpace > cardWidth * 0.3; // 30% of a card is visible
+
+    // Number of cards visible = full cards + (1 if partial card is visible)
+    const visibleCards = fullCardsVisible + (hasPartialCard ? 1 : 0);
+
+    // maxIndex = totalCards - visibleCards
+    // This ensures we can scroll to see the last card
+    maxIndex = Math.max(0, totalCards - visibleCards);
+
+    // Recreate dots if needed
+    if (dots.length !== maxIndex + 1) {
+      createDots();
+      dots = dotsContainer.querySelectorAll(".dot");
+    }
+
+    return maxIndex;
+  }
+
+  function getOffset(index) {
+    return index * (cardWidth + gap);
+  }
+
+  function updateCarousel(animate = true) {
+    // Ensure currentIndex is within bounds
+    if (currentIndex > maxIndex) {
+      currentIndex = maxIndex;
+    }
+    if (currentIndex < 0) {
+      currentIndex = 0;
+    }
+
+    if (!animate) {
+      track.style.transition = "none";
+    } else {
+      track.style.transition =
+        "transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)";
+    }
+
+    const offset = getOffset(currentIndex);
     track.style.transform = `translateX(-${offset}px)`;
 
+    // Force reflow if not animating
+    if (!animate) {
+      void track.offsetHeight;
+      track.style.transition =
+        "transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)";
+    }
+
+    // Update button states
     prevBtn.disabled = currentIndex === 0;
     nextBtn.disabled = currentIndex >= maxIndex;
 
-    dots.forEach((dot, i) =>
-      dot.classList.toggle("active", i === currentIndex),
-    );
+    // Update dots
+    if (dots.length > 0) {
+      dots.forEach((dot, i) =>
+        dot.classList.toggle("active", i === currentIndex),
+      );
+    }
   }
 
   function goToSlide(index) {
+    if (isTransitioning) return;
     currentIndex = Math.max(0, Math.min(index, maxIndex));
-    updateCarousel();
+    updateCarousel(true);
   }
 
-  prevBtn.addEventListener("click", () => goToSlide(currentIndex - 1));
-  nextBtn.addEventListener("click", () => goToSlide(currentIndex + 1));
-
   // ===== TOUCH SUPPORT =====
+  let touchStartX = 0;
+  let touchCurrentX = 0;
+  let touchStartIndex = 0;
   let isDragging = false;
-  let startX = 0;
-  let currentX = 0;
-  let isSwiping = false;
+
+  function handleDragStart(clientX) {
+    if (isTransitioning) return;
+    isDragging = true;
+    touchStartX = clientX;
+    touchCurrentX = clientX;
+    touchStartIndex = currentIndex;
+    track.style.transition = "none";
+    track.style.cursor = "grabbing";
+  }
+
+  function handleDragMove(clientX) {
+    if (!isDragging) return;
+    touchCurrentX = clientX;
+    const deltaX = touchCurrentX - touchStartX;
+
+    const baseOffset = getOffset(touchStartIndex);
+    const newOffset = Math.max(0, baseOffset - deltaX);
+    const maxOffset = getOffset(maxIndex);
+    const clampedOffset = Math.min(newOffset, maxOffset);
+    track.style.transform = `translateX(-${clampedOffset}px)`;
+  }
+
+  function handleDragEnd() {
+    if (!isDragging) return;
+    isDragging = false;
+    track.style.cursor = "grab";
+    track.style.transition = "transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)";
+
+    const threshold = 50;
+    const deltaX = touchCurrentX - touchStartX;
+
+    if (Math.abs(deltaX) > threshold) {
+      const direction = deltaX > 0 ? -1 : 1;
+      const newIndex = Math.max(
+        0,
+        Math.min(touchStartIndex + direction, maxIndex),
+      );
+      currentIndex = newIndex;
+      updateCarousel(true);
+    } else {
+      // Snap back
+      updateCarousel(true);
+    }
+  }
 
   // Touch events
   track.addEventListener(
     "touchstart",
     (e) => {
-      isDragging = true;
-      isSwiping = false;
-      startX = e.touches[0].pageX;
-      currentX = startX;
-      track.style.transition = "none";
+      handleDragStart(e.touches[0].clientX);
     },
     { passive: true },
   );
@@ -65,99 +173,116 @@
   track.addEventListener(
     "touchmove",
     (e) => {
-      if (!isDragging) return;
-      currentX = e.touches[0].pageX;
-      const diff = currentX - startX;
-      if (Math.abs(diff) > 5) {
-        isSwiping = true;
-        const cardWidth = cards[0].offsetWidth;
-        const gap = parseFloat(getComputedStyle(track).gap) || 20;
-        const offset = currentIndex * (cardWidth + gap) - diff;
-        track.style.transform = `translateX(-${offset}px)`;
-      }
+      e.preventDefault();
+      handleDragMove(e.touches[0].clientX);
+    },
+    { passive: false },
+  );
+
+  track.addEventListener(
+    "touchend",
+    () => {
+      handleDragEnd();
     },
     { passive: true },
   );
 
   track.addEventListener(
-    "touchend",
-    (e) => {
-      if (!isDragging) return;
-      isDragging = false;
-      track.style.transition =
-        "transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)";
-
-      if (isSwiping) {
-        const diff = startX - currentX;
-        if (Math.abs(diff) > 50) {
-          goToSlide(currentIndex + (diff > 0 ? 1 : -1));
-        } else {
-          goToSlide(currentIndex);
-        }
-      }
+    "touchcancel",
+    () => {
+      handleDragEnd();
     },
     { passive: true },
   );
 
-  // Mouse events (keep existing)
+  // Mouse events
   let isMouseDown = false;
   let mouseStartX = 0;
   let mouseCurrentX = 0;
-  let isMouseSwiping = false;
+  let mouseStartIndex = 0;
 
   track.addEventListener("mousedown", (e) => {
+    if (e.button !== 0) return;
     isMouseDown = true;
-    isMouseSwiping = false;
-    mouseStartX = e.pageX;
-    mouseCurrentX = mouseStartX;
+    mouseStartX = e.clientX;
+    mouseCurrentX = e.clientX;
+    mouseStartIndex = currentIndex;
     track.style.transition = "none";
+    track.style.cursor = "grabbing";
   });
 
-  track.addEventListener("mousemove", (e) => {
+  document.addEventListener("mousemove", (e) => {
     if (!isMouseDown) return;
-    mouseCurrentX = e.pageX;
-    const diff = mouseCurrentX - mouseStartX;
-    if (Math.abs(diff) > 5) {
-      isMouseSwiping = true;
-      const cardWidth = cards[0].offsetWidth;
-      const gap = parseFloat(getComputedStyle(track).gap) || 20;
-      const offset = currentIndex * (cardWidth + gap) - diff;
-      track.style.transform = `translateX(-${offset}px)`;
-    }
+    mouseCurrentX = e.clientX;
+    const deltaX = mouseCurrentX - mouseStartX;
+
+    const baseOffset = getOffset(mouseStartIndex);
+    const newOffset = Math.max(0, baseOffset - deltaX);
+    const maxOffset = getOffset(maxIndex);
+    const clampedOffset = Math.min(newOffset, maxOffset);
+    track.style.transform = `translateX(-${clampedOffset}px)`;
   });
 
-  track.addEventListener("mouseup", (e) => {
+  document.addEventListener("mouseup", (e) => {
     if (!isMouseDown) return;
     isMouseDown = false;
+    track.style.cursor = "grab";
     track.style.transition = "transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)";
 
-    if (isMouseSwiping) {
-      const diff = mouseStartX - mouseCurrentX;
-      if (Math.abs(diff) > 50) {
-        goToSlide(currentIndex + (diff > 0 ? 1 : -1));
-      } else {
-        goToSlide(currentIndex);
-      }
+    const threshold = 50;
+    const deltaX = mouseCurrentX - mouseStartX;
+
+    if (Math.abs(deltaX) > threshold) {
+      const direction = deltaX > 0 ? -1 : 1;
+      const newIndex = Math.max(
+        0,
+        Math.min(mouseStartIndex + direction, maxIndex),
+      );
+      currentIndex = newIndex;
+      updateCarousel(true);
+    } else {
+      updateCarousel(true);
     }
   });
 
-  track.addEventListener("mouseleave", () => {
-    if (isMouseDown) {
-      isMouseDown = false;
-      track.style.transition =
-        "transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)";
-      goToSlide(currentIndex);
-    }
-  });
+  // Prevent text selection during drag
+  track.addEventListener("dragstart", (e) => e.preventDefault());
 
-  // Keyboard navigation
+  // ===== BUTTON NAVIGATION =====
+  prevBtn.addEventListener("click", () => goToSlide(currentIndex - 1));
+  nextBtn.addEventListener("click", () => goToSlide(currentIndex + 1));
+
+  // ===== KEYBOARD =====
   document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowLeft") goToSlide(currentIndex - 1);
     if (e.key === "ArrowRight") goToSlide(currentIndex + 1);
   });
 
-  window.addEventListener("resize", updateCarousel);
-  updateCarousel();
+  // ===== RESIZE =====
+  let resizeTimeout;
+  window.addEventListener("resize", () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      getDimensions();
+      updateCarousel(false);
+    }, 100);
+  });
+
+  // ===== INIT =====
+  // Wait a tick for layout to settle
+  setTimeout(() => {
+    getDimensions();
+    updateCarousel(false);
+  }, 50);
+
+  // Also recalculate on font load / layout shift
+  if (window.ResizeObserver) {
+    const ro = new ResizeObserver(() => {
+      getDimensions();
+      updateCarousel(false);
+    });
+    ro.observe(track);
+  }
 })();
 
 // ===== HEADER: Toggle transparent/frosted =====
