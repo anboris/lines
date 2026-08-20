@@ -673,31 +673,6 @@
   }
 }
 
-/* ===== DARK MODE SUPPORT ===== */
-@media (prefers-color-scheme: dark) {
-  .masonry-section {
-    background: #111112;
-  }
-
-  .masonry-card {
-    background: rgba(30, 30, 35, 0.75);
-    border-color: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  }
-
-  .masonry-card:hover {
-    background: rgba(40, 40, 48, 0.88);
-  }
-
-  .card-number,
-  .card-label {
-    color: #f5f5f7;
-  }
-
-  .masonry-card .card-desc .card-desc {
-    color: #a1a1a6;
-  }
-}
 @layer hero {
   body {
     font-family:
@@ -1845,54 +1820,6 @@
   100% {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* ===== DARK MODE ===== */
-@media (prefers-color-scheme: dark) {
-  .faq-section {
-    background: #111112;
-  }
-
-  .faq-item {
-    background: rgba(30, 30, 35, 0.75);
-    border-color: rgba(255, 255, 255, 0.06);
-  }
-
-  .faq-item[open] {
-    background: rgba(40, 40, 48, 0.88);
-  }
-
-  .faq-number {
-    color: #f5f5f7;
-  }
-
-  .faq-question {
-    color: #f5f5f7;
-  }
-
-  .faq-answer p {
-    color: #a1a1a6;
-  }
-
-  .faq-icon {
-    background: rgba(255, 255, 255, 0.06);
-  }
-
-  .faq-icon svg {
-    stroke: #8e8e93;
-  }
-
-  .faq-item[open] .faq-icon {
-    background: #f5f5f7;
-  }
-
-  .faq-item[open] .faq-icon svg {
-    stroke: #1d1d1f;
-  }
-
-  .faq-summary:hover {
-    background: rgba(255, 255, 255, 0.03);
   }
 }
 
