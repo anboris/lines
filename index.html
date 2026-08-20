@@ -429,9 +429,9 @@
       <div class="quiz-header">
         <span class="quiz-badge">Тест</span>
         <h2 class="section-headline">Пройдите короткий текст и узнайте какая тренировка подойдет вам</h2>
-        <p class="section-description">
+        <!-- <p class="section-description">
           Ответьте на несколько вопросов, и мы подскажем направления, которые подойдут именно Вам
-        </p>
+        </p> -->
       </div>
 
       <div class="quiz-card" id="quiz-card">
@@ -456,7 +456,7 @@
     <h2 class="section-headline">
       Команда студии
         </h2>
-    <p class="section-description">Подберем индивидуальный подход, поможем развить гибкость и прийти к вашим целям.</p>
+    <p class="section-description">Подберем индивидуальный подход, поможем развить гибкость и прийти к наилучшим результатам.</p>
 
     <div class="instructors-grid">
 <!-- Instructor 1 -->
@@ -576,9 +576,9 @@
 
           <!-- Card: Комплексный (Featured) -->
           <div class="price-card featured">
-            <span class="badge popular">9:00 – 22:00</span>
+            <span class="badge popular">11:00 – 22:00</span>
             <div class="price-name">Комплексный</div>
-            <div class="price-desc">Все направления и тренеры в любое время</div>
+            <div class="price-desc">Все направления и тренеры</div>
 
             <div class="workout-selector">
               <label for="complex-sessions">Пакет услуг:</label>
@@ -601,8 +601,9 @@
             </div>
 
             <ul class="price-features">
-              <li>Полный доступ без скрытых ограничений</li>
-              <li>1.5 часа растяжка / 1 час другие направления</li>
+              <li>Полный доступ без ограничений</li>
+              <li>1.5 часа комлексаная тренировка</li>
+              <li>1 час другие направления</li>
             </ul>
             <button class="price-btn"
               onclick="document.getElementById('contacts').scrollIntoView({ behavior: 'smooth' })">Выбрать</button>
@@ -610,7 +611,7 @@
 
           <!-- Card: Студенческий -->
           <div class="price-card">
-            <span class="badge">9:00 – 19:00</span>
+            <span class="badge">11:00 – 19:00</span>
             <div class="price-name">Студенческий</div>
             <div class="price-desc">Скидки для студентов дневного отделения</div>
 
@@ -636,7 +637,8 @@
 
             <ul class="price-features">
               <li>Обязательно предъявление студенческого билета</li>
-              <li>1.5 часа растяжка / 1 час другие направления</li>
+              <li>1.5 часа комлексаная тренировка</li>
+              <li>1 час другие направления</li>
             </ul>
             <button class="price-btn"
               onclick="document.getElementById('contacts').scrollIntoView({ behavior: 'smooth' })">Выбрать</button>
@@ -656,7 +658,7 @@
           <div class="price-card featured">
             <span class="badge">Максимум внимания</span>
             <div class="price-name">Персонально <span class="small-tag">1-на-1</span></div>
-            <div class="price-desc">Индивидуальная программа под ваши личные цели</div>
+            <div class="price-desc">Индивидуальная программа для наилучшего результата</div>
 
             <div class="workout-selector">
               <label for="private-sessions">Количество занятий:</label>
@@ -676,7 +678,6 @@
             <ul class="price-features">
               <li>Продолжительность: 1 час</li>
               <li>Найдем идеальное время для вашей тренировки</li>
-              <li>Адаптация нагрузки под ваш уровень</li>
             </ul>
             <button class="price-btn primary-btn"
               onclick="document.getElementById('contacts').scrollIntoView({ behavior: 'smooth' })">Записаться</button>
@@ -706,7 +707,6 @@
             <ul class="price-features">
               <li>Продолжительность: 1 час</li>
               <li>Цена указана за двоих человек одновременно</li>
-              <li>Идеально для совместной мотивации</li>
             </ul>
             <button class="price-btn"
               onclick="document.getElementById('contacts').scrollIntoView({ behavior: 'smooth' })">Записаться
@@ -734,8 +734,7 @@
             </div>
 
             <ul class="price-features">
-              <li>60–90 минут тренировки</li>
-              <li>Аренда коврика/инвентаря включена</li>
+              <li>60–90 минут тренировки в зависимости от направления</li>
               <li>Индивидуальные рекомендации тренера</li>
             </ul>
             <button class="price-btn primary-btn"
@@ -746,17 +745,16 @@
           <div class="price-card featured trial-card">
             <span class="badge popular">Хит для новичков</span>
             <div class="price-name">Пробная неделя</div>
-            <div class="price-desc">Тест-драйв студии без ограничений по времени</div>
+            <div class="price-desc">Для тех кто хочет познакомиться поближе</div>
 
             <div class="price-display">
               <div class="price-amount">3 000 ₽</div>
-              <div class="price-period">7 дней тест-драйва</div>
+              <div class="price-period">7 дней для знакомства</div>
             </div>
 
             <ul class="price-features">
               <li>Включает 3 групповых занятия по различным направлениям</li>
-              <li>Доступ к любым направлениям</li>
-              <li>Сгорает ровно через 7 дней</li>
+              <li>Действует 7 дней с момента активации</li>
             </ul>
             <button class="price-btn primary-btn"
               onclick="document.getElementById('contacts').scrollIntoView({ behavior: 'smooth' })">Попробовать</button>
@@ -775,7 +773,6 @@
 
             <ul class="price-features">
               <li>Любое время: с 11:00 до 22:00</li>
-              <li>Все направления и тренеры студии</li>
               <li>1 200 ₽ в дневное время (до 17:00)</li>
             </ul>
             <button class="price-btn"
@@ -988,7 +985,7 @@
                 <option value="pilates">Пилатес</option>
                 <option value="acrobatics">Акробатика</option>
                 <option value="mfr">МФР</option>
-                <option value="other">Другое</option>
+                <option value="other">Не знаю</option>
               </select>
             </div>
           </div>
