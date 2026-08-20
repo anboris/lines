@@ -1,3 +1,4 @@
+// ===== CAROUSEL with Touch Support =====
 (function () {
   const track = document.getElementById("carouselTrack");
   const prevBtn = document.getElementById("prevBtn");
@@ -10,6 +11,7 @@
   const cardsPerView = 3.5;
   const maxIndex = totalCards - Math.floor(cardsPerView);
 
+  // Create dots
   for (let i = 0; i <= maxIndex; i++) {
     const dot = document.createElement("button");
     dot.className = "dot" + (i === 0 ? " active" : "");
@@ -41,22 +43,114 @@
   prevBtn.addEventListener("click", () => goToSlide(currentIndex - 1));
   nextBtn.addEventListener("click", () => goToSlide(currentIndex + 1));
 
-  let isDown = false,
-    startX;
+  // ===== TOUCH SUPPORT =====
+  let isDragging = false;
+  let startX = 0;
+  let currentX = 0;
+  let isSwiping = false;
+
+  // Touch events
+  track.addEventListener(
+    "touchstart",
+    (e) => {
+      isDragging = true;
+      isSwiping = false;
+      startX = e.touches[0].pageX;
+      currentX = startX;
+      track.style.transition = "none";
+    },
+    { passive: true },
+  );
+
+  track.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!isDragging) return;
+      currentX = e.touches[0].pageX;
+      const diff = currentX - startX;
+      if (Math.abs(diff) > 5) {
+        isSwiping = true;
+        const cardWidth = cards[0].offsetWidth;
+        const gap = parseFloat(getComputedStyle(track).gap) || 20;
+        const offset = currentIndex * (cardWidth + gap) - diff;
+        track.style.transform = `translateX(-${offset}px)`;
+      }
+    },
+    { passive: true },
+  );
+
+  track.addEventListener(
+    "touchend",
+    (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      track.style.transition =
+        "transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)";
+
+      if (isSwiping) {
+        const diff = startX - currentX;
+        if (Math.abs(diff) > 50) {
+          goToSlide(currentIndex + (diff > 0 ? 1 : -1));
+        } else {
+          goToSlide(currentIndex);
+        }
+      }
+    },
+    { passive: true },
+  );
+
+  // Mouse events (keep existing)
+  let isMouseDown = false;
+  let mouseStartX = 0;
+  let mouseCurrentX = 0;
+  let isMouseSwiping = false;
+
   track.addEventListener("mousedown", (e) => {
-    isDown = true;
-    startX = e.pageX;
-  });
-  track.addEventListener("mouseleave", () => {
-    isDown = false;
-  });
-  track.addEventListener("mouseup", (e) => {
-    if (!isDown) return;
-    isDown = false;
-    const diff = startX - e.pageX;
-    if (Math.abs(diff) > 50) goToSlide(currentIndex + (diff > 0 ? 1 : -1));
+    isMouseDown = true;
+    isMouseSwiping = false;
+    mouseStartX = e.pageX;
+    mouseCurrentX = mouseStartX;
+    track.style.transition = "none";
   });
 
+  track.addEventListener("mousemove", (e) => {
+    if (!isMouseDown) return;
+    mouseCurrentX = e.pageX;
+    const diff = mouseCurrentX - mouseStartX;
+    if (Math.abs(diff) > 5) {
+      isMouseSwiping = true;
+      const cardWidth = cards[0].offsetWidth;
+      const gap = parseFloat(getComputedStyle(track).gap) || 20;
+      const offset = currentIndex * (cardWidth + gap) - diff;
+      track.style.transform = `translateX(-${offset}px)`;
+    }
+  });
+
+  track.addEventListener("mouseup", (e) => {
+    if (!isMouseDown) return;
+    isMouseDown = false;
+    track.style.transition = "transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)";
+
+    if (isMouseSwiping) {
+      const diff = mouseStartX - mouseCurrentX;
+      if (Math.abs(diff) > 50) {
+        goToSlide(currentIndex + (diff > 0 ? 1 : -1));
+      } else {
+        goToSlide(currentIndex);
+      }
+    }
+  });
+
+  track.addEventListener("mouseleave", () => {
+    if (isMouseDown) {
+      isMouseDown = false;
+      track.style.transition =
+        "transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)";
+      goToSlide(currentIndex);
+    }
+  });
+
+  // Keyboard navigation
   document.addEventListener("keydown", (e) => {
     if (e.key === "ArrowLeft") goToSlide(currentIndex - 1);
     if (e.key === "ArrowRight") goToSlide(currentIndex + 1);
@@ -604,60 +698,20 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// ===== БЛОКИРОВКА ТОЛЬКО ТЕЛЕФОНОВ (Планшеты разрешены) =====
-(function () {
-  // Блокируем только телефоны, не планшеты
-  const isPhone =
-    /Android(?!.*Mobile)|iPhone|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-      navigator.userAgent,
-    ) ||
-    (navigator.userAgent.includes("Android") &&
-      navigator.userAgent.includes("Mobile"));
+// Add this to your script.js (after the existing code)
 
-  // Проверяем ширину экрана (телефоны обычно меньше 768px)
-  const isPhoneScreen = window.innerWidth < 768;
+// ===== MOBILE MENU: Close when link is clicked =====
+document.addEventListener("DOMContentLoaded", function () {
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
 
-  if (isPhone || ("ontouchstart" in window && isPhoneScreen)) {
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
-
-    const overlay = document.createElement("div");
-    overlay.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(30px) saturate(180%);
-      -webkit-backdrop-filter: blur(30px) saturate(180%);
-      z-index: 999999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-      padding: 24px;
-      text-align: center;
-    `;
-
-    overlay.innerHTML = `
-      <div style="max-width:440px;">
-        <div style="font-size:72px;margin-bottom:24px;line-height:1;">🚧</div>
-        <h1 style="font-size:26px;font-weight:600;color:#1d1d1f;margin-bottom:12px;letter-spacing:-0.02em;">
-          Мобильная версия в разработке
-        </h1>
-        <p style="font-size:17px;color:#6e6e73;line-height:1.6;margin-bottom:8px;">
-          Это демо-версия сайта, которая ещё не опубликована.
-        </p>
-        <p style="font-size:15px;color:#a1a1a6;line-height:1.5;margin-bottom:24px;">
-          Пожалуйста, откройте сайт на компьютере для просмотра.
-        </p>
-        <div style="padding:16px 24px;background:rgba(0,0,0,0.03);border-radius:16px;">
-          <span style="font-size:13px;color:#6e6e73;">💡 Скоро мобильная версия будет доступна</span>
-        </div>
-      </div>
-    `;
-
-    document.body.prepend(overlay);
-  }
-})();
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      // Only close if the menu is open
+      if (mobileMenu.matches(":popover-open")) {
+        // Use the Popover API to hide the menu
+        mobileMenu.hidePopover();
+      }
+    });
+  });
+});
