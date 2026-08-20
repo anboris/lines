@@ -4465,3 +4465,87 @@
     justify-content: center;
   }
 }
+
+/* ===== INSTRUCTOR OVERLAY ON IMAGE ===== */
+.instructor-image-wrapper {
+  position: relative;
+  aspect-ratio: 3 / 3;
+  overflow: hidden;
+  background: #e5e5ea;
+}
+
+.instructor-overlay-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 24px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0) 60%
+  );
+  pointer-events: none;
+}
+
+/* Title pill - top left */
+.instructor-title-pill {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: inline-block;
+  padding: 6px 16px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #1d1d1f;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  pointer-events: auto;
+}
+
+/* Name - bottom left */
+.instructor-name-overlay {
+  font-size: 28px;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  letter-spacing: -0.015em;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Hide the old name and title inside .instructor-info */
+.instructor-info .instructor-name,
+.instructor-info .instructor-title {
+  display: none;
+}
+
+/* Dark mode for overlay */
+@media (prefers-color-scheme: dark) {
+  .instructor-title-pill {
+    background: rgba(30, 30, 35, 0.9);
+    color: #f5f5f7;
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .instructor-overlay-content {
+    padding: 16px;
+  }
+  .instructor-name-overlay {
+    font-size: 22px;
+  }
+  .instructor-title-pill {
+    font-size: 11px;
+    padding: 4px 12px;
+    top: 12px;
+    left: 12px;
+  }
+}
