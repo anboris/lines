@@ -4134,9 +4134,14 @@
 }
 
 /* ===== COMMUNITY PROMO BLOCK ===== */
+.community-promo-wrapper {
+  background: transparent;
+  padding-inline: 20px;
+}
 .community-promo {
-  max-inline-size: 1200px;
+  max-inline-size: 1000px;
   margin-inline: auto;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
