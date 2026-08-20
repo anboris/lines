@@ -1,4 +1,4 @@
-// ===== CAROUSEL with Smooth Touch Support - FIXED =====
+// ===== CAROUSEL with Vertical Scroll Support =====
 (function () {
   const track = document.getElementById("carouselTrack");
   const prevBtn = document.getElementById("prevBtn");
@@ -32,28 +32,19 @@
     const computedStyle = getComputedStyle(track);
     gap = parseFloat(computedStyle.gap) || 20;
 
-    // Get the actual visible width of the track container
     const trackWrapper = track.parentElement;
     const trackWrapperStyles = getComputedStyle(trackWrapper);
     const paddingLeft = parseFloat(trackWrapperStyles.paddingLeft) || 0;
     const paddingRight = parseFloat(trackWrapperStyles.paddingRight) || 0;
     const trackWidth = trackWrapper.clientWidth - paddingLeft - paddingRight;
 
-    // Calculate how many full cards can fit
     const fullCardsVisible = Math.floor(trackWidth / (cardWidth + gap));
-
-    // Calculate if there's a partial card visible
     const remainingSpace = trackWidth - fullCardsVisible * (cardWidth + gap);
-    const hasPartialCard = remainingSpace > cardWidth * 0.3; // 30% of a card is visible
-
-    // Number of cards visible = full cards + (1 if partial card is visible)
+    const hasPartialCard = remainingSpace > cardWidth * 0.3;
     const visibleCards = fullCardsVisible + (hasPartialCard ? 1 : 0);
 
-    // maxIndex = totalCards - visibleCards
-    // This ensures we can scroll to see the last card
     maxIndex = Math.max(0, totalCards - visibleCards);
 
-    // Recreate dots if needed
     if (dots.length !== maxIndex + 1) {
       createDots();
       dots = dotsContainer.querySelectorAll(".dot");
@@ -67,13 +58,8 @@
   }
 
   function updateCarousel(animate = true) {
-    // Ensure currentIndex is within bounds
-    if (currentIndex > maxIndex) {
-      currentIndex = maxIndex;
-    }
-    if (currentIndex < 0) {
-      currentIndex = 0;
-    }
+    if (currentIndex > maxIndex) currentIndex = maxIndex;
+    if (currentIndex < 0) currentIndex = 0;
 
     if (!animate) {
       track.style.transition = "none";
@@ -85,18 +71,15 @@
     const offset = getOffset(currentIndex);
     track.style.transform = `translateX(-${offset}px)`;
 
-    // Force reflow if not animating
     if (!animate) {
       void track.offsetHeight;
       track.style.transition =
         "transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)";
     }
 
-    // Update button states
     prevBtn.disabled = currentIndex === 0;
     nextBtn.disabled = currentIndex >= maxIndex;
 
-    // Update dots
     if (dots.length > 0) {
       dots.forEach((dot, i) =>
         dot.classList.toggle("active", i === currentIndex),
@@ -110,62 +93,29 @@
     updateCarousel(true);
   }
 
-  // ===== TOUCH SUPPORT =====
+  // ===== TOUCH SUPPORT WITH VERTICAL SCROLL DETECTION =====
   let touchStartX = 0;
+  let touchStartY = 0;
   let touchCurrentX = 0;
   let touchStartIndex = 0;
   let isDragging = false;
+  let isSwipingHorizontally = false; // Track if we're doing horizontal swipe
+  let touchMoved = false;
 
-  function handleDragStart(clientX) {
-    if (isTransitioning) return;
-    isDragging = true;
-    touchStartX = clientX;
-    touchCurrentX = clientX;
-    touchStartIndex = currentIndex;
-    track.style.transition = "none";
-    track.style.cursor = "grabbing";
-  }
-
-  function handleDragMove(clientX) {
-    if (!isDragging) return;
-    touchCurrentX = clientX;
-    const deltaX = touchCurrentX - touchStartX;
-
-    const baseOffset = getOffset(touchStartIndex);
-    const newOffset = Math.max(0, baseOffset - deltaX);
-    const maxOffset = getOffset(maxIndex);
-    const clampedOffset = Math.min(newOffset, maxOffset);
-    track.style.transform = `translateX(-${clampedOffset}px)`;
-  }
-
-  function handleDragEnd() {
-    if (!isDragging) return;
-    isDragging = false;
-    track.style.cursor = "grab";
-    track.style.transition = "transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)";
-
-    const threshold = 50;
-    const deltaX = touchCurrentX - touchStartX;
-
-    if (Math.abs(deltaX) > threshold) {
-      const direction = deltaX > 0 ? -1 : 1;
-      const newIndex = Math.max(
-        0,
-        Math.min(touchStartIndex + direction, maxIndex),
-      );
-      currentIndex = newIndex;
-      updateCarousel(true);
-    } else {
-      // Snap back
-      updateCarousel(true);
-    }
-  }
-
-  // Touch events
   track.addEventListener(
     "touchstart",
     (e) => {
-      handleDragStart(e.touches[0].clientX);
+      if (isTransitioning) return;
+      const touch = e.touches[0];
+      touchStartX = touch.clientX;
+      touchStartY = touch.clientY;
+      touchCurrentX = touch.clientX;
+      touchStartIndex = currentIndex;
+      isDragging = false;
+      isSwipingHorizontally = false;
+      touchMoved = false;
+      track.style.transition = "none";
+      track.style.cursor = "grabbing";
     },
     { passive: true },
   );
@@ -173,8 +123,43 @@
   track.addEventListener(
     "touchmove",
     (e) => {
-      e.preventDefault();
-      handleDragMove(e.touches[0].clientX);
+      const touch = e.touches[0];
+      const deltaX = touch.clientX - touchStartX;
+      const deltaY = touch.clientY - touchStartY;
+
+      // If we haven't determined the direction yet
+      if (!isSwipingHorizontally && !touchMoved) {
+        // Check if horizontal movement is greater than vertical
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 10) {
+          // Horizontal swipe - prevent default (block vertical scroll)
+          isSwipingHorizontally = true;
+          isDragging = true;
+          e.preventDefault();
+        } else if (Math.abs(deltaY) > 10) {
+          // Vertical scroll - don't prevent default, allow page to scroll
+          isSwipingHorizontally = false;
+          touchMoved = true;
+          // Reset carousel position
+          track.style.transition =
+            "transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)";
+          updateCarousel(true);
+          return;
+        }
+      }
+
+      // If we're doing a horizontal swipe
+      if (isSwipingHorizontally) {
+        e.preventDefault();
+        isDragging = true;
+        touchCurrentX = touch.clientX;
+        const deltaX = touchCurrentX - touchStartX;
+
+        const baseOffset = getOffset(touchStartIndex);
+        const newOffset = Math.max(0, baseOffset - deltaX);
+        const maxOffset = getOffset(maxIndex);
+        const clampedOffset = Math.min(newOffset, maxOffset);
+        track.style.transform = `translateX(-${clampedOffset}px)`;
+      }
     },
     { passive: false },
   );
@@ -182,7 +167,39 @@
   track.addEventListener(
     "touchend",
     () => {
-      handleDragEnd();
+      if (!isDragging || !isSwipingHorizontally) {
+        // Reset if it was a vertical scroll
+        track.style.transition =
+          "transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)";
+        isDragging = false;
+        isSwipingHorizontally = false;
+        touchMoved = false;
+        track.style.cursor = "grab";
+        return;
+      }
+
+      isDragging = false;
+      track.style.cursor = "grab";
+      track.style.transition =
+        "transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)";
+
+      const threshold = 50;
+      const deltaX = touchCurrentX - touchStartX;
+
+      if (Math.abs(deltaX) > threshold) {
+        const direction = deltaX > 0 ? -1 : 1;
+        const newIndex = Math.max(
+          0,
+          Math.min(touchStartIndex + direction, maxIndex),
+        );
+        currentIndex = newIndex;
+        updateCarousel(true);
+      } else {
+        updateCarousel(true);
+      }
+
+      isSwipingHorizontally = false;
+      touchMoved = false;
     },
     { passive: true },
   );
@@ -190,21 +207,31 @@
   track.addEventListener(
     "touchcancel",
     () => {
-      handleDragEnd();
+      isDragging = false;
+      isSwipingHorizontally = false;
+      touchMoved = false;
+      track.style.cursor = "grab";
+      track.style.transition =
+        "transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)";
+      updateCarousel(true);
     },
     { passive: true },
   );
 
-  // Mouse events
+  // ===== MOUSE SUPPORT =====
   let isMouseDown = false;
   let mouseStartX = 0;
+  let mouseStartY = 0;
   let mouseCurrentX = 0;
   let mouseStartIndex = 0;
+  let isMouseSwiping = false;
 
   track.addEventListener("mousedown", (e) => {
     if (e.button !== 0) return;
     isMouseDown = true;
+    isMouseSwiping = false;
     mouseStartX = e.clientX;
+    mouseStartY = e.clientY;
     mouseCurrentX = e.clientX;
     mouseStartIndex = currentIndex;
     track.style.transition = "none";
@@ -213,9 +240,20 @@
 
   document.addEventListener("mousemove", (e) => {
     if (!isMouseDown) return;
-    mouseCurrentX = e.clientX;
-    const deltaX = mouseCurrentX - mouseStartX;
+    const deltaX = e.clientX - mouseStartX;
+    const deltaY = e.clientY - mouseStartY;
 
+    if (
+      !isMouseSwiping &&
+      Math.abs(deltaX) > Math.abs(deltaY) &&
+      Math.abs(deltaX) > 10
+    ) {
+      isMouseSwiping = true;
+    }
+
+    if (!isMouseSwiping) return;
+
+    mouseCurrentX = e.clientX;
     const baseOffset = getOffset(mouseStartIndex);
     const newOffset = Math.max(0, baseOffset - deltaX);
     const maxOffset = getOffset(maxIndex);
@@ -223,11 +261,16 @@
     track.style.transform = `translateX(-${clampedOffset}px)`;
   });
 
-  document.addEventListener("mouseup", (e) => {
+  document.addEventListener("mouseup", () => {
     if (!isMouseDown) return;
     isMouseDown = false;
     track.style.cursor = "grab";
     track.style.transition = "transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1)";
+
+    if (!isMouseSwiping) {
+      updateCarousel(true);
+      return;
+    }
 
     const threshold = 50;
     const deltaX = mouseCurrentX - mouseStartX;
@@ -243,6 +286,8 @@
     } else {
       updateCarousel(true);
     }
+
+    isMouseSwiping = false;
   });
 
   // Prevent text selection during drag
@@ -269,13 +314,11 @@
   });
 
   // ===== INIT =====
-  // Wait a tick for layout to settle
   setTimeout(() => {
     getDimensions();
     updateCarousel(false);
   }, 50);
 
-  // Also recalculate on font load / layout shift
   if (window.ResizeObserver) {
     const ro = new ResizeObserver(() => {
       getDimensions();

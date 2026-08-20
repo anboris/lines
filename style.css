@@ -109,8 +109,9 @@
     transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
     will-change: transform;
     cursor: grab;
-    touch-action: none; /* Prevents browser default touch behaviors */
-    user-select: none; /* Prevents text selection during drag */
+    touch-action: pan-y pinch-zoom; /* Allow vertical scroll, but not horizontal */
+    user-select: none;
+    -webkit-user-select: none;
     padding-block: 10px;
   }
 
