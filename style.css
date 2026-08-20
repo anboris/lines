@@ -175,9 +175,9 @@
     margin-block-start: 0;
     background: linear-gradient(
       to bottom,
-      rgba(120, 156, 127, 0.9) 0%,
-      rgba(120, 156, 127, 0.4) 50%,
-      rgba(120, 156, 127, 0) 100%
+      rgba(93, 91, 90, 0.7) 0%,
+      rgba(93, 91, 90, 0.35) 40%,
+      rgba(93, 91, 90, 0) 100%
     );
     border-radius: 0 0 20px 20px;
   }
@@ -1001,7 +1001,6 @@
     margin-block-end: 20px;
     max-inline-size: 800px;
     text-wrap: balance;
-    font-family: "TildaSansWebRegular", sans-serif !important;
   }
 
   .hero-subtitle {
@@ -3230,8 +3229,8 @@
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0.3) 50%,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.25) 50%,
     rgba(0, 0, 0, 0.1) 100%
   );
 }
@@ -3266,7 +3265,6 @@
   letter-spacing: -0.03em;
   margin-block-end: 20px;
   text-wrap: balance;
-  font-family: "TildaSansWebRegular", sans-serif !important;
 }
 
 .hero-subtitle {
@@ -3722,7 +3720,7 @@
 .site-footer {
   background: #1d1d1f;
   color: #f5f5f7;
-  padding: 60px 20px 24px;
+  padding: 30px 20px 24px;
   margin-top: 0;
 }
 
@@ -3895,7 +3893,7 @@
 
 @media (max-width: 640px) {
   .site-footer {
-    padding: 40px 16px 20px;
+    padding: 20px 16px 20px;
   }
 
   .footer-top {
@@ -4244,7 +4242,7 @@
 .site-footer {
   background: #1d1d1f;
   color: #f5f5f7;
-  padding: 60px 20px 24px;
+  padding: 30px 20px 24px;
   margin-top: 0;
 }
 .footer-container {
@@ -4560,5 +4558,164 @@
     padding: 4px 12px;
     top: 12px;
     left: 12px;
+  }
+}
+
+/* ===== COMMUNITY PROMO BLOCK ===== */
+.community-promo {
+  max-inline-size: 1200px;
+  margin-inline: auto;
+  padding-block: 60px 40px;
+  background: #1d1d1f;
+  color: #f5f5f7;
+  padding-inline: 20px;
+  border-radius: 20px;
+}
+
+.community-promo-content {
+  max-inline-size: 820px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.community-badge {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 6px 18px;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 16px;
+}
+
+.community-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #f5f5f7;
+  margin: 0 0 16px;
+  line-height: 1.1;
+}
+
+.community-desc {
+  font-size: clamp(16px, 1.6vw, 18px);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.55);
+  max-width: 720px;
+  margin: 0 auto 12px;
+}
+
+.community-sub {
+  font-size: clamp(15px, 1.4vw, 17px);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+  margin-top: 1.5rem;
+}
+
+.community-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ===== COMMUNITY BUTTONS ===== */
+.community-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 32px;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.community-btn svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* Telegram button */
+.community-btn.telegram-btn {
+  background: rgba(41, 113, 193, 0.85);
+  color: #fff;
+}
+
+.community-btn.telegram-btn:hover {
+  background: #2979c1;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(41, 113, 193, 0.3);
+}
+
+/* VK button */
+.community-btn.vk-btn {
+  background: rgba(79, 120, 184, 0.85);
+  color: #fff;
+}
+
+.community-btn.vk-btn:hover {
+  background: #4f78b8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(79, 120, 184, 0.3);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .community-promo {
+    padding-block: 40px 32px;
+  }
+
+  .community-title {
+    font-size: 24px;
+  }
+
+  .community-buttons {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .community-btn {
+    width: 100%;
+    justify-content: center;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .community-promo {
+    padding-block: 32px 24px;
+  }
+
+  .community-title {
+    font-size: 20px;
+  }
+
+  .community-desc {
+    font-size: 14px;
+  }
+
+  .community-sub {
+    font-size: 14px;
+  }
+
+  .community-badge {
+    font-size: 11px;
+    padding: 4px 14px;
+  }
+
+  .community-btn {
+    padding: 12px 24px;
+    font-size: 14px;
+    max-width: 100%;
   }
 }
