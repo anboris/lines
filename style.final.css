@@ -66,16 +66,14 @@
   font-style: normal;
 }
 
-@layer reset, layout, components, utilities;
+@layer layout, components, utilities;
 
-@layer reset {
-  *,
-  ::after,
-  ::before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 @layer layout {
