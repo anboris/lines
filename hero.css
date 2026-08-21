@@ -240,24 +240,3 @@
     font-size: 12px;
   }
 }
-
-@layer responsive {
-  @media (max-width: 768px) {
-    .hero-title {
-      font-size: clamp(32px, 10vw, 48px);
-    }
-
-    .hero-content {
-      padding: 100px 20px 60px;
-    }
-
-    .hero-actions {
-      flex-direction: column;
-    }
-
-    .hero-btn {
-      inline-size: 100%;
-      justify-content: center;
-    }
-  }
-}
