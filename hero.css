@@ -1,0 +1,263 @@
+/* HERO */
+
+.hero-section {
+  position: relative;
+  inline-size: 100%;
+  min-block-size: 100dvh;
+  display: flex;
+  align-items: center;
+  overflow: clip;
+}
+
+.hero-image-wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-image {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.45) 0,
+    rgba(0, 0, 0, 0.25) 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-inline-size: 1200px;
+  inline-size: 100%;
+  margin-inline: auto;
+  padding: 120px 24px 80px;
+}
+
+.hero-text {
+  max-inline-size: 680px;
+  color: #fff;
+}
+
+.hero-kicker {
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
+  margin-block-end: 16px;
+}
+
+.hero-title {
+  font-size: clamp(44px, 7vw, 80px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-block-end: 20px;
+  text-wrap: balance;
+}
+
+.hero-subtitle {
+  font-size: clamp(16px, 1.8vw, 20px);
+  line-height: 1.6;
+  opacity: 0.85;
+  max-inline-size: 520px;
+  margin-block-end: 32px;
+  text-wrap: pretty;
+}
+
+.hero-promo {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 20px;
+  padding: 20px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  margin-block-end: 32px;
+  max-inline-size: 480px;
+  transition: all 0.3s ease;
+}
+
+.hero-promo:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.promo-badge-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.promo-label {
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.promo-pricing {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.promo-price-old {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.4);
+  text-decoration: line-through;
+}
+
+.promo-price-new {
+  font-size: 32px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.promo-condition {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.4;
+  padding-block-start: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-btn {
+  padding: 14px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all 0.25s cubic-bezier(0.25, 0.1, 0.25, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-btn-primary {
+  background: #fff;
+  color: #1d1d1f;
+}
+
+.hero-btn-primary:hover {
+  transform: scale(1.04);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.hero-btn-secondary {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.hero-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: scale(1.04);
+}
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 100px 20px 60px;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .hero-text {
+    max-inline-size: 100%;
+  }
+
+  .hero-title {
+    font-size: clamp(32px, 10vw, 48px);
+  }
+
+  .hero-promo {
+    padding: 16px 20px;
+    max-inline-size: 100%;
+  }
+
+  .promo-price-new {
+    font-size: 26px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.3) 0,
+      rgba(0, 0, 0, 0.2) 40%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-promo {
+    padding: 14px 16px;
+    border-radius: 16px;
+  }
+
+  .promo-pricing {
+    gap: 10px;
+  }
+
+  .promo-price-old {
+    font-size: 15px;
+  }
+
+  .promo-price-new {
+    font-size: 22px;
+  }
+
+  .promo-condition {
+    font-size: 12px;
+  }
+}
+
+@layer responsive {
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: clamp(32px, 10vw, 48px);
+    }
+
+    .hero-content {
+      padding: 100px 20px 60px;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+    }
+
+    .hero-btn {
+      inline-size: 100%;
+      justify-content: center;
+    }
+  }
+}
