@@ -1,738 +1,647 @@
-<!doctype html>
-<html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Линии</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
+<!doctype html> ["<esc
+  >"] = actions.close,
+  <html lang="ru">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Линии</title>
+      <link rel="stylesheet" href="style.final.css" />
+    </head>
 
-  <body>
-    <!-- ===== HEADER / NAV ===== -->
-    <header class="site-header" id="siteHeader">
-      <nav class="main-nav" aria-label="Main navigation">
-        <a href="#hero" class="nav-logo" aria-label="Home">
-          <img src="images/logo.svg" alt="Нини" class="logo-img" />
-        </a>
-        <div class="nav-desktop">
-          <a href="#about" class="nav-link">О нас</a>
-          <a href="#programs" class="nav-link">Направления</a>
-          <a href="#pricing" class="nav-link">Абонементы</a>
-          <a href="#faq" class="nav-link">Вопросы</a>
-          <a href="#studio" class="nav-link">Студия</a>
-          <a href="#contacts" class="nav-link nav-cta">Записаться</a>
+    <body>
+      <!-- ===== HEADER / NAV ===== -->
+      <header class="site-header" id="siteHeader">
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="#hero" class="nav-logo" aria-label="Home">
+            <img src="images/logo.svg" alt="Нини" class="logo-img" />
+          </a>
+          <div class="nav-desktop">
+            <a href="#about" class="nav-link">О нас</a>
+            <a href="#programs" class="nav-link">Направления</a>
+            <a href="#pricing" class="nav-link">Абонементы</a>
+            <a href="#faq" class="nav-link">Вопросы</a>
+            <a href="#studio" class="nav-link">Студия</a>
+            <a href="#contacts" class="nav-link nav-cta">Записаться</a>
+          </div>
+
+          <button
+            class="nav-mobile-toggle"
+            id="mobileToggle"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+            popovertarget="mobileMenu"
+            popovertargetaction="toggle"
+          >
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </nav>
+
+        <!-- Mobile menu via Popover API -->
+        <div class="mobile-menu" id="mobileMenu" popover>
+          <div class="mobile-menu-header">
+            <img src="images/logo.svg" alt="Нини" class="logo-img-mobile" />
+            <button
+              class="mobile-close"
+              popovertarget="mobileMenu"
+              popovertargetaction="hide"
+              aria-label="Close menu"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                width="20"
+                height="20"
+              >
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+          <div class="mobile-links">
+            <a href="#about" class="mobile-link">О нас</a>
+            <a href="#programs" class="mobile-link">Программы</a>
+            <a href="#pricing" class="mobile-link">Цены</a>
+            <a href="#faq" class="mobile-link">FAQ</a>
+            <a href="#studio" class="mobile-link">Студия</a>
+            <a href="#contacts" class="mobile-link mobile-cta">Записаться</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- ===== HERO SECTION ===== -->
+      <section class="hero-section" id="hero">
+        <div class="hero-image-wrapper">
+          <img
+            src="images/hero.png"
+            alt="Yoga and stretching"
+            class="hero-image"
+            loading="eager"
+          />
+          <div class="hero-overlay"></div>
         </div>
 
-        <button
-          class="nav-mobile-toggle"
-          id="mobileToggle"
-          aria-label="Open menu"
-          aria-expanded="false"
-          aria-controls="mobileMenu"
-          popovertarget="mobileMenu"
-          popovertargetaction="toggle"
-        >
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
-      </nav>
+        <div class="hero-content">
+          <div class="hero-text">
+            <p class="hero-kicker">фитнес-студия</p>
+            <h1 class="hero-title">Пространство осознанного движения</h1>
+            <p class="hero-subtitle"></p>
 
-      <!-- Mobile menu via Popover API -->
-      <div class="mobile-menu" id="mobileMenu" popover>
-        <div class="mobile-menu-header">
-          <img src="images/logo.svg" alt="Нини" class="logo-img-mobile" />
-          <button
-            class="mobile-close"
-            popovertarget="mobileMenu"
-            popovertargetaction="hide"
-            aria-label="Close menu"
-          >
+            <!-- Promo Badge -->
+            <div class="hero-promo">
+              <div class="promo-badge-inner">
+                <span class="promo-label">Пробное занятие</span>
+                <div class="promo-pricing">
+                  <!-- <span class="promo-price-old">1 500 ₽</span> -->
+                  <span class="promo-price-new">800 ₽</span>
+                </div>
+                <span class="promo-condition"
+                  >или бесплатно при покупке абонемента в день тренировки</span
+                >
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <a href="#contacts" class="hero-btn hero-btn-primary"
+                >Записаться на пробное занятие</a
+              >
+              <a href="#about" class="hero-btn hero-btn-secondary"
+                >Узнать больше</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- MASONRY SECTION -->
+      <section class="masonry-section" id="about">
+        <span class="section-badge">О нас</span>
+        <h2 class="section-headline">Почему выбирают нас</h2>
+        <p class="section-description">
+          Пространство, где движение становится осознанным, а тело начинает
+          работать как единая взаимосвязанная система.
+        </p>
+
+        <div class="masonry-grid">
+          <!-- Card 1: 6 Направлений (TALL) -->
+          <div class="masonry-card card-tall">
+            <div class="card-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-layers"
+              >
+                <path d="m12 3-10 5 10 5 10-5-10-5Z" />
+                <path d="m2 17 10 5 10-5" />
+                <path d="m2 12 10 5 10-5" />
+              </svg>
+            </div>
+            <div class="card-number">8</div>
+            <div class="card-label">программ тренировок</div>
+            <div class="card-desc">
+              От базовой растяжки и МФР до акробатики и работы со стопами.
+              Уникальные направления для любого уровня подготовки.
+            </div>
+          </div>
+
+          <!-- Card 2: Индивидуальный подход (WIDE) -->
+          <div class="masonry-card">
+            <div class="card-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-heart-pulse"
+              >
+                <path
+                  d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
+                />
+                <path d="M3.22 12H5l1.5-2.5 1.5 5 1.5-3.5h1.75" />
+              </svg>
+            </div>
+            <div class="card-label">Индивидуально, даже в группе</div>
+            <div class="card-desc">
+              Тренеры учтут Ваши личные цели и особенности организма даже на
+              групповых тренировках
+            </div>
+          </div>
+
+          <!-- Card 3: Результат без насилия над собой (REGULAR) -->
+          <div class="masonry-card">
+            <div class="card-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-sparkles"
+              >
+                <path
+                  d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"
+                />
+              </svg>
+            </div>
+            <div class="card-label">Начать легко</div>
+            <div class="card-desc">
+              Пробное занятие — познакомиться с пространством, тренером и своим
+              телом.
+            </div>
+          </div>
+
+          <!-- Card 4: Атмосфера и локация (TALL) -->
+          <div class="masonry-card card-wide">
+            <div class="card-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-map-pin"
+              >
+                <path
+                  d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+                />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <div class="card-label">
+              Пространство, куда хочется возвращаться
+            </div>
+            <div class="card-desc">
+              Мы помогаем не просто стать гибче, а научиться двигаться свободно,
+              естественно и без лишнего напряжения.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="carousel-section" id="programs">
+        <span class="section-badge">Программы тренировок</span>
+        <h2 class="section-headline">
+          Одно тело. Одна система.<br />Разные способы движения
+        </h2>
+        <p class="section-description">
+          Независимо от выбранной практики, вы работаете по единой методике,
+          развивая подвижность, силу, координацию и осознанность через
+          естественную биомеханику тела.
+        </p>
+        <div class="carousel-wrapper">
+          <button class="nav-arrow nav-prev" id="prevBtn" aria-label="Previous">
             <svg
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
               stroke-width="2.5"
-              width="20"
-              height="20"
+              stroke-linecap="round"
+              stroke-linejoin="round"
             >
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
+              <polyline points="15 18 9 12 15 6" />
             </svg>
           </button>
-        </div>
-        <div class="mobile-links">
-          <a href="#about" class="mobile-link">О нас</a>
-          <a href="#programs" class="mobile-link">Программы</a>
-          <a href="#pricing" class="mobile-link">Цены</a>
-          <a href="#faq" class="mobile-link">FAQ</a>
-          <a href="#studio" class="mobile-link">Студия</a>
-          <a href="#contacts" class="mobile-link mobile-cta">Записаться</a>
-        </div>
-      </div>
-    </header>
 
-    <!-- ===== HERO SECTION ===== -->
-    <section class="hero-section" id="hero">
-      <div class="hero-image-wrapper">
-        <img
-          src="images/hero.png"
-          alt="Yoga and stretching"
-          class="hero-image"
-          loading="eager"
-        />
-        <div class="hero-overlay"></div>
-      </div>
-
-      <div class="hero-content">
-        <div class="hero-text">
-          <p class="hero-kicker">фитнес-студия</p>
-          <h1 class="hero-title">Пространство осознанного движения</h1>
-          <p class="hero-subtitle"></p>
-
-          <!-- Promo Badge -->
-          <div class="hero-promo">
-            <div class="promo-badge-inner">
-              <span class="promo-label">Пробное занятие</span>
-              <div class="promo-pricing">
-                <!-- <span class="promo-price-old">1 500 ₽</span> -->
-                <span class="promo-price-new">800 ₽</span>
+          <div class="carousel-track" id="carouselTrack">
+            <!-- Card 1: Apple Upgrade -->
+            <div class="card" data-index="0">
+              <div class="card-image-wrapper">
+                <div
+                  class="card-image"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #fef2f2 0%,
+                      #fdf4ff 50%,
+                      #eff6ff 100%
+                    );
+                  "
+                >
+                  <img src="images/1.png" alt="" />
+                </div>
               </div>
-              <span class="promo-condition"
-                >или бесплатно при покупке абонемента в день тренировки</span
-              >
-            </div>
-          </div>
-
-          <div class="hero-actions">
-            <a href="#contacts" class="hero-btn hero-btn-primary"
-              >Записаться на пробное занятие</a
-            >
-            <a href="#about" class="hero-btn hero-btn-secondary"
-              >Узнать больше</a
-            >
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- MASONRY SECTION -->
-    <section class="masonry-section" id="about">
-      <span class="section-badge">О нас</span>
-      <h2 class="section-headline">Почему выбирают нас</h2>
-      <p class="section-description">
-        Пространство, где движение становится осознанным, а тело начинает
-        работать как единая взаимосвязанная система.
-      </p>
-
-      <div class="masonry-grid">
-        <!-- Card 1: 6 Направлений (TALL) -->
-        <div class="masonry-card card-tall">
-          <div class="card-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-layers"
-            >
-              <path d="m12 3-10 5 10 5 10-5-10-5Z" />
-              <path d="m2 17 10 5 10-5" />
-              <path d="m2 12 10 5 10-5" />
-            </svg>
-          </div>
-          <div class="card-number">8</div>
-          <div class="card-label">программ тренировок</div>
-          <div class="card-desc">
-            От базовой растяжки и МФР до акробатики и работы со стопами.
-            Уникальные направления для любого уровня подготовки.
-          </div>
-        </div>
-
-        <!-- Card 2: Индивидуальный подход (WIDE) -->
-        <div class="masonry-card">
-          <div class="card-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-heart-pulse"
-            >
-              <path
-                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
-              />
-              <path d="M3.22 12H5l1.5-2.5 1.5 5 1.5-3.5h1.75" />
-            </svg>
-          </div>
-          <div class="card-label">Индивидуально, даже в группе</div>
-          <div class="card-desc">
-            Тренеры учтут Ваши личные цели и особенности организма даже на
-            групповых тренировках
-          </div>
-        </div>
-
-        <!-- Card 3: Результат без насилия над собой (REGULAR) -->
-        <div class="masonry-card">
-          <div class="card-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-sparkles"
-            >
-              <path
-                d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"
-              />
-            </svg>
-          </div>
-          <div class="card-label">Начать легко</div>
-          <div class="card-desc">
-            Пробное занятие — познакомиться с пространством, тренером и своим
-            телом.
-          </div>
-        </div>
-
-        <!-- Card 4: Атмосфера и локация (TALL) -->
-        <div class="masonry-card card-wide">
-          <div class="card-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-map-pin"
-            >
-              <path
-                d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
-              />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-          </div>
-          <div class="card-label">Пространство, куда хочется возвращаться</div>
-          <div class="card-desc">
-            Мы помогаем не просто стать гибче, а научиться двигаться свободно,
-            естественно и без лишнего напряжения.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="carousel-section" id="programs">
-      <span class="section-badge">Программы тренировок</span>
-      <h2 class="section-headline">
-        Одно тело. Одна система.<br />Разные способы движения
-      </h2>
-      <p class="section-description">
-        Независимо от выбранной практики, вы работаете по единой методике,
-        развивая подвижность, силу, координацию и осознанность через
-        естественную биомеханику тела.
-      </p>
-      <div class="carousel-wrapper">
-        <button class="nav-arrow nav-prev" id="prevBtn" aria-label="Previous">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
-        </button>
-
-        <div class="carousel-track" id="carouselTrack">
-          <!-- Card 1: Apple Upgrade -->
-          <div class="card" data-index="0">
-            <div class="card-image-wrapper">
-              <div
-                class="card-image"
-                style="
-                  background: linear-gradient(
-                    135deg,
-                    #fef2f2 0%,
-                    #fdf4ff 50%,
-                    #eff6ff 100%
-                  );
-                "
-              >
-                <img src="images/1.png" alt="" />
+              <div class="card-content">
+                <p class="card-kicker">Комплексная тренировка</p>
+                <h3 class="card-title">Базовый уровень</h3>
+                <p class="card-desc">
+                  Занятие подойдет для любого уровня подготовки
+                </p>
               </div>
-            </div>
-            <div class="card-content">
-              <p class="card-kicker">Комплексная тренировка</p>
-              <h3 class="card-title">Базовый уровень</h3>
-              <p class="card-desc">
-                Занятие подойдет для любого уровня подготовки
-              </p>
-            </div>
-            <button
-              class="plus-btn"
-              popovertarget="popover-0"
-              popovertargetaction="toggle"
-              aria-label="Learn more about Apple Upgrade"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
+              <button
+                class="plus-btn"
+                popovertarget="popover-0"
+                popovertargetaction="toggle"
+                aria-label="Learn more about Apple Upgrade"
               >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </svg>
-            </button>
-          </div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
 
-          <!-- Card 2: Apple Trade In -->
-          <div class="card" data-index="1">
-            <div class="card-image-wrapper">
-              <div
-                class="card-image"
-                style="
-                  background: linear-gradient(135deg, #f0f9ff 0%, #ecfdf5 100%);
-                "
-              >
-                <img src="images/2.png" alt="" />
+            <!-- Card 2: Apple Trade In -->
+            <div class="card" data-index="1">
+              <div class="card-image-wrapper">
+                <div
+                  class="card-image"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #f0f9ff 0%,
+                      #ecfdf5 100%
+                    );
+                  "
+                >
+                  <img src="images/2.png" alt="" />
+                </div>
               </div>
-            </div>
-            <div class="card-content">
-              <p class="card-kicker">Комплексная тренировка</p>
-              <h3 class="card-title">Средний уровень</h3>
-              <p class="card-desc">
-                Для тех у кого есть небольшой опыт тренировок или большой
-              </p>
-            </div>
-            <button
-              class="plus-btn"
-              popovertarget="popover-1"
-              popovertargetaction="toggle"
-              aria-label="Learn more about Apple Trade In"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-              >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </svg>
-            </button>
-          </div>
-
-          <!-- Card 3: Ways to Buy -->
-          <div class="card" data-index="2">
-            <div class="card-image-wrapper">
-              <div
-                class="card-image"
-                style="
-                  background: linear-gradient(135deg, #fafafa 0%, #f3f4f6 100%);
-                "
-              >
-                <img src="images/3.png" alt="" />
+              <div class="card-content">
+                <p class="card-kicker">Комплексная тренировка</p>
+                <h3 class="card-title">Средний уровень</h3>
+                <p class="card-desc">
+                  Для тех у кого есть небольшой опыт тренировок или большой
+                </p>
               </div>
-            </div>
-            <div class="card-content">
-              <p class="card-kicker">Комплексная тренировка</p>
-              <h3 class="card-title">Продолжающие</h3>
-              <p class="card-desc">
-                Занятие подойдет тем, кто обладает большим тренировок
-              </p>
-            </div>
-            <button
-              class="plus-btn"
-              popovertarget="popover-2"
-              popovertargetaction="toggle"
-              aria-label="Learn more about Ways to Buy"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
+              <button
+                class="plus-btn"
+                popovertarget="popover-1"
+                popovertargetaction="toggle"
+                aria-label="Learn more about Apple Trade In"
               >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </svg>
-            </button>
-          </div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
 
-          <!-- Card 4: Carrier Deals -->
-          <div class="card" data-index="3">
-            <div class="card-image-wrapper">
-              <div
-                class="card-image"
-                style="
-                  background: linear-gradient(
-                    135deg,
-                    #fff7ed 0%,
-                    #fef2f2 50%,
-                    #fdf4ff 100%
-                  );
-                "
-              >
-                <img src="images/4.png" alt="" />
+            <!-- Card 3: Ways to Buy -->
+            <div class="card" data-index="2">
+              <div class="card-image-wrapper">
+                <div
+                  class="card-image"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #fafafa 0%,
+                      #f3f4f6 100%
+                    );
+                  "
+                >
+                  <img src="images/3.png" alt="" />
+                </div>
               </div>
-            </div>
-            <div class="card-content">
-              <p class="card-kicker">Оздоровительная тренировка</p>
-              <h3 class="card-title">Здоровая спина и осанка</h3>
-              <p class="card-desc">
-                Полезная как для новичков, так и для опытных спортсменов
-              </p>
-            </div>
-            <button
-              class="plus-btn"
-              popovertarget="popover-3"
-              popovertargetaction="toggle"
-              aria-label="Learn more about Carrier Deals"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-              >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </svg>
-            </button>
-          </div>
-
-          <!-- Card 5: Personal Setup -->
-          <div class="card" data-index="4">
-            <div class="card-image-wrapper">
-              <div
-                class="card-image"
-                style="
-                  background: linear-gradient(135deg, #eff6ff 0%, #ecfdf5 100%);
-                "
-              >
-                <img src="images/5.png" alt="" />
+              <div class="card-content">
+                <p class="card-kicker">Комплексная тренировка</p>
+                <h3 class="card-title">Продолжающие</h3>
+                <p class="card-desc">
+                  Занятие подойдет тем, кто обладает большим тренировок
+                </p>
               </div>
-            </div>
-            <div class="card-content">
-              <p class="card-kicker">Восстановительное занятие</p>
-              <h3 class="card-title">МФР</h3>
-              <p class="card-desc">
-                Для тех, кто хочет расслабиться после трудового дня или тяжелой
-                тренировки
-              </p>
-            </div>
-            <button
-              class="plus-btn"
-              popovertarget="popover-4"
-              popovertargetaction="toggle"
-              aria-label="Learn more about Personal Setup"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
+              <button
+                class="plus-btn"
+                popovertarget="popover-2"
+                popovertargetaction="toggle"
+                aria-label="Learn more about Ways to Buy"
               >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </svg>
-            </button>
-          </div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
 
-          <!-- Card 6: Guided Shopping -->
-          <div class="card" data-index="5">
-            <div class="card-image-wrapper">
-              <div
-                class="card-image"
-                style="
-                  background: linear-gradient(135deg, #fefce8 0%, #fff7ed 100%);
-                "
-              >
-                <img src="images/6.png" alt="" />
+            <!-- Card 4: Carrier Deals -->
+            <div class="card" data-index="3">
+              <div class="card-image-wrapper">
+                <div
+                  class="card-image"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #fff7ed 0%,
+                      #fef2f2 50%,
+                      #fdf4ff 100%
+                    );
+                  "
+                >
+                  <img src="images/4.png" alt="" />
+                </div>
               </div>
-            </div>
-            <div class="card-content">
-              <p class="card-kicker">Занятие</p>
-              <h3 class="card-title">Растяжка у станка</h3>
-              <p class="card-desc">
-                Для тех у кого есть небольшой опыт тренировок и кому хочется
-                разнообразия
-              </p>
-            </div>
-            <button
-              class="plus-btn"
-              popovertarget="popover-5"
-              popovertargetaction="toggle"
-              aria-label="Learn more about Guided Shopping"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-              >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </svg>
-            </button>
-          </div>
-
-          <!-- Card 7: Delivery & Pickup -->
-          <div class="card" data-index="6">
-            <div class="card-image-wrapper">
-              <div
-                class="card-image"
-                style="
-                  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
-                "
-              >
-                <img src="images/7.png" alt="" />
+              <div class="card-content">
+                <p class="card-kicker">Оздоровительная тренировка</p>
+                <h3 class="card-title">Здоровая спина и осанка</h3>
+                <p class="card-desc">
+                  Полезная как для новичков, так и для опытных спортсменов
+                </p>
               </div>
-            </div>
-            <div class="card-content">
-              <p class="card-kicker">Уникальное направление</p>
-              <h3 class="card-title">Тренировка стоп</h3>
-              <p class="card-desc">
-                Работа с функциональностью и мобильностью стопы
-              </p>
-            </div>
-            <button
-              class="plus-btn"
-              popovertarget="popover-6"
-              popovertargetaction="toggle"
-              aria-label="Learn more about Delivery and Pickup"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
+              <button
+                class="plus-btn"
+                popovertarget="popover-3"
+                popovertargetaction="toggle"
+                aria-label="Learn more about Carrier Deals"
               >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </svg>
-            </button>
-          </div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
 
-          <!-- Card 8: Apple Store App -->
-          <div class="card" data-index="7">
-            <div class="card-image-wrapper">
-              <div
-                class="card-image"
-                style="
-                  background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%);
-                "
-              >
-                <img src="images/8.png" alt="" />
+            <!-- Card 5: Personal Setup -->
+            <div class="card" data-index="4">
+              <div class="card-image-wrapper">
+                <div
+                  class="card-image"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #eff6ff 0%,
+                      #ecfdf5 100%
+                    );
+                  "
+                >
+                  <img src="images/5.png" alt="" />
+                </div>
               </div>
-            </div>
-            <div class="card-content">
-              <p class="card-kicker">Гимнастические элементы</p>
-              <h3 class="card-title">Акробатика</h3>
-              <p class="card-desc">
-                Для тех, кто давно хотел перевернуть всё с ног на голову
-              </p>
-            </div>
-            <button
-              class="plus-btn"
-              popovertarget="popover-7"
-              popovertargetaction="toggle"
-              aria-label="Learn more about Apple Store App"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
-              >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </svg>
-            </button>
-          </div>
-
-          <!-- Card 9: AppleCare+ -->
-          <div class="card" data-index="8">
-            <div class="card-image-wrapper">
-              <div
-                class="card-image"
-                style="
-                  background: linear-gradient(135deg, #fef2f2 0%, #fff1f2 100%);
-                "
-              >
-                <img src="images/9.png" alt="" />
+              <div class="card-content">
+                <p class="card-kicker">Восстановительное занятие</p>
+                <h3 class="card-title">МФР</h3>
+                <p class="card-desc">
+                  Для тех, кто хочет расслабиться после трудового дня или
+                  тяжелой тренировки
+                </p>
               </div>
-            </div>
-            <div class="card-content">
-              <p class="card-kicker">Гимнастические элементы</p>
-              <h3 class="card-title">Вертикальные шпагаты</h3>
-              <p class="card-desc">
-                Для тех кто хочет и уже готов поднимать ноги выше головы
-              </p>
-            </div>
-            <button
-              class="plus-btn"
-              popovertarget="popover-8"
-              popovertargetaction="toggle"
-              aria-label="Learn more about AppleCare+"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.5"
+              <button
+                class="plus-btn"
+                popovertarget="popover-4"
+                popovertargetaction="toggle"
+                aria-label="Learn more about Personal Setup"
               >
-                <line x1="12" y1="5" x2="12" y2="19" />
-                <line x1="5" y1="12" x2="19" y2="12" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <button class="nav-arrow nav-next" id="nextBtn" aria-label="Next">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <polyline points="9 18 15 12 9 6" />
-          </svg>
-        </button>
-      </div>
-
-      <div class="pagination-dots" id="paginationDots"></div>
-    </section>
-
-    <!-- ===== QUIZ / TEST SECTION ===== -->
-    <section class="quiz-section" id="quiz">
-      <div class="quiz-container">
-        <div class="quiz-header">
-          <span class="quiz-badge">Тест</span>
-          <h2 class="section-headline">
-            Пройдите короткий текст и узнайте какая тренировка подойдет вам
-          </h2>
-          <!-- <p class="section-description">
-          Ответьте на несколько вопросов, и мы подскажем направления, которые подойдут именно Вам
-        </p> -->
-        </div>
-
-        <div class="quiz-card" id="quiz-card">
-          <div class="quiz-progress">
-            <span class="quiz-step" id="quiz-step">Шаг 1 из 4</span>
-            <div class="progress-bar">
-              <div class="progress-fill" id="progress-fill"></div>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
             </div>
-          </div>
 
-          <div class="quiz-body" id="quiz-container">
-            <!-- Rendered by JavaScript -->
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== INSTRUCTORS SECTION ===== -->
-    <section class="instructors-section" id="instructors">
-      <div class="instructors-container">
-        <span class="section-badge">Трененры</span>
-        <h2 class="section-headline">Команда студии</h2>
-        <p class="section-description">
-          Подберем индивидуальный подход, поможем развить гибкость и прийти к
-          наилучшим результатам.
-        </p>
-
-        <div class="instructors-grid">
-          <!-- Instructor 1 -->
-          <div class="instructor-card">
-            <div class="instructor-image-wrapper">
-              <img
-                src="images/instructor1.png"
-                alt="в•ЁГҝв•Ёв•ңв•ӨГјв•ӨГ©в•ӨГҮв•ӨГўв•Ёв•‘в•ӨГ©в•Ёв•ӣв•ӨГҮ в•ЁГүв•Ёв•ңв•Ёв•ңв•Ёв–‘"
-                class="instructor-image"
-                loading="lazy"
-              />
-
-              <!-- Overlay content on image -->
-              <div class="instructor-overlay-content">
-                <span class="instructor-title-pill">Ведущий тренер студии</span>
-                <h3 class="instructor-name-overlay">Елизавета Кузьмина</h3>
+            <!-- Card 6: Guided Shopping -->
+            <div class="card" data-index="5">
+              <div class="card-image-wrapper">
+                <div
+                  class="card-image"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #fefce8 0%,
+                      #fff7ed 100%
+                    );
+                  "
+                >
+                  <img src="images/6.png" alt="" />
+                </div>
               </div>
-            </div>
-            <div class="instructor-info">
-              <p class="instructor-bio">
-                Мастер спорта по художественной гимнастике, выпускница НГУ им.
-                П.Ф. Лесгафта с красным дипломом. Опыт преподавания более 10
-                лет. Специализируется на гармоничном развитии тела, осознанном
-                движении и эффективном достижении спортивных целей.
-              </p>
-              <!-- <div class="instructor-tags">
-           <span class="instructor-tag">Растяжка</span>
-            <span class="instructor-tag">Шпагаты</span>
-            <span class="instructor-tag">Вертикальные шпагаты</span>
-    </div> -->
-            </div>
-          </div>
-
-          <!-- Instructor 2 -->
-          <div class="instructor-card">
-            <div class="instructor-image-wrapper">
-              <img
-                src="images/instructor2.png"
-                alt="в•ЁГҝв•Ёв•ңв•ӨГјв•ӨГ©в•ӨГҮв•ӨГўв•Ёв•‘в•ӨГ©в•Ёв•ӣв•ӨГҮ в•ЁВЈв•Ёв–‘в•Ёв•‘в•ӨГјв•Ёв••в•Ёв•қ"
-                class="instructor-image"
-                loading="lazy"
-              />
-
-              <!-- Overlay content on image -->
-              <div class="instructor-overlay-content">
-                <span class="instructor-title-pill">Тренер студии</span>
-                <h3 class="instructor-name-overlay">София Потапенко</h3>
+              <div class="card-content">
+                <p class="card-kicker">Занятие</p>
+                <h3 class="card-title">Растяжка у станка</h3>
+                <p class="card-desc">
+                  Для тех у кого есть небольшой опыт тренировок и кому хочется
+                  разнообразия
+                </p>
               </div>
+              <button
+                class="plus-btn"
+                popovertarget="popover-5"
+                popovertargetaction="toggle"
+                aria-label="Learn more about Guided Shopping"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
             </div>
-            <div class="instructor-info">
-              <p class="instructor-bio">
-                Выпускница НГУ им. П.Ф. Лесгафта с красным дипломом, КМС по
-                спортивной акробатике и чир-спорту. Спортивный стаж 15 лет.
-                Специализируется на растяжке, развитии гибкости и свободе
-                движений через разносторонний спортивный опыт.
-              </p>
-              <!-- <div class="instructor-tags">
-           <span class="instructor-tag">Силовые тренировки</span>
-            <span class="instructor-tag">Акробатика</span>
-            <span class="instructor-tag">Растяжка</span>
-    </div> -->
+
+            <!-- Card 7: Delivery & Pickup -->
+            <div class="card" data-index="6">
+              <div class="card-image-wrapper">
+                <div
+                  class="card-image"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #f0fdf4 0%,
+                      #ecfdf5 100%
+                    );
+                  "
+                >
+                  <img src="images/7.png" alt="" />
+                </div>
+              </div>
+              <div class="card-content">
+                <p class="card-kicker">Уникальное направление</p>
+                <h3 class="card-title">Тренировка стоп</h3>
+                <p class="card-desc">
+                  Работа с функциональностью и мобильностью стопы
+                </p>
+              </div>
+              <button
+                class="plus-btn"
+                popovertarget="popover-6"
+                popovertargetaction="toggle"
+                aria-label="Learn more about Delivery and Pickup"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Card 8: Apple Store App -->
+            <div class="card" data-index="7">
+              <div class="card-image-wrapper">
+                <div
+                  class="card-image"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #eff6ff 0%,
+                      #e0f2fe 100%
+                    );
+                  "
+                >
+                  <img src="images/8.png" alt="" />
+                </div>
+              </div>
+              <div class="card-content">
+                <p class="card-kicker">Гимнастические элементы</p>
+                <h3 class="card-title">Акробатика</h3>
+                <p class="card-desc">
+                  Для тех, кто давно хотел перевернуть всё с ног на голову
+                </p>
+              </div>
+              <button
+                class="plus-btn"
+                popovertarget="popover-7"
+                popovertargetaction="toggle"
+                aria-label="Learn more about Apple Store App"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Card 9: AppleCare+ -->
+            <div class="card" data-index="8">
+              <div class="card-image-wrapper">
+                <div
+                  class="card-image"
+                  style="
+                    background: linear-gradient(
+                      135deg,
+                      #fef2f2 0%,
+                      #fff1f2 100%
+                    );
+                  "
+                >
+                  <img src="images/9.png" alt="" />
+                </div>
+              </div>
+              <div class="card-content">
+                <p class="card-kicker">Гимнастические элементы</p>
+                <h3 class="card-title">Вертикальные шпагаты</h3>
+                <p class="card-desc">
+                  Для тех кто хочет и уже готов поднимать ноги выше головы
+                </p>
+              </div>
+              <button
+                class="plus-btn"
+                popovertarget="popover-8"
+                popovertargetaction="toggle"
+                aria-label="Learn more about AppleCare+"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
             </div>
           </div>
-        </div>
 
-        <!-- CTA под инструкторами -->
-        <div class="instructors-cta">
-          <a href="#contacts" class="instructors-cta-btn">
-            Записаться на пробное занятие
+          <button class="nav-arrow nav-next" id="nextBtn" aria-label="Next">
             <svg
               viewBox="0 0 24 24"
               fill="none"
@@ -743,796 +652,120 @@
             >
               <polyline points="9 18 15 12 9 6" />
             </svg>
-          </a>
+          </button>
         </div>
-      </div>
-    </section>
 
-    <!-- ===== PRICING SECTION ===== -->
-    <section class="pricing-section" id="pricing">
-      <span class="section-badge">абонементы</span>
-      <h2 class="section-headline">Выберите формат занятий</h2>
-      <p class="section-description">
-        Гибкая система тренировок — от разовых посещений до абонементов с
-        выбором пакета
-      </p>
+        <div class="pagination-dots" id="paginationDots"></div>
+      </section>
 
-      <!-- TABS -->
-      <div class="pricing-tabs" role="tablist">
-        <button
-          class="pricing-tab active"
-          role="tab"
-          data-pane="pane-single"
-          aria-selected="true"
-        >
-          Разовые
-        </button>
-        <button
-          class="pricing-tab"
-          role="tab"
-          data-pane="pane-group"
-          aria-selected="false"
-        >
-          Групповые
-        </button>
-        <button
-          class="pricing-tab"
-          role="tab"
-          data-pane="pane-individual"
-          aria-selected="false"
-        >
-          Индивидуальные
-        </button>
-      </div>
+      <!-- ===== QUIZ / TEST SECTION ===== -->
+      <section class="quiz-section" id="quiz">
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <span class="quiz-badge">Тест</span>
+            <h2 class="section-headline">
+              Пройдите короткий текст и узнайте какая тренировка подойдет вам
+            </h2>
+            <!-- <p class="section-description">
+          Ответьте на несколько вопросов, и мы подскажем направления, которые подойдут именно Вам
+        </p> -->
+          </div>
 
-      <!-- PANES -->
-      <div class="pricing-panes">
-        <!-- ============================================================ -->
-        <!-- PANE 1: ГРУППОВЫЕ ТРЕНИРОВКИ -->
-        <!-- ============================================================ -->
-        <div class="pricing-pane" id="pane-group" role="tabpanel">
-          <div class="price-grid">
-            <!-- Card: Дневной -->
-            <div class="price-card">
-              <span class="badge">Будни до 17:00</span>
-              <div class="price-name">Дневной</div>
-              <div class="price-desc">
-                Для тех, кто тренируется утром и днем
+          <div class="quiz-card" id="quiz-card">
+            <div class="quiz-progress">
+              <span class="quiz-step" id="quiz-step">Шаг 1 из 4</span>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
               </div>
-
-              <div class="workout-selector">
-                <label for="day-sessions">Количество тренировок:</label>
-                <select id="day-sessions" onchange="updatePrice(this, 'day')">
-                  <option value="4400" data-per-class="1100">
-                    4 занятия (1 месяц)
-                  </option>
-                  <option value="6000" data-per-class="1000">
-                    6 занятий (1 месяц)
-                  </option>
-                  <option value="7200" data-per-class="900">
-                    8 занятий (1 месяц)
-                  </option>
-                  <option value="9600" data-per-class="800">
-                    12 занятий (1 месяц)
-                  </option>
-                </select>
-              </div>
-
-              <div class="price-display">
-                <div class="price-amount" id="day-price">4 400 ₽</div>
-                <div class="price-period" id="day-per-class">
-                  1 100 ₽ / занятие
-                </div>
-              </div>
-
-              <ul class="price-features">
-                <li>1.5 часа комплексаня тренировка</li>
-                <li>1 час другие направления</li>
-                <li>
-                  Пробная тренировка бесплатно при покупке абонемента в день
-                  занятия
-                </li>
-              </ul>
-              <button
-                class="price-btn"
-                onclick="
-                  document
-                    .getElementById('contacts')
-                    .scrollIntoView({ behavior: 'smooth' })
-                "
-              >
-                Выбрать
-              </button>
             </div>
 
-            <!-- Card: Комплексный (Featured) -->
-            <div class="price-card featured">
-              <span class="badge popular">11:00 – 22:00</span>
-              <div class="price-name">Комплексный</div>
-              <div class="price-desc">Все направления и тренеры</div>
-
-              <div class="workout-selector">
-                <label for="complex-sessions">Пакет услуг:</label>
-                <select
-                  id="complex-sessions"
-                  onchange="updatePrice(this, 'complex')"
-                >
-                  <option value="5200" data-per-class="1300">
-                    4 занятия (1 месяц)
-                  </option>
-                  <option value="7200" data-per-class="1200">
-                    6 занятий (1 месяц)
-                  </option>
-                  <option value="8800" data-per-class="1100">
-                    8 занятий (1 месяц)
-                  </option>
-                  <option value="12000" data-per-class="1000">
-                    12 занятий (1 месяц)
-                  </option>
-                  <option value="12000" data-per-class="1000">
-                    12 занятий (3 месяца)
-                  </option>
-                  <option value="17000" data-per-class="945">
-                    18 занятий (3 месяца)
-                  </option>
-                  <option value="22000" data-per-class="917">
-                    24 занятия (3 месяца)
-                  </option>
-                  <option value="18000" data-per-class="Без лимита">
-                    Безлимит (1 месяц)
-                  </option>
-                  <option value="27000" data-per-class="Без лимита">
-                    Безлимит (3 месяца)
-                  </option>
-                </select>
-              </div>
-
-              <div class="price-display">
-                <div class="price-amount" id="complex-price">5 200 ₽</div>
-                <div class="price-period" id="complex-per-class">
-                  1 300 ₽ / занятие
-                </div>
-              </div>
-
-              <ul class="price-features">
-                <li>Полный доступ без ограничений</li>
-                <li>1.5 часа комлексаная тренировка</li>
-                <li>1 час другие направления</li>
-              </ul>
-              <button
-                class="price-btn"
-                onclick="
-                  document
-                    .getElementById('contacts')
-                    .scrollIntoView({ behavior: 'smooth' })
-                "
-              >
-                Выбрать
-              </button>
-            </div>
-
-            <!-- Card: Студенческий -->
-            <div class="price-card">
-              <span class="badge">11:00 – 19:00</span>
-              <div class="price-name">Студенческий</div>
-              <div class="price-desc">
-                Скидки для студентов дневного отделения
-              </div>
-
-              <div class="workout-selector">
-                <label for="student-sessions">Пакет услуг:</label>
-                <select
-                  id="student-sessions"
-                  onchange="updatePrice(this, 'student')"
-                >
-                  <option value="4420" data-per-class="1105">
-                    4 занятия (1 месяц)
-                  </option>
-                  <option value="6120" data-per-class="1020">
-                    6 занятий (1 месяц)
-                  </option>
-                  <option value="7480" data-per-class="935">
-                    8 занятий (1 месяц)
-                  </option>
-                  <option value="10200" data-per-class="850">
-                    12 занятий (1 месяц)
-                  </option>
-                  <option value="10200" data-per-class="850">
-                    12 занятий (3 месяца)
-                  </option>
-                  <option value="14450" data-per-class="803">
-                    18 занятий (3 месяца)
-                  </option>
-                  <option value="18700" data-per-class="780">
-                    24 занятия (3 месяца)
-                  </option>
-                  <option value="15300" data-per-class="Без лимита">
-                    Безлимит (1 месяц)
-                  </option>
-                  <option value="22950" data-per-class="Без лимита">
-                    Безлимит (3 месяца)
-                  </option>
-                </select>
-              </div>
-
-              <div class="price-display">
-                <div class="price-amount" id="student-price">4 420 ₽</div>
-                <div class="price-period" id="student-per-class">
-                  1 105 ₽ / занятие
-                </div>
-              </div>
-
-              <ul class="price-features">
-                <li>Обязательно предъявление студенческого билета</li>
-                <li>1.5 часа комлексаная тренировка</li>
-                <li>1 час другие направления</li>
-              </ul>
-              <button
-                class="price-btn"
-                onclick="
-                  document
-                    .getElementById('contacts')
-                    .scrollIntoView({ behavior: 'smooth' })
-                "
-              >
-                Выбрать
-              </button>
+            <div class="quiz-body" id="quiz-container">
+              <!-- Rendered by JavaScript -->
             </div>
           </div>
         </div>
+      </section>
 
-        <!-- ============================================================ -->
-        <!-- PANE 2: ИНДИВИДУАЛЬНЫЕ ТРЕНИРОВКИ -->
-        <!-- ============================================================ -->
-        <!-- PRIVATE TRAINING CARDS -->
-        <div class="pricing-pane" id="pane-individual" role="tabpanel">
-          <div class="price-grid">
-            <!-- CARD 1: Персональная тренировка (1-on-1) -->
-            <div class="price-card featured">
-              <span class="badge">Максимум внимания</span>
-              <div class="price-name">
-                Персонально <span class="small-tag">1-на-1</span>
-              </div>
-              <div class="price-desc">
-                Индивидуальная программа для наилучшего результата
-              </div>
-
-              <div class="workout-selector">
-                <label for="private-sessions">Количество занятий:</label>
-                <select
-                  id="private-sessions"
-                  onchange="updatePrice(this, 'private')"
-                >
-                  <option value="2900" data-per-class="2900">
-                    1 занятие (Разовое)
-                  </option>
-                  <option value="10400" data-per-class="2600">
-                    4 занятия (Пакет)
-                  </option>
-                  <option value="15000" data-per-class="2500">
-                    6 занятий (Пакет)
-                  </option>
-                  <option value="19200" data-per-class="2400">
-                    8 занятий (Пакет)
-                  </option>
-                </select>
-              </div>
-
-              <div class="price-display">
-                <div class="price-amount" id="private-price">2 900 ₽</div>
-                <div class="price-period" id="private-per-class">
-                  2 900 ₽ / занятие
-                </div>
-              </div>
-
-              <ul class="price-features">
-                <li>Продолжительность: 1 час</li>
-                <li>Найдем идеальное время для вашей тренировки</li>
-              </ul>
-              <button
-                class="price-btn primary-btn"
-                onclick="
-                  document
-                    .getElementById('contacts')
-                    .scrollIntoView({ behavior: 'smooth' })
-                "
-              >
-                Записаться
-              </button>
-            </div>
-
-            <!-- CARD 2: Сплит-тренировка (2-on-1) -->
-            <div class="price-card">
-              <span class="badge popular">Для двоих</span>
-              <div class="price-name">
-                Сплит <span class="small-tag">2-на-1</span>
-              </div>
-              <div class="price-desc">
-                Тренируйтесь в паре с подругой, партнёром или коллегой
-              </div>
-
-              <div class="workout-selector">
-                <label for="split-sessions">Количество занятий:</label>
-                <select
-                  id="split-sessions"
-                  onchange="updatePrice(this, 'split')"
-                >
-                  <option value="3900" data-per-class="1950">
-                    1 занятие (Разовое)
-                  </option>
-                  <option value="14400" data-per-class="1800">
-                    4 занятия (Пакет)
-                  </option>
-                  <option value="21000" data-per-class="1750">
-                    6 занятий (Пакет)
-                  </option>
-                  <option value="27200" data-per-class="1700">
-                    8 занятий (Пакет)
-                  </option>
-                </select>
-              </div>
-
-              <div class="price-display">
-                <div class="price-amount" id="split-price">3 900 ₽</div>
-                <div class="price-period" id="split-per-class">
-                  1 950 ₽ за человека
-                </div>
-              </div>
-
-              <ul class="price-features">
-                <li>Продолжительность: 1 час</li>
-                <li>Цена указана за двоих человек одновременно</li>
-              </ul>
-              <button
-                class="price-btn"
-                onclick="
-                  document
-                    .getElementById('contacts')
-                    .scrollIntoView({ behavior: 'smooth' })
-                "
-              >
-                Записаться вдвоём
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- ============================================================ -->
-        <!-- PANE 3: РАЗОВОЕ ЗАНЯТИЕ -->
-        <!-- ============================================================ -->
-        <div class="pricing-pane active" id="pane-single" role="tabpanel">
-          <div class="price-grid">
-            <!-- CARD 1: Пробная тренировка -->
-            <div class="price-card trial-card">
-              <span class="badge startup">Первый визит</span>
-              <div class="price-name">Пробное занятие</div>
-              <div class="price-desc">
-                Знакомство со студией, тренерами и направлениями
-              </div>
-
-              <div class="price-display">
-                <div class="price-amount">800 ₽</div>
-                <div class="price-period promo">
-                  Бесплатно при покупке абонемента!
-                </div>
-              </div>
-
-              <ul class="price-features">
-                <li>60–90 минут тренировки в зависимости от направления</li>
-                <li>Индивидуальные рекомендации тренера</li>
-              </ul>
-              <button
-                class="price-btn primary-btn"
-                onclick="
-                  document
-                    .getElementById('contacts')
-                    .scrollIntoView({ behavior: 'smooth' })
-                "
-              >
-                Записаться
-              </button>
-            </div>
-
-            <!-- CARD 2: Пробная неделя (FEATURED HOOK) -->
-            <div class="price-card featured trial-card">
-              <span class="badge popular">Хит для новичков</span>
-              <div class="price-name">Пробная неделя</div>
-              <div class="price-desc">
-                Для тех кто хочет познакомиться поближе
-              </div>
-
-              <div class="price-display">
-                <div class="price-amount">3 000 ₽</div>
-                <div class="price-period">7 дней для знакомства</div>
-              </div>
-
-              <ul class="price-features">
-                <li>Включает 3 групповых занятия по различным направлениям</li>
-                <li>Действует 7 дней с момента активации</li>
-              </ul>
-              <button
-                class="price-btn primary-btn"
-                onclick="
-                  document
-                    .getElementById('contacts')
-                    .scrollIntoView({ behavior: 'smooth' })
-                "
-              >
-                Попробовать
-              </button>
-            </div>
-
-            <!-- CARD 3: Разовая тренировка -->
-            <div class="price-card trial-card">
-              <span class="badge">Без обязательств</span>
-              <div class="price-name">Разовый визит</div>
-              <div class="price-desc">Для тех чья жизнь спонтанна</div>
-
-              <div class="price-display">
-                <div class="price-amount">1 500 ₽</div>
-                <div class="price-period">Оплата за один визит</div>
-              </div>
-
-              <ul class="price-features">
-                <li>Любое время: с 11:00 до 22:00</li>
-                <li>1 200 ₽ в дневное время (до 17:00)</li>
-              </ul>
-              <button
-                class="price-btn"
-                onclick="
-                  document
-                    .getElementById('contacts')
-                    .scrollIntoView({ behavior: 'smooth' })
-                "
-              >
-                Купить визит
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== FAQ SECTION ===== -->
-    <section class="faq-section" id="faq">
-      <div class="faq-container">
-        <span class="section-badge">FAQ</span>
-        <h2 class="section-headline">Частые вопросы</h2>
-        <p class="section-description">
-          Ответы на самые популярные вопросы о тренировках, возрасте, стеснении
-          и прогрессе
-        </p>
-
-        <div class="faq-list">
-          <!-- Item 1 -->
-          <details class="faq-item" name="faq-group">
-            <summary class="faq-summary">
-              <span class="faq-number">01</span>
-              <span class="faq-question">Когда я сяду на шпагат?</span>
-              <span class="faq-icon" aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </span>
-            </summary>
-            <div class="faq-answer">
-              <p>
-                К сожалению, точного ответа на этот вопрос дать невозможно.
-                Прогресс растяжки очень индивидуален и зависит от множества
-                факторов: строение суставов, длина связок и сухожилий, состав
-                мышечных волокон, качество питания и сна, гормональный фон и
-                даже эмоциональное состояние. Главное соблюдать регулярность
-                тренировок и давать телу восстановиться между ними, тогда
-                результат не заставит себя долго ждать.
-              </p>
-            </div>
-          </details>
-
-          <!-- Item 2 -->
-          <details class="faq-item" name="faq-group">
-            <summary class="faq-summary">
-              <span class="faq-number">02</span>
-              <span class="faq-question"
-                >Есть ли смысл начинать тренироваться, если мне уже 30+?</span
-              >
-              <span class="faq-icon" aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </span>
-            </summary>
-            <div class="faq-answer">
-              <p>
-                Разумеется! 30+, 40+ и даже 70+! Смысл начать тренировки есть
-                всегда. И да, результат будет, если тренироваться регулярно.
-                Главное подобрать подходящий уровень нагрузки.
-              </p>
-            </div>
-          </details>
-
-          <!-- Item 3 -->
-          <details class="faq-item" name="faq-group">
-            <summary class="faq-summary">
-              <span class="faq-number">03</span>
-              <span class="faq-question"
-                >Подойдут ли мне тренировки в вашей студии, если я никогда ничем
-                не занималась?</span
-              >
-              <span class="faq-icon" aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </span>
-            </summary>
-            <div class="faq-answer">
-              <p>
-                Да, в нашей студии проходят тренировки, подходящие под любой
-                уровень подготовки. Главное начать, а мы поможем Вам подобрать
-                направления для плавного и комфортного знакомства с
-                тренировками.
-              </p>
-            </div>
-          </details>
-
-          <!-- Item 4 -->
-          <details class="faq-item" name="faq-group">
-            <summary class="faq-summary">
-              <span class="faq-number">04</span>
-              <span class="faq-question"
-                >Что делать, если я стесняюсь и боюсь начать?</span
-              >
-              <span class="faq-icon" aria-hidden="true">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
-              </span>
-            </summary>
-            <div class="faq-answer">
-              <p>
-                Стеснение и страх — это абсолютно нормально, особенно, если Вы
-                давно не тренировались или только начинаете свой путь. Начните с
-                малого, сходите на пробную тренировку или воспользуйтесь нашим
-                предложением «Пробная неделя». Так Вы сможете посетить несколько
-                различных направлений, познакомиться со студией и тренерами. Мы
-                же со своей стороны обещаем Вам комфортную атмосферу, поддержку
-                и индивидуальный подход.
-              </p>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== STUDIO SECTION ===== -->
-    <section class="studio-section" id="studio">
-      <div class="studio-container">
-        <span class="section-badge">Студия</span>
-        <h2 class="section-headline">Мы рядом</h2>
-        <p class="section-description">
-          Уютное пространство в центре Петербурга
-        </p>
-
-        <div class="studio-layout">
-          <!-- Photo Block with Working Hours & Phone Pills -->
-          <div class="studio-card studio-photo">
-            <img src="images/studio.png" alt="Интерьер студии" loading="lazy" />
-            <div class="studio-pills studio-pills-bottom">
-              <a
-                href="https://yandex.ru/maps/-/CTs6NL~x"
-                target="_blank"
-                rel="noopener"
-                class="studio-pill studio-pill-link"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
-                  />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-                <span>Невский 160</span>
-              </a>
-
-              <div class="studio-pill">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <polyline points="12 6 12 12 16 14" />
-                </svg>
-                <span>Пн-Вс: 11:00 – 22:00</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Map Block with Address Pill -->
-          <div class="studio-card studio-map">
-            <div class="studio-map-wrapper">
-              <iframe
-                src="https://yandex.ru/map-widget/v1/?ll=30.376289%2C59.927134&z=17&pt=30.376289%2C59.927134%2Cflag&l=map"
-                width="100%"
-                height="100%"
-                frameborder="0"
-                allowfullscreen="true"
-                loading="lazy"
-                class="studio-map-iframe"
-                title="Карта студии на Яндекс.Картах"
-              ></iframe>
-              <div class="studio-map-overlay"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== COMMUNITY PROMO BLOCK ===== -->
-    <div class="community-promo-wrapper">
-      <div class="community-promo">
-        <div class="community-promo-content">
-          <span class="community-pill">Присоединяйтесь к сообществу</span>
-          <strong>Движение продолжается за пределами студии</strong>
-          <p>
-            Мы создали пространство для общения, где делимся знаниями, полезными
-            материалами, новостями студии и вдохновением.
-          </p>
-        </div>
-        <div class="community-buttons">
-          <a
-            href="https://t.me/linesplace"
-            class="community-btn"
-            target="_blank"
-            rel="noopener"
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-              <path
-                d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
-              />
-            </svg>
-            Телеграм
-          </a>
-          <a
-            href="https://vk.ru/linesplace"
-            class="community-btn"
-            target="_blank"
-            rel="noopener"
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-              <path
-                d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm5.433 14.438c-.348.798-1.497.693-1.497.693s-2.416-.386-4.157-1.816c-1.228-.989-1.967-1.934-2.463-2.594-.005.605-.028 1.173-.17 1.505-.173.405-.388.564-.388.564s-.34.21-.838-.015c-.537-.242-.936-.662-1.034-.81-.084-.128-.348-.528-.504-.92-.316-.793-.607-1.723-.621-2.885-.011-.909.354-1.359.354-1.359s.332-.439 1.04-.439c.468 0 .676.141.676.141s.273.161.461.465c.584 1.033 1.086 1.786 2.255 2.886.207-.17.36-.511.408-1.018.043-.456.021-1.105-.055-1.474-.062-.303-.348-.444-.348-.444s.317-.422.996-.505c.655-.08 1.822.23 1.848.245.024.014.039.028.025.044-.058.066-.36.384-.36.384s-.172.236-.083.445c.057.135.193.151.193.151s.66-.154 1.243-.526c.547-.348.791-.748.791-.748s-.574.624-.574.624c-.22.266-.57.552-.57.552s-.021.029.165.063c.416.077.806.168 1.159.298.44.161.796.398.796.398s-.388.47-.529.761c-.18.374-.225.515-.225.515zm-1.258-3.106c-.019.039-.064.144-.136.268-.09.151-.185.274-.236.333-.047.054-.108.1-.108.1s.375.103.875.232c.605.156 1.023.223 1.023.223s-.096-.136-.32-.326c-.36-.304-.674-.519-.674-.519s-.148-.151-.424-.311z"
-              />
-            </svg>
-            ВКонтакте
-          </a>
-        </div>
-      </div>
-    </div>
-    <!-- ===== CONTACT FORM ===== -->
-    <section class="contact-section" id="contacts">
-      <div class="contact-container">
-        <div class="contact-header">
-          <span class="contact-badge">Оставьте заявку</span>
-          <h2 class="section-headline">
-            Начните свой путь <br />к здоровью уже сегодня
-          </h2>
+      <!-- ===== INSTRUCTORS SECTION ===== -->
+      <section class="instructors-section" id="instructors">
+        <div class="instructors-container">
+          <span class="section-badge">Трененры</span>
+          <h2 class="section-headline">Команда студии</h2>
           <p class="section-description">
-            Заполните форму, и мы свяжемся с вами в ближайшее время — подберём
-            направление, тренера и удобное время
+            Подберем индивидуальный подход, поможем развить гибкость и прийти к
+            наилучшим результатам.
           </p>
-        </div>
 
-        <div class="contact-card">
-          <form class="contact-form" id="contactForm" novalidate>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="form-name">Ваше имя</label>
-                <input
-                  type="text"
-                  id="form-name"
-                  placeholder="Например, Анна"
-                  required
+          <div class="instructors-grid">
+            <!-- Instructor 1 -->
+            <div class="instructor-card">
+              <div class="instructor-image-wrapper">
+                <img
+                  src="images/instructor1.png"
+                  alt="в•ЁГҝв•Ёв•ңв•ӨГјв•ӨГ©в•ӨГҮв•ӨГўв•Ёв•‘в•ӨГ©в•Ёв•ӣв•ӨГҮ в•ЁГүв•Ёв•ңв•Ёв•ңв•Ёв–‘"
+                  class="instructor-image"
+                  loading="lazy"
                 />
-                <span class="form-error">Пожалуйста, введите ваше имя</span>
+
+                <!-- Overlay content on image -->
+                <div class="instructor-overlay-content">
+                  <span class="instructor-title-pill"
+                    >Ведущий тренер студии</span
+                  >
+                  <h3 class="instructor-name-overlay">Елизавета Кузьмина</h3>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="form-phone">Телефон</label>
-                <input
-                  type="tel"
-                  id="form-phone"
-                  placeholder="+7 (___) ___-__-__"
-                  required
+              <div class="instructor-info">
+                <p class="instructor-bio">
+                  Мастер спорта по художественной гимнастике, выпускница НГУ им.
+                  П.Ф. Лесгафта с красным дипломом. Опыт преподавания более 10
+                  лет. Специализируется на гармоничном развитии тела, осознанном
+                  движении и эффективном достижении спортивных целей.
+                </p>
+                <!-- <div class="instructor-tags">
+           <span class="instructor-tag">Растяжка</span>
+            <span class="instructor-tag">Шпагаты</span>
+            <span class="instructor-tag">Вертикальные шпагаты</span>
+    </div> -->
+              </div>
+            </div>
+
+            <!-- Instructor 2 -->
+            <div class="instructor-card">
+              <div class="instructor-image-wrapper">
+                <img
+                  src="images/instructor2.png"
+                  alt="в•ЁГҝв•Ёв•ңв•ӨГјв•ӨГ©в•ӨГҮв•ӨГўв•Ёв•‘в•ӨГ©в•Ёв•ӣв•ӨГҮ в•ЁВЈв•Ёв–‘в•Ёв•‘в•ӨГјв•Ёв••в•Ёв•қ"
+                  class="instructor-image"
+                  loading="lazy"
                 />
-                <span class="form-error"
-                  >Пожалуйста, введите корректный номер</span
-                >
+
+                <!-- Overlay content on image -->
+                <div class="instructor-overlay-content">
+                  <span class="instructor-title-pill">Тренер студии</span>
+                  <h3 class="instructor-name-overlay">София Потапенко</h3>
+                </div>
+              </div>
+              <div class="instructor-info">
+                <p class="instructor-bio">
+                  Выпускница НГУ им. П.Ф. Лесгафта с красным дипломом, КМС по
+                  спортивной акробатике и чир-спорту. Спортивный стаж 15 лет.
+                  Специализируется на растяжке, развитии гибкости и свободе
+                  движений через разносторонний спортивный опыт.
+                </p>
+                <!-- <div class="instructor-tags">
+           <span class="instructor-tag">Силовые тренировки</span>
+            <span class="instructor-tag">Акробатика</span>
+            <span class="instructor-tag">Растяжка</span>
+    </div> -->
               </div>
             </div>
+          </div>
 
-            <div class="form-row">
-              <div class="form-group">
-                <label for="form-email">Email</label>
-                <input
-                  type="email"
-                  id="form-email"
-                  placeholder="anna@example.com"
-                />
-              </div>
-              <div class="form-group">
-                <label for="form-direction">Интересующее направление</label>
-                <select id="form-direction">
-                  <option value="">Выберите направление</option>
-                  <option value="stretch">Растяжка</option>
-                  <option value="strength">Силовая тренировка</option>
-                  <option value="yoga">Йога</option>
-                  <option value="pilates">Пилатес</option>
-                  <option value="acrobatics">Акробатика</option>
-                  <option value="mfr">МФР</option>
-                  <option value="other">Не знаю</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="form-group full-width">
-              <label for="form-comment">Комментарий</label>
-              <textarea
-                id="form-comment"
-                rows="3"
-                placeholder="Расскажите о ваших целях, пожеланиях или вопросах..."
-              ></textarea>
-            </div>
-
-            <div class="form-group full-width checkbox-group">
-              <label class="checkbox-label">
-                <input type="checkbox" id="form-consent" required />
-                <span class="checkmark"></span>
-                <span class="checkbox-text"
-                  >Я согласен(а) на обработку персональных данных и принимаю
-                  условия <a href="#">пользовательского соглашения</a></span
-                >
-              </label>
-              <span class="form-error">Необходимо ваше согласие</span>
-            </div>
-
-            <button type="submit" class="form-submit">
-              Отправить заявку
+          <!-- CTA под инструкторами -->
+          <div class="instructors-cta">
+            <a href="#contacts" class="instructors-cta-btn">
+              Записаться на пробное занятие
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -1543,516 +776,1336 @@
               >
                 <polyline points="9 18 15 12 9 6" />
               </svg>
-            </button>
-
-            <div class="form-success" id="formSuccess" style="display: none">
-              <span class="success-icon">✓</span>
-              <p>
-                Спасибо! Ваша заявка отправлена.<br />Мы свяжемся с вами в
-                ближайшее время.
-              </p>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
-
-    <footer class="site-footer">
-      <div class="footer-container">
-        <!-- ===== APP PROMO BLOCK (replaces old social + QR) ===== -->
-        <div class="footer-app-promo">
-          <div class="app-promo-text">
-            <strong>Скачайте мобильное приложение</strong>
-            <span
-              >Актуальные новости, расписание и запись на тренировки в одном
-              месте</span
-            >
-          </div>
-          <div class="app-promo-buttons">
-            <!-- App Store -->
-            <a
-              href="https://apps.apple.com/app/6800565274"
-              class="app-btn"
-              target="_blank"
-              rel="noopener"
-            >
-              <img src="appstore.svg" alt="App Store" height="60" />
             </a>
+          </div>
+        </div>
+      </section>
 
-            <!-- Google Play with black background -->
+      <!-- ===== PRICING SECTION ===== -->
+      <section class="pricing-section" id="pricing">
+        <span class="section-badge">абонементы</span>
+        <h2 class="section-headline">Выберите формат занятий</h2>
+        <p class="section-description">
+          Гибкая система тренировок — от разовых посещений до абонементов с
+          выбором пакета
+        </p>
+
+        <!-- TABS -->
+        <div class="pricing-tabs" role="tablist">
+          <button
+            class="pricing-tab active"
+            role="tab"
+            data-pane="pane-single"
+            aria-selected="true"
+          >
+            Разовые
+          </button>
+          <button
+            class="pricing-tab"
+            role="tab"
+            data-pane="pane-group"
+            aria-selected="false"
+          >
+            Групповые
+          </button>
+          <button
+            class="pricing-tab"
+            role="tab"
+            data-pane="pane-individual"
+            aria-selected="false"
+          >
+            Индивидуальные
+          </button>
+        </div>
+
+        <!-- PANES -->
+        <div class="pricing-panes">
+          <!-- ============================================================ -->
+          <!-- PANE 1: ГРУППОВЫЕ ТРЕНИРОВКИ -->
+          <!-- ============================================================ -->
+          <div class="pricing-pane" id="pane-group" role="tabpanel">
+            <div class="price-grid">
+              <!-- Card: Дневной -->
+              <div class="price-card">
+                <span class="badge">Будни до 17:00</span>
+                <div class="price-name">Дневной</div>
+                <div class="price-desc">
+                  Для тех, кто тренируется утром и днем
+                </div>
+
+                <div class="workout-selector">
+                  <label for="day-sessions">Количество тренировок:</label>
+                  <select id="day-sessions" onchange="updatePrice(this, 'day')">
+                    <option value="4400" data-per-class="1100">
+                      4 занятия (1 месяц)
+                    </option>
+                    <option value="6000" data-per-class="1000">
+                      6 занятий (1 месяц)
+                    </option>
+                    <option value="7200" data-per-class="900">
+                      8 занятий (1 месяц)
+                    </option>
+                    <option value="9600" data-per-class="800">
+                      12 занятий (1 месяц)
+                    </option>
+                  </select>
+                </div>
+
+                <div class="price-display">
+                  <div class="price-amount" id="day-price">4 400 ₽</div>
+                  <div class="price-period" id="day-per-class">
+                    1 100 ₽ / занятие
+                  </div>
+                </div>
+
+                <ul class="price-features">
+                  <li>1.5 часа комплексаня тренировка</li>
+                  <li>1 час другие направления</li>
+                  <li>
+                    Пробная тренировка бесплатно при покупке абонемента в день
+                    занятия
+                  </li>
+                </ul>
+                <button
+                  class="price-btn"
+                  onclick="
+                    document
+                      .getElementById('contacts')
+                      .scrollIntoView({ behavior: 'smooth' })
+                  "
+                >
+                  Выбрать
+                </button>
+              </div>
+
+              <!-- Card: Комплексный (Featured) -->
+              <div class="price-card featured">
+                <span class="badge popular">11:00 – 22:00</span>
+                <div class="price-name">Комплексный</div>
+                <div class="price-desc">Все направления и тренеры</div>
+
+                <div class="workout-selector">
+                  <label for="complex-sessions">Пакет услуг:</label>
+                  <select
+                    id="complex-sessions"
+                    onchange="updatePrice(this, 'complex')"
+                  >
+                    <option value="5200" data-per-class="1300">
+                      4 занятия (1 месяц)
+                    </option>
+                    <option value="7200" data-per-class="1200">
+                      6 занятий (1 месяц)
+                    </option>
+                    <option value="8800" data-per-class="1100">
+                      8 занятий (1 месяц)
+                    </option>
+                    <option value="12000" data-per-class="1000">
+                      12 занятий (1 месяц)
+                    </option>
+                    <option value="12000" data-per-class="1000">
+                      12 занятий (3 месяца)
+                    </option>
+                    <option value="17000" data-per-class="945">
+                      18 занятий (3 месяца)
+                    </option>
+                    <option value="22000" data-per-class="917">
+                      24 занятия (3 месяца)
+                    </option>
+                    <option value="18000" data-per-class="Без лимита">
+                      Безлимит (1 месяц)
+                    </option>
+                    <option value="27000" data-per-class="Без лимита">
+                      Безлимит (3 месяца)
+                    </option>
+                  </select>
+                </div>
+
+                <div class="price-display">
+                  <div class="price-amount" id="complex-price">5 200 ₽</div>
+                  <div class="price-period" id="complex-per-class">
+                    1 300 ₽ / занятие
+                  </div>
+                </div>
+
+                <ul class="price-features">
+                  <li>Полный доступ без ограничений</li>
+                  <li>1.5 часа комлексаная тренировка</li>
+                  <li>1 час другие направления</li>
+                </ul>
+                <button
+                  class="price-btn"
+                  onclick="
+                    document
+                      .getElementById('contacts')
+                      .scrollIntoView({ behavior: 'smooth' })
+                  "
+                >
+                  Выбрать
+                </button>
+              </div>
+
+              <!-- Card: Студенческий -->
+              <div class="price-card">
+                <span class="badge">11:00 – 19:00</span>
+                <div class="price-name">Студенческий</div>
+                <div class="price-desc">
+                  Скидки для студентов дневного отделения
+                </div>
+
+                <div class="workout-selector">
+                  <label for="student-sessions">Пакет услуг:</label>
+                  <select
+                    id="student-sessions"
+                    onchange="updatePrice(this, 'student')"
+                  >
+                    <option value="4420" data-per-class="1105">
+                      4 занятия (1 месяц)
+                    </option>
+                    <option value="6120" data-per-class="1020">
+                      6 занятий (1 месяц)
+                    </option>
+                    <option value="7480" data-per-class="935">
+                      8 занятий (1 месяц)
+                    </option>
+                    <option value="10200" data-per-class="850">
+                      12 занятий (1 месяц)
+                    </option>
+                    <option value="10200" data-per-class="850">
+                      12 занятий (3 месяца)
+                    </option>
+                    <option value="14450" data-per-class="803">
+                      18 занятий (3 месяца)
+                    </option>
+                    <option value="18700" data-per-class="780">
+                      24 занятия (3 месяца)
+                    </option>
+                    <option value="15300" data-per-class="Без лимита">
+                      Безлимит (1 месяц)
+                    </option>
+                    <option value="22950" data-per-class="Без лимита">
+                      Безлимит (3 месяца)
+                    </option>
+                  </select>
+                </div>
+
+                <div class="price-display">
+                  <div class="price-amount" id="student-price">4 420 ₽</div>
+                  <div class="price-period" id="student-per-class">
+                    1 105 ₽ / занятие
+                  </div>
+                </div>
+
+                <ul class="price-features">
+                  <li>Обязательно предъявление студенческого билета</li>
+                  <li>1.5 часа комлексаная тренировка</li>
+                  <li>1 час другие направления</li>
+                </ul>
+                <button
+                  class="price-btn"
+                  onclick="
+                    document
+                      .getElementById('contacts')
+                      .scrollIntoView({ behavior: 'smooth' })
+                  "
+                >
+                  Выбрать
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================================ -->
+          <!-- PANE 2: ИНДИВИДУАЛЬНЫЕ ТРЕНИРОВКИ -->
+          <!-- ============================================================ -->
+          <!-- PRIVATE TRAINING CARDS -->
+          <div class="pricing-pane" id="pane-individual" role="tabpanel">
+            <div class="price-grid">
+              <!-- CARD 1: Персональная тренировка (1-on-1) -->
+              <div class="price-card featured">
+                <span class="badge">Максимум внимания</span>
+                <div class="price-name">
+                  Персонально <span class="small-tag">1-на-1</span>
+                </div>
+                <div class="price-desc">
+                  Индивидуальная программа для наилучшего результата
+                </div>
+
+                <div class="workout-selector">
+                  <label for="private-sessions">Количество занятий:</label>
+                  <select
+                    id="private-sessions"
+                    onchange="updatePrice(this, 'private')"
+                  >
+                    <option value="2900" data-per-class="2900">
+                      1 занятие (Разовое)
+                    </option>
+                    <option value="10400" data-per-class="2600">
+                      4 занятия (Пакет)
+                    </option>
+                    <option value="15000" data-per-class="2500">
+                      6 занятий (Пакет)
+                    </option>
+                    <option value="19200" data-per-class="2400">
+                      8 занятий (Пакет)
+                    </option>
+                  </select>
+                </div>
+
+                <div class="price-display">
+                  <div class="price-amount" id="private-price">2 900 ₽</div>
+                  <div class="price-period" id="private-per-class">
+                    2 900 ₽ / занятие
+                  </div>
+                </div>
+
+                <ul class="price-features">
+                  <li>Продолжительность: 1 час</li>
+                  <li>Найдем идеальное время для вашей тренировки</li>
+                </ul>
+                <button
+                  class="price-btn primary-btn"
+                  onclick="
+                    document
+                      .getElementById('contacts')
+                      .scrollIntoView({ behavior: 'smooth' })
+                  "
+                >
+                  Записаться
+                </button>
+              </div>
+
+              <!-- CARD 2: Сплит-тренировка (2-on-1) -->
+              <div class="price-card">
+                <span class="badge popular">Для двоих</span>
+                <div class="price-name">
+                  Сплит <span class="small-tag">2-на-1</span>
+                </div>
+                <div class="price-desc">
+                  Тренируйтесь в паре с подругой, партнёром или коллегой
+                </div>
+
+                <div class="workout-selector">
+                  <label for="split-sessions">Количество занятий:</label>
+                  <select
+                    id="split-sessions"
+                    onchange="updatePrice(this, 'split')"
+                  >
+                    <option value="3900" data-per-class="1950">
+                      1 занятие (Разовое)
+                    </option>
+                    <option value="14400" data-per-class="1800">
+                      4 занятия (Пакет)
+                    </option>
+                    <option value="21000" data-per-class="1750">
+                      6 занятий (Пакет)
+                    </option>
+                    <option value="27200" data-per-class="1700">
+                      8 занятий (Пакет)
+                    </option>
+                  </select>
+                </div>
+
+                <div class="price-display">
+                  <div class="price-amount" id="split-price">3 900 ₽</div>
+                  <div class="price-period" id="split-per-class">
+                    1 950 ₽ за человека
+                  </div>
+                </div>
+
+                <ul class="price-features">
+                  <li>Продолжительность: 1 час</li>
+                  <li>Цена указана за двоих человек одновременно</li>
+                </ul>
+                <button
+                  class="price-btn"
+                  onclick="
+                    document
+                      .getElementById('contacts')
+                      .scrollIntoView({ behavior: 'smooth' })
+                  "
+                >
+                  Записаться вдвоём
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ============================================================ -->
+          <!-- PANE 3: РАЗОВОЕ ЗАНЯТИЕ -->
+          <!-- ============================================================ -->
+          <div class="pricing-pane active" id="pane-single" role="tabpanel">
+            <div class="price-grid">
+              <!-- CARD 1: Пробная тренировка -->
+              <div class="price-card trial-card">
+                <span class="badge startup">Первый визит</span>
+                <div class="price-name">Пробное занятие</div>
+                <div class="price-desc">
+                  Знакомство со студией, тренерами и направлениями
+                </div>
+
+                <div class="price-display">
+                  <div class="price-amount">800 ₽</div>
+                  <div class="price-period promo">
+                    Бесплатно при покупке абонемента!
+                  </div>
+                </div>
+
+                <ul class="price-features">
+                  <li>60–90 минут тренировки в зависимости от направления</li>
+                  <li>Индивидуальные рекомендации тренера</li>
+                </ul>
+                <button
+                  class="price-btn primary-btn"
+                  onclick="
+                    document
+                      .getElementById('contacts')
+                      .scrollIntoView({ behavior: 'smooth' })
+                  "
+                >
+                  Записаться
+                </button>
+              </div>
+
+              <!-- CARD 2: Пробная неделя (FEATURED HOOK) -->
+              <div class="price-card featured trial-card">
+                <span class="badge popular">Хит для новичков</span>
+                <div class="price-name">Пробная неделя</div>
+                <div class="price-desc">
+                  Для тех кто хочет познакомиться поближе
+                </div>
+
+                <div class="price-display">
+                  <div class="price-amount">3 000 ₽</div>
+                  <div class="price-period">7 дней для знакомства</div>
+                </div>
+
+                <ul class="price-features">
+                  <li>
+                    Включает 3 групповых занятия по различным направлениям
+                  </li>
+                  <li>Действует 7 дней с момента активации</li>
+                </ul>
+                <button
+                  class="price-btn primary-btn"
+                  onclick="
+                    document
+                      .getElementById('contacts')
+                      .scrollIntoView({ behavior: 'smooth' })
+                  "
+                >
+                  Попробовать
+                </button>
+              </div>
+
+              <!-- CARD 3: Разовая тренировка -->
+              <div class="price-card trial-card">
+                <span class="badge">Без обязательств</span>
+                <div class="price-name">Разовый визит</div>
+                <div class="price-desc">Для тех чья жизнь спонтанна</div>
+
+                <div class="price-display">
+                  <div class="price-amount">1 500 ₽</div>
+                  <div class="price-period">Оплата за один визит</div>
+                </div>
+
+                <ul class="price-features">
+                  <li>Любое время: с 11:00 до 22:00</li>
+                  <li>1 200 ₽ в дневное время (до 17:00)</li>
+                </ul>
+                <button
+                  class="price-btn"
+                  onclick="
+                    document
+                      .getElementById('contacts')
+                      .scrollIntoView({ behavior: 'smooth' })
+                  "
+                >
+                  Купить визит
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== FAQ SECTION ===== -->
+      <section class="faq-section" id="faq">
+        <div class="faq-container">
+          <span class="section-badge">FAQ</span>
+          <h2 class="section-headline">Частые вопросы</h2>
+          <p class="section-description">
+            Ответы на самые популярные вопросы о тренировках, возрасте,
+            стеснении и прогрессе
+          </p>
+
+          <div class="faq-list">
+            <!-- Item 1 -->
+            <details class="faq-item" name="faq-group">
+              <summary class="faq-summary">
+                <span class="faq-number">01</span>
+                <span class="faq-question">Когда я сяду на шпагат?</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>
+                  К сожалению, точного ответа на этот вопрос дать невозможно.
+                  Прогресс растяжки очень индивидуален и зависит от множества
+                  факторов: строение суставов, длина связок и сухожилий, состав
+                  мышечных волокон, качество питания и сна, гормональный фон и
+                  даже эмоциональное состояние. Главное соблюдать регулярность
+                  тренировок и давать телу восстановиться между ними, тогда
+                  результат не заставит себя долго ждать.
+                </p>
+              </div>
+            </details>
+
+            <!-- Item 2 -->
+            <details class="faq-item" name="faq-group">
+              <summary class="faq-summary">
+                <span class="faq-number">02</span>
+                <span class="faq-question"
+                  >Есть ли смысл начинать тренироваться, если мне уже 30+?</span
+                >
+                <span class="faq-icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>
+                  Разумеется! 30+, 40+ и даже 70+! Смысл начать тренировки есть
+                  всегда. И да, результат будет, если тренироваться регулярно.
+                  Главное подобрать подходящий уровень нагрузки.
+                </p>
+              </div>
+            </details>
+
+            <!-- Item 3 -->
+            <details class="faq-item" name="faq-group">
+              <summary class="faq-summary">
+                <span class="faq-number">03</span>
+                <span class="faq-question"
+                  >Подойдут ли мне тренировки в вашей студии, если я никогда
+                  ничем не занималась?</span
+                >
+                <span class="faq-icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>
+                  Да, в нашей студии проходят тренировки, подходящие под любой
+                  уровень подготовки. Главное начать, а мы поможем Вам подобрать
+                  направления для плавного и комфортного знакомства с
+                  тренировками.
+                </p>
+              </div>
+            </details>
+
+            <!-- Item 4 -->
+            <details class="faq-item" name="faq-group">
+              <summary class="faq-summary">
+                <span class="faq-number">04</span>
+                <span class="faq-question"
+                  >Что делать, если я стесняюсь и боюсь начать?</span
+                >
+                <span class="faq-icon" aria-hidden="true">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                </span>
+              </summary>
+              <div class="faq-answer">
+                <p>
+                  Стеснение и страх — это абсолютно нормально, особенно, если Вы
+                  давно не тренировались или только начинаете свой путь. Начните
+                  с малого, сходите на пробную тренировку или воспользуйтесь
+                  нашим предложением «Пробная неделя». Так Вы сможете посетить
+                  несколько различных направлений, познакомиться со студией и
+                  тренерами. Мы же со своей стороны обещаем Вам комфортную
+                  атмосферу, поддержку и индивидуальный подход.
+                </p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== STUDIO SECTION ===== -->
+      <section class="studio-section" id="studio">
+        <div class="studio-container">
+          <span class="section-badge">Студия</span>
+          <h2 class="section-headline">Мы рядом</h2>
+          <p class="section-description">
+            Уютное пространство в центре Петербурга
+          </p>
+
+          <div class="studio-layout">
+            <!-- Photo Block with Working Hours & Phone Pills -->
+            <div class="studio-card studio-photo">
+              <img
+                src="images/studio.png"
+                alt="Интерьер студии"
+                loading="lazy"
+              />
+              <div class="studio-pills studio-pills-bottom">
+                <a
+                  href="https://yandex.ru/maps/-/CTs6NL~x"
+                  target="_blank"
+                  rel="noopener"
+                  class="studio-pill studio-pill-link"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+                    />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  <span>Невский 160</span>
+                </a>
+
+                <div class="studio-pill">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
+                  <span>Пн-Вс: 11:00 – 22:00</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Map Block with Address Pill -->
+            <div class="studio-card studio-map">
+              <div class="studio-map-wrapper">
+                <iframe
+                  src="https://yandex.ru/map-widget/v1/?ll=30.376289%2C59.927134&z=17&pt=30.376289%2C59.927134%2Cflag&l=map"
+                  width="100%"
+                  height="100%"
+                  frameborder="0"
+                  allowfullscreen="true"
+                  loading="lazy"
+                  class="studio-map-iframe"
+                  title="Карта студии на Яндекс.Картах"
+                ></iframe>
+                <div class="studio-map-overlay"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== COMMUNITY PROMO BLOCK ===== -->
+      <div class="community-promo-wrapper">
+        <div class="community-promo">
+          <div class="community-promo-content">
+            <span class="community-pill">Присоединяйтесь к сообществу</span>
+            <strong>Движение продолжается за пределами студии</strong>
+            <p>
+              Мы создали пространство для общения, где делимся знаниями,
+              полезными материалами, новостями студии и вдохновением.
+            </p>
+          </div>
+          <div class="community-buttons">
             <a
-              href="https://play.google.com/store/apps/details?id=listok.liness&pcampaignid=web_share"
-              class="app-btn google-play"
+              href="https://t.me/linesplace"
+              class="community-btn"
               target="_blank"
               rel="noopener"
             >
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 239 70.9"
-                height="50"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="18"
+                height="18"
               >
-                <rect
-                  x="-.1"
-                  width="239.2"
-                  height="70.9"
-                  rx="8.9"
-                  ry="8.9"
-                  fill="#000"
-                />
                 <path
-                  d="M120.6 38.5c-4.1 0-7.5 3.2-7.5 7.6s3.4 7.5 7.5 7.5 7.6-3.2 7.6-7.5-3.4-7.6-7.6-7.6Zm0 12.1c-2.3 0-4.2-1.8-4.2-4.5s2-4.6 4.2-4.6 4.3 1.9 4.3 4.6-2 4.5-4.3 4.5Zm-16.5-12c-4.2 0-7.6 3.1-7.6 7.5s3.4 7.5 7.6 7.5 7.6-3.2 7.6-7.5-3.4-7.6-7.6-7.6Zm0 12c-2.3 0-4.3-1.8-4.3-4.5s2-4.6 4.3-4.6 4.3 1.9 4.3 4.6-2 4.5-4.3 4.5Zm-19.6-9.8V44H92a6.6 6.6 0 0 1-1.7 4 7.8 7.8 0 0 1-6 2.4 8.4 8.4 0 0 1-8.3-8.5 8.4 8.4 0 0 1 14.1-6.2l2.3-2.3c-2-1.8-4.5-3.2-8-3.2-6.5 0-12 5.3-12 11.7s5.5 11.7 12 11.7c3.5 0 6-1 8.1-3.2 2.1-2.1 2.8-5.1 2.8-7.5 0-.8 0-1.5-.2-2H84.5Zm80.3 2.5c-.7-1.6-2.6-4.8-6.5-4.8s-7.1 3-7.1 7.6c0 4.2 3.2 7.5 7.5 7.5 3.4 0 5.4-2.1 6.3-3.3l-2.6-1.8c-.9 1.3-2 2.1-3.7 2.1s-3-.7-3.7-2.3l10.1-4.1-.3-.9ZM154.4 46a4 4 0 0 1 3.9-4.4c1.3 0 2.4.6 2.8 1.6l-6.7 2.8Zm-8.2 7.3h3.3V31h-3.3v22.1Zm-5.4-13h-.1a5.2 5.2 0 0 0-4-1.7c-3.8 0-7.3 3.3-7.3 7.6s3.5 7.5 7.3 7.5c1.8 0 3.2-.8 4-1.7v1c0 3-1.5 4.5-4 4.5-2 0-3.2-1.4-3.8-2.7l-2.8 1.2c.8 2 3 4.5 6.6 4.5 4 0 7.2-2.3 7.2-7.9V39h-3.1v1.2ZM137 50.6c-2.3 0-4.2-1.9-4.2-4.5s1.9-4.6 4.2-4.6 4 2 4 4.6-1.8 4.5-4 4.5ZM180.3 31h-8v22.1h3.4v-8.4h4.6c3.7 0 7.2-2.6 7.2-6.8S184 31 180.3 31Zm0 10.7h-4.7V34h4.7c2.5 0 4 2 4 3.8s-1.5 3.8-4 3.8Zm20.5-3.2c-2.4 0-4.9 1-6 3.4l3 1.2c.6-1.2 1.8-1.6 3-1.6 1.7 0 3.5 1 3.5 2.8v.3c-.6-.4-1.9-.9-3.5-.9-3.1 0-6.3 1.7-6.3 5 0 3 2.6 4.8 5.5 4.8 2.2 0 3.4-1 4.2-2.1V53h3.3v-8.5c0-4-3-6.1-6.7-6.1Zm-.4 12.1c-1.1 0-2.6-.5-2.6-1.8 0-1.7 1.9-2.4 3.5-2.4 1.4 0 2.1.3 3 .7a4 4 0 0 1-4 3.5ZM219 39l-3.8 9.6-4-9.6h-3.6l6 13.4-3.4 7.5h3.4l9.1-21H219Zm-29.7 14h3.4V31h-3.3v22.1Z"
-                  style="fill: #fff"
-                />
-                <path
-                  d="m36.6 34.4-18.9 20a5 5 0 0 0 7.6 3l21.2-12.2-10-10.8h.1Z"
-                  style="fill: #ea4335"
-                />
-                <path
-                  d="m55.7 31-9.2-5.3-10.3 9.2 10.3 10.3 9.2-5.2c1.5-1 2.6-2.6 2.6-4.5s-1-3.6-2.6-4.5Z"
-                  style="fill: #fbbc04"
-                />
-                <path
-                  d="m17.7 16.4-.1 1.4V53l.1 1.3L37.2 35 17.7 16.4Z"
-                  style="fill: #4285f4"
-                />
-                <path
-                  d="m36.7 35.4 9.8-9.7-21.2-12.3a5.1 5.1 0 0 0-7.6 3l19 19Z"
-                  style="fill: #34a853"
-                />
-                <path
-                  d="M74.5 25.3h-1.3v-3.6h1c1-.8 1.4-2.1 1.4-4v-5.3h7v9.3H84v3.6h-1.3V23h-8v2.3Zm2.5-7.6a7 7 0 0 1-1 4h5.3v-8H77v4Zm17.5 3.9c-1 1.1-2.3 1.7-3.9 1.7s-2.8-.6-3.9-1.7-1.5-2.3-1.5-3.9.5-2.9 1.5-4c1-1 2.4-1.5 4-1.5s2.7.5 3.8 1.6c1 1 1.6 2.4 1.6 4s-.5 2.8-1.6 3.8Zm-6.8-.8c.8.8 1.8 1.2 3 1.2s2-.4 2.8-1.2c.8-.8 1.2-1.8 1.2-3s-.4-2.3-1.2-3.1c-.8-.8-1.7-1.2-2.9-1.2s-2 .4-2.9 1.2c-.7.8-1.2 1.8-1.2 3s.4 2.3 1.2 3Zm15.3 2.5c-1.6 0-2.9-.6-4-1.6s-1.6-2.4-1.6-4 .6-3 1.6-4 2.4-1.6 4-1.6 2.9.6 3.9 1.8l-1 .9a3.6 3.6 0 0 0-3-1.3 4 4 0 0 0-2.9 1.1c-.8.8-1.2 1.8-1.2 3s.4 2.4 1.2 3.1a4 4 0 0 0 3 1.2c1.2 0 2.3-.5 3.2-1.5l1 1a5.6 5.6 0 0 1-4.2 1.9Zm9.7-.3h-1.4v-9.3h-3v-1.3h7.4v1.3h-3V23ZM125 12.4l-4 9c-.5 1.2-1.3 1.9-2.4 1.9-.4 0-.7-.1-1.1-.3l.3-1.2.8.2c.3 0 .5 0 .7-.2l.5-.7.4-.8-3.6-7.9h1.6l2.6 6.1 2.6-6h1.6v-.1Zm1.6 10.6V12.4h7.7V23h-1.4v-9.3h-5V23h-1.3Zm10.1 0V12.4h1.4v4.5h5.3v-4.5h1.4V23h-1.4v-4.8H138V23h-1.4Zm19.3-1.4a5.4 5.4 0 0 1-7.9 0c-1.1-1.1-1.6-2.3-1.6-3.9s.6-2.9 1.6-4c1-1 2.3-1.5 4-1.5s2.7.5 3.8 1.6c1 1 1.6 2.4 1.6 4s-.5 2.8-1.6 3.8Zm-6.9-.8c.8.8 1.8 1.2 3 1.2s2-.4 2.8-1.2c.8-.8 1.2-1.8 1.2-3s-.4-2.3-1.2-3.1c-.8-.8-1.8-1.2-2.9-1.2s-2.1.4-2.9 1.2c-.8.8-1.2 1.8-1.2 3s.4 2.3 1.2 3ZM163 23V12.4h3.9c.8 0 1.6.3 2.2.8.6.6.9 1.3.9 2 0 .6-.2 1-.4 1.4-.3.4-.6.7-1 .9a2.6 2.6 0 0 1 1.7 2.5c0 .8-.3 1.6-1 2.1s-1.3.9-2.2.9h-4Zm1.4-6h2.5a1.7 1.7 0 0 0 1.7-1.7c0-.4-.1-.8-.5-1.1-.3-.3-.7-.5-1.2-.5h-2.5v3.2Zm0 4.7h2.8c.5 0 1-.2 1.2-.5s.5-.8.5-1.2-.1-.9-.5-1.2c-.3-.4-.7-.6-1.3-.6h-2.7v3.5Z"
-                  style="
-                    stroke: #fff;
-                    stroke-miterlimit: 10;
-                    stroke-width: 0.2px;
-                    fill: #fff;
-                  "
+                  d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
                 />
               </svg>
+              Телеграм
+            </a>
+            <a
+              href="https://vk.ru/linesplace"
+              class="community-btn"
+              target="_blank"
+              rel="noopener"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="18"
+                height="18"
+              >
+                <path
+                  d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm5.433 14.438c-.348.798-1.497.693-1.497.693s-2.416-.386-4.157-1.816c-1.228-.989-1.967-1.934-2.463-2.594-.005.605-.028 1.173-.17 1.505-.173.405-.388.564-.388.564s-.34.21-.838-.015c-.537-.242-.936-.662-1.034-.81-.084-.128-.348-.528-.504-.92-.316-.793-.607-1.723-.621-2.885-.011-.909.354-1.359.354-1.359s.332-.439 1.04-.439c.468 0 .676.141.676.141s.273.161.461.465c.584 1.033 1.086 1.786 2.255 2.886.207-.17.36-.511.408-1.018.043-.456.021-1.105-.055-1.474-.062-.303-.348-.444-.348-.444s.317-.422.996-.505c.655-.08 1.822.23 1.848.245.024.014.039.028.025.044-.058.066-.36.384-.36.384s-.172.236-.083.445c.057.135.193.151.193.151s.66-.154 1.243-.526c.547-.348.791-.748.791-.748s-.574.624-.574.624c-.22.266-.57.552-.57.552s-.021.029.165.063c.416.077.806.168 1.159.298.44.161.796.398.796.398s-.388.47-.529.761c-.18.374-.225.515-.225.515zm-1.258-3.106c-.019.039-.064.144-.136.268-.09.151-.185.274-.236.333-.047.054-.108.1-.108.1s.375.103.875.232c.605.156 1.023.223 1.023.223s-.096-.136-.32-.326c-.36-.304-.674-.519-.674-.519s-.148-.151-.424-.311z"
+                />
+              </svg>
+              ВКонтакте
             </a>
           </div>
         </div>
+      </div>
+      <!-- ===== CONTACT FORM ===== -->
+      <section class="contact-section" id="contacts">
+        <div class="contact-container">
+          <div class="contact-header">
+            <span class="contact-badge">Оставьте заявку</span>
+            <h2 class="section-headline">
+              Начните свой путь <br />к здоровью уже сегодня
+            </h2>
+            <p class="section-description">
+              Заполните форму, и мы свяжемся с вами в ближайшее время — подберём
+              направление, тренера и удобное время
+            </p>
+          </div>
 
-        <!-- Footer top: Links + QR -->
-        <div class="footer-top">
-          <!-- Left: Navigation links -->
-          <div class="footer-links">
-            <div class="footer-links-column">
-              <h4 class="footer-links-title">Студия</h4>
-              <a href="#about" class="footer-link">О нас</a>
-              <a href="#programs" class="footer-link">Направления</a>
-              <a href="#pricing" class="footer-link">Абонементы</a>
-              <a href="#contacts" class="footer-link">Контакты</a>
+          <div class="contact-card">
+            <form class="contact-form" id="contactForm" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="form-name">Ваше имя</label>
+                  <input
+                    type="text"
+                    id="form-name"
+                    placeholder="Например, Анна"
+                    required
+                  />
+                  <span class="form-error">Пожалуйста, введите ваше имя</span>
+                </div>
+                <div class="form-group">
+                  <label for="form-phone">Телефон</label>
+                  <input
+                    type="tel"
+                    id="form-phone"
+                    placeholder="+7 (___) ___-__-__"
+                    required
+                  />
+                  <span class="form-error"
+                    >Пожалуйста, введите корректный номер</span
+                  >
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="form-email">Email</label>
+                  <input
+                    type="email"
+                    id="form-email"
+                    placeholder="anna@example.com"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="form-direction">Интересующее направление</label>
+                  <select id="form-direction">
+                    <option value="">Выберите направление</option>
+                    <option value="stretch">Растяжка</option>
+                    <option value="strength">Силовая тренировка</option>
+                    <option value="yoga">Йога</option>
+                    <option value="pilates">Пилатес</option>
+                    <option value="acrobatics">Акробатика</option>
+                    <option value="mfr">МФР</option>
+                    <option value="other">Не знаю</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="form-comment">Комментарий</label>
+                <textarea
+                  id="form-comment"
+                  rows="3"
+                  placeholder="Расскажите о ваших целях, пожеланиях или вопросах..."
+                ></textarea>
+              </div>
+
+              <div class="form-group full-width checkbox-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="form-consent" required />
+                  <span class="checkmark"></span>
+                  <span class="checkbox-text"
+                    >Я согласен(а) на обработку персональных данных и принимаю
+                    условия <a href="#">пользовательского соглашения</a></span
+                  >
+                </label>
+                <span class="form-error">Необходимо ваше согласие</span>
+              </div>
+
+              <button type="submit" class="form-submit">
+                Отправить заявку
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+
+              <div class="form-success" id="formSuccess" style="display: none">
+                <span class="success-icon">✓</span>
+                <p>
+                  Спасибо! Ваша заявка отправлена.<br />Мы свяжемся с вами в
+                  ближайшее время.
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <div class="footer-container">
+          <!-- ===== APP PROMO BLOCK (replaces old social + QR) ===== -->
+          <div class="footer-app-promo">
+            <div class="app-promo-text">
+              <strong>Скачайте мобильное приложение</strong>
+              <span
+                >Актуальные новости, расписание и запись на тренировки в одном
+                месте</span
+              >
             </div>
-            <div class="footer-links-column">
-              <h4 class="footer-links-title">Информация</h4>
-              <a href="#faq" class="footer-link">Частые вопросы</a>
-              <a href="#quiz" class="footer-link">Подобрать тренировку</a>
-              <a href="#studio" class="footer-link">Как нас найти</a>
-              <!-- <a href="#" class="footer-link">Пользовательское соглашение</a>
+            <div class="app-promo-buttons">
+              <!-- App Store -->
+              <a
+                href="https://apps.apple.com/app/6800565274"
+                class="app-btn"
+                target="_blank"
+                rel="noopener"
+              >
+                <img src="appstore.svg" alt="App Store" height="60" />
+              </a>
+
+              <!-- Google Play with black background -->
+              <a
+                href="https://play.google.com/store/apps/details?id=listok.liness&pcampaignid=web_share"
+                class="app-btn google-play"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 239 70.9"
+                  height="50"
+                >
+                  <rect
+                    x="-.1"
+                    width="239.2"
+                    height="70.9"
+                    rx="8.9"
+                    ry="8.9"
+                    fill="#000"
+                  />
+                  <path
+                    d="M120.6 38.5c-4.1 0-7.5 3.2-7.5 7.6s3.4 7.5 7.5 7.5 7.6-3.2 7.6-7.5-3.4-7.6-7.6-7.6Zm0 12.1c-2.3 0-4.2-1.8-4.2-4.5s2-4.6 4.2-4.6 4.3 1.9 4.3 4.6-2 4.5-4.3 4.5Zm-16.5-12c-4.2 0-7.6 3.1-7.6 7.5s3.4 7.5 7.6 7.5 7.6-3.2 7.6-7.5-3.4-7.6-7.6-7.6Zm0 12c-2.3 0-4.3-1.8-4.3-4.5s2-4.6 4.3-4.6 4.3 1.9 4.3 4.6-2 4.5-4.3 4.5Zm-19.6-9.8V44H92a6.6 6.6 0 0 1-1.7 4 7.8 7.8 0 0 1-6 2.4 8.4 8.4 0 0 1-8.3-8.5 8.4 8.4 0 0 1 14.1-6.2l2.3-2.3c-2-1.8-4.5-3.2-8-3.2-6.5 0-12 5.3-12 11.7s5.5 11.7 12 11.7c3.5 0 6-1 8.1-3.2 2.1-2.1 2.8-5.1 2.8-7.5 0-.8 0-1.5-.2-2H84.5Zm80.3 2.5c-.7-1.6-2.6-4.8-6.5-4.8s-7.1 3-7.1 7.6c0 4.2 3.2 7.5 7.5 7.5 3.4 0 5.4-2.1 6.3-3.3l-2.6-1.8c-.9 1.3-2 2.1-3.7 2.1s-3-.7-3.7-2.3l10.1-4.1-.3-.9ZM154.4 46a4 4 0 0 1 3.9-4.4c1.3 0 2.4.6 2.8 1.6l-6.7 2.8Zm-8.2 7.3h3.3V31h-3.3v22.1Zm-5.4-13h-.1a5.2 5.2 0 0 0-4-1.7c-3.8 0-7.3 3.3-7.3 7.6s3.5 7.5 7.3 7.5c1.8 0 3.2-.8 4-1.7v1c0 3-1.5 4.5-4 4.5-2 0-3.2-1.4-3.8-2.7l-2.8 1.2c.8 2 3 4.5 6.6 4.5 4 0 7.2-2.3 7.2-7.9V39h-3.1v1.2ZM137 50.6c-2.3 0-4.2-1.9-4.2-4.5s1.9-4.6 4.2-4.6 4 2 4 4.6-1.8 4.5-4 4.5ZM180.3 31h-8v22.1h3.4v-8.4h4.6c3.7 0 7.2-2.6 7.2-6.8S184 31 180.3 31Zm0 10.7h-4.7V34h4.7c2.5 0 4 2 4 3.8s-1.5 3.8-4 3.8Zm20.5-3.2c-2.4 0-4.9 1-6 3.4l3 1.2c.6-1.2 1.8-1.6 3-1.6 1.7 0 3.5 1 3.5 2.8v.3c-.6-.4-1.9-.9-3.5-.9-3.1 0-6.3 1.7-6.3 5 0 3 2.6 4.8 5.5 4.8 2.2 0 3.4-1 4.2-2.1V53h3.3v-8.5c0-4-3-6.1-6.7-6.1Zm-.4 12.1c-1.1 0-2.6-.5-2.6-1.8 0-1.7 1.9-2.4 3.5-2.4 1.4 0 2.1.3 3 .7a4 4 0 0 1-4 3.5ZM219 39l-3.8 9.6-4-9.6h-3.6l6 13.4-3.4 7.5h3.4l9.1-21H219Zm-29.7 14h3.4V31h-3.3v22.1Z"
+                    style="fill: #fff"
+                  />
+                  <path
+                    d="m36.6 34.4-18.9 20a5 5 0 0 0 7.6 3l21.2-12.2-10-10.8h.1Z"
+                    style="fill: #ea4335"
+                  />
+                  <path
+                    d="m55.7 31-9.2-5.3-10.3 9.2 10.3 10.3 9.2-5.2c1.5-1 2.6-2.6 2.6-4.5s-1-3.6-2.6-4.5Z"
+                    style="fill: #fbbc04"
+                  />
+                  <path
+                    d="m17.7 16.4-.1 1.4V53l.1 1.3L37.2 35 17.7 16.4Z"
+                    style="fill: #4285f4"
+                  />
+                  <path
+                    d="m36.7 35.4 9.8-9.7-21.2-12.3a5.1 5.1 0 0 0-7.6 3l19 19Z"
+                    style="fill: #34a853"
+                  />
+                  <path
+                    d="M74.5 25.3h-1.3v-3.6h1c1-.8 1.4-2.1 1.4-4v-5.3h7v9.3H84v3.6h-1.3V23h-8v2.3Zm2.5-7.6a7 7 0 0 1-1 4h5.3v-8H77v4Zm17.5 3.9c-1 1.1-2.3 1.7-3.9 1.7s-2.8-.6-3.9-1.7-1.5-2.3-1.5-3.9.5-2.9 1.5-4c1-1 2.4-1.5 4-1.5s2.7.5 3.8 1.6c1 1 1.6 2.4 1.6 4s-.5 2.8-1.6 3.8Zm-6.8-.8c.8.8 1.8 1.2 3 1.2s2-.4 2.8-1.2c.8-.8 1.2-1.8 1.2-3s-.4-2.3-1.2-3.1c-.8-.8-1.7-1.2-2.9-1.2s-2 .4-2.9 1.2c-.7.8-1.2 1.8-1.2 3s.4 2.3 1.2 3Zm15.3 2.5c-1.6 0-2.9-.6-4-1.6s-1.6-2.4-1.6-4 .6-3 1.6-4 2.4-1.6 4-1.6 2.9.6 3.9 1.8l-1 .9a3.6 3.6 0 0 0-3-1.3 4 4 0 0 0-2.9 1.1c-.8.8-1.2 1.8-1.2 3s.4 2.4 1.2 3.1a4 4 0 0 0 3 1.2c1.2 0 2.3-.5 3.2-1.5l1 1a5.6 5.6 0 0 1-4.2 1.9Zm9.7-.3h-1.4v-9.3h-3v-1.3h7.4v1.3h-3V23ZM125 12.4l-4 9c-.5 1.2-1.3 1.9-2.4 1.9-.4 0-.7-.1-1.1-.3l.3-1.2.8.2c.3 0 .5 0 .7-.2l.5-.7.4-.8-3.6-7.9h1.6l2.6 6.1 2.6-6h1.6v-.1Zm1.6 10.6V12.4h7.7V23h-1.4v-9.3h-5V23h-1.3Zm10.1 0V12.4h1.4v4.5h5.3v-4.5h1.4V23h-1.4v-4.8H138V23h-1.4Zm19.3-1.4a5.4 5.4 0 0 1-7.9 0c-1.1-1.1-1.6-2.3-1.6-3.9s.6-2.9 1.6-4c1-1 2.3-1.5 4-1.5s2.7.5 3.8 1.6c1 1 1.6 2.4 1.6 4s-.5 2.8-1.6 3.8Zm-6.9-.8c.8.8 1.8 1.2 3 1.2s2-.4 2.8-1.2c.8-.8 1.2-1.8 1.2-3s-.4-2.3-1.2-3.1c-.8-.8-1.8-1.2-2.9-1.2s-2.1.4-2.9 1.2c-.8.8-1.2 1.8-1.2 3s.4 2.3 1.2 3ZM163 23V12.4h3.9c.8 0 1.6.3 2.2.8.6.6.9 1.3.9 2 0 .6-.2 1-.4 1.4-.3.4-.6.7-1 .9a2.6 2.6 0 0 1 1.7 2.5c0 .8-.3 1.6-1 2.1s-1.3.9-2.2.9h-4Zm1.4-6h2.5a1.7 1.7 0 0 0 1.7-1.7c0-.4-.1-.8-.5-1.1-.3-.3-.7-.5-1.2-.5h-2.5v3.2Zm0 4.7h2.8c.5 0 1-.2 1.2-.5s.5-.8.5-1.2-.1-.9-.5-1.2c-.3-.4-.7-.6-1.3-.6h-2.7v3.5Z"
+                    style="
+                      stroke: #fff;
+                      stroke-miterlimit: 10;
+                      stroke-width: 0.2px;
+                      fill: #fff;
+                    "
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Footer top: Links + QR -->
+          <div class="footer-top">
+            <!-- Left: Navigation links -->
+            <div class="footer-links">
+              <div class="footer-links-column">
+                <h4 class="footer-links-title">Студия</h4>
+                <a href="#about" class="footer-link">О нас</a>
+                <a href="#programs" class="footer-link">Направления</a>
+                <a href="#pricing" class="footer-link">Абонементы</a>
+                <a href="#contacts" class="footer-link">Контакты</a>
+              </div>
+              <div class="footer-links-column">
+                <h4 class="footer-links-title">Информация</h4>
+                <a href="#faq" class="footer-link">Частые вопросы</a>
+                <a href="#quiz" class="footer-link">Подобрать тренировку</a>
+                <a href="#studio" class="footer-link">Как нас найти</a>
+                <!-- <a href="#" class="footer-link">Пользовательское соглашение</a>
       <a href="#" class="footer-link">Политика конфиденциальности</a> -->
-            </div>
-            <div class="footer-links-column">
-              <h4 class="footer-links-title">Общение</h4>
-              <a
-                href="https://t.me/linesplace"
-                class="footer-link footer-telegram-link"
-                target="_blank"
-                rel="noopener"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  width="18"
-                  height="18"
-                  style="
-                    display: inline-block;
-                    vertical-align: middle;
-                    margin-right: 6px;
-                  "
+              </div>
+              <div class="footer-links-column">
+                <h4 class="footer-links-title">Общение</h4>
+                <a
+                  href="https://t.me/linesplace"
+                  class="footer-link footer-telegram-link"
+                  target="_blank"
+                  rel="noopener"
                 >
-                  <path
-                    d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
-                  />
-                </svg>
-                Телеграм
-              </a>
-              <a
-                href="https://vk.ru/linesplace"
-                class="footer-link"
-                target="_blank"
-                rel="noopener"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  width="18"
-                  height="18"
-                  style="
-                    display: inline-block;
-                    vertical-align: middle;
-                    margin-right: 6px;
-                  "
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    width="18"
+                    height="18"
+                    style="
+                      display: inline-block;
+                      vertical-align: middle;
+                      margin-right: 6px;
+                    "
+                  >
+                    <path
+                      d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"
+                    />
+                  </svg>
+                  Телеграм
+                </a>
+                <a
+                  href="https://vk.ru/linesplace"
+                  class="footer-link"
+                  target="_blank"
+                  rel="noopener"
                 >
-                  <path
-                    d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm5.433 14.438c-.348.798-1.497.693-1.497.693s-2.416-.386-4.157-1.816c-1.228-.989-1.967-1.934-2.463-2.594-.005.605-.028 1.173-.17 1.505-.173.405-.388.564-.388.564s-.34.21-.838-.015c-.537-.242-.936-.662-1.034-.81-.084-.128-.348-.528-.504-.92-.316-.793-.607-1.723-.621-2.885-.011-.909.354-1.359.354-1.359s.332-.439 1.04-.439c.468 0 .676.141.676.141s.273.161.461.465c.584 1.033 1.086 1.786 2.255 2.886.207-.17.36-.511.408-1.018.043-.456.021-1.105-.055-1.474-.062-.303-.348-.444-.348-.444s.317-.422.996-.505c.655-.08 1.822.23 1.848.245.024.014.039.028.025.044-.058.066-.36.384-.36.384s-.172.236-.083.445c.057.135.193.151.193.151s.66-.154 1.243-.526c.547-.348.791-.748.791-.748s-.574.624-.574.624c-.22.266-.57.552-.57.552s-.021.029.165.063c.416.077.806.168 1.159.298.44.161.796.398.796.398s-.388.47-.529.761c-.18.374-.225.515-.225.515zm-1.258-3.106c-.019.039-.064.144-.136.268-.09.151-.185.274-.236.333-.047.054-.108.1-.108.1s.375.103.875.232c.605.156 1.023.223 1.023.223s-.096-.136-.32-.326c-.36-.304-.674-.519-.674-.519s-.148-.151-.424-.311z"
-                  />
-                </svg>
-                ВКонтакте
-              </a>
-              <!-- <div style="margin-top:8px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    width="18"
+                    height="18"
+                    style="
+                      display: inline-block;
+                      vertical-align: middle;
+                      margin-right: 6px;
+                    "
+                  >
+                    <path
+                      d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm5.433 14.438c-.348.798-1.497.693-1.497.693s-2.416-.386-4.157-1.816c-1.228-.989-1.967-1.934-2.463-2.594-.005.605-.028 1.173-.17 1.505-.173.405-.388.564-.388.564s-.34.21-.838-.015c-.537-.242-.936-.662-1.034-.81-.084-.128-.348-.528-.504-.92-.316-.793-.607-1.723-.621-2.885-.011-.909.354-1.359.354-1.359s.332-.439 1.04-.439c.468 0 .676.141.676.141s.273.161.461.465c.584 1.033 1.086 1.786 2.255 2.886.207-.17.36-.511.408-1.018.043-.456.021-1.105-.055-1.474-.062-.303-.348-.444-.348-.444s.317-.422.996-.505c.655-.08 1.822.23 1.848.245.024.014.039.028.025.044-.058.066-.36.384-.36.384s-.172.236-.083.445c.057.135.193.151.193.151s.66-.154 1.243-.526c.547-.348.791-.748.791-.748s-.574.624-.574.624c-.22.266-.57.552-.57.552s-.021.029.165.063c.416.077.806.168 1.159.298.44.161.796.398.796.398s-.388.47-.529.761c-.18.374-.225.515-.225.515zm-1.258-3.106c-.019.039-.064.144-.136.268-.09.151-.185.274-.236.333-.047.054-.108.1-.108.1s.375.103.875.232c.605.156 1.023.223 1.023.223s-.096-.136-.32-.326c-.36-.304-.674-.519-.674-.519s-.148-.151-.424-.311z"
+                    />
+                  </svg>
+                  ВКонтакте
+                </a>
+                <!-- <div style="margin-top:8px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);">
         <span style="font-size:12px;color:rgba(255,255,255,0.35);display:block;margin-bottom:6px;">Присоединяйтесь к чату</span>
         <a href="https://t.me/linesplace" class="footer-link" style="font-weight:500;color:#4a9eff;" target="_blank" rel="noopener">
           Телеграм →
         </a>
       </div> -->
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Footer bottom: Logo (full width, large) -->
-        <div class="footer-logo">
-          <img src="images/logo.svg" alt="Нини" class="footer-logo-img" />
-        </div>
+          <!-- Footer bottom: Logo (full width, large) -->
+          <div class="footer-logo">
+            <img src="images/logo.svg" alt="Нини" class="footer-logo-img" />
+          </div>
 
-        <!-- Footer bottom bar -->
-        <div class="footer-bottom">
-          <p class="footer-copy">&copy; 2026 Линии. Все права защищены.</p>
+          <!-- Footer bottom bar -->
+          <div class="footer-bottom">
+            <p class="footer-copy">&copy; 2026 Линии. Все права защищены.</p>
+          </div>
         </div>
+      </footer>
+
+      <!-- Popover elements (all 9 cards) -->
+      <div id="popover-0" class="info-popover" popover>
+        <button
+          class="popover-close"
+          popovertarget="popover-0"
+          popovertargetaction="hide"
+          aria-label="Close"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <h2 class="popover-title">
+          Комплексная тренировка<br />Базовый уровень
+        </h2>
+        <p class="popover-body">
+          Занятие подойдет для любого уровня подготовки. Мы мягко проработаем
+          все тело, выполнив комплекс упражнений для развития силы, координации
+          и мобильности.
+        </p>
+        <a href="#" class="popover-cta"
+          >Записаться на занятие
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </a>
       </div>
-    </footer>
 
-    <!-- Popover elements (all 9 cards) -->
-    <div id="popover-0" class="info-popover" popover>
-      <button
-        class="popover-close"
-        popovertarget="popover-0"
-        popovertargetaction="hide"
-        aria-label="Close"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
+      <div id="popover-1" class="info-popover" popover>
+        <button
+          class="popover-close"
+          popovertarget="popover-1"
+          popovertargetaction="hide"
+          aria-label="Close"
         >
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-      </button>
-      <h2 class="popover-title">Комплексная тренировка<br />Базовый уровень</h2>
-      <p class="popover-body">
-        Занятие подойдет для любого уровня подготовки. Мы мягко проработаем все
-        тело, выполнив комплекс упражнений для развития силы, координации и
-        мобильности.
-      </p>
-      <a href="#" class="popover-cta"
-        >Записаться на занятие
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-        >
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
-      </a>
-    </div>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <h2 class="popover-title">
+          Комплексная тренировка<br />Средний уровень
+        </h2>
+        <p class="popover-body">
+          Занятие подойдет тем, у кого есть небольшой опыт тренировок или
+          большой, но немного забытый. Мы выполним ряд разноплановых упражнений
+          для развития силы, координации и мобильности.
+        </p>
+        <a href="#" class="popover-cta"
+          >Записаться на занятие
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </a>
+      </div>
 
-    <div id="popover-1" class="info-popover" popover>
-      <button
-        class="popover-close"
-        popovertarget="popover-1"
-        popovertargetaction="hide"
-        aria-label="Close"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
+      <div id="popover-2" class="info-popover" popover>
+        <button
+          class="popover-close"
+          popovertarget="popover-2"
+          popovertargetaction="hide"
+          aria-label="Close"
         >
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-      </button>
-      <h2 class="popover-title">Комплексная тренировка<br />Средний уровень</h2>
-      <p class="popover-body">
-        Занятие подойдет тем, у кого есть небольшой опыт тренировок или большой,
-        но немного забытый. Мы выполним ряд разноплановых упражнений для
-        развития силы, координации и мобильности.
-      </p>
-      <a href="#" class="popover-cta"
-        >Записаться на занятие
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-        >
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
-      </a>
-    </div>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <h2 class="popover-title">Комплексная тренировка<br />Продолжающие</h2>
+        <p class="popover-body">
+          Занятие подойдет тем, кто обладает большим тренировок и готов
+          пробовать упражнения повышенной сложности. Мы выполним ряд
+          разноплановых упражнений для развития силы, координации и мобильности
+        </p>
+        <a href="#" class="popover-cta"
+          >Записаться на занятие
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </a>
+      </div>
 
-    <div id="popover-2" class="info-popover" popover>
-      <button
-        class="popover-close"
-        popovertarget="popover-2"
-        popovertargetaction="hide"
-        aria-label="Close"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
+      <div id="popover-3" class="info-popover" popover>
+        <button
+          class="popover-close"
+          popovertarget="popover-3"
+          popovertargetaction="hide"
+          aria-label="Close"
         >
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-      </button>
-      <h2 class="popover-title">Комплексная тренировка<br />Продолжающие</h2>
-      <p class="popover-body">
-        Занятие подойдет тем, кто обладает большим тренировок и готов пробовать
-        упражнения повышенной сложности. Мы выполним ряд разноплановых
-        упражнений для развития силы, координации и мобильности
-      </p>
-      <a href="#" class="popover-cta"
-        >Записаться на занятие
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-        >
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
-      </a>
-    </div>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <h2 class="popover-title">Здоровая спина и осанка</h2>
+        <p class="popover-body">
+          Оздоровительная тренировка интересная и полезная как для новичков, так
+          и для опытных с портсменов. Мы изучим техники дыхания и контроля
+          осанки, а так же мягко поработаем над мобильностью позвоночника и у
+          креплением мышечного к
+        </p>
+        <a href="#" class="popover-cta"
+          >Записаться на занятие
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </a>
+      </div>
 
-    <div id="popover-3" class="info-popover" popover>
-      <button
-        class="popover-close"
-        popovertarget="popover-3"
-        popovertargetaction="hide"
-        aria-label="Close"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
+      <div id="popover-4" class="info-popover" popover>
+        <button
+          class="popover-close"
+          popovertarget="popover-4"
+          popovertargetaction="hide"
+          aria-label="Close"
         >
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-      </button>
-      <h2 class="popover-title">Здоровая спина и осанка</h2>
-      <p class="popover-body">
-        Оздоровительная тренировка интересная и полезная как для новичков, так и
-        для опытных с портсменов. Мы изучим техники дыхания и контроля осанки, а
-        так же мягко поработаем над мобильностью позвоночника и у креплением
-        мышечного к
-      </p>
-      <a href="#" class="popover-cta"
-        >Записаться на занятие
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-        >
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
-      </a>
-    </div>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <h2 class="popover-title">МФР</h2>
+        <p class="popover-body">
+          Восстановительное занятие, подходящее для тех, кто хочет расслабиться
+          после трудового дня или тяжелой тренировки. Мы будем изучать и
+          практиковать техники самомассажа с помощью специальных мячей и роллов.
+        </p>
+        <a href="#" class="popover-cta"
+          >Записаться на занятие
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </a>
+      </div>
 
-    <div id="popover-4" class="info-popover" popover>
-      <button
-        class="popover-close"
-        popovertarget="popover-4"
-        popovertargetaction="hide"
-        aria-label="Close"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
+      <div id="popover-5" class="info-popover" popover>
+        <button
+          class="popover-close"
+          popovertarget="popover-5"
+          popovertargetaction="hide"
+          aria-label="Close"
         >
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-      </button>
-      <h2 class="popover-title">МФР</h2>
-      <p class="popover-body">
-        Восстановительное занятие, подходящее для тех, кто хочет расслабиться
-        после трудового дня или тяжелой тренировки. Мы будем изучать и
-        практиковать техники самомассажа с помощью специальных мячей и роллов.
-      </p>
-      <a href="#" class="popover-cta"
-        >Записаться на занятие
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-        >
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
-      </a>
-    </div>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <h2 class="popover-title">Растяжка у станка</h2>
+        <p class="popover-body">
+          Занятие подойдет тем, у кого есть небольшой опыт тренировок и кому
+          хочется разнообразия. Мы выполним упражнения для развития силы,
+          гибкости и координации у хореографического станка.
+        </p>
+        <a href="#" class="popover-cta"
+          >Записаться на занятие
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </a>
+      </div>
 
-    <div id="popover-5" class="info-popover" popover>
-      <button
-        class="popover-close"
-        popovertarget="popover-5"
-        popovertargetaction="hide"
-        aria-label="Close"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
+      <div id="popover-6" class="info-popover" popover>
+        <button
+          class="popover-close"
+          popovertarget="popover-6"
+          popovertargetaction="hide"
+          aria-label="Close"
         >
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-      </button>
-      <h2 class="popover-title">Растяжка у станка</h2>
-      <p class="popover-body">
-        Занятие подойдет тем, у кого есть небольшой опыт тренировок и кому
-        хочется разнообразия. Мы выполним упражнения для развития силы, гибкости
-        и координации у хореографического станка.
-      </p>
-      <a href="#" class="popover-cta"
-        >Записаться на занятие
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-        >
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
-      </a>
-    </div>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <h2 class="popover-title">Тренировка стоп</h2>
+        <p class="popover-body">
+          Уникальное направление тренировок, подходящее для людей с любым
+          уровнем подготовки. На занятии мы будем работать с функциональностью и
+          мобильностью стопы. Так же тренировка подойдет, если у Вас уже есть
+          нарушения осанки, связанные со стопами.
+        </p>
+        <a href="#" class="popover-cta"
+          >Записаться на занятие
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </a>
+      </div>
 
-    <div id="popover-6" class="info-popover" popover>
-      <button
-        class="popover-close"
-        popovertarget="popover-6"
-        popovertargetaction="hide"
-        aria-label="Close"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
+      <div id="popover-7" class="info-popover" popover>
+        <button
+          class="popover-close"
+          popovertarget="popover-7"
+          popovertargetaction="hide"
+          aria-label="Close"
         >
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-      </button>
-      <h2 class="popover-title">Тренировка стоп</h2>
-      <p class="popover-body">
-        Уникальное направление тренировок, подходящее для людей с любым уровнем
-        подготовки. На занятии мы будем работать с функциональностью и
-        мобильностью стопы. Так же тренировка подойдет, если у Вас уже есть
-        нарушения осанки, связанные со стопами.
-      </p>
-      <a href="#" class="popover-cta"
-        >Записаться на занятие
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-        >
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
-      </a>
-    </div>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <h2 class="popover-title">Гимнастические элементы<br />Акробатика</h2>
+        <p class="popover-body">
+          Занятие подойдет тем, кто давно хотел перевернуть всё с ног на голову.
+          На тренировке мы будем изучать стойки на руках и партерную акробатику.
+          Вам потребуется тренировочный опыт, чтобы чувствовать себя комфортно
+          на занятии.
+        </p>
+        <a href="#" class="popover-cta"
+          >Записаться на занятие
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </a>
+      </div>
 
-    <div id="popover-7" class="info-popover" popover>
-      <button
-        class="popover-close"
-        popovertarget="popover-7"
-        popovertargetaction="hide"
-        aria-label="Close"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
+      <div id="popover-8" class="info-popover" popover>
+        <button
+          class="popover-close"
+          popovertarget="popover-8"
+          popovertargetaction="hide"
+          aria-label="Close"
         >
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-      </button>
-      <h2 class="popover-title">Гимнастические элементы<br />Акробатика</h2>
-      <p class="popover-body">
-        Занятие подойдет тем, кто давно хотел перевернуть всё с ног на голову.
-        На тренировке мы будем изучать стойки на руках и партерную акробатику.
-        Вам потребуется тренировочный опыт, чтобы чувствовать себя комфортно на
-        занятии.
-      </p>
-      <a href="#" class="popover-cta"
-        >Записаться на занятие
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-        >
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
-      </a>
-    </div>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+        <h2 class="popover-title">
+          Гимнастические элементы<br />Вертикальные шпагаты
+        </h2>
+        <p class="popover-body">
+          Занятие подойдет тем, кто хочет и уже готов поднимать ноги выше
+          головы. На тренировке мы будем изучать разнообразные элементы
+          художественной гимнастики и углубленно работать над амплитудой
+          движения. Вы готовы к этому, если у Вас уже есть опыт.
+        </p>
+        <a href="#" class="popover-cta"
+          >Записаться на занятие
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+          >
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </a>
+      </div>
 
-    <div id="popover-8" class="info-popover" popover>
-      <button
-        class="popover-close"
-        popovertarget="popover-8"
-        popovertargetaction="hide"
-        aria-label="Close"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-        >
-          <line x1="18" y1="6" x2="6" y2="18" />
-          <line x1="6" y1="6" x2="18" y2="18" />
-        </svg>
-      </button>
-      <h2 class="popover-title">
-        Гимнастические элементы<br />Вертикальные шпагаты
-      </h2>
-      <p class="popover-body">
-        Занятие подойдет тем, кто хочет и уже готов поднимать ноги выше головы.
-        На тренировке мы будем изучать разнообразные элементы художественной
-        гимнастики и углубленно работать над амплитудой движения. Вы готовы к
-        этому, если у Вас уже есть опыт.
-      </p>
-      <a href="#" class="popover-cta"
-        >Записаться на занятие
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-        >
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
-      </a>
-    </div>
-
-    <script src="script.js"></script>
-  </body>
-</html>
+      <script src="script.js"></script>
+    </body></html
+></esc>
