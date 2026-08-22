@@ -221,6 +221,21 @@
   margin: 0;
 }
 
+.app-btn,
+.form-group label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.app-btn {
+  background: #1d1d1f;
+  font-family: inherit;
+}
+
+.app-btn:hover {
+  background: #333;
+}
+
 @media (max-width: 900px) {
   .studio-grid {
     gap: 32px;
