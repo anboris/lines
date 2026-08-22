@@ -674,14 +674,14 @@ function renderQuestion(quiz, id, depth = 1) {
       .filter((s) => s.trim());
 
     const outcomeBox = document.createElement("div");
-    outcomeBox.className = "outcome-box";
+    outcomeBox.className = "quiz__outcome";
 
     let html = `
-      <div class="outcome-header">
-        <span class="outcome-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-check-icon lucide-user-round-check"><path d="M2 21a8 8 0 0 1 13.292-6"/><circle cx="10" cy="8" r="5"/><path d="m16 19 2 2 4-4"/></svg></span>
+      <div class="quiz__outcome-header">
+        <span class="quiz__outcome-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-check-icon lucide-user-round-check"><path d="M2 21a8 8 0 0 1 13.292-6"/><circle cx="10" cy="8" r="5"/><path d="m16 19 2 2 4-4"/></svg></span>
         <strong>Вам подойдут:</strong>
       </div>
-      <div class="outcome-tags">
+      <div class="quiz__outcome-tags">
     `;
 
     recommendations.forEach((rec) => {
@@ -710,12 +710,12 @@ function renderQuestion(quiz, id, depth = 1) {
         }
       }
 
-      html += `<span class="outcome-tag">${trimmed}`;
+      html += `<span class="quiz__outcome-tag">${trimmed}`;
 
       if (popoverId) {
         html += `
           <button 
-            class="tag-info-btn" 
+            class="quiz__tag-info-btn" 
             popovertarget="${popoverId}" 
             popovertargetaction="toggle"
             aria-label="Подробнее о ${trimmed}"
@@ -734,9 +734,9 @@ function renderQuestion(quiz, id, depth = 1) {
 
     html += `
       </div>
-      <div class="outcome-actions">
-        <a href="#contacts" class="outcome-cta">Записаться сегодня</a>
-        <button class="quiz-restart" onclick="restartQuiz()">↻ Пройти заново</button>
+      <div class="quiz__outcome-actions">
+									<a href="#contacts" class="quiz__outcome-cta">Записаться сегодня</a>
+									<button class="quiz__restart" onclick="restartQuiz()">↻ Пройти заново</button>
       </div>
     `;
 
@@ -747,17 +747,17 @@ function renderQuestion(quiz, id, depth = 1) {
 
   // ===== CHOICE (question with buttons) =====
   const title = document.createElement("h3");
-  title.className = "quiz-question";
+  title.className = "quiz__question";
   title.innerText = currentData.text;
   container.appendChild(title);
 
   const btnContainer = document.createElement("div");
-  btnContainer.className = "btn-container";
+  btnContainer.className = "quiz__buttons";
 
   currentData.options.forEach((option) => {
     const button = document.createElement("button");
     button.innerText = option.text;
-    button.className = "quiz-btn";
+    button.className = "quiz__btn";
     button.onclick = () => {
       renderQuestion(quiz, option.next, depth + 1);
     };
