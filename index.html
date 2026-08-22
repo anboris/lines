@@ -247,19 +247,22 @@
         </div>
       </div>
     </section>
-
-    <section class="carousel-section" id="programs">
-      <span class="section-badge">Программы тренировок</span>
-      <h2 class="section-headline">
+    <section class="programs" id="programs">
+      <span class="programs__badge">Программы тренировок</span>
+      <h2 class="programs__title">
         Одно тело. Одна система.<br />Разные способы движения
       </h2>
-      <p class="section-description">
+      <p class="programs__description">
         Независимо от выбранной практики, вы работаете по единой методике,
         развивая подвижность, силу, координацию и осознанность через
         естественную биомеханику тела.
       </p>
-      <div class="carousel-wrapper">
-        <button class="nav-arrow nav-prev" id="prevBtn" aria-label="Previous">
+      <div class="programs__carousel">
+        <button
+          class="programs__arrow programs__arrow--prev"
+          id="prevBtn"
+          aria-label="Previous"
+        >
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -272,12 +275,12 @@
           </svg>
         </button>
 
-        <div class="carousel-track" id="carouselTrack">
-          <!-- Card 1: Apple Upgrade -->
-          <div class="card" data-index="0">
-            <div class="card-image-wrapper">
+        <div class="programs__track" id="carouselTrack">
+          <!-- Card 1 -->
+          <div class="programs__card" data-index="0">
+            <div class="programs__card-media">
               <div
-                class="card-image"
+                class="programs__card-image"
                 style="
                   background: linear-gradient(
                     135deg,
@@ -290,15 +293,15 @@
                 <img src="images/1.png" alt="" />
               </div>
             </div>
-            <div class="card-content">
-              <p class="card-kicker">Комплексная тренировка</p>
-              <h3 class="card-title">Базовый уровень</h3>
-              <p class="card-desc">
+            <div class="programs__card-content">
+              <p class="programs__card-kicker">Комплексная тренировка</p>
+              <h3 class="programs__card-title">Базовый уровень</h3>
+              <p class="programs__card-desc">
                 Занятие подойдет для любого уровня подготовки
               </p>
             </div>
             <button
-              class="plus-btn"
+              class="programs__card-btn"
               popovertarget="popover-0"
               popovertargetaction="toggle"
               aria-label="Learn more about Apple Upgrade"
@@ -315,11 +318,11 @@
             </button>
           </div>
 
-          <!-- Card 2: Apple Trade In -->
-          <div class="card" data-index="1">
-            <div class="card-image-wrapper">
+          <!-- Card 2 -->
+          <div class="programs__card" data-index="1">
+            <div class="programs__card-media">
               <div
-                class="card-image"
+                class="programs__card-image"
                 style="
                   background: linear-gradient(135deg, #f0f9ff 0%, #ecfdf5 100%);
                 "
@@ -327,15 +330,15 @@
                 <img src="images/2.png" alt="" />
               </div>
             </div>
-            <div class="card-content">
-              <p class="card-kicker">Комплексная тренировка</p>
-              <h3 class="card-title">Средний уровень</h3>
-              <p class="card-desc">
+            <div class="programs__card-content">
+              <p class="programs__card-kicker">Комплексная тренировка</p>
+              <h3 class="programs__card-title">Средний уровень</h3>
+              <p class="programs__card-desc">
                 Для тех у кого есть небольшой опыт тренировок или большой
               </p>
             </div>
             <button
-              class="plus-btn"
+              class="programs__card-btn"
               popovertarget="popover-1"
               popovertargetaction="toggle"
               aria-label="Learn more about Apple Trade In"
@@ -352,11 +355,11 @@
             </button>
           </div>
 
-          <!-- Card 3: Ways to Buy -->
-          <div class="card" data-index="2">
-            <div class="card-image-wrapper">
+          <!-- Card 3 -->
+          <div class="programs__card" data-index="2">
+            <div class="programs__card-media">
               <div
-                class="card-image"
+                class="programs__card-image"
                 style="
                   background: linear-gradient(135deg, #fafafa 0%, #f3f4f6 100%);
                 "
@@ -364,15 +367,15 @@
                 <img src="images/3.png" alt="" />
               </div>
             </div>
-            <div class="card-content">
-              <p class="card-kicker">Комплексная тренировка</p>
-              <h3 class="card-title">Продолжающие</h3>
-              <p class="card-desc">
+            <div class="programs__card-content">
+              <p class="programs__card-kicker">Комплексная тренировка</p>
+              <h3 class="programs__card-title">Продолжающие</h3>
+              <p class="programs__card-desc">
                 Занятие подойдет тем, кто обладает большим тренировок
               </p>
             </div>
             <button
-              class="plus-btn"
+              class="programs__card-btn"
               popovertarget="popover-2"
               popovertargetaction="toggle"
               aria-label="Learn more about Ways to Buy"
@@ -389,11 +392,11 @@
             </button>
           </div>
 
-          <!-- Card 4: Carrier Deals -->
-          <div class="card" data-index="3">
-            <div class="card-image-wrapper">
+          <!-- Card 4 -->
+          <div class="programs__card" data-index="3">
+            <div class="programs__card-media">
               <div
-                class="card-image"
+                class="programs__card-image"
                 style="
                   background: linear-gradient(
                     135deg,
@@ -406,15 +409,15 @@
                 <img src="images/4.png" alt="" />
               </div>
             </div>
-            <div class="card-content">
-              <p class="card-kicker">Оздоровительная тренировка</p>
-              <h3 class="card-title">Здоровая спина и осанка</h3>
-              <p class="card-desc">
+            <div class="programs__card-content">
+              <p class="programs__card-kicker">Оздоровительная тренировка</p>
+              <h3 class="programs__card-title">Здоровая спина и осанка</h3>
+              <p class="programs__card-desc">
                 Полезная как для новичков, так и для опытных спортсменов
               </p>
             </div>
             <button
-              class="plus-btn"
+              class="programs__card-btn"
               popovertarget="popover-3"
               popovertargetaction="toggle"
               aria-label="Learn more about Carrier Deals"
@@ -431,11 +434,11 @@
             </button>
           </div>
 
-          <!-- Card 5: Personal Setup -->
-          <div class="card" data-index="4">
-            <div class="card-image-wrapper">
+          <!-- Card 5 -->
+          <div class="programs__card" data-index="4">
+            <div class="programs__card-media">
               <div
-                class="card-image"
+                class="programs__card-image"
                 style="
                   background: linear-gradient(135deg, #eff6ff 0%, #ecfdf5 100%);
                 "
@@ -443,16 +446,16 @@
                 <img src="images/5.png" alt="" />
               </div>
             </div>
-            <div class="card-content">
-              <p class="card-kicker">Восстановительное занятие</p>
-              <h3 class="card-title">МФР</h3>
-              <p class="card-desc">
+            <div class="programs__card-content">
+              <p class="programs__card-kicker">Восстановительное занятие</p>
+              <h3 class="programs__card-title">МФР</h3>
+              <p class="programs__card-desc">
                 Для тех, кто хочет расслабиться после трудового дня или тяжелой
                 тренировки
               </p>
             </div>
             <button
-              class="plus-btn"
+              class="programs__card-btn"
               popovertarget="popover-4"
               popovertargetaction="toggle"
               aria-label="Learn more about Personal Setup"
@@ -469,11 +472,11 @@
             </button>
           </div>
 
-          <!-- Card 6: Guided Shopping -->
-          <div class="card" data-index="5">
-            <div class="card-image-wrapper">
+          <!-- Card 6 -->
+          <div class="programs__card" data-index="5">
+            <div class="programs__card-media">
               <div
-                class="card-image"
+                class="programs__card-image"
                 style="
                   background: linear-gradient(135deg, #fefce8 0%, #fff7ed 100%);
                 "
@@ -481,16 +484,16 @@
                 <img src="images/6.png" alt="" />
               </div>
             </div>
-            <div class="card-content">
-              <p class="card-kicker">Занятие</p>
-              <h3 class="card-title">Растяжка у станка</h3>
-              <p class="card-desc">
+            <div class="programs__card-content">
+              <p class="programs__card-kicker">Занятие</p>
+              <h3 class="programs__card-title">Растяжка у станка</h3>
+              <p class="programs__card-desc">
                 Для тех у кого есть небольшой опыт тренировок и кому хочется
                 разнообразия
               </p>
             </div>
             <button
-              class="plus-btn"
+              class="programs__card-btn"
               popovertarget="popover-5"
               popovertargetaction="toggle"
               aria-label="Learn more about Guided Shopping"
@@ -507,11 +510,11 @@
             </button>
           </div>
 
-          <!-- Card 7: Delivery & Pickup -->
-          <div class="card" data-index="6">
-            <div class="card-image-wrapper">
+          <!-- Card 7 -->
+          <div class="programs__card" data-index="6">
+            <div class="programs__card-media">
               <div
-                class="card-image"
+                class="programs__card-image"
                 style="
                   background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
                 "
@@ -519,15 +522,15 @@
                 <img src="images/7.png" alt="" />
               </div>
             </div>
-            <div class="card-content">
-              <p class="card-kicker">Уникальное направление</p>
-              <h3 class="card-title">Тренировка стоп</h3>
-              <p class="card-desc">
+            <div class="programs__card-content">
+              <p class="programs__card-kicker">Уникальное направление</p>
+              <h3 class="programs__card-title">Тренировка стоп</h3>
+              <p class="programs__card-desc">
                 Работа с функциональностью и мобильностью стопы
               </p>
             </div>
             <button
-              class="plus-btn"
+              class="programs__card-btn"
               popovertarget="popover-6"
               popovertargetaction="toggle"
               aria-label="Learn more about Delivery and Pickup"
@@ -544,11 +547,11 @@
             </button>
           </div>
 
-          <!-- Card 8: Apple Store App -->
-          <div class="card" data-index="7">
-            <div class="card-image-wrapper">
+          <!-- Card 8 -->
+          <div class="programs__card" data-index="7">
+            <div class="programs__card-media">
               <div
-                class="card-image"
+                class="programs__card-image"
                 style="
                   background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%);
                 "
@@ -556,15 +559,15 @@
                 <img src="images/8.png" alt="" />
               </div>
             </div>
-            <div class="card-content">
-              <p class="card-kicker">Гимнастические элементы</p>
-              <h3 class="card-title">Акробатика</h3>
-              <p class="card-desc">
+            <div class="programs__card-content">
+              <p class="programs__card-kicker">Гимнастические элементы</p>
+              <h3 class="programs__card-title">Акробатика</h3>
+              <p class="programs__card-desc">
                 Для тех, кто давно хотел перевернуть всё с ног на голову
               </p>
             </div>
             <button
-              class="plus-btn"
+              class="programs__card-btn"
               popovertarget="popover-7"
               popovertargetaction="toggle"
               aria-label="Learn more about Apple Store App"
@@ -581,11 +584,11 @@
             </button>
           </div>
 
-          <!-- Card 9: AppleCare+ -->
-          <div class="card" data-index="8">
-            <div class="card-image-wrapper">
+          <!-- Card 9 -->
+          <div class="programs__card" data-index="8">
+            <div class="programs__card-media">
               <div
-                class="card-image"
+                class="programs__card-image"
                 style="
                   background: linear-gradient(135deg, #fef2f2 0%, #fff1f2 100%);
                 "
@@ -593,15 +596,15 @@
                 <img src="images/9.png" alt="" />
               </div>
             </div>
-            <div class="card-content">
-              <p class="card-kicker">Гимнастические элементы</p>
-              <h3 class="card-title">Вертикальные шпагаты</h3>
-              <p class="card-desc">
+            <div class="programs__card-content">
+              <p class="programs__card-kicker">Гимнастические элементы</p>
+              <h3 class="programs__card-title">Вертикальные шпагаты</h3>
+              <p class="programs__card-desc">
                 Для тех кто хочет и уже готов поднимать ноги выше головы
               </p>
             </div>
             <button
-              class="plus-btn"
+              class="programs__card-btn"
               popovertarget="popover-8"
               popovertargetaction="toggle"
               aria-label="Learn more about AppleCare+"
@@ -619,7 +622,11 @@
           </div>
         </div>
 
-        <button class="nav-arrow nav-next" id="nextBtn" aria-label="Next">
+        <button
+          class="programs__arrow programs__arrow--next"
+          id="nextBtn"
+          aria-label="Next"
+        >
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -633,7 +640,7 @@
         </button>
       </div>
 
-      <div class="pagination-dots" id="paginationDots"></div>
+      <div class="programs__dots" id="paginationDots"></div>
     </section>
 
     <!-- ===== QUIZ / TEST SECTION ===== -->
@@ -1732,9 +1739,9 @@
     </footer>
 
     <!-- Popover elements (all 9 cards) -->
-    <div id="popover-0" class="info-popover" popover>
+    <div id="popover-0" class="programs__popover" popover>
       <button
-        class="popover-close"
+        class="programs__popover-close"
         popovertarget="popover-0"
         popovertargetaction="hide"
         aria-label="Close"
@@ -1749,13 +1756,15 @@
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       </button>
-      <h2 class="popover-title">Комплексная тренировка<br />Базовый уровень</h2>
-      <p class="popover-body">
+      <h2 class="programs__popover-title">
+        Комплексная тренировка<br />Базовый уровень
+      </h2>
+      <p class="programs__popover-body">
         Занятие подойдет для любого уровня подготовки. Мы мягко проработаем все
         тело, выполнив комплекс упражнений для развития силы, координации и
         мобильности.
       </p>
-      <a href="#" class="popover-cta"
+      <a href="#" class="programs__popover-cta"
         >Записаться на занятие
         <svg
           viewBox="0 0 24 24"
@@ -1768,9 +1777,9 @@
       </a>
     </div>
 
-    <div id="popover-1" class="info-popover" popover>
+    <div id="popover-1" class="programs__popover" popover>
       <button
-        class="popover-close"
+        class="programs__popover-close"
         popovertarget="popover-1"
         popovertargetaction="hide"
         aria-label="Close"
@@ -1785,13 +1794,15 @@
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       </button>
-      <h2 class="popover-title">Комплексная тренировка<br />Средний уровень</h2>
-      <p class="popover-body">
+      <h2 class="programs__popover-title">
+        Комплексная тренировка<br />Средний уровень
+      </h2>
+      <p class="programs__popover-body">
         Занятие подойдет тем, у кого есть небольшой опыт тренировок или большой,
         но немного забытый. Мы выполним ряд разноплановых упражнений для
         развития силы, координации и мобильности.
       </p>
-      <a href="#" class="popover-cta"
+      <a href="#" class="programs__popover-cta"
         >Записаться на занятие
         <svg
           viewBox="0 0 24 24"
@@ -1804,9 +1815,9 @@
       </a>
     </div>
 
-    <div id="popover-2" class="info-popover" popover>
+    <div id="popover-2" class="programs__popover" popover>
       <button
-        class="popover-close"
+        class="programs__popover-close"
         popovertarget="popover-2"
         popovertargetaction="hide"
         aria-label="Close"
@@ -1821,13 +1832,15 @@
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       </button>
-      <h2 class="popover-title">Комплексная тренировка<br />Продолжающие</h2>
-      <p class="popover-body">
+      <h2 class="programs__popover-title">
+        Комплексная тренировка<br />Продолжающие
+      </h2>
+      <p class="programs__popover-body">
         Занятие подойдет тем, кто обладает большим тренировок и готов пробовать
         упражнения повышенной сложности. Мы выполним ряд разноплановых
         упражнений для развития силы, координации и мобильности
       </p>
-      <a href="#" class="popover-cta"
+      <a href="#" class="programs__popover-cta"
         >Записаться на занятие
         <svg
           viewBox="0 0 24 24"
@@ -1840,9 +1853,9 @@
       </a>
     </div>
 
-    <div id="popover-3" class="info-popover" popover>
+    <div id="popover-3" class="programs__popover" popover>
       <button
-        class="popover-close"
+        class="programs__popover-close"
         popovertarget="popover-3"
         popovertargetaction="hide"
         aria-label="Close"
@@ -1857,14 +1870,14 @@
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       </button>
-      <h2 class="popover-title">Здоровая спина и осанка</h2>
-      <p class="popover-body">
+      <h2 class="programs__popover-title">Здоровая спина и осанка</h2>
+      <p class="programs__popover-body">
         Оздоровительная тренировка интересная и полезная как для новичков, так и
         для опытных с портсменов. Мы изучим техники дыхания и контроля осанки, а
         так же мягко поработаем над мобильностью позвоночника и у креплением
         мышечного к
       </p>
-      <a href="#" class="popover-cta"
+      <a href="#" class="programs__popover-cta"
         >Записаться на занятие
         <svg
           viewBox="0 0 24 24"
@@ -1877,9 +1890,9 @@
       </a>
     </div>
 
-    <div id="popover-4" class="info-popover" popover>
+    <div id="popover-4" class="programs__popover" popover>
       <button
-        class="popover-close"
+        class="programs__popover-close"
         popovertarget="popover-4"
         popovertargetaction="hide"
         aria-label="Close"
@@ -1894,13 +1907,13 @@
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       </button>
-      <h2 class="popover-title">МФР</h2>
-      <p class="popover-body">
+      <h2 class="programs__popover-title">МФР</h2>
+      <p class="programs__popover-body">
         Восстановительное занятие, подходящее для тех, кто хочет расслабиться
         после трудового дня или тяжелой тренировки. Мы будем изучать и
         практиковать техники самомассажа с помощью специальных мячей и роллов.
       </p>
-      <a href="#" class="popover-cta"
+      <a href="#" class="programs__popover-cta"
         >Записаться на занятие
         <svg
           viewBox="0 0 24 24"
@@ -1913,9 +1926,9 @@
       </a>
     </div>
 
-    <div id="popover-5" class="info-popover" popover>
+    <div id="popover-5" class="programs__popover" popover>
       <button
-        class="popover-close"
+        class="programs__popover-close"
         popovertarget="popover-5"
         popovertargetaction="hide"
         aria-label="Close"
@@ -1930,13 +1943,13 @@
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       </button>
-      <h2 class="popover-title">Растяжка у станка</h2>
-      <p class="popover-body">
+      <h2 class="programs__popover-title">Растяжка у станка</h2>
+      <p class="programs__popover-body">
         Занятие подойдет тем, у кого есть небольшой опыт тренировок и кому
         хочется разнообразия. Мы выполним упражнения для развития силы, гибкости
         и координации у хореографического станка.
       </p>
-      <a href="#" class="popover-cta"
+      <a href="#" class="programs__popover-cta"
         >Записаться на занятие
         <svg
           viewBox="0 0 24 24"
@@ -1949,9 +1962,9 @@
       </a>
     </div>
 
-    <div id="popover-6" class="info-popover" popover>
+    <div id="popover-6" class="programs__popover" popover>
       <button
-        class="popover-close"
+        class="programs__popover-close"
         popovertarget="popover-6"
         popovertargetaction="hide"
         aria-label="Close"
@@ -1966,14 +1979,14 @@
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       </button>
-      <h2 class="popover-title">Тренировка стоп</h2>
-      <p class="popover-body">
+      <h2 class="programs__popover-title">Тренировка стоп</h2>
+      <p class="programs__popover-body">
         Уникальное направление тренировок, подходящее для людей с любым уровнем
         подготовки. На занятии мы будем работать с функциональностью и
         мобильностью стопы. Так же тренировка подойдет, если у Вас уже есть
         нарушения осанки, связанные со стопами.
       </p>
-      <a href="#" class="popover-cta"
+      <a href="#" class="programs__popover-cta"
         >Записаться на занятие
         <svg
           viewBox="0 0 24 24"
@@ -1986,9 +1999,9 @@
       </a>
     </div>
 
-    <div id="popover-7" class="info-popover" popover>
+    <div id="popover-7" class="programs__popover" popover>
       <button
-        class="popover-close"
+        class="programs__popover-close"
         popovertarget="popover-7"
         popovertargetaction="hide"
         aria-label="Close"
@@ -2003,14 +2016,16 @@
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       </button>
-      <h2 class="popover-title">Гимнастические элементы<br />Акробатика</h2>
-      <p class="popover-body">
+      <h2 class="programs__popover-title">
+        Гимнастические элементы<br />Акробатика
+      </h2>
+      <p class="programs__popover-body">
         Занятие подойдет тем, кто давно хотел перевернуть всё с ног на голову.
         На тренировке мы будем изучать стойки на руках и партерную акробатику.
         Вам потребуется тренировочный опыт, чтобы чувствовать себя комфортно на
         занятии.
       </p>
-      <a href="#" class="popover-cta"
+      <a href="#" class="programs__popover-cta"
         >Записаться на занятие
         <svg
           viewBox="0 0 24 24"
@@ -2023,9 +2038,9 @@
       </a>
     </div>
 
-    <div id="popover-8" class="info-popover" popover>
+    <div id="popover-8" class="programs__popover" popover>
       <button
-        class="popover-close"
+        class="programs__popover-close"
         popovertarget="popover-8"
         popovertargetaction="hide"
         aria-label="Close"
@@ -2040,16 +2055,16 @@
           <line x1="6" y1="6" x2="18" y2="18" />
         </svg>
       </button>
-      <h2 class="popover-title">
+      <h2 class="programs__popover-title">
         Гимнастические элементы<br />Вертикальные шпагаты
       </h2>
-      <p class="popover-body">
+      <p class="programs__popover-body">
         Занятие подойдет тем, кто хочет и уже готов поднимать ноги выше головы.
         На тренировке мы будем изучать разнообразные элементы художественной
         гимнастики и углубленно работать над амплитудой движения. Вы готовы к
         этому, если у Вас уже есть опыт.
       </p>
-      <a href="#" class="popover-cta"
+      <a href="#" class="programs__popover-cta"
         >Записаться на занятие
         <svg
           viewBox="0 0 24 24"

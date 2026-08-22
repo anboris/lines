@@ -4,7 +4,7 @@
   const prevBtn = document.getElementById("prevBtn");
   const nextBtn = document.getElementById("nextBtn");
   const dotsContainer = document.getElementById("paginationDots");
-  const cards = track.querySelectorAll(".card");
+  const cards = track.querySelectorAll(".programs__card");
   const totalCards = cards.length;
 
   let currentIndex = 0;
@@ -18,7 +18,8 @@
     dotsContainer.innerHTML = "";
     for (let i = 0; i <= maxIndex; i++) {
       const dot = document.createElement("button");
-      dot.className = "dot" + (i === 0 ? " active" : "");
+      dot.className =
+        "programs__dot" + (i === 0 ? " programs__dot--active" : "");
       dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
       dot.addEventListener("click", () => goToSlide(i));
       dotsContainer.appendChild(dot);
@@ -47,7 +48,7 @@
 
     if (dots.length !== maxIndex + 1) {
       createDots();
-      dots = dotsContainer.querySelectorAll(".dot");
+      dots = dotsContainer.querySelectorAll(".programs__dot");
     }
 
     return maxIndex;
@@ -81,9 +82,9 @@
     nextBtn.disabled = currentIndex >= maxIndex;
 
     if (dots.length > 0) {
-      dots.forEach((dot, i) =>
-        dot.classList.toggle("active", i === currentIndex),
-      );
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("programs__dot--active", i === currentIndex);
+      });
     }
   }
 
