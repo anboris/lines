@@ -3,13 +3,14 @@
 /* HERO */
 .hero {
   position: relative;
-  inline-size: 100%;
-  min-block-size: 100dvh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
-  overflow: clip;
+  overflow: hidden;
+  border: 4px solid red;
 }
 
+/* Background: FULL WIDTH */
 .hero__media {
   position: absolute;
   inset: 0;
@@ -17,15 +18,16 @@
 }
 
 .hero__image {
-  inline-size: 100%;
-  block-size: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: center 30%;
+  display: block;
 }
 
 .hero__overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: linear-gradient(
     to right,
     rgba(0, 0, 0, 0.45) 0,
@@ -34,13 +36,17 @@
   );
 }
 
+/* Content: SAME WIDTH AS OTHER SECTIONS */
 .hero__content {
   position: relative;
-  z-index: 1;
-  max-inline-size: 1200px;
-  inline-size: 100%;
-  margin-inline: auto;
-  padding: 120px 24px 80px;
+  z-index: 2;
+  width: 100%;
+  padding-block: 120px 80px;
+}
+
+/* This is the KEY: hero content uses the same container */
+.hero__content .container {
+  padding-inline: var(--padding-inline);
 }
 
 .hero__text {
