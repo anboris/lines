@@ -1,3 +1,7 @@
+@custom-media --tablet (min-width: 768px);
+@custom-media --desktop (min-width: 1200px);
+@custom-media --motion-reduce (prefers-reduced-motion: reduce);
+
 :root {
   --content-width: 1000px;
   --padding-inline: 20px;

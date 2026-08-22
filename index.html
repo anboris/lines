@@ -80,37 +80,63 @@
     </header>
 
     <!-- ===== HERO SECTION ===== -->
-    <section class="hero" id="hero">
+    <section class="hero" id="hero" aria-labelledby="hero-main-title">
       <div class="hero__media">
-        <img
-          src="images/hero.png"
-          alt="Yoga and stretching"
-          class="hero__image"
-          loading="eager"
-        />
-        <div class="hero__overlay"></div>
+        <picture class="hero__picture">
+          <!-- Mobile: 480px and below -->
+          <source
+            media="(max-width: 480px)"
+            srcset="images/hero-mobile.webp"
+            type="image/webp"
+          />
+
+          <!-- Tablet: 481px - 768px -->
+          <source
+            media="(max-width: 768px)"
+            srcset="images/hero-tablet.webp"
+            type="image/webp"
+          />
+
+          <!-- Desktop Extra Range: 769px - 1200px -->
+          <source
+            media="(max-width: 1200px)"
+            srcset="images/hero-desktop.webp"
+            type="image/webp"
+          />
+
+          <!-- Fallback / Large Desktop (>1200px) -->
+          <img
+            src="images/hero.jpg"
+            alt="Светлый зал фитнес-студии для йоги и растяжки"
+            class="hero__image"
+            loading="eager"
+            fetchpriority="high"
+            decoding="sync"
+          />
+        </picture>
+        <div class="hero__overlay" aria-hidden="true"></div>
       </div>
 
       <div class="hero__content">
         <div class="container">
           <div class="hero__text">
             <p class="hero__kicker">фитнес-студия</p>
-            <h1 class="hero__title">Пространство осознанного движения</h1>
-            <p class="hero__subtitle"></p>
+            <h1 class="hero__title" id="hero-main-title">
+              Пространство осознанного движения
+            </h1>
 
             <!-- Promo Badge -->
-            <div class="hero__promo">
+            <aside class="hero__promo" aria-label="Специальное предложение">
               <div class="hero__promo-inner">
                 <span class="hero__promo-label">Пробное занятие</span>
                 <div class="hero__promo-pricing">
-                  <!-- <span class="hero__promo-price-old">1 500 ₽</span> -->
                   <span class="hero__promo-price-new">800 ₽</span>
                 </div>
-                <span class="hero__promo-condition"
-                  >или бесплатно при покупке абонемента в день тренировки</span
-                >
+                <p class="hero__promo-condition">
+                  или бесплатно при покупке абонемента в день тренировки
+                </p>
               </div>
-            </div>
+            </aside>
 
             <div class="hero__actions">
               <a href="#contacts" class="hero__btn hero__btn--primary"

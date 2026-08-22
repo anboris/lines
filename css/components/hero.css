@@ -10,17 +10,23 @@
   border: 4px solid red;
 }
 
-/* Background: FULL WIDTH */
 .hero__media {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
+.hero__picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .hero__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 50%; /* Mobile default focal point */
   display: block;
 }
 
@@ -246,5 +252,17 @@
 
   .hero__promo-condition {
     font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__image {
+    object-position: center 40%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__image {
+    object-position: center 50%;
   }
 }
