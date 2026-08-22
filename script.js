@@ -334,7 +334,7 @@
   let ticking = false;
 
   function updateHeader() {
-    header.classList.toggle("scrolled", window.scrollY > 50);
+    header.classList.toggle("site-header--scrolled", window.scrollY > 50);
     ticking = false;
   }
 
@@ -871,7 +871,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // ===== MOBILE MENU: Close when link is clicked =====
 document.addEventListener("DOMContentLoaded", function () {
   const mobileMenu = document.getElementById("mobileMenu");
-  const mobileLinks = document.querySelectorAll(".mobile-link");
+  const mobileLinks = document.querySelectorAll(".mobile-menu__link");
 
   mobileLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
