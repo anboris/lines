@@ -1,5 +1,4 @@
 /* HEADER */
-
 .site-header {
   position: fixed;
   inset-inline: 0;
@@ -13,59 +12,63 @@
     transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
-.site-header.scrolled {
+.site-header--scrolled {
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
 }
 
-.site-header.hidden {
+.site-header--hidden {
   transform: translateY(-100%);
 }
 
-.main-nav,
-.nav-logo {
+.nav {
   display: flex;
   align-items: center;
-}
-
-.main-nav {
   max-inline-size: 1200px;
   margin-inline: auto;
   justify-content: space-between;
 }
 
-.nav-logo {
+.nav__logo {
+  display: flex;
+  align-items: center;
   gap: 10px;
   text-decoration: none;
   color: #fff;
   transition: color 0.3s ease;
 }
 
-.scrolled .nav-link,
-.scrolled .nav-logo {
+.site-header--scrolled .nav__logo {
   color: #1d1d1f;
 }
 
-.logo-svg {
-  inline-size: 32px;
-  block-size: 32px;
+.nav__logo-image {
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+  inline-size: auto;
+  block-size: 20px;
+  display: block;
 }
 
-.logo-text {
+.site-header--scrolled .nav__logo-image {
+  filter: none;
+}
+
+.nav__logo-text {
   font-size: 20px;
   font-weight: 600;
   letter-spacing: -0.02em;
 }
 
-.nav-desktop {
+.nav__desktop {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.nav-link {
+.nav__link {
   padding: 10px 14px;
   border-radius: 100px;
   text-decoration: none;
@@ -75,37 +78,41 @@
   transition: all 0.2s ease;
 }
 
-.nav-link:hover {
+.nav__link:hover {
   background: rgba(255, 255, 255, 0.15);
   color: #fff;
 }
 
-.scrolled .nav-link:hover {
+.site-header--scrolled .nav__link {
+  color: #1d1d1f;
+}
+
+.site-header--scrolled .nav__link:hover {
   background: rgba(0, 0, 0, 0.05);
   color: #1d1d1f;
 }
 
-.nav-cta {
+.nav__link--cta {
   background: #fff;
   color: #1d1d1f !important;
   padding: 10px 24px;
 }
 
-.scrolled .nav-cta {
-  background: #1d1d1f;
-  color: #fff !important;
-}
-
-.nav-cta:hover {
+.nav__link--cta:hover {
   transform: scale(1.05);
   background: rgba(255, 255, 255, 0.9) !important;
 }
 
-.scrolled .nav-cta:hover {
+.site-header--scrolled .nav__link--cta {
+  background: #1d1d1f;
+  color: #fff !important;
+}
+
+.site-header--scrolled .nav__link--cta:hover {
   background: #333 !important;
 }
 
-.nav-mobile-toggle {
+.nav__toggle {
   display: none;
   flex-direction: column;
   gap: 5px;
@@ -116,7 +123,7 @@
   z-index: 1001;
 }
 
-.hamburger-line {
+.nav__toggle-line {
   display: block;
   inline-size: 24px;
   block-size: 2px;
@@ -126,7 +133,7 @@
   transform-origin: center;
 }
 
-.scrolled .hamburger-line {
+.site-header--scrolled .nav__toggle-line {
   background: #1d1d1f;
 }
 
@@ -161,7 +168,7 @@
   }
 }
 
-.mobile-menu-header {
+.mobile-menu__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -169,12 +176,12 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
-.mobile-menu-header .logo-text {
+.mobile-menu__logo-text {
   font-size: 22px;
   color: #1d1d1f;
 }
 
-.mobile-close {
+.mobile-menu__close {
   inline-size: 40px;
   block-size: 40px;
   border-radius: 50%;
@@ -187,18 +194,18 @@
   color: #1d1d1f;
 }
 
-.mobile-close:hover {
+.mobile-menu__close:hover {
   background: #e5e5ea;
 }
 
-.mobile-links {
+.mobile-menu__links {
   display: flex;
   flex-direction: column;
   padding: 24px;
   gap: 4px;
 }
 
-.mobile-link {
+.mobile-menu__link {
   padding: 16px 20px;
   border-radius: 16px;
   text-decoration: none;
@@ -208,45 +215,36 @@
   transition: background 0.2s ease;
 }
 
-.mobile-link:hover {
+.mobile-menu__link:hover {
   background: #f5f5f7;
 }
 
-.mobile-cta {
+.mobile-menu__link--cta {
   margin-block-start: 12px;
   background: #1d1d1f;
   color: #fff;
   text-align: center;
 }
 
-.mobile-cta:hover {
+.mobile-menu__link--cta:hover {
   background: #333;
 }
 
-.logo-img {
-  filter: brightness(0) invert(1);
-  transition: filter 0.3s ease;
-}
-
-.scrolled .logo-img {
-  filter: none;
-}
-
-.logo-img,
-.logo-img-mobile {
+.mobile-menu__logo-image {
   inline-size: auto;
   block-size: 20px;
   display: block;
 }
 
 @media (max-width: 768px) {
-  .nav-desktop {
+  .nav__desktop {
     display: none;
   }
 
-  .nav-mobile-toggle {
+  .nav__toggle {
     display: flex;
   }
+
   .site-header {
     padding-inline: 16px;
     padding-block: 12px;

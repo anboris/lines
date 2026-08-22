@@ -1,6 +1,7 @@
 /* HERO */
 
-.hero-section {
+/* HERO */
+.hero {
   position: relative;
   inline-size: 100%;
   min-block-size: 100dvh;
@@ -9,20 +10,20 @@
   overflow: clip;
 }
 
-.hero-image-wrapper {
+.hero__media {
   position: absolute;
   inset: 0;
   z-index: 0;
 }
 
-.hero-image {
+.hero__image {
   inline-size: 100%;
   block-size: 100%;
   object-fit: cover;
   object-position: center 30%;
 }
 
-.hero-overlay {
+.hero__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -33,7 +34,7 @@
   );
 }
 
-.hero-content {
+.hero__content {
   position: relative;
   z-index: 1;
   max-inline-size: 1200px;
@@ -42,12 +43,12 @@
   padding: 120px 24px 80px;
 }
 
-.hero-text {
+.hero__text {
   max-inline-size: 680px;
   color: #fff;
 }
 
-.hero-kicker {
+.hero__kicker {
   font-size: 14px;
   font-weight: 500;
   text-transform: uppercase;
@@ -56,7 +57,7 @@
   margin-block-end: 16px;
 }
 
-.hero-title {
+.hero__title {
   font-size: clamp(44px, 7vw, 80px);
   font-weight: 500;
   line-height: 1.05;
@@ -65,7 +66,7 @@
   text-wrap: balance;
 }
 
-.hero-subtitle {
+.hero__subtitle {
   font-size: clamp(16px, 1.8vw, 20px);
   line-height: 1.6;
   opacity: 0.85;
@@ -74,7 +75,7 @@
   text-wrap: pretty;
 }
 
-.hero-promo {
+.hero__promo {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
@@ -86,19 +87,19 @@
   transition: all 0.3s ease;
 }
 
-.hero-promo:hover {
+.hero__promo:hover {
   background: rgba(255, 255, 255, 0.14);
   border-color: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 
-.promo-badge-inner {
+.hero__promo-inner {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.promo-label {
+.hero__promo-label {
   font-size: 13px;
   font-weight: 500;
   text-transform: uppercase;
@@ -106,27 +107,27 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
-.promo-pricing {
+.hero__promo-pricing {
   display: flex;
   align-items: baseline;
   gap: 14px;
 }
 
-.promo-price-old {
+.hero__promo-price-old {
   font-size: 18px;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.4);
   text-decoration: line-through;
 }
 
-.promo-price-new {
+.hero__promo-price-new {
   font-size: 32px;
   font-weight: 600;
   color: #fff;
   letter-spacing: -0.02em;
 }
 
-.promo-condition {
+.hero__promo-condition {
   font-size: 14px;
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.4;
@@ -134,13 +135,13 @@
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.hero-actions {
+.hero__actions {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
 }
 
-.hero-btn {
+.hero__btn {
   padding: 14px 28px;
   border-radius: 100px;
   text-decoration: none;
@@ -152,63 +153,64 @@
   gap: 6px;
 }
 
-.hero-btn-primary {
+.hero__btn--primary {
   background: #fff;
   color: #1d1d1f;
 }
 
-.hero-btn-primary:hover {
+.hero__btn--primary:hover {
   transform: scale(1.04);
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
-.hero-btn-secondary {
+.hero__btn--secondary {
   background: rgba(255, 255, 255, 0.12);
   color: #fff;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-.hero-btn-secondary:hover {
+.hero__btn--secondary:hover {
   background: rgba(255, 255, 255, 0.22);
   transform: scale(1.04);
 }
+
 @media (max-width: 768px) {
-  .hero-content {
+  .hero__content {
     padding: 100px 20px 60px;
     display: flex;
     align-items: flex-end;
   }
 
-  .hero-text {
+  .hero__text {
     max-inline-size: 100%;
   }
 
-  .hero-title {
+  .hero__title {
     font-size: clamp(32px, 10vw, 48px);
   }
 
-  .hero-promo {
+  .hero__promo {
     padding: 16px 20px;
     max-inline-size: 100%;
   }
 
-  .promo-price-new {
+  .hero__promo-price-new {
     font-size: 26px;
   }
 
-  .hero-actions {
+  .hero__actions {
     flex-direction: column;
     width: 100%;
   }
 
-  .hero-btn {
+  .hero__btn {
     width: 100%;
     justify-content: center;
   }
 
-  .hero-overlay {
+  .hero__overlay {
     background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.3) 0,
@@ -219,24 +221,24 @@
 }
 
 @media (max-width: 480px) {
-  .hero-promo {
+  .hero__promo {
     padding: 14px 16px;
     border-radius: 16px;
   }
 
-  .promo-pricing {
+  .hero__promo-pricing {
     gap: 10px;
   }
 
-  .promo-price-old {
+  .hero__promo-price-old {
     font-size: 15px;
   }
 
-  .promo-price-new {
+  .hero__promo-price-new {
     font-size: 22px;
   }
 
-  .promo-condition {
+  .hero__promo-condition {
     font-size: 12px;
   }
 }
