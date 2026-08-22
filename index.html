@@ -752,16 +752,16 @@
       </div>
     </section>
     <!-- ===== PRICING SECTION ===== -->
-    <section class="pricing-section" id="pricing">
-      <span class="section-badge">абонементы</span>
-      <h2 class="section-headline">Выберите формат занятий</h2>
-      <p class="section-description">
+    <section class="pricing" id="pricing">
+      <span class="pricing__badge">абонементы</span>
+      <h2 class="pricing__title">Выберите формат занятий</h2>
+      <p class="pricing__description">
         Гибкая система тренировок — от разовых посещений до абонементов с
         выбором пакета
       </p>
 
       <!-- TABS -->
-      <div class="pricing-tabs" role="tablist">
+      <div class="pricing__tabs" role="tablist">
         <button
           class="pricing-tab active"
           role="tab"
@@ -789,21 +789,21 @@
       </div>
 
       <!-- PANES -->
-      <div class="pricing-panes">
+      <div class="pricing__panes">
         <!-- ============================================================ -->
         <!-- PANE 1: ГРУППОВЫЕ ТРЕНИРОВКИ -->
         <!-- ============================================================ -->
         <div class="pricing-pane" id="pane-group" role="tabpanel">
-          <div class="price-grid">
+          <div class="pricing__grid">
             <!-- Card: Дневной -->
-            <div class="price-card">
-              <span class="badge">Будни до 17:00</span>
-              <div class="price-name">Дневной</div>
-              <div class="price-desc">
+            <div class="pricing__card">
+              <span class="pricing__card-badge">Будни до 17:00</span>
+              <div class="pricing__card-name">Дневной</div>
+              <div class="pricing__card-desc">
                 Для тех, кто тренируется утром и днем
               </div>
 
-              <div class="workout-selector">
+              <div class="pricing__workout-selector">
                 <label for="day-sessions">Количество тренировок:</label>
                 <select id="day-sessions" onchange="updatePrice(this, 'day')">
                   <option value="4400" data-per-class="1100">
@@ -821,14 +821,16 @@
                 </select>
               </div>
 
-              <div class="price-display">
-                <div class="price-amount" id="day-price">4 400 ₽</div>
-                <div class="price-period" id="day-per-class">
+              <div class="pricing__display">
+                <div class="pricing__display-amount" id="day-price">
+                  4 400 ₽
+                </div>
+                <div class="pricing__display-period" id="day-per-class">
                   1 100 ₽ / занятие
                 </div>
               </div>
 
-              <ul class="price-features">
+              <ul class="pricing__features">
                 <li>1.5 часа комплексаня тренировка</li>
                 <li>1 час другие направления</li>
                 <li>
@@ -837,7 +839,7 @@
                 </li>
               </ul>
               <button
-                class="price-btn"
+                class="pricing__btn"
                 onclick="
                   document
                     .getElementById('contacts')
@@ -849,12 +851,14 @@
             </div>
 
             <!-- Card: Комплексный (Featured) -->
-            <div class="price-card featured">
-              <span class="badge popular">11:00 – 22:00</span>
-              <div class="price-name">Комплексный</div>
-              <div class="price-desc">Все направления и тренеры</div>
+            <div class="pricing__card pricing__card--featured">
+              <span class="pricing__card-badge pricing__card-badge--popular"
+                >11:00 – 22:00</span
+              >
+              <div class="pricing__card-name">Комплексный</div>
+              <div class="pricing__card-desc">Все направления и тренеры</div>
 
-              <div class="workout-selector">
+              <div class="pricing__workout-selector">
                 <label for="complex-sessions">Пакет услуг:</label>
                 <select
                   id="complex-sessions"
@@ -890,20 +894,22 @@
                 </select>
               </div>
 
-              <div class="price-display">
-                <div class="price-amount" id="complex-price">5 200 ₽</div>
-                <div class="price-period" id="complex-per-class">
+              <div class="pricing__display">
+                <div class="pricing__display-amount" id="complex-price">
+                  5 200 ₽
+                </div>
+                <div class="pricing__display-period" id="complex-per-class">
                   1 300 ₽ / занятие
                 </div>
               </div>
 
-              <ul class="price-features">
+              <ul class="pricing__features">
                 <li>Полный доступ без ограничений</li>
                 <li>1.5 часа комлексаная тренировка</li>
                 <li>1 час другие направления</li>
               </ul>
               <button
-                class="price-btn"
+                class="pricing__btn"
                 onclick="
                   document
                     .getElementById('contacts')
@@ -915,14 +921,14 @@
             </div>
 
             <!-- Card: Студенческий -->
-            <div class="price-card">
-              <span class="badge">11:00 – 19:00</span>
-              <div class="price-name">Студенческий</div>
-              <div class="price-desc">
+            <div class="pricing__card">
+              <span class="pricing__card-badge">11:00 – 19:00</span>
+              <div class="pricing__card-name">Студенческий</div>
+              <div class="pricing__card-desc">
                 Скидки для студентов дневного отделения
               </div>
 
-              <div class="workout-selector">
+              <div class="pricing__workout-selector">
                 <label for="student-sessions">Пакет услуг:</label>
                 <select
                   id="student-sessions"
@@ -958,20 +964,22 @@
                 </select>
               </div>
 
-              <div class="price-display">
-                <div class="price-amount" id="student-price">4 420 ₽</div>
-                <div class="price-period" id="student-per-class">
+              <div class="pricing__display">
+                <div class="pricing__display-amount" id="student-price">
+                  4 420 ₽
+                </div>
+                <div class="pricing__display-period" id="student-per-class">
                   1 105 ₽ / занятие
                 </div>
               </div>
 
-              <ul class="price-features">
+              <ul class="pricing__features">
                 <li>Обязательно предъявление студенческого билета</li>
                 <li>1.5 часа комлексаная тренировка</li>
                 <li>1 час другие направления</li>
               </ul>
               <button
-                class="price-btn"
+                class="pricing__btn"
                 onclick="
                   document
                     .getElementById('contacts')
@@ -987,20 +995,19 @@
         <!-- ============================================================ -->
         <!-- PANE 2: ИНДИВИДУАЛЬНЫЕ ТРЕНИРОВКИ -->
         <!-- ============================================================ -->
-        <!-- PRIVATE TRAINING CARDS -->
         <div class="pricing-pane" id="pane-individual" role="tabpanel">
-          <div class="price-grid">
+          <div class="pricing__grid pricing__grid--private">
             <!-- CARD 1: Персональная тренировка (1-on-1) -->
-            <div class="price-card featured">
-              <span class="badge">Максимум внимания</span>
-              <div class="price-name">
-                Персонально <span class="small-tag">1-на-1</span>
+            <div class="pricing__card pricing__card--featured">
+              <span class="pricing__card-badge">Максимум внимания</span>
+              <div class="pricing__card-name">
+                Персонально <span class="pricing__small-tag">1-на-1</span>
               </div>
-              <div class="price-desc">
+              <div class="pricing__card-desc">
                 Индивидуальная программа для наилучшего результата
               </div>
 
-              <div class="workout-selector">
+              <div class="pricing__workout-selector">
                 <label for="private-sessions">Количество занятий:</label>
                 <select
                   id="private-sessions"
@@ -1021,19 +1028,21 @@
                 </select>
               </div>
 
-              <div class="price-display">
-                <div class="price-amount" id="private-price">2 900 ₽</div>
-                <div class="price-period" id="private-per-class">
+              <div class="pricing__display">
+                <div class="pricing__display-amount" id="private-price">
+                  2 900 ₽
+                </div>
+                <div class="pricing__display-period" id="private-per-class">
                   2 900 ₽ / занятие
                 </div>
               </div>
 
-              <ul class="price-features">
+              <ul class="pricing__features">
                 <li>Продолжительность: 1 час</li>
                 <li>Найдем идеальное время для вашей тренировки</li>
               </ul>
               <button
-                class="price-btn primary-btn"
+                class="pricing__btn pricing__btn--primary"
                 onclick="
                   document
                     .getElementById('contacts')
@@ -1045,16 +1054,18 @@
             </div>
 
             <!-- CARD 2: Сплит-тренировка (2-on-1) -->
-            <div class="price-card">
-              <span class="badge popular">Для двоих</span>
-              <div class="price-name">
-                Сплит <span class="small-tag">2-на-1</span>
+            <div class="pricing__card">
+              <span class="pricing__card-badge pricing__card-badge--popular"
+                >Для двоих</span
+              >
+              <div class="pricing__card-name">
+                Сплит <span class="pricing__small-tag">2-на-1</span>
               </div>
-              <div class="price-desc">
+              <div class="pricing__card-desc">
                 Тренируйтесь в паре с подругой, партнёром или коллегой
               </div>
 
-              <div class="workout-selector">
+              <div class="pricing__workout-selector">
                 <label for="split-sessions">Количество занятий:</label>
                 <select
                   id="split-sessions"
@@ -1075,19 +1086,21 @@
                 </select>
               </div>
 
-              <div class="price-display">
-                <div class="price-amount" id="split-price">3 900 ₽</div>
-                <div class="price-period" id="split-per-class">
+              <div class="pricing__display">
+                <div class="pricing__display-amount" id="split-price">
+                  3 900 ₽
+                </div>
+                <div class="pricing__display-period" id="split-per-class">
                   1 950 ₽ за человека
                 </div>
               </div>
 
-              <ul class="price-features">
+              <ul class="pricing__features">
                 <li>Продолжительность: 1 час</li>
                 <li>Цена указана за двоих человек одновременно</li>
               </ul>
               <button
-                class="price-btn"
+                class="pricing__btn"
                 onclick="
                   document
                     .getElementById('contacts')
@@ -1104,28 +1117,32 @@
         <!-- PANE 3: РАЗОВОЕ ЗАНЯТИЕ -->
         <!-- ============================================================ -->
         <div class="pricing-pane active" id="pane-single" role="tabpanel">
-          <div class="price-grid">
+          <div class="pricing__grid">
             <!-- CARD 1: Пробная тренировка -->
-            <div class="price-card trial-card">
-              <span class="badge startup">Первый визит</span>
-              <div class="price-name">Пробное занятие</div>
-              <div class="price-desc">
+            <div class="pricing__card pricing__card--trial">
+              <span class="pricing__card-badge pricing__card-badge--startup"
+                >Первый визит</span
+              >
+              <div class="pricing__card-name">Пробное занятие</div>
+              <div class="pricing__card-desc">
                 Знакомство со студией, тренерами и направлениями
               </div>
 
-              <div class="price-display">
-                <div class="price-amount">800 ₽</div>
-                <div class="price-period promo">
+              <div class="pricing__display">
+                <div class="pricing__display-amount">800 ₽</div>
+                <div
+                  class="pricing__display-period pricing__display-period--promo"
+                >
                   Бесплатно при покупке абонемента!
                 </div>
               </div>
 
-              <ul class="price-features">
+              <ul class="pricing__features">
                 <li>60–90 минут тренировки в зависимости от направления</li>
                 <li>Индивидуальные рекомендации тренера</li>
               </ul>
               <button
-                class="price-btn primary-btn"
+                class="pricing__btn pricing__btn--primary"
                 onclick="
                   document
                     .getElementById('contacts')
@@ -1137,24 +1154,28 @@
             </div>
 
             <!-- CARD 2: Пробная неделя (FEATURED HOOK) -->
-            <div class="price-card featured trial-card">
-              <span class="badge popular">Хит для новичков</span>
-              <div class="price-name">Пробная неделя</div>
-              <div class="price-desc">
+            <div
+              class="pricing__card pricing__card--featured pricing__card--trial"
+            >
+              <span class="pricing__card-badge pricing__card-badge--popular"
+                >Хит для новичков</span
+              >
+              <div class="pricing__card-name">Пробная неделя</div>
+              <div class="pricing__card-desc">
                 Для тех кто хочет познакомиться поближе
               </div>
 
-              <div class="price-display">
-                <div class="price-amount">3 000 ₽</div>
-                <div class="price-period">7 дней для знакомства</div>
+              <div class="pricing__display">
+                <div class="pricing__display-amount">3 000 ₽</div>
+                <div class="pricing__display-period">7 дней для знакомства</div>
               </div>
 
-              <ul class="price-features">
+              <ul class="pricing__features">
                 <li>Включает 3 групповых занятия по различным направлениям</li>
                 <li>Действует 7 дней с момента активации</li>
               </ul>
               <button
-                class="price-btn primary-btn"
+                class="pricing__btn pricing__btn--primary"
                 onclick="
                   document
                     .getElementById('contacts')
@@ -1166,22 +1187,22 @@
             </div>
 
             <!-- CARD 3: Разовая тренировка -->
-            <div class="price-card trial-card">
-              <span class="badge">Без обязательств</span>
-              <div class="price-name">Разовый визит</div>
-              <div class="price-desc">Для тех чья жизнь спонтанна</div>
+            <div class="pricing__card pricing__card--trial">
+              <span class="pricing__card-badge">Без обязательств</span>
+              <div class="pricing__card-name">Разовый визит</div>
+              <div class="pricing__card-desc">Для тех чья жизнь спонтанна</div>
 
-              <div class="price-display">
-                <div class="price-amount">1 500 ₽</div>
-                <div class="price-period">Оплата за один визит</div>
+              <div class="pricing__display">
+                <div class="pricing__display-amount">1 500 ₽</div>
+                <div class="pricing__display-period">Оплата за один визит</div>
               </div>
 
-              <ul class="price-features">
+              <ul class="pricing__features">
                 <li>Любое время: с 11:00 до 22:00</li>
                 <li>1 200 ₽ в дневное время (до 17:00)</li>
               </ul>
               <button
-                class="price-btn"
+                class="pricing__btn"
                 onclick="
                   document
                     .getElementById('contacts')
@@ -1195,7 +1216,6 @@
         </div>
       </div>
     </section>
-
     <!-- ===== FAQ SECTION ===== -->
     <section class="faq-section" id="faq">
       <div class="faq-container">
