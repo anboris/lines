@@ -1217,22 +1217,22 @@
       </div>
     </section>
     <!-- ===== FAQ SECTION ===== -->
-    <section class="faq-section" id="faq">
-      <div class="faq-container">
-        <span class="section-badge">FAQ</span>
-        <h2 class="section-headline">Частые вопросы</h2>
-        <p class="section-description">
+    <section class="faq" id="faq">
+      <div class="faq__container">
+        <span class="faq__badge">FAQ</span>
+        <h2 class="faq__title">Частые вопросы</h2>
+        <p class="faq__description">
           Ответы на самые популярные вопросы о тренировках, возрасте, стеснении
           и прогрессе
         </p>
 
-        <div class="faq-list">
+        <div class="faq__list">
           <!-- Item 1 -->
-          <details class="faq-item" name="faq-group">
-            <summary class="faq-summary">
-              <span class="faq-number">01</span>
-              <span class="faq-question">Когда я сяду на шпагат?</span>
-              <span class="faq-icon" aria-hidden="true">
+          <details class="faq__item" name="faq-group">
+            <summary class="faq__summary">
+              <span class="faq__number">01</span>
+              <span class="faq__question">Когда я сяду на шпагат?</span>
+              <span class="faq__icon" aria-hidden="true">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -1245,7 +1245,7 @@
                 </svg>
               </span>
             </summary>
-            <div class="faq-answer">
+            <div class="faq__answer">
               <p>
                 К сожалению, точного ответа на этот вопрос дать невозможно.
                 Прогресс растяжки очень индивидуален и зависит от множества
@@ -1259,13 +1259,13 @@
           </details>
 
           <!-- Item 2 -->
-          <details class="faq-item" name="faq-group">
-            <summary class="faq-summary">
-              <span class="faq-number">02</span>
-              <span class="faq-question"
+          <details class="faq__item" name="faq-group">
+            <summary class="faq__summary">
+              <span class="faq__number">02</span>
+              <span class="faq__question"
                 >Есть ли смысл начинать тренироваться, если мне уже 30+?</span
               >
-              <span class="faq-icon" aria-hidden="true">
+              <span class="faq__icon" aria-hidden="true">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -1278,7 +1278,7 @@
                 </svg>
               </span>
             </summary>
-            <div class="faq-answer">
+            <div class="faq__answer">
               <p>
                 Разумеется! 30+, 40+ и даже 70+! Смысл начать тренировки есть
                 всегда. И да, результат будет, если тренироваться регулярно.
@@ -1288,14 +1288,14 @@
           </details>
 
           <!-- Item 3 -->
-          <details class="faq-item" name="faq-group">
-            <summary class="faq-summary">
-              <span class="faq-number">03</span>
-              <span class="faq-question"
+          <details class="faq__item" name="faq-group">
+            <summary class="faq__summary">
+              <span class="faq__number">03</span>
+              <span class="faq__question"
                 >Подойдут ли мне тренировки в вашей студии, если я никогда ничем
                 не занималась?</span
               >
-              <span class="faq-icon" aria-hidden="true">
+              <span class="faq__icon" aria-hidden="true">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -1308,7 +1308,7 @@
                 </svg>
               </span>
             </summary>
-            <div class="faq-answer">
+            <div class="faq__answer">
               <p>
                 Да, в нашей студии проходят тренировки, подходящие под любой
                 уровень подготовки. Главное начать, а мы поможем Вам подобрать
@@ -1319,13 +1319,13 @@
           </details>
 
           <!-- Item 4 -->
-          <details class="faq-item" name="faq-group">
-            <summary class="faq-summary">
-              <span class="faq-number">04</span>
-              <span class="faq-question"
+          <details class="faq__item" name="faq-group">
+            <summary class="faq__summary">
+              <span class="faq__number">04</span>
+              <span class="faq__question"
                 >Что делать, если я стесняюсь и боюсь начать?</span
               >
-              <span class="faq-icon" aria-hidden="true">
+              <span class="faq__icon" aria-hidden="true">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -1338,7 +1338,7 @@
                 </svg>
               </span>
             </summary>
-            <div class="faq-answer">
+            <div class="faq__answer">
               <p>
                 Стеснение и страх — это абсолютно нормально, особенно, если Вы
                 давно не тренировались или только начинаете свой путь. Начните с
@@ -1353,26 +1353,30 @@
         </div>
       </div>
     </section>
-
     <!-- ===== STUDIO SECTION ===== -->
-    <section class="studio-section" id="studio">
-      <div class="studio-container">
-        <span class="section-badge">Студия</span>
-        <h2 class="section-headline">Мы рядом</h2>
-        <p class="section-description">
+    <section class="studio" id="studio">
+      <div class="studio__container">
+        <span class="studio__badge">Студия</span>
+        <h2 class="studio__title">Мы рядом</h2>
+        <p class="studio__description">
           Уютное пространство в центре Петербурга
         </p>
 
-        <div class="studio-layout">
+        <div class="studio__layout">
           <!-- Photo Block with Working Hours & Phone Pills -->
-          <div class="studio-card studio-photo">
-            <img src="images/studio.png" alt="Интерьер студии" loading="lazy" />
-            <div class="studio-pills studio-pills-bottom">
+          <div class="studio__card studio__card--photo">
+            <img
+              src="images/studio.png"
+              alt="Интерьер студии"
+              class="studio__card-image"
+              loading="lazy"
+            />
+            <div class="studio__pills studio__pills--bottom">
               <a
                 href="https://yandex.ru/maps/-/CTs6NL~x"
                 target="_blank"
                 rel="noopener"
-                class="studio-pill studio-pill-link"
+                class="studio__pill studio__pill--link"
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -1390,7 +1394,7 @@
                 <span>Невский 160</span>
               </a>
 
-              <div class="studio-pill">
+              <div class="studio__pill">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"
@@ -1407,9 +1411,9 @@
             </div>
           </div>
 
-          <!-- Map Block with Address Pill -->
-          <div class="studio-card studio-map">
-            <div class="studio-map-wrapper">
+          <!-- Map Block -->
+          <div class="studio__card studio__card--map">
+            <div class="studio__map-wrapper">
               <iframe
                 src="https://yandex.ru/map-widget/v1/?ll=30.376289%2C59.927134&z=17&pt=30.376289%2C59.927134%2Cflag&l=map"
                 width="100%"
@@ -1417,10 +1421,10 @@
                 frameborder="0"
                 allowfullscreen="true"
                 loading="lazy"
-                class="studio-map-iframe"
+                class="studio__map-iframe"
                 title="Карта студии на Яндекс.Картах"
               ></iframe>
-              <div class="studio-map-overlay"></div>
+              <div class="studio__map-overlay"></div>
             </div>
           </div>
         </div>
@@ -1428,20 +1432,20 @@
     </section>
 
     <!-- ===== COMMUNITY PROMO BLOCK ===== -->
-    <div class="community-promo-wrapper">
-      <div class="community-promo">
-        <div class="community-promo-content">
-          <span class="community-pill">Присоединяйтесь к сообществу</span>
+    <div class="community">
+      <div class="community__promo">
+        <div class="community__content">
+          <span class="community__pill">Присоединяйтесь к сообществу</span>
           <strong>Движение продолжается за пределами студии</strong>
           <p>
             Мы создали пространство для общения, где делимся знаниями, полезными
             материалами, новостями студии и вдохновением.
           </p>
         </div>
-        <div class="community-buttons">
+        <div class="community__buttons">
           <a
             href="https://t.me/linesplace"
-            class="community-btn"
+            class="community__btn"
             target="_blank"
             rel="noopener"
           >
@@ -1454,7 +1458,7 @@
           </a>
           <a
             href="https://vk.ru/linesplace"
-            class="community-btn"
+            class="community__btn"
             target="_blank"
             rel="noopener"
           >

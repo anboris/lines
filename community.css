@@ -1,10 +1,10 @@
 /* COMMUNITY */
-.community-promo-wrapper {
+.community {
   background: 0 0;
   padding-inline: 20px;
 }
 
-.community-promo {
+.community__promo {
   max-inline-size: 1000px;
   margin-inline: auto;
   display: flex;
@@ -21,12 +21,12 @@
   overflow: hidden;
 }
 
-.community-promo-content {
+.community__content {
   flex: 1;
   min-width: 240px;
 }
 
-.community-pill {
+.community__pill {
   display: inline-block;
   font-size: 13px;
   font-weight: 600;
@@ -39,7 +39,7 @@
   margin-block-end: 12px;
 }
 
-.community-promo-content strong {
+.community__content strong {
   display: block;
   font-size: clamp(22px, 2.8vw, 32px);
   font-weight: 550;
@@ -50,7 +50,7 @@
   padding-right: 1rem;
 }
 
-.community-promo-content p {
+.community__content p {
   font-size: clamp(15px, 1.4vw, 17px);
   line-height: 1.6;
   color: #6e6e73;
@@ -58,14 +58,14 @@
   max-width: 600px;
 }
 
-.community-buttons {
+.community__buttons {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
   flex-shrink: 0;
 }
 
-.community-btn {
+.community__btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -82,65 +82,65 @@
   cursor: pointer;
 }
 
-.community-btn svg {
+.community__btn svg {
   width: 18px;
   height: 18px;
   flex-shrink: 0;
 }
 
-.community-btn:hover {
+.community__btn:hover {
   transform: scale(1.05);
 }
 
-.community-btn:active {
+.community__btn:active {
   transform: scale(0.97);
 }
 
 @media (max-width: 820px) {
-  .community-promo {
+  .community__promo {
     flex-direction: column;
     align-items: flex-start;
     gap: 24px;
     padding-block: 40px 32px;
   }
 
-  .community-promo-content p {
+  .community__content p {
     max-width: 100%;
   }
 
-  .community-buttons {
+  .community__buttons {
     width: 100%;
   }
 }
 
 @media (max-width: 480px) {
-  .community-promo {
+  .community__promo {
     padding-block: 32px 32px;
     padding-inline: 32px;
   }
 
-  .community-promo-content strong {
+  .community__content strong {
     font-size: 20px;
   }
 
-  .community-pill {
+  .community__pill {
     font-size: 11px;
     padding: 3px 12px;
   }
 
-  .community-btn {
+  .community__btn {
     padding: 8px 16px;
     font-size: 13px;
     flex: 1;
     justify-content: center;
   }
 
-  .community-btn svg {
+  .community__btn svg {
     width: 16px;
     height: 16px;
   }
 
-  .community-buttons {
+  .community__buttons {
     flex-direction: column;
   }
 }
