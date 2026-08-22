@@ -121,204 +121,202 @@
   }
 }
 
-@layer components {
-  .card {
-    flex: 0 0 calc((100% - 40px) / 3.5);
-    min-inline-size: 260px;
-    max-inline-size: 360px;
-    min-block-size: 600px;
-    border-radius: 24px;
-    overflow: clip;
-    position: relative;
-    box-shadow:
-      0 1px 3px rgba(0, 0, 0, 0.04),
-      0 4px 12px rgba(0, 0, 0, 0.04);
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
-    display: flex; /* ADD: for flex layout */
-    flex-direction: column; /* ADD */
-  }
+.card {
+  flex: 0 0 calc((100% - 40px) / 3.5);
+  min-inline-size: 260px;
+  max-inline-size: 360px;
+  min-block-size: 600px;
+  border-radius: 24px;
+  overflow: clip;
+  position: relative;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    0 4px 12px rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  display: flex; /* ADD: for flex layout */
+  flex-direction: column; /* ADD */
+}
 
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-  }
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
 
-  .card-image-wrapper {
-    position: absolute;
-    inset: 0;
-    inline-size: 100%;
-    block-size: 100%;
-    z-index: 0;
-  }
+.card-image-wrapper {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  z-index: 0;
+}
 
-  .card-image {
-    inline-size: 100%;
-    block-size: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.5s ease;
-  }
+.card-image {
+  inline-size: 100%;
+  block-size: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s ease;
+}
 
-  .card:hover .card-image {
-    transform: scale(1.03);
-  }
+.card:hover .card-image {
+  transform: scale(1.03);
+}
 
-  .card-svg {
-    inline-size: 100%;
-    block-size: 100%;
-    object-fit: cover;
-    opacity: 0.85;
-  }
+.card-svg {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+}
 
-  .card-content {
-    position: relative;
-    z-index: 1;
-    padding: 24px;
-    margin-block-start: 0;
-    background: linear-gradient(
-      to bottom,
-      rgba(93, 91, 90, 0.7) 0%,
-      rgba(93, 91, 90, 0.35) 40%,
-      rgba(93, 91, 90, 0) 100%
-    );
-    border-radius: 0 0 20px 20px;
-  }
+.card-content {
+  position: relative;
+  z-index: 1;
+  padding: 24px;
+  margin-block-start: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(93, 91, 90, 0.7) 0%,
+    rgba(93, 91, 90, 0.35) 40%,
+    rgba(93, 91, 90, 0) 100%
+  );
+  border-radius: 0 0 20px 20px;
+}
 
-  .card-kicker {
-    display: inline-block; /* Changed from block to inline-block */
-    padding: 4px 16px; /* Added padding for pill shape */
-    border-radius: 100px; /* Pill shape */
-    font-size: 13px; /* Slightly smaller for badge feel */
-    font-weight: 500; /* Medium weight */
-    letter-spacing: 0.04em; /* Slightly wider for badge */
-    text-transform: uppercase; /* Makes it look more like a badge */
-    line-height: 1.4;
-    color: rgba(255, 255, 255, 0.9);
-    background: rgba(255, 255, 255, 0.15); /* Translucent background */
-    backdrop-filter: blur(8px); /* Glass effect */
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
-    margin-block-end: 8px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-  }
-  .card-title {
-    font-size: 30px;
-    letter-spacing: -0.021em;
-    line-height: 36px;
-    font-weight: 500;
-    color: white;
-    margin-block-end: 12px;
-    text-shadow: 0 1px 2px rgba(21, 29, 22, 0.2);
-  }
+.card-kicker {
+  display: inline-block; /* Changed from block to inline-block */
+  padding: 4px 16px; /* Added padding for pill shape */
+  border-radius: 100px; /* Pill shape */
+  font-size: 13px; /* Slightly smaller for badge feel */
+  font-weight: 500; /* Medium weight */
+  letter-spacing: 0.04em; /* Slightly wider for badge */
+  text-transform: uppercase; /* Makes it look more like a badge */
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.15); /* Translucent background */
+  backdrop-filter: blur(8px); /* Glass effect */
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+  margin-block-end: 8px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+.card-title {
+  font-size: 30px;
+  letter-spacing: -0.021em;
+  line-height: 36px;
+  font-weight: 500;
+  color: white;
+  margin-block-end: 12px;
+  text-shadow: 0 1px 2px rgba(21, 29, 22, 0.2);
+}
 
-  .card-desc {
-    font-size: 16px;
-    letter-spacing: -0.011em;
-    line-height: 22px;
-    color: rgba(255, 255, 255, 1);
-    text-shadow: 0 1px 2px rgba(120, 156, 127, 0.25);
-  }
+.card-desc {
+  font-size: 16px;
+  letter-spacing: -0.011em;
+  line-height: 22px;
+  color: rgba(255, 255, 255, 1);
+  text-shadow: 0 1px 2px rgba(120, 156, 127, 0.25);
+}
 
-  .plus-btn {
-    position: absolute;
-    inset-block-end: 20px;
-    inset-inline-end: 20px;
-    inline-size: 36px;
-    block-size: 36px;
-    border-radius: 50%;
-    border: 1.5px solid rgba(255, 255, 255, 0.4); /* CHANGE: semi-transparent */
-    background: rgba(0, 0, 0, 0.3); /* CHANGE: dark translucent */
-    backdrop-filter: blur(8px); /* ADD: frosted glass */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 2;
-    transition: all 0.2s ease;
-    color: white; /* CHANGE */
-  }
+.plus-btn {
+  position: absolute;
+  inset-block-end: 20px;
+  inset-inline-end: 20px;
+  inline-size: 36px;
+  block-size: 36px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.4); /* CHANGE: semi-transparent */
+  background: rgba(0, 0, 0, 0.3); /* CHANGE: dark translucent */
+  backdrop-filter: blur(8px); /* ADD: frosted glass */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: all 0.2s ease;
+  color: white; /* CHANGE */
+}
 
-  .plus-btn:hover {
-    background: white;
-    border-color: white;
-    color: #1d1d1f;
-    transform: scale(1.1);
-  }
+.plus-btn:hover {
+  background: white;
+  border-color: white;
+  color: #1d1d1f;
+  transform: scale(1.1);
+}
 
-  .plus-btn svg {
-    inline-size: 14px;
-    block-size: 14px;
-  }
+.plus-btn svg {
+  inline-size: 14px;
+  block-size: 14px;
+}
 
-  .nav-arrow {
-    position: absolute;
-    inset-block-start: 50%;
-    transform: translateY(-50%);
-    inline-size: 44px;
-    block-size: 44px;
-    border-radius: 50%;
-    border: none;
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 10;
-    transition: all 0.2s ease;
-    color: #1d1d1f;
-  }
+.nav-arrow {
+  position: absolute;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  inline-size: 44px;
+  block-size: 44px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  color: #1d1d1f;
+}
 
-  .nav-arrow:hover:not(:disabled) {
-    background: white;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    transform: translateY(-50%) scale(1.05);
-  }
+.nav-arrow:hover:not(:disabled) {
+  background: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-50%) scale(1.05);
+}
 
-  .nav-arrow:disabled {
-    opacity: 0.3;
-    cursor: not-allowed;
-  }
+.nav-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
 
-  .nav-arrow svg {
-    inline-size: 20px;
-    block-size: 20px;
-  }
+.nav-arrow svg {
+  inline-size: 20px;
+  block-size: 20px;
+}
 
-  .nav-prev {
-    inset-inline-start: 8px;
-  }
+.nav-prev {
+  inset-inline-start: 8px;
+}
 
-  .nav-next {
-    inset-inline-end: 8px;
-  }
+.nav-next {
+  inset-inline-end: 8px;
+}
 
-  .pagination-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-block-start: 32px;
-  }
+.pagination-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-block-start: 32px;
+}
 
-  .dot {
-    inline-size: 8px;
-    block-size: 8px;
-    border-radius: 50%;
-    border: none;
-    background: #d2d2d7;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    padding: 0;
-  }
+.dot {
+  inline-size: 8px;
+  block-size: 8px;
+  border-radius: 50%;
+  border: none;
+  background: #d2d2d7;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+}
 
-  .dot.active {
-    background: #1d1d1f;
-    transform: scale(1.2);
-  }
+.dot.active {
+  background: #1d1d1f;
+  transform: scale(1.2);
 }
 
 /* Popover API — all 9 cards */
