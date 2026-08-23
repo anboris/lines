@@ -4,8 +4,10 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "build:css": "postcss css/main.css -o style.css",
-    "watch:css": "postcss css/main.css -o style.css --watch"
+    "css": "postcss css/main.css -o css/style.css",
+    "css:watch": "watch 'npm run css'",
+    "serve": "live-server --watch=index.html,css/style.css",
+    "dev": "concurrently \"npm run css:watch\" \"npm run serve\""
   },
   "repository": {
     "type": "git",
@@ -18,8 +20,11 @@
   },
   "homepage": "https://github.com/anboris/lines#readme",
   "devDependencies": {
+    "concurrently": "^10.0.5",
+    "live-server": "^1.2.2",
     "postcss": "^8.5.26",
     "postcss-cli": "^11.0.1",
-    "postcss-import": "^17.0.0"
+    "postcss-import": "^17.0.0",
+    "watch": "^1.0.2"
   }
 }
