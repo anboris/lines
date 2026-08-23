@@ -1,0 +1,12 @@
+{
+  "$schema": "https://biomejs.dev",
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "nursery": {
+        "noUnusedClasses": "error",
+        "noUndeclaredClasses": "error"
+      }
+    }
+  }
+}

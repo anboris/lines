@@ -1,0 +1,25 @@
+{
+  "name": "lines",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "build:css": "postcss css/main.css -o style.css",
+    "watch:css": "postcss css/main.css -o style.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anboris/lines.git"
+  },
+  "keywords": [],
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/anboris/lines/issues"
+  },
+  "homepage": "https://github.com/anboris/lines#readme",
+  "devDependencies": {
+    "postcss": "^8.5.26",
+    "postcss-cli": "^11.0.1",
+    "postcss-import": "^17.0.0"
+  }
+}
