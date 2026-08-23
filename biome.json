@@ -1,7 +1,15 @@
 {
   "$schema": "https://biomejs.dev",
+  "html": {
+    "linter": {
+      "enabled": true
+    }
+  },
   "linter": {
     "enabled": true,
+    "domains": {
+      "project": "all"
+    },
     "rules": {
       "nursery": {
         "noUnusedClasses": "error",

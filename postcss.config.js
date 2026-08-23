@@ -1,6 +1,8 @@
-module.exports = {
+import postcssImport from "postcss-import";
+
+export default {
   plugins: [
-    // This plugin inline-resolves your @import links into a single file
-    require("postcss-import"),
+    postcssImport(),
+    // Add any other plugins you have here, like tailwindcss or autoprefixer
   ],
 };
