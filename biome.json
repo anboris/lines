@@ -1,20 +1,26 @@
 {
-  "$schema": "https://biomejs.dev",
-  "html": {
-    "linter": {
-      "enabled": true
-    }
-  },
-  "linter": {
-    "enabled": true,
-    "domains": {
-      "project": "all"
-    },
-    "rules": {
-      "nursery": {
-        "noUnusedClasses": "error",
-        "noUndeclaredClasses": "error"
-      }
-    }
-  }
+	"$schema": "https://biomejs.dev",
+	"html": {
+		"linter": {
+			"enabled": true
+		}
+	},
+	"linter": {
+		"enabled": true,
+		"domains": {
+			"project": "all"
+		},
+		"rules": {
+			"nursery": {
+				"recommended": true,
+				"noUnusedClasses": "error",
+				"noUndeclaredClasses": "error"
+			}
+		}
+	},
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	}
 }
