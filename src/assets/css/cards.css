@@ -13,22 +13,24 @@
 .marquee-track {
 	display: flex;
 	gap: var(--card-gap);
-	width: max-content;
-	animation: marquee-scroll 30s linear infinite;
-	will-change: transform;
+	width: 100%;
+
+	/* Native scrolling — NO CSS animation, JS handles movement */
+	overflow-x: auto;
+	overflow-y: hidden;
+	touch-action: pan-x;
+	user-select: none;
+	-webkit-overflow-scrolling: touch;
+	scrollbar-width: none;
+	cursor: grab;
 }
 
-.marquee-container:hover .marquee-track {
-	animation-play-state: paused;
+.marquee-track::-webkit-scrollbar {
+	display: none;
 }
 
-@keyframes marquee-scroll {
-	0% {
-		transform: translateX(0);
-	}
-	100% {
-		transform: translateX(-50%);
-	}
+.marquee-track:active {
+	cursor: grabbing;
 }
 
 .carousel-wrapper {
@@ -50,7 +52,6 @@
 	display: none;
 }
 
-/* Both .bento-square (marquee) and .carousel-card use identical sizing */
 .bento-square,
 .carousel-card {
 	flex: 0 0 clamp(180px, calc(25vw - var(--card-gap) * 0.75), 320px);
@@ -62,7 +63,6 @@
 	contain-intrinsic-size: 300px 450px;
 }
 
-/* Carousel-specific: snap alignment */
 .carousel-card {
 	scroll-snap-align: center;
 }
@@ -94,7 +94,6 @@
 	}
 }
 
-/* Images */
 .bento-square.img-card img,
 .carousel-card img {
 	width: 100%;
@@ -109,7 +108,6 @@
 	transform: scale(1.05);
 }
 
-/* Text cards */
 .bento-square.text-card,
 .carousel-card.text-card {
 	display: flex;
@@ -130,6 +128,105 @@
 .carousel-card p {
 	font-size: var(--font-size-body);
 	line-height: 1.4;
+}
+
+.text-card.card-sand {
+	background-color: #f2ede3;
+	color: #191e25;
+}
+.text-card.card-stone {
+	background-color: #b1a18c;
+	color: #191e25;
+}
+.text-card.card-charcoal {
+	background-color: #191e25;
+	color: #f2ede3;
+}
+.text-card.card-coral-light {
+	background-color: #ff6862;
+	color: #191e25;
+}
+.text-card.card-mint-light {
+	background-color: #bddcc6;
+	color: #191e25;
+}
+.text-card.card-forest {
+	background-color: #4e936f;
+	color: #f2ede3;
+}
+
+.text-card {
+	position: relative;
+	background-repeat: repeat;
+}
+
+/* Pattern 1: Diagonal Right Stripes (45deg) */
+.text-card.pattern-diagonal-right {
+	background-image: repeating-linear-gradient(
+		45deg,
+		transparent,
+		transparent 14px,
+		rgba(255, 255, 255, 0.08) 14px,
+		rgba(255, 255, 255, 0.08) 16px
+	);
+}
+.text-card.card-sand.pattern-diagonal-right,
+.text-card.card-stone.pattern-diagonal-right,
+.text-card.card-coral-light.pattern-diagonal-right,
+.text-card.card-mint-light.pattern-diagonal-right {
+	background-image: repeating-linear-gradient(
+		45deg,
+		transparent,
+		transparent 14px,
+		rgba(25, 30, 37, 0.05) 14px,
+		rgba(25, 30, 37, 0.05) 16px
+	);
+}
+
+/* Pattern 2: Reverse Diagonal Left Stripes (-45deg) */
+.text-card.pattern-diagonal-left {
+	background-image: repeating-linear-gradient(
+		-45deg,
+		transparent,
+		transparent 14px,
+		rgba(255, 255, 255, 0.08) 14px,
+		rgba(255, 255, 255, 0.08) 16px
+	);
+}
+.text-card.card-sand.pattern-diagonal-left,
+.text-card.card-stone.pattern-diagonal-left,
+.text-card.card-coral-light.pattern-diagonal-left,
+.text-card.card-mint-light.pattern-diagonal-left {
+	background-image: repeating-linear-gradient(
+		-45deg,
+		transparent,
+		transparent 14px,
+		rgba(25, 30, 37, 0.05) 14px,
+		rgba(25, 30, 37, 0.05) 16px
+	);
+}
+
+/* Pattern 3: Organic Line Waves */
+.text-card.pattern-waves {
+	background-image: repeating-radial-gradient(
+		circle at 100% 100%,
+		transparent,
+		transparent 12px,
+		rgba(255, 255, 255, 0.07) 12px,
+		rgba(255, 255, 255, 0.07) 14px
+	);
+}
+.text-card.card-sand.pattern-waves,
+.text-card.card-stone.pattern-waves,
+.text-card.card-coral-light.pattern-waves,
+.text-card.card-mint-light.pattern-waves {
+	background-image: repeating-radial-gradient(
+		circle at 100% 100%,
+		transparent,
+		transparent 12px,
+		rgba(25, 30, 37, 0.05) 12px,
+		rgba(25, 30, 37, 0.05) 14px
+	);
 }
 
 .carousel-fade {
@@ -185,7 +282,6 @@
 .carousel-arrow--prev {
 	left: 1rem;
 }
-
 .carousel-arrow--next {
 	right: 1rem;
 }

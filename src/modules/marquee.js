@@ -1,3 +1,5 @@
+// src/modules/marquee.js
+
 const VARIANTS = [
   "card-sand",
   "card-stone",
@@ -30,17 +32,89 @@ function applyCardStyles() {
 }
 
 export function initMarquee() {
-  const marqueeTrack = document.querySelector(".marquee-track");
-  if (!marqueeTrack) return;
+  const track = document.querySelector(".marquee-track");
+  if (!track) return;
 
-  // Apply random styles to the original set of cards
+  // 1. Apply random styles to original cards
   applyCardStyles();
 
-  // Duplicate the content for a seamless CSS infinite loop.
-  // Because the CSS animation moves exactly -50%, having two identical
-  // sets of cards creates a perfect, unnoticeable reset point.
-  const originalCards = Array.from(marqueeTrack.children);
-  originalCards.forEach((node) => {
-    marqueeTrack.appendChild(node.cloneNode(true));
+  // 2. Clone cards to create 3 identical sets (Set 1, Set 2, Set 3)
+  const originalCards = Array.from(track.children);
+  for (let i = 0; i < 2; i++) {
+    originalCards.forEach((card) => track.appendChild(card.cloneNode(true)));
+  }
+
+  // 3. Dimension calculations
+  const getItemWidth = () => {
+    const card = track.querySelector(".bento-square");
+    const gap = parseFloat(getComputedStyle(track).gap) || 0;
+    return card.offsetWidth + gap;
+  };
+
+  let setWidth = originalCards.length * getItemWidth();
+
+  // CRITICAL: Update width on resize so the reset math stays accurate
+  window.addEventListener("resize", () => {
+    setWidth = originalCards.length * getItemWidth();
   });
+
+  // 4. Start in the middle set (Set 2)
+  const setInitialPosition = () => {
+    track.style.scrollBehavior = "auto";
+    track.scrollLeft = setWidth;
+    track.style.scrollBehavior = "smooth";
+  };
+  requestAnimationFrame(setInitialPosition);
+
+  // 5. Auto-scroll engine
+  let animationId;
+  let isPaused = false;
+  let resumeTimeout;
+  const speed = 1; // Pixels per frame (increase to 1.5 or 2 for faster scroll)
+
+  const autoScroll = () => {
+    if (!isPaused) {
+      track.scrollLeft += speed;
+
+      // Seamless reset: jump back to start of Set 2 when reaching the end of it
+      if (track.scrollLeft >= setWidth * 2 - 1) {
+        track.style.scrollBehavior = "auto"; // Instant jump, no tweening
+        track.scrollLeft -= setWidth;
+        track.style.scrollBehavior = "smooth"; // Restore smooth for user interactions
+      }
+    }
+    animationId = requestAnimationFrame(autoScroll);
+  };
+
+  // 6. Interaction handlers
+  const pause = () => {
+    isPaused = true;
+    clearTimeout(resumeTimeout);
+  };
+
+  const resume = () => {
+    clearTimeout(resumeTimeout);
+    // CRITICAL: Delay resume to let native momentum scrolling finish naturally.
+    // If we resume instantly, the JS "+1px" fights the decaying browser momentum.
+    resumeTimeout = setTimeout(() => {
+      isPaused = false;
+    }, 300);
+  };
+
+  track.addEventListener("mouseenter", pause);
+  track.addEventListener("mouseleave", resume);
+  track.addEventListener("touchstart", pause, { passive: true });
+  track.addEventListener("touchend", resume, { passive: true });
+
+  track.addEventListener(
+    "wheel",
+    () => {
+      pause();
+      resume(); // Triggers the 600ms delay
+    },
+    { passive: true },
+  );
+
+  // Start the engine
+  animationId = requestAnimationFrame(autoScroll);
 }
