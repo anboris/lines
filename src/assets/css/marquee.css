@@ -1,3 +1,88 @@
+.marquee-container {
+	container-type: inline-size;
+	container-name: marquee;
+	width: 100%;
+	overflow: hidden;
+}
+
+.marquee-track {
+	display: flex;
+	gap: var(--card-gap);
+	width: max-content;
+	animation: scroll 30s linear infinite;
+	will-change: transform;
+}
+
+.marquee-container:hover .marquee-track {
+	animation-play-state: paused;
+}
+
+@keyframes scroll {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+/* Default: 4 cards visible */
+.bento-square {
+	flex: 0 0 clamp(180px, calc(25vw - var(--card-gap) * 0.75), 320px);
+	aspect-ratio: 2 / 3;
+	overflow: hidden;
+	border-radius: var(--card-radius);
+}
+
+/* Tablet: 3 cards visible */
+@container marquee (max-width: 1024px) {
+	.bento-square {
+		flex: 0 0 clamp(200px, calc(33.333vw - var(--card-gap) * 0.666), 360px);
+		aspect-ratio: 3 / 4;
+	}
+}
+
+/* Mobile: 2 cards visible */
+@container marquee (max-width: 768px) {
+	.bento-square {
+		flex: 0 0 clamp(160px, calc(50vw - var(--card-gap) * 0.5), 300px);
+		aspect-ratio: 3 / 4;
+	}
+}
+
+/* Small mobile: ~1.4 cards visible */
+@container marquee (max-width: 480px) {
+	.bento-square {
+		flex: 0 0 clamp(240px, calc(70vw - var(--card-gap) * 0.3), 320px);
+		aspect-ratio: 3 / 4;
+	}
+}
+
+.bento-square.img-card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+}
+
+.bento-square.text-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 1rem;
+}
+
+.text-card h3 {
+	font-size: var(--font-size-h3);
+	margin-bottom: 0.5rem;
+	font-weight: 450;
+}
+
+.text-card p {
+	font-size: var(--font-size-body);
+	line-height: 1.4;
+}
+
 /* Palette Variants */
 .text-card.card-sand {
 	background-color: #f2ede3;
