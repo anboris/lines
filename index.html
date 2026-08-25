@@ -18,8 +18,6 @@
 		</div>
 	</header>
 
-	<!-- <div class="slogan-bar full-bleed">Пространство осознанного движения</div> -->
-
 	<nav class="nav-bar full-bleed">
 		<div class="nav-track" id="navTrack">
 			<a href="#about" class="nav-item active" data-section="about">
@@ -96,63 +94,7 @@
 			</p>
 		</section>
 	</main>
-	<script>
-		const navTrack = document.getElementById("navTrack");
-		const navItems = document.querySelectorAll(".nav-item");
-		const sections = document.querySelectorAll("section");
-
-		// Smart scroll: Only adjust mobile track position if item goes out of visible viewport
-		function ensureVisibleOnMobile(item) {
-			// Skip auto-scroll calculations on desktop
-			if (window.innerWidth >= 768) return;
-
-			const trackRect = navTrack.getBoundingClientRect();
-			const itemRect = item.getBoundingClientRect();
-
-			// Check if active item is clipping off left or right edge
-			const isOffLeft = itemRect.left < trackRect.left + 20;
-			const isOffRight = itemRect.right > trackRect.right - 20;
-
-			if (isOffLeft || isOffRight) {
-				const scrollOffset =
-					itemRect.left -
-					trackRect.left -
-					trackRect.width / 2 +
-					itemRect.width / 2;
-				navTrack.scrollBy({
-					left: scrollOffset,
-					behavior: "smooth",
-				});
-			}
-		}
-
-		const observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						const id = entry.target.getAttribute("id");
-
-						navItems.forEach((item) => {
-							if (item.getAttribute("data-section") === id) {
-								item.classList.add("active");
-								ensureVisibleOnMobile(item);
-							} else {
-								item.classList.remove("active");
-							}
-						});
-					}
-				});
-			},
-			{
-				rootMargin: "-40% 0px -40% 0px",
-				threshold: 0,
-			},
-		);
-
-		sections.forEach((section) => observer.observe(section));
-	</script>
-
-	<script src="./src/script.js"></script>
+	<script type="module" src="./src/main.js"></script>
 </body>
 
 </html>

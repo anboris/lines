@@ -140,9 +140,11 @@ body {
 	}
 }
 
+/* src/assets/css/marquee.css */
+
 .marquee-container {
-	width: 100vw;
-	overflow: hidden;
+	width: 100%;
+	overflow: hidden; /* Just hide the overflow, no scrolling needed */
 	padding: 2rem 0;
 }
 
@@ -150,10 +152,21 @@ body {
 	display: flex;
 	width: max-content;
 	animation: scroll 30s linear infinite;
+	will-change: transform;
 }
 
-.marquee-track:hover {
+/* Optional: Pause on hover if you still want that subtle interaction */
+.marquee-container:hover .marquee-track {
 	animation-play-state: paused;
+}
+
+@keyframes scroll {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
 }
 
 .bento-square {
