@@ -1,5 +1,6 @@
 @import "@fontsource-variable/inter";
 @import "@fontsource-variable/jost";
+@import url("./promo-bar.css");
 
 * {
 	box-sizing: border-box;
@@ -15,9 +16,9 @@
 	--color-dark: #141414;
 	--color-dark-surface: #1a1a1a;
 	--color-border: #333;
-	--color-text-muted: #888;
+	--color-text-muted: #8a95a5;
 	--font-family: "Inter Variable", sans-serif;
-	--container-width: 1000px;
+	--container-width: 1200px;
 	--content-padding: 1.5rem;
 
 	--font-size-body: clamp(14px, 1vw + 12px, 18px);
@@ -25,6 +26,8 @@
 	--font-size-h3: clamp(18px, 2vw + 14px, 28px);
 	--font-size-h2: clamp(26px, 3vw + 18px, 42px);
 	--font-size-display: clamp(32px, 4vw + 24px, 64px);
+
+	--section-spacing: clamp(4rem, 6vw, 8rem);
 }
 
 body {
@@ -53,6 +56,15 @@ body {
 
 .site-layout > * {
 	grid-column: content;
+}
+
+.site-layout > * + * {
+	margin-top: var(--section-spacing);
+}
+
+.site-layout > section,
+.site-layout > aside {
+	margin-bottom: 0;
 }
 
 .site-layout > .popout {
@@ -122,7 +134,7 @@ body {
 	transition:
 		color 0.25s ease,
 		opacity 0.25s ease;
-	font-weight: 500;
+	font-weight: 450;
 }
 
 .nav-item.active {
@@ -145,7 +157,6 @@ body {
 .marquee-container {
 	width: 100%;
 	overflow: hidden; /* Just hide the overflow, no scrolling needed */
-	padding: 2rem 0;
 }
 
 .marquee-track {
@@ -214,7 +225,7 @@ body {
 .text-card h3 {
 	font-size: var(--font-size-h3);
 	margin-bottom: 0.5rem;
-	font-weight: 500;
+	font-weight: 450;
 }
 
 .text-card p {
@@ -238,7 +249,7 @@ body {
 .lead-section p {
 	font-size: clamp(1.4rem, 4vw, 2.2rem);
 	line-height: 1.2;
-	font-weight: 400;
+	font-weight: 450;
 	letter-spacing: -0.02em;
 }
 
@@ -247,25 +258,38 @@ body {
 
 /* --- Section Layout --- */
 .programs-section {
-	padding-block: 4rem;
 }
 
 .programs-header {
-	text-align: center;
-	margin-bottom: 3rem;
 	padding-inline: var(--gap);
+	padding-block-end: var(--gap);
+	display: flex;
 }
 
 .programs-title {
-	font-size: var(--font-size-h2);
-	margin-bottom: 1rem;
+	flex: 1;
+	order: 1;
+	font-size: clamp(1.4rem, 4vw, 2.2rem);
+	line-height: 1.2;
+	font-weight: 450;
+	letter-spacing: -0.02em;
+	text-box: trim-end cap alphabetic; /* Trims bottom space to the baseline */
 }
 
 .programs-lead {
-	font-size: var(--font-size-lead);
-	color: var(--color-text-muted);
-	max-width: 600px;
-	margin-inline: auto;
+	flex: 1;
+	order: 2;
+	font-size: var(--font-size-body);
+	align-self: flex-end; /* Only aligns this specific item to bottom */
+	line-height: 1.4;
+	text-box: trim-end cap alphabetic; /* Trims bottom space to the baseline */
+}
+
+@media (max-width: 768px) {
+	.programs-header {
+		flex-direction: column; /* Stacks the title and lead vertically */
+		gap: 1rem; /* Reduces spacing on mobile */
+	}
 }
 
 /* --- Carousel Wrapper (The new container) --- */
@@ -291,7 +315,27 @@ body {
 	flex: 0 0 300px;
 	height: 400px;
 	scroll-snap-align: center;
-	scroll-snap-stop: always; /* Can't skip cards */
+	border-radius: 10px;
+	overflow: hidden;
+	position: relative;
+
+	/* Performance: only render when visible */
+	content-visibility: auto;
+	contain-intrinsic-size: 300px 400px;
+}
+
+.carousel-card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+
+	/* Smooth transitions if you add hover effects later */
+	transition: transform 0.3s ease;
+}
+
+.carousel-card:hover img {
+	transform: scale(1.05);
 }
 
 .carousel-fade {
@@ -299,13 +343,14 @@ body {
 	top: 0;
 	bottom: 0;
 	width: 80px;
+	z-index: 10; /* Ensures fades sit above cards */
 	pointer-events: none;
 }
 
 .carousel-fade--left {
 	left: 0;
 	background: linear-gradient(to right, var(--color-background), transparent);
-	animation: fade-left linear;
+	animation: fade-left linear both;
 	animation-timeline: scroll(x nearest);
 	animation-range: 0 300px;
 }
@@ -313,11 +358,12 @@ body {
 .carousel-fade--right {
 	right: 0;
 	background: linear-gradient(to left, var(--color-background), transparent);
-	animation: fade-right linear;
+	animation: fade-right linear both;
 	animation-timeline: scroll(x nearest);
 	animation-range: calc(100% - 300px) 100%;
 }
 
+/* Keyframes for scroll-driven fade */
 @keyframes fade-left {
 	from {
 		opacity: 0;
