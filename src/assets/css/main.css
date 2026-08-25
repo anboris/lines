@@ -245,9 +245,33 @@ body {
 .lead-section p span {
 }
 
-.carousel-section {
-	position: relative;
-	overflow: hidden;
+/* --- Section Layout --- */
+.programs-section {
+	padding-block: 4rem;
+}
+
+.programs-header {
+	text-align: center;
+	margin-bottom: 3rem;
+	padding-inline: var(--gap);
+}
+
+.programs-title {
+	font-size: var(--font-size-h2);
+	margin-bottom: 1rem;
+}
+
+.programs-lead {
+	font-size: var(--font-size-lead);
+	color: var(--color-text-muted);
+	max-width: 600px;
+	margin-inline: auto;
+}
+
+/* --- Carousel Wrapper (The new container) --- */
+.carousel-wrapper {
+	position: relative; /* Crucial: makes this the anchor for absolute children */
+	width: 100%;
 }
 
 .carousel-track {
