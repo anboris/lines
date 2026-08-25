@@ -1,6 +1,7 @@
 @import "@fontsource-variable/inter";
 @import "@fontsource-variable/jost";
 @import url("./promo-bar.css");
+@import url("./cards.css");
 
 * {
 	box-sizing: border-box;
@@ -110,6 +111,8 @@ body {
 	background: rgba(250, 250, 250, 0.72);
 	backdrop-filter: blur(12px) saturate(180%);
 	-webkit-backdrop-filter: blur(12px) saturate(180%);
+
+	margin-block-end: var(--card-gap);
 }
 
 .nav-track {
@@ -202,115 +205,5 @@ body {
 	.programs-header {
 		flex-direction: column; /* Stacks the title and lead vertically */
 		gap: 1rem; /* Reduces spacing on mobile */
-	}
-}
-
-/* --- Carousel Wrapper (The new container) --- */
-.carousel-wrapper {
-	position: relative; /* Crucial: makes this the anchor for absolute children */
-	width: 100%;
-}
-
-.carousel-track {
-	display: flex;
-	gap: 1.5rem;
-	overflow-x: auto;
-	scroll-snap-type: x mandatory;
-	scroll-start-x: calc(50% - 150px); /* Native initial position! */
-	scrollbar-width: none;
-}
-
-.carousel-track::-webkit-scrollbar {
-	display: none;
-}
-
-.carousel-card {
-	flex: 0 0 300px;
-	height: 400px;
-	scroll-snap-align: center;
-	border-radius: 10px;
-	overflow: hidden;
-	position: relative;
-
-	/* Performance: only render when visible */
-	content-visibility: auto;
-	contain-intrinsic-size: 300px 400px;
-}
-
-.carousel-card img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	display: block;
-
-	/* Smooth transitions if you add hover effects later */
-	transition: transform 0.3s ease;
-}
-
-.carousel-card:hover img {
-	transform: scale(1.05);
-}
-
-.carousel-fade {
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	width: 80px;
-	z-index: 10; /* Ensures fades sit above cards */
-	pointer-events: none;
-}
-
-.carousel-fade--left {
-	left: 0;
-	background: linear-gradient(to right, var(--color-background), transparent);
-	animation: fade-left linear both;
-	animation-timeline: scroll(x nearest);
-	animation-range: 0 300px;
-}
-
-.carousel-fade--right {
-	right: 0;
-	background: linear-gradient(to left, var(--color-background), transparent);
-	animation: fade-right linear both;
-	animation-timeline: scroll(x nearest);
-	animation-range: calc(100% - 300px) 100%;
-}
-
-/* Keyframes for scroll-driven fade */
-@keyframes fade-left {
-	from {
-		opacity: 0;
-	}
-	to {
-		opacity: 1;
-	}
-}
-
-@keyframes fade-right {
-	from {
-		opacity: 1;
-	}
-	to {
-		opacity: 0;
-	}
-}
-
-.carousel-arrow {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	z-index: 10;
-}
-
-.carousel-arrow--prev {
-	left: 1rem;
-}
-.carousel-arrow--next {
-	right: 1rem;
-}
-
-@media (max-width: 768px) {
-	.carousel-arrow {
-		display: none;
 	}
 }

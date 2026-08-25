@@ -1,0 +1,197 @@
+:root {
+	--card-gap: 1.5rem;
+	--card-radius: 10px;
+}
+
+.marquee-container {
+	container-type: inline-size;
+	container-name: cards;
+	width: 100%;
+	overflow: hidden;
+}
+
+.marquee-track {
+	display: flex;
+	gap: var(--card-gap);
+	width: max-content;
+	animation: marquee-scroll 30s linear infinite;
+	will-change: transform;
+}
+
+.marquee-container:hover .marquee-track {
+	animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+.carousel-wrapper {
+	container-type: inline-size;
+	container-name: cards;
+	position: relative;
+	width: 100%;
+}
+
+.carousel-track {
+	display: flex;
+	gap: var(--card-gap);
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+	display: none;
+}
+
+/* Both .bento-square (marquee) and .carousel-card use identical sizing */
+.bento-square,
+.carousel-card {
+	flex: 0 0 clamp(180px, calc(25vw - var(--card-gap) * 0.75), 320px);
+	aspect-ratio: 2 / 3;
+	overflow: hidden;
+	border-radius: var(--card-radius);
+	position: relative;
+	content-visibility: auto;
+	contain-intrinsic-size: 300px 450px;
+}
+
+/* Carousel-specific: snap alignment */
+.carousel-card {
+	scroll-snap-align: center;
+}
+
+/* Tablet: 3 cards visible */
+@container cards (max-width: 1024px) {
+	.bento-square,
+	.carousel-card {
+		flex: 0 0 clamp(200px, calc(33.333vw - var(--card-gap) * 0.666), 360px);
+		aspect-ratio: 3 / 4;
+	}
+}
+
+/* Mobile: 2 cards visible */
+@container cards (max-width: 768px) {
+	.bento-square,
+	.carousel-card {
+		flex: 0 0 clamp(160px, calc(50vw - var(--card-gap) * 0.5), 300px);
+		aspect-ratio: 3 / 4;
+	}
+}
+
+/* Small mobile: ~1.4 cards visible */
+@container cards (max-width: 480px) {
+	.bento-square,
+	.carousel-card {
+		flex: 0 0 clamp(240px, calc(70vw - var(--card-gap) * 0.3), 320px);
+		aspect-ratio: 3 / 4;
+	}
+}
+
+/* Images */
+.bento-square.img-card img,
+.carousel-card img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform 0.3s ease;
+}
+
+.bento-square.img-card:hover img,
+.carousel-card:hover img {
+	transform: scale(1.05);
+}
+
+/* Text cards */
+.bento-square.text-card,
+.carousel-card.text-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 1rem;
+}
+
+.text-card h3,
+.carousel-card h3 {
+	font-size: var(--font-size-h3);
+	margin-bottom: 0.5rem;
+	font-weight: 450;
+	line-height: 1.2;
+}
+
+.text-card p,
+.carousel-card p {
+	font-size: var(--font-size-body);
+	line-height: 1.4;
+}
+
+.carousel-fade {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 80px;
+	z-index: 10;
+	pointer-events: none;
+}
+
+.carousel-fade--left {
+	left: 0;
+	background: linear-gradient(to right, var(--color-background), transparent);
+	animation: fade-left linear both;
+	animation-timeline: scroll(x nearest);
+	animation-range: 0 300px;
+}
+
+.carousel-fade--right {
+	right: 0;
+	background: linear-gradient(to left, var(--color-background), transparent);
+	animation: fade-right linear both;
+	animation-timeline: scroll(x nearest);
+	animation-range: calc(100% - 300px) 100%;
+}
+
+@keyframes fade-left {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fade-right {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+.carousel-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10;
+}
+
+.carousel-arrow--prev {
+	left: 1rem;
+}
+
+.carousel-arrow--next {
+	right: 1rem;
+}
+
+@media (max-width: 768px) {
+	.carousel-arrow {
+		display: none;
+	}
+}
