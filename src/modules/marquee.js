@@ -33,6 +33,11 @@ function applyCardStyles() {
 
 export function initMarquee() {
   const track = document.querySelector(".marquee-track");
+
+  // Select marquee-specific arrows (to avoid conflict with carousel arrows)
+  const prevBtn = document.getElementById("marqueePrevBtn");
+  const nextBtn = document.getElementById("marqueeNextBtn");
+
   if (!track) return;
 
   // 1. Apply random styles to original cards
@@ -70,7 +75,7 @@ export function initMarquee() {
   let animationId;
   let isPaused = false;
   let resumeTimeout;
-  const speed = 1; // Pixels per frame (increase to 1.5 or 2 for faster scroll)
+  const speed = 1; // Pixels per frame
 
   const autoScroll = () => {
     if (!isPaused) {
@@ -94,8 +99,7 @@ export function initMarquee() {
 
   const resume = () => {
     clearTimeout(resumeTimeout);
-    // CRITICAL: Delay resume to let native momentum scrolling finish naturally.
-    // If we resume instantly, the JS "+1px" fights the decaying browser momentum.
+    // Delay resume to let native momentum/smooth scroll finish naturally
     resumeTimeout = setTimeout(() => {
       isPaused = false;
     }, 300);
@@ -110,10 +114,24 @@ export function initMarquee() {
     "wheel",
     () => {
       pause();
-      resume(); // Triggers the 600ms delay
+      resume();
     },
     { passive: true },
   );
+
+  // 7. Arrow Navigation (NEW)
+  // We MUST pause before scrolling, otherwise the rAF loop fights the smooth scroll
+  nextBtn?.addEventListener("click", () => {
+    pause();
+    track.scrollBy({ left: getItemWidth(), behavior: "smooth" });
+    resume();
+  });
+
+  prevBtn?.addEventListener("click", () => {
+    pause();
+    track.scrollBy({ left: -getItemWidth(), behavior: "smooth" });
+    resume();
+  });
 
   // Start the engine
   animationId = requestAnimationFrame(autoScroll);

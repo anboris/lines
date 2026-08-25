@@ -10,6 +10,11 @@
 	overflow: hidden;
 }
 
+.marquee-viewport {
+	position: relative;
+	width: 100%;
+}
+
 .marquee-track {
 	display: flex;
 	gap: var(--card-gap);
