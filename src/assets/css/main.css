@@ -244,3 +244,90 @@ body {
 
 .lead-section p span {
 }
+
+.carousel-section {
+	position: relative;
+	overflow: hidden;
+}
+
+.carousel-track {
+	display: flex;
+	gap: 1.5rem;
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+	scroll-start-x: calc(50% - 150px); /* Native initial position! */
+	scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar {
+	display: none;
+}
+
+.carousel-card {
+	flex: 0 0 300px;
+	height: 400px;
+	scroll-snap-align: center;
+	scroll-snap-stop: always; /* Can't skip cards */
+}
+
+.carousel-fade {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 80px;
+	pointer-events: none;
+}
+
+.carousel-fade--left {
+	left: 0;
+	background: linear-gradient(to right, var(--color-background), transparent);
+	animation: fade-left linear;
+	animation-timeline: scroll(x nearest);
+	animation-range: 0 300px;
+}
+
+.carousel-fade--right {
+	right: 0;
+	background: linear-gradient(to left, var(--color-background), transparent);
+	animation: fade-right linear;
+	animation-timeline: scroll(x nearest);
+	animation-range: calc(100% - 300px) 100%;
+}
+
+@keyframes fade-left {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fade-right {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+
+.carousel-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 10;
+}
+
+.carousel-arrow--prev {
+	left: 1rem;
+}
+.carousel-arrow--next {
+	right: 1rem;
+}
+
+@media (max-width: 768px) {
+	.carousel-arrow {
+		display: none;
+	}
+}
