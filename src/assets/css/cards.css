@@ -3,6 +3,10 @@
 	--card-radius: 10px;
 }
 
+/* ==========================================
+   MARQUEE
+   ========================================== */
+
 .marquee-container {
 	container-type: inline-size;
 	container-name: cards;
@@ -38,6 +42,10 @@
 	cursor: grabbing;
 }
 
+/* ==========================================
+   CAROUSEL CONTAINER
+   ========================================== */
+
 .carousel-wrapper {
 	container-type: inline-size;
 	container-name: cards;
@@ -56,6 +64,10 @@
 .carousel-track::-webkit-scrollbar {
 	display: none;
 }
+
+/* ==========================================
+   SHARED CARD BASE (Bento + Carousel)
+   ========================================== */
 
 .bento-square,
 .carousel-card {
@@ -99,8 +111,11 @@
 	}
 }
 
-.bento-square.img-card img,
-.carousel-card img {
+/* ==========================================
+   BENTO IMAGES (unchanged)
+   ========================================== */
+
+.bento-square.img-card img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
@@ -108,10 +123,31 @@
 	transition: transform 0.3s ease;
 }
 
-.bento-square.img-card:hover img,
-.carousel-card:hover img {
+.bento-square.img-card:hover img {
 	transform: scale(1.05);
 }
+
+/* ==========================================
+   CAROUSEL CARD IMAGE BACKGROUND (updated)
+   ========================================== */
+
+.carousel-card-img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	display: block;
+	transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-card:hover .carousel-card-img {
+	transform: scale(1.05);
+}
+
+/* ==========================================
+   TEXT CARDS (Bento)
+   ========================================== */
 
 .bento-square.text-card,
 .carousel-card.text-card {
@@ -135,6 +171,7 @@
 	line-height: 1.4;
 }
 
+/* Palette Variants */
 .text-card.card-sand {
 	background-color: #f2ede3;
 	color: #191e25;
@@ -234,6 +271,89 @@
 	);
 }
 
+/* ==========================================
+   CAROUSEL CARD CONTENT OVERLAY (NEW)
+   ========================================== */
+
+.carousel-card-content {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 1.5rem;
+	background: linear-gradient(
+		to top,
+		rgba(25, 30, 37, 0.9) 0%,
+		rgba(25, 30, 37, 0.5) 50%,
+		transparent 100%
+	);
+	color: #fff;
+	z-index: 2;
+}
+
+.carousel-card-kicker {
+	display: inline-block;
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	opacity: 0.8;
+	margin-bottom: 0.5rem;
+}
+
+.carousel-card-title {
+	font-size: var(--font-size-h3);
+	font-weight: 500;
+	line-height: 1.2;
+	margin-bottom: 0.5rem;
+	color: #fff;
+}
+
+.carousel-card-desc {
+	font-size: var(--font-size-body);
+	line-height: 1.4;
+	color: rgba(255, 255, 255, 0.85);
+}
+
+/* ==========================================
+   CAROUSEL CARD "+" BUTTON (NEW)
+   ========================================== */
+
+.carousel-card-btn {
+	position: absolute;
+	bottom: 1.5rem;
+	right: 1.5rem;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border: 1.5px solid rgba(255, 255, 255, 0.4);
+	background: rgba(25, 30, 37, 0.4);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	z-index: 3;
+}
+
+.carousel-card-btn:hover {
+	background: #fff;
+	color: var(--color-text);
+	border-color: #fff;
+	transform: scale(1.1);
+}
+
+.carousel-card-btn svg {
+	width: 16px;
+	height: 16px;
+}
+
+/* ==========================================
+   CAROUSEL FADE MASKS
+   ========================================== */
+
 .carousel-fade {
 	position: absolute;
 	top: 0;
@@ -277,6 +397,10 @@
 	}
 }
 
+/* ==========================================
+   CAROUSEL ARROWS
+   ========================================== */
+
 .carousel-arrow {
 	position: absolute;
 	top: 50%;
@@ -295,4 +419,126 @@
 	.carousel-arrow {
 		display: none;
 	}
+}
+
+/* ==========================================
+   NATIVE POPOVER (NEW)
+   ========================================== */
+
+.carousel-popover {
+	position: fixed;
+	inset: 0;
+	margin: auto;
+	width: fit-content;
+	height: fit-content;
+	max-width: 480px;
+	width: 90%;
+	padding: 2.5rem;
+	background: var(--color-background);
+	border-radius: 24px;
+	border: 0;
+	box-shadow: 0 24px 48px rgba(25, 30, 37, 0.15);
+	z-index: 1000;
+
+	/* Smooth entry animation */
+	opacity: 0;
+	transform: scale(0.95);
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+		overlay 0.3s ease,
+		display 0.3s ease;
+	transition-behavior: allow-discrete;
+}
+
+.carousel-popover:popover-open {
+	opacity: 1;
+	transform: scale(1);
+}
+
+@starting-style {
+	.carousel-popover:popover-open {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+}
+
+.carousel-popover::backdrop {
+	background: rgba(25, 30, 37, 0.6);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	transition-behavior: allow-discrete;
+}
+
+.carousel-popover:popover-open::backdrop {
+	opacity: 1;
+}
+
+@starting-style {
+	.carousel-popover:popover-open::backdrop {
+		opacity: 0;
+	}
+}
+
+.carousel-popover-close {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	border: 0;
+	background: rgba(25, 30, 37, 0.05);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: background 0.2s;
+	color: var(--color-text);
+}
+
+.carousel-popover-close:hover {
+	background: rgba(25, 30, 37, 0.1);
+}
+
+.carousel-popover-close svg {
+	width: 16px;
+	height: 16px;
+}
+
+.carousel-popover-title {
+	font-size: var(--font-size-h2);
+	font-weight: 600;
+	color: var(--color-text);
+	margin-bottom: 1rem;
+	letter-spacing: -0.02em;
+}
+
+.carousel-popover-body {
+	font-size: var(--font-size-body);
+	color: var(--color-text-muted);
+	line-height: 1.6;
+	margin-bottom: 1.5rem;
+}
+
+.carousel-popover-cta {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	color: var(--color-accent);
+	text-decoration: none;
+	font-size: var(--font-size-body);
+	font-weight: 600;
+	transition: gap 0.2s;
+}
+
+.carousel-popover-cta:hover {
+	gap: 0.75rem;
+}
+
+.carousel-popover-cta svg {
+	width: 16px;
+	height: 16px;
 }

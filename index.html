@@ -130,17 +130,84 @@
         <button class="carousel-arrow carousel-arrow--next" id="nextBtn">→</button>
 
         <div class="carousel-track" id="carouselTrack">
+          <!-- Card 1 -->
           <div class="carousel-card">
-            <img src="./src/assets/images/card-1.png" alt="Базовый уровень" loading="lazy" decoding="async"
-              fetchpriority="high" />
+            <img class="carousel-card-img" src="./src/assets/images/card-1.png" alt="Базовый уровень" loading="lazy"
+              decoding="async" fetchpriority="high" />
+            <div class="carousel-card-content">
+              <span class="carousel-card-kicker">Комплексная тренировка</span>
+              <h3 class="carousel-card-title">Базовый уровень</h3>
+              <p class="carousel-card-desc">Занятие подойдет для любого уровня подготовки</p>
+            </div>
+            <button class="carousel-card-btn" popovertarget="popover-1" popovertargetaction="toggle"
+              aria-label="Подробнее о Базовом уровне">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </button>
           </div>
+
+          <!-- Card 2 -->
           <div class="carousel-card">
-            <img src="./src/assets/images/card-2.png" alt="Средний уровень" loading="lazy" decoding="async" />
+            <img class="carousel-card-img" src="./src/assets/images/card-2.png" alt="Средний уровень" loading="lazy"
+              decoding="async" />
+            <div class="carousel-card-content">
+              <span class="carousel-card-kicker">Комплексная тренировка</span>
+              <h3 class="carousel-card-title">Средний уровень</h3>
+              <p class="carousel-card-desc">Для тех, у кого есть небольшой опыт тренировок</p>
+            </div>
+            <button class="carousel-card-btn" popovertarget="popover-2" popovertargetaction="toggle"
+              aria-label="Подробнее о Среднем уровне">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </button>
           </div>
+
+          <!-- Card 3 -->
           <div class="carousel-card">
-            <img src="./src/assets/images/card-3.png" alt="Продолжающие" loading="lazy" decoding="async" />
+            <img class="carousel-card-img" src="./src/assets/images/card-3.png" alt="Продолжающие" loading="lazy"
+              decoding="async" />
+            <div class="carousel-card-content">
+              <span class="carousel-card-kicker">Комплексная тренировка</span>
+              <h3 class="carousel-card-title">Продолжающие</h3>
+              <p class="carousel-card-desc">Для тех, кто обладает большим опытом тренировок</p>
+            </div>
+            <button class="carousel-card-btn" popovertarget="popover-3" popovertargetaction="toggle"
+              aria-label="Подробнее о Продолжающих">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19" />
+                <line x1="5" y1="12" x2="19" y2="12" />
+              </svg>
+            </button>
           </div>
         </div>
+
+        <div id="popover-1" class="carousel-popover" popover>
+          <button class="carousel-popover-close" popovertarget="popover-1" popovertargetaction="hide"
+            aria-label="Закрыть">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+          <h3 class="carousel-popover-title">Базовый уровень</h3>
+          <p class="carousel-popover-body">
+            Идеальный старт для знакомства с методикой...
+          </p>
+          <a href="#contacts" class="carousel-popover-cta" popovertarget="popover-1" popovertargetaction="hide">
+            Записаться на пробное занятие
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        </div>
+
       </div>
     </section>
   </main>
