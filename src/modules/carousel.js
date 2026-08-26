@@ -6,9 +6,9 @@ export function initCarousel() {
   if (!track) return;
 
   // 1. Clone cards 3x for "infinite" feel
-  const cards = Array.from(track.children);
+  const originalCards = Array.from(track.children);
   for (let i = 0; i < 2; i++) {
-    cards.forEach((card) => track.appendChild(card.cloneNode(true)));
+    originalCards.forEach((card) => track.appendChild(card.cloneNode(true)));
   }
 
   const getItemWidth = () => {
@@ -17,7 +17,16 @@ export function initCarousel() {
     return card.offsetWidth + gap;
   };
 
-  // 2. State management for flipped cards
+  // 2. Start in the middle set (Set 2) for perfect initial centering
+  const setInitialPosition = () => {
+    const setWidth = originalCards.length * getItemWidth();
+    track.style.scrollBehavior = "auto"; // Мгновенный прыжок без анимации
+    track.scrollLeft = setWidth; // Прыгаем ровно на начало среднего набора
+    track.style.scrollBehavior = "smooth"; // Возвращаем плавность для будущих взаимодействий
+  };
+  requestAnimationFrame(setInitialPosition);
+
+  // 3. State management for flipped cards
   let currentlyFlippedCard = null;
 
   const closeFlippedCard = () => {
@@ -27,7 +36,7 @@ export function initCarousel() {
     }
   };
 
-  // 3. Arrow navigation (closes any flipped card first)
+  // 4. Arrow navigation (closes any flipped card first)
   nextBtn?.addEventListener("click", () => {
     closeFlippedCard();
     track.scrollBy({ left: getItemWidth(), behavior: "smooth" });
@@ -38,7 +47,7 @@ export function initCarousel() {
     track.scrollBy({ left: -getItemWidth(), behavior: "smooth" });
   });
 
-  // 4. Close on swipe, wheel, or any scroll interaction
+  // 5. Close on swipe, wheel, or any scroll interaction
   track.addEventListener(
     "scroll",
     () => {
@@ -47,7 +56,7 @@ export function initCarousel() {
     { passive: true },
   );
 
-  // 5. Event delegation for flip interactions
+  // 6. Event delegation for flip interactions
   track.addEventListener("click", (e) => {
     // Handle "+" button click
     const flipBtn = e.target.closest(".carousel-card-btn");
@@ -55,13 +64,10 @@ export function initCarousel() {
       e.stopPropagation();
       const card = flipBtn.closest(".carousel-card");
 
-      // If clicking the SAME card that is already flipped, just close it
       if (currentlyFlippedCard === card) {
         closeFlippedCard();
       } else {
-        // Close any previously flipped card
         closeFlippedCard();
-        // Flip the new one
         card.classList.add("is-flipped");
         currentlyFlippedCard = card;
       }

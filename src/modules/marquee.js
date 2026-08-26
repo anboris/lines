@@ -36,9 +36,10 @@ export function initMarquee() {
 
   if (!track) return;
 
+  // 1. Применяем случайные стили к оригинальным карточкам
   applyCardStyles();
 
-  // Clone cards to create 3 identical sets (Set 1, Set 2, Set 3)
+  // 2. Клонируем карточки 3 раза для "бесконечного" эффекта
   const originalCards = Array.from(track.children);
   for (let i = 0; i < 2; i++) {
     originalCards.forEach((card) => track.appendChild(card.cloneNode(true)));
@@ -50,68 +51,21 @@ export function initMarquee() {
     return card.offsetWidth + gap;
   };
 
-  let setWidth = originalCards.length * getItemWidth();
-
-  // CRITICAL: Update width on resize so the reset math stays accurate
-  window.addEventListener("resize", () => {
-    setWidth = originalCards.length * getItemWidth();
-  });
-
+  // 3. Начинаем со среднего набора (Set 2)
   const setInitialPosition = () => {
+    const setWidth = originalCards.length * getItemWidth();
     track.style.scrollBehavior = "auto";
     track.scrollLeft = setWidth;
     track.style.scrollBehavior = "smooth";
   };
   requestAnimationFrame(setInitialPosition);
 
-  // Auto-scroll engine
-  let animationId;
-  let isPaused = false;
-  let resumeTimeout;
-  const speed = 1; // Pixels per frame
-
-  const autoScroll = () => {
-    if (!isPaused) {
-      track.scrollLeft += speed;
-
-      // Seamless reset: jump back to start of Set 2 when reaching the end of it
-      if (track.scrollLeft >= setWidth * 2 - 1) {
-        track.style.scrollBehavior = "auto"; // Instant jump, no tweening
-        track.scrollLeft -= setWidth;
-        track.style.scrollBehavior = "smooth"; // Restore smooth for user interactions
-      }
-    }
-    animationId = requestAnimationFrame(autoScroll);
-  };
-
-  const pause = () => {
-    isPaused = true;
-    clearTimeout(resumeTimeout);
-  };
-
-  const resume = () => {
-    clearTimeout(resumeTimeout);
-    // Delay resume to let native touch momentum finish naturally
-    resumeTimeout = setTimeout(() => {
-      isPaused = false;
-    }, 300);
-  };
-
-  track.addEventListener("touchstart", pause, { passive: true });
-  track.addEventListener("touchend", resume, { passive: true });
-
-  // Pause is kept here strictly to prevent the rAF loop from fighting the smooth scroll animation
+  // 4. Навигация стрелками (идентично programs carousel)
   nextBtn?.addEventListener("click", () => {
-    pause();
     track.scrollBy({ left: getItemWidth(), behavior: "smooth" });
-    resume();
   });
 
   prevBtn?.addEventListener("click", () => {
-    pause();
     track.scrollBy({ left: -getItemWidth(), behavior: "smooth" });
-    resume();
   });
-
-  animationId = requestAnimationFrame(autoScroll);
 }

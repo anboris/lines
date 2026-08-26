@@ -26,6 +26,7 @@
 	width: 100%;
 	overflow-x: auto;
 	overflow-y: hidden;
+	scroll-snap-type: x mandatory; /* <-- ДОБАВЛЕНО: для плавного прилипания карточек */
 	touch-action: pan-x;
 	user-select: none;
 	-webkit-overflow-scrolling: touch;
@@ -77,6 +78,7 @@
 	position: relative;
 	content-visibility: auto;
 	contain-intrinsic-size: 300px 450px;
+	scroll-snap-align: center;
 }
 
 .carousel-card {
