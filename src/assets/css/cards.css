@@ -221,7 +221,7 @@
 	.bento-square,
 	.carousel-card {
 		flex: 0 0 clamp(240px, calc(70vw - var(--card-gap) * 0.3), 320px);
-		aspect-ratio: 3 / 4;
+		aspect-ratio: 2 / 4;
 	}
 }
 
