@@ -34,17 +34,17 @@
 
 :root {
 	/* ========== MOBILE (Default) ========== */
-	--text-body: 1rem; /* 16px */
-	--text-body-lh: 1.375; /* 22px line-height */
-	--text-body-ls: -0.011em; /* Letter spacing */
+	--text-body: 18px;
+	--text-body-lh: 24px;
+	--text-body-ls: -0.013em;
 
-	--text-lead: 1.125rem; /* 18px */
-	--text-lead-lh: 1.5; /* 27px line-height */
-	--text-lead-ls: -0.01em; /* Letter spacing */
+	--text-lead: 24px;
+	--text-lead-lh: 34px;
+	--text-lead-ls: -0.019em;
 
-	--text-title: 1.75rem; /* 28px */
-	--text-title-lh: 1.2; /* 33.6px line-height */
-	--text-title-ls: -0.025em; /* Tighter for large text */
+	--text-title: 28px;
+	--text-title-lh: 34px;
+	--text-title-ls: -0.019em;
 
 	--weight-body: 400;
 	--weight-lead: 450;
@@ -225,10 +225,10 @@ body {
 }
 
 .lead-section p {
-	font-size: clamp(1.4rem, 4vw, 2.2rem);
-	line-height: 1.2;
-	font-weight: 450;
-	letter-spacing: -0.02em;
+	font-size: var(--text-title);
+	line-height: var(--text-title-lh);
+	letter-spacing: var(--text-title-ls);
+	font-weight: var(--weight-title);
 }
 
 .lead-section p span {
