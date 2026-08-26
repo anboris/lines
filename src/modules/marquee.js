@@ -61,20 +61,35 @@ export function initMarquee() {
   requestAnimationFrame(setInitialPosition);
 
   // ==========================================
-  // 4. ЛОГИКА "УМНОГО" АВТО-СКРОЛЛА ПРИ БЕЗДЕЙСТВИИ
+  // 4. PING-PONG АВТО-СКРОЛЛ ПРИ БЕЗДЕЙСТВИИ
   // ==========================================
 
   let autoScrollInterval = null;
   let idleTimeout = null;
+  let direction = 1; // 1 = вперёд, -1 = назад
 
-  const IDLE_DELAY = 1000; // 3 секунды бездействия перед запуском
-  const SCROLL_INTERVAL = 4000; // Скроллить каждые 4 секунды
+  const IDLE_DELAY = 0o0;
+  const SCROLL_INTERVAL = 3000;
+
+  const checkBounds = () => {
+    const maxScroll = track.scrollWidth - track.clientWidth;
+    const currentScroll = track.scrollLeft;
+
+    // Если достигли конца — меняем направление назад
+    if (currentScroll >= maxScroll - 10) {
+      direction = -1;
+    }
+    // Если достигли начала — меняем направление вперёд
+    else if (currentScroll <= 10) {
+      direction = 1;
+    }
+  };
 
   const startAutoScroll = () => {
-    stopAutoScroll(); // На всякий случай очищаем предыдущий
+    stopAutoScroll();
     autoScrollInterval = setInterval(() => {
-      // Эмулируем клик по кнопке "вперёд" или свайп
-      track.scrollBy({ left: getItemWidth(), behavior: "smooth" });
+      checkBounds(); // Проверяем границы перед каждым скроллом
+      track.scrollBy({ left: getItemWidth() * direction, behavior: "smooth" });
     }, SCROLL_INTERVAL);
   };
 
@@ -86,20 +101,17 @@ export function initMarquee() {
   };
 
   const resetIdleTimer = () => {
-    stopAutoScroll(); // Останавливаем авто-скролл при любом действии
+    stopAutoScroll();
     clearTimeout(idleTimeout);
-    // Перезапускаем таймер бездействия
     idleTimeout = setTimeout(startAutoScroll, IDLE_DELAY);
   };
 
-  // Сбрасываем таймер при свайпе, колёсике мыши или любом скролле
+  // Сбрасываем таймер при любом взаимодействии
   track.addEventListener("scroll", resetIdleTimer, { passive: true });
-
-  // Дополнительно: останавливаем, если мышь наведена на маркер (хороший UX для десктопа)
   track.addEventListener("mouseenter", stopAutoScroll);
   track.addEventListener("mouseleave", resetIdleTimer);
 
-  // 5. Навигация стрелками (также сбрасывает таймер)
+  // 5. Навигация стрелками
   nextBtn?.addEventListener("click", () => {
     resetIdleTimer();
     track.scrollBy({ left: getItemWidth(), behavior: "smooth" });
