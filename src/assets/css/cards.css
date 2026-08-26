@@ -142,9 +142,11 @@
 }
 
 .carousel-card-back .carousel-card-kicker {
+	color: var(--color-text);
 }
 
 .carousel-card-back .carousel-card-title {
+	color: var(--color-text);
 }
 
 /* Длинный текст на back вместо description */
@@ -429,16 +431,15 @@
 	position: absolute;
 	inset: 0;
 	padding: var(--card-padding);
-	background: linear-gradient(
-		to bottom,
-		rgba(0, 0, 0, 0.15) 0%,
-		transparent 20%,
-		transparent 80%,
-		rgba(0, 0, 0, 0.15) 100%
-	);
+	background-image:
+    /* Top-left corner gradient */
+		radial-gradient(circle at top left, rgba(0, 0, 0, 0.3), transparent 60%),
+		/* Bottom-left corner gradient */
+		radial-gradient(circle at bottom left, rgba(0, 0, 0, 0.3), transparent 60%);
 	z-index: 2;
 	display: flex;
 	flex-direction: column;
+	color: var(--color-background);
 }
 
 .carousel-card-kicker {
@@ -478,11 +479,9 @@
 	height: 40px;
 	flex-shrink: 0; /* Запрещаем сжиматься, сохраняем идеальный круг */
 	border-radius: 50%;
-	border: 1.5px solid rgba(255, 255, 255, 0.4);
-	background: rgba(25, 30, 37, 0.4);
-	backdrop-filter: blur(8px);
-	-webkit-backdrop-filter: blur(8px);
-	color: #fff;
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	color: var(--color-text);
+	background-color: var(--color-background);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -491,9 +490,8 @@
 }
 
 .carousel-card-btn:hover {
-	background: #fff;
+	background-color: var(--color-background);
 	color: var(--color-text);
-	border-color: #fff;
 	transform: scale(1.1);
 }
 
