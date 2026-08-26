@@ -1,5 +1,3 @@
-// src/modules/marquee.js
-
 const VARIANTS = [
   "card-sand",
   "card-stone",
@@ -33,23 +31,19 @@ function applyCardStyles() {
 
 export function initMarquee() {
   const track = document.querySelector(".marquee-track");
-
-  // Select marquee-specific arrows (to avoid conflict with carousel arrows)
   const prevBtn = document.getElementById("marqueePrevBtn");
   const nextBtn = document.getElementById("marqueeNextBtn");
 
   if (!track) return;
 
-  // 1. Apply random styles to original cards
   applyCardStyles();
 
-  // 2. Clone cards to create 3 identical sets (Set 1, Set 2, Set 3)
+  // Clone cards to create 3 identical sets (Set 1, Set 2, Set 3)
   const originalCards = Array.from(track.children);
   for (let i = 0; i < 2; i++) {
     originalCards.forEach((card) => track.appendChild(card.cloneNode(true)));
   }
 
-  // 3. Dimension calculations
   const getItemWidth = () => {
     const card = track.querySelector(".bento-square");
     const gap = parseFloat(getComputedStyle(track).gap) || 0;
@@ -63,7 +57,6 @@ export function initMarquee() {
     setWidth = originalCards.length * getItemWidth();
   });
 
-  // 4. Start in the middle set (Set 2)
   const setInitialPosition = () => {
     track.style.scrollBehavior = "auto";
     track.scrollLeft = setWidth;
@@ -71,7 +64,7 @@ export function initMarquee() {
   };
   requestAnimationFrame(setInitialPosition);
 
-  // 5. Auto-scroll engine
+  // Auto-scroll engine
   let animationId;
   let isPaused = false;
   let resumeTimeout;
@@ -91,7 +84,6 @@ export function initMarquee() {
     animationId = requestAnimationFrame(autoScroll);
   };
 
-  // 6. Interaction handlers
   const pause = () => {
     isPaused = true;
     clearTimeout(resumeTimeout);
@@ -99,28 +91,16 @@ export function initMarquee() {
 
   const resume = () => {
     clearTimeout(resumeTimeout);
-    // Delay resume to let native momentum/smooth scroll finish naturally
+    // Delay resume to let native touch momentum finish naturally
     resumeTimeout = setTimeout(() => {
       isPaused = false;
     }, 300);
   };
 
-  track.addEventListener("mouseenter", pause);
-  track.addEventListener("mouseleave", resume);
   track.addEventListener("touchstart", pause, { passive: true });
   track.addEventListener("touchend", resume, { passive: true });
 
-  track.addEventListener(
-    "wheel",
-    () => {
-      pause();
-      resume();
-    },
-    { passive: true },
-  );
-
-  // 7. Arrow Navigation (NEW)
-  // We MUST pause before scrolling, otherwise the rAF loop fights the smooth scroll
+  // Pause is kept here strictly to prevent the rAF loop from fighting the smooth scroll animation
   nextBtn?.addEventListener("click", () => {
     pause();
     track.scrollBy({ left: getItemWidth(), behavior: "smooth" });
@@ -133,6 +113,5 @@ export function initMarquee() {
     resume();
   });
 
-  // Start the engine
   animationId = requestAnimationFrame(autoScroll);
 }
