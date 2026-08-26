@@ -24,8 +24,6 @@
 	display: flex;
 	gap: var(--card-gap);
 	width: 100%;
-
-	/* Native scrolling — NO CSS animation, JS handles movement */
 	overflow-x: auto;
 	overflow-y: hidden;
 	touch-action: pan-x;
@@ -83,9 +81,126 @@
 
 .carousel-card {
 	scroll-snap-align: center;
+	perspective: 1000px;
 }
 
-/* Tablet: 3 cards visible */
+.carousel-card-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-card.is-flipped .carousel-card-inner {
+	transform: rotateY(180deg);
+}
+
+.carousel-card-front,
+.carousel-card-back {
+	position: absolute;
+	inset: 0;
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	border-radius: var(--card-radius);
+	overflow: hidden;
+}
+
+.carousel-card-front {
+	z-index: 2;
+}
+
+.carousel-card-back {
+	transform: rotateY(180deg);
+	background: var(--color-background);
+	border: 1px solid rgba(25, 30, 37, 0.08);
+}
+
+/* ==========================================
+   BACK FACE — IDENTICAL LAYOUT TO FRONT
+   ========================================== */
+
+/* Back использует тот же .carousel-card-content для идентичного layout */
+.carousel-card-back .carousel-card-content {
+	background: none; /* Убираем градиент на back */
+}
+
+.carousel-card-back .carousel-card-kicker {
+}
+
+.carousel-card-back .carousel-card-title {
+}
+
+/* Длинный текст на back вместо description */
+.carousel-card-back-desc {
+	color: var(--color-text);
+	margin-top: auto;
+	overflow-y: auto;
+}
+
+/* Контейнер, который прижимает кнопки к низу и выстраивает их в ряд */
+.carousel-card-back-actions {
+	display: flex;
+	align-items: center; /* Выравнивание по вертикали (одинаковая высота) */
+	gap: 0.75rem; /* Расстояние между CTA и кнопкой закрытия */
+	margin-top: auto; /* Прижимает весь блок к низу карточки */
+	padding-top: 1rem;
+}
+
+/* CTA кнопка: растягивается, но имеет фиксированную высоту 40px */
+.carousel-card-back-cta {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	height: 40px; /* Строго 40px, как у кнопки закрытия */
+	padding: 0 1.25rem;
+	background: var(--color-text);
+	color: var(--color-background);
+	text-decoration: none;
+	border-radius: 100px;
+	transition:
+		background 0.2s,
+		gap 0.2s;
+	flex: 1; /* Занимает всё доступное пространство, оставляя место для круга */
+}
+
+.carousel-card-back-cta:hover {
+	background: var(--color-accent);
+	gap: 0.75rem;
+}
+
+/* Кнопка закрытия: больше не absolute, просто flex-элемент 40x40px */
+.carousel-card-back-close {
+	width: 40px;
+	height: 40px;
+	flex-shrink: 0; /* Запрещаем сжиматься, сохраняем идеальный круг */
+	border-radius: 50%;
+	border: 1.5px solid rgba(25, 30, 37, 0.2);
+	background: rgba(25, 30, 37, 0.05);
+	color: var(--color-text);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.carousel-card-back-close:hover {
+	background: rgba(25, 30, 37, 0.1);
+	border-color: rgba(25, 30, 37, 0.3);
+	transform: scale(1.1);
+}
+
+.carousel-card-back-close svg {
+	width: 16px;
+	height: 16px;
+}
+
+/* ==========================================
+   RESPONSIVE BREAKPOINTS
+   ========================================== */
+
 @container cards (max-width: 1024px) {
 	.bento-square,
 	.carousel-card {
@@ -94,7 +209,6 @@
 	}
 }
 
-/* Mobile: 2 cards visible */
 @container cards (max-width: 768px) {
 	.bento-square,
 	.carousel-card {
@@ -103,7 +217,6 @@
 	}
 }
 
-/* Small mobile: ~1.4 cards visible */
 @container cards (max-width: 480px) {
 	.bento-square,
 	.carousel-card {
@@ -113,7 +226,7 @@
 }
 
 /* ==========================================
-   BENTO IMAGES (unchanged)
+   BENTO IMAGES
    ========================================== */
 
 .bento-square.img-card img {
@@ -129,7 +242,7 @@
 }
 
 /* ==========================================
-   CAROUSEL CARD IMAGE BACKGROUND (updated)
+   CAROUSEL CARD IMAGE BACKGROUND
    ========================================== */
 
 .carousel-card-img {
@@ -164,12 +277,7 @@
 	line-height: var(--text-lead-lh);
 	letter-spacing: var(--text-lead-ls);
 	font-weight: var(--weight-lead);
-
 	margin-bottom: 0.5rem;
-}
-
-.text-card p,
-.carousel-card p {
 }
 
 /* Palette Variants */
@@ -273,18 +381,19 @@
 }
 
 /* ==========================================
-   CAROUSEL CARD CONTENT OVERLAY (NEW)
+   CAROUSEL CARD CONTENT OVERLAY
    ========================================== */
+
 .carousel-card-content {
 	position: absolute;
 	inset: 0;
 	padding: var(--card-padding);
 	background: linear-gradient(
 		to bottom,
-		rgba(255, 255, 255, 0.95) 0%,
+		rgba(0, 0, 0, 0.15) 0%,
 		transparent 20%,
 		transparent 80%,
-		rgba(255, 255, 255, 0.95) 100%
+		rgba(0, 0, 0, 0.15) 100%
 	);
 	z-index: 2;
 	display: flex;
@@ -301,16 +410,32 @@
 	max-width: 80%;
 	margin-top: auto;
 }
+
 /* ==========================================
-   CAROUSEL CARD "+" BUTTON (NEW)
+   FRONT FACE ACTIONS (Description + Button)
+   ========================================== */
+
+/* Контейнер, который прижимает description и кнопку к низу */
+.carousel-card-front-actions {
+	display: flex;
+	align-items: flex-end; /* Pushes all children down */
+	gap: 0.75rem; /* Расстояние между description и кнопкой */
+	margin-top: auto; /* Прижимает весь блок к низу карточки */
+}
+
+/* Description: занимает доступное пространство */
+.carousel-card-desc {
+	flex: 1;
+}
+
+/* ==========================================
+   CAROUSEL CARD "+" BUTTON
    ========================================== */
 
 .carousel-card-btn {
-	position: absolute;
-	bottom: 1.5rem;
-	right: 1.5rem;
 	width: 40px;
 	height: 40px;
+	flex-shrink: 0; /* Запрещаем сжиматься, сохраняем идеальный круг */
 	border-radius: 50%;
 	border: 1.5px solid rgba(255, 255, 255, 0.4);
 	background: rgba(25, 30, 37, 0.4);
@@ -322,7 +447,6 @@
 	justify-content: center;
 	cursor: pointer;
 	transition: all 0.2s ease;
-	z-index: 3;
 }
 
 .carousel-card-btn:hover {
@@ -336,7 +460,6 @@
 	width: 16px;
 	height: 16px;
 }
-
 /* ==========================================
    CAROUSEL FADE MASKS
    ========================================== */
@@ -406,124 +529,4 @@
 	.carousel-arrow {
 		display: none;
 	}
-}
-
-/* ==========================================
-   NATIVE POPOVER (NEW)
-   ========================================== */
-
-.carousel-popover {
-	position: fixed;
-	inset: 0;
-	margin: auto;
-	width: fit-content;
-	height: fit-content;
-	max-width: 480px;
-	padding: var(--card-padding);
-	background: var(--color-background);
-	border-radius: var(--card-radius);
-	border: 0;
-	box-shadow: 0 24px 48px rgba(25, 30, 37, 0.15);
-	z-index: 1000;
-
-	/* Smooth entry animation */
-	opacity: 0;
-	transform: scale(0.95);
-	transition:
-		opacity 0.3s ease,
-		transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
-		overlay 0.3s ease,
-		display 0.3s ease;
-	transition-behavior: allow-discrete;
-}
-
-.carousel-popover:popover-open {
-	opacity: 1;
-	transform: scale(1);
-}
-
-@starting-style {
-	.carousel-popover:popover-open {
-		opacity: 0;
-		transform: scale(0.95);
-	}
-}
-
-.carousel-popover::backdrop {
-	background: rgba(25, 30, 37, 0.6);
-	backdrop-filter: blur(4px);
-	-webkit-backdrop-filter: blur(4px);
-	opacity: 0;
-	transition: opacity 0.3s ease;
-	transition-behavior: allow-discrete;
-}
-
-.carousel-popover:popover-open::backdrop {
-	opacity: 1;
-}
-
-@starting-style {
-	.carousel-popover:popover-open::backdrop {
-		opacity: 0;
-	}
-}
-
-.carousel-popover-close {
-	position: absolute;
-	top: 1rem;
-	right: 1rem;
-	width: 36px;
-	height: 36px;
-	border-radius: 50%;
-	border: 0;
-	background: rgba(25, 30, 37, 0.05);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
-	transition: background 0.2s;
-	color: var(--color-text);
-}
-
-.carousel-popover-close:hover {
-	background: rgba(25, 30, 37, 0.1);
-}
-
-.carousel-popover-close svg {
-	width: 16px;
-	height: 16px;
-}
-
-.carousel-popover-kicker {
-}
-
-.carousel-popover-title {
-	font-size: var(--text-lead);
-	line-height: var(--text-lead-lh);
-	letter-spacing: var(--text-lead-ls);
-	font-weight: var(--weight-lead);
-	margin-bottom: 1rem;
-}
-
-.carousel-popover-body {
-	margin-bottom: 1.5rem;
-}
-
-.carousel-popover-cta {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.5rem;
-	color: var(--color-accent);
-	text-decoration: none;
-	font-size: var(--font-size-body);
-	transition: gap 0.2s;
-}
-
-.carousel-popover-cta:hover {
-	gap: 0.75rem;
-}
-
-.carousel-popover-cta svg {
-	width: 16px;
-	height: 16px;
 }
