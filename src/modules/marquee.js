@@ -36,14 +36,7 @@ export function initMarquee() {
 
   if (!track) return;
 
-  // 1. Применяем случайные стили к оригинальным карточкам
   applyCardStyles();
-
-  // 2. Клонируем карточки 3 раза для "бесконечного" эффекта
-  const originalCards = Array.from(track.children);
-  for (let i = 0; i < 2; i++) {
-    originalCards.forEach((card) => track.appendChild(card.cloneNode(true)));
-  }
 
   const getItemWidth = () => {
     const card = track.querySelector(".bento-square");
@@ -51,77 +44,26 @@ export function initMarquee() {
     return card.offsetWidth + gap;
   };
 
-  // 3. Начинаем со среднего набора (Set 2)
+  // Центрируем ТРЕТЬЮ карточку при загрузке
   const setInitialPosition = () => {
-    const setWidth = originalCards.length * getItemWidth();
+    const card = track.querySelector(".bento-square");
+    if (!card) return;
+    const spacerWidth = (track.clientWidth - card.offsetWidth) / 2;
+    const itemWidth = getItemWidth();
+
     track.style.scrollBehavior = "auto";
-    track.scrollLeft = setWidth;
+    // Прокручиваем на 2 карточки вправо, чтобы 3-я оказалась по центру
+    track.scrollLeft = spacerWidth + itemWidth * 1;
     track.style.scrollBehavior = "smooth";
   };
   requestAnimationFrame(setInitialPosition);
 
-  // ==========================================
-  // 4. PING-PONG АВТО-СКРОЛЛ ПРИ БЕЗДЕЙСТВИИ
-  // ==========================================
-
-  let autoScrollInterval = null;
-  let idleTimeout = null;
-  let direction = 1; // 1 = вперёд, -1 = назад
-
-  const IDLE_DELAY = 0o0;
-  const SCROLL_INTERVAL = 3000;
-
-  const checkBounds = () => {
-    const maxScroll = track.scrollWidth - track.clientWidth;
-    const currentScroll = track.scrollLeft;
-
-    // Если достигли конца — меняем направление назад
-    if (currentScroll >= maxScroll - 10) {
-      direction = -1;
-    }
-    // Если достигли начала — меняем направление вперёд
-    else if (currentScroll <= 10) {
-      direction = 1;
-    }
-  };
-
-  const startAutoScroll = () => {
-    stopAutoScroll();
-    autoScrollInterval = setInterval(() => {
-      checkBounds(); // Проверяем границы перед каждым скроллом
-      track.scrollBy({ left: getItemWidth() * direction, behavior: "smooth" });
-    }, SCROLL_INTERVAL);
-  };
-
-  const stopAutoScroll = () => {
-    if (autoScrollInterval) {
-      clearInterval(autoScrollInterval);
-      autoScrollInterval = null;
-    }
-  };
-
-  const resetIdleTimer = () => {
-    stopAutoScroll();
-    clearTimeout(idleTimeout);
-    idleTimeout = setTimeout(startAutoScroll, IDLE_DELAY);
-  };
-
-  // Сбрасываем таймер при любом взаимодействии
-  track.addEventListener("scroll", resetIdleTimer, { passive: true });
-  track.addEventListener("mouseenter", stopAutoScroll);
-  track.addEventListener("mouseleave", resetIdleTimer);
-
-  // 5. Навигация стрелками
+  // Навигация стрелками
   nextBtn?.addEventListener("click", () => {
-    resetIdleTimer();
     track.scrollBy({ left: getItemWidth(), behavior: "smooth" });
   });
 
   prevBtn?.addEventListener("click", () => {
-    resetIdleTimer();
     track.scrollBy({ left: -getItemWidth(), behavior: "smooth" });
   });
-
-  // Запускаем таймер бездействия при инициализации
-  resetIdleTimer();
 }
