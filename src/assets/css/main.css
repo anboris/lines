@@ -32,11 +32,76 @@
 	--card-radius: 10px;
 }
 
+:root {
+	/* ========== MOBILE (Default) ========== */
+	--text-body: 1rem; /* 16px */
+	--text-body-lh: 1.375; /* 22px line-height */
+	--text-body-ls: -0.011em; /* Letter spacing */
+
+	--text-lead: 1.125rem; /* 18px */
+	--text-lead-lh: 1.5; /* 27px line-height */
+	--text-lead-ls: -0.01em; /* Letter spacing */
+
+	--text-title: 1.75rem; /* 28px */
+	--text-title-lh: 1.2; /* 33.6px line-height */
+	--text-title-ls: -0.025em; /* Tighter for large text */
+
+	--weight-body: 400;
+	--weight-lead: 450;
+	--weight-title: 450;
+}
+
+/* ========== TABLET (768px+) ========== */
+@media (width >= 48rem) {
+	:root {
+		/* Body */
+		--text-body: 1.0625rem; /* 17px */
+		--text-body-lh: 1.411; /* 24px line-height */
+		--text-body-ls: -0.01em;
+
+		/* Lead */
+		--text-lead: 1.25rem; /* 20px */
+		--text-lead-lh: 1.5; /* 30px line-height */
+		--text-lead-ls: -0.009em;
+
+		/* Title */
+		--text-title: 2.25rem; /* 36px */
+		--text-title-lh: 1.166; /* 42px line-height */
+		--text-title-ls: -0.023em;
+	}
+}
+
+/* ========== DESKTOP (1280px+) ========== */
+@media (width >= 60rem) {
+	:root {
+		--text-body: 18px;
+		--text-body-lh: 25px;
+		--text-body-ls: -0.014em;
+
+		--text-lead: 24px;
+		--text-lead-lh: 34px;
+		--text-lead-ls: -0.019em;
+
+		--text-title: 36px;
+		--text-title-lh: 48px;
+		--text-title-ls: -0.022em;
+	}
+}
+
 body {
 	font-family: var(--font-family);
+	font-size: var(--text-body);
+	line-height: var(--text-body-lh);
+	letter-spacing: var(--text-body-ls);
+	font-weight: var(--weight-body);
+
 	background: var(--color-background);
 	color: var(--color-text);
 	overflow-x: hidden;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
 }
 
 .site-layout {
@@ -134,7 +199,6 @@ body {
 	white-space: nowrap;
 	color: var(--color-text);
 	text-decoration: none;
-	font-size: var(--font-size-body);
 	transition:
 		color 0.25s ease,
 		opacity 0.25s ease;
@@ -183,19 +247,19 @@ body {
 .programs-title {
 	flex: 1;
 	order: 1;
-	font-size: clamp(1.4rem, 4vw, 2.2rem);
-	line-height: 1.2;
-	font-weight: 450;
-	letter-spacing: -0.02em;
+
+	font-size: var(--text-title);
+	line-height: var(--text-title-lh);
+	letter-spacing: var(--text-title-ls);
+	font-weight: var(--weight-title);
+
 	text-box: trim-end cap alphabetic; /* Trims bottom space to the baseline */
 }
 
 .programs-lead {
 	flex: 1;
 	order: 2;
-	font-size: var(--font-size-body);
 	align-self: flex-end; /* Only aligns this specific item to bottom */
-	line-height: 1.4;
 	text-box: trim-end cap alphabetic; /* Trims bottom space to the baseline */
 }
 

@@ -159,16 +159,16 @@
 
 .text-card h3,
 .carousel-card h3 {
-	font-size: var(--font-size-h3);
+	font-size: var(--text-lead);
+	line-height: var(--text-lead-lh);
+	letter-spacing: var(--text-lead-ls);
+	font-weight: var(--weight-lead);
+
 	margin-bottom: 0.5rem;
-	font-weight: 450;
-	line-height: 1.2;
 }
 
 .text-card p,
 .carousel-card p {
-	font-size: var(--font-size-body);
-	line-height: 1.4;
 }
 
 /* Palette Variants */
@@ -293,11 +293,7 @@
 
 .carousel-card-kicker {
 	display: inline-block;
-	font-size: 0.75rem;
-	text-transform: uppercase;
-	letter-spacing: 0.05em;
 	opacity: 0.8;
-	margin-bottom: 0.5rem;
 }
 
 .carousel-card-title {
@@ -309,8 +305,6 @@
 }
 
 .carousel-card-desc {
-	font-size: var(--font-size-body);
-	line-height: 1.4;
 	color: rgba(255, 255, 255, 0.85);
 }
 
