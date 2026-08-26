@@ -26,12 +26,19 @@
 	width: 100%;
 	overflow-x: auto;
 	overflow-y: hidden;
-	scroll-snap-type: x mandatory; /* <-- ДОБАВЛЕНО: для плавного прилипания карточек */
+	scroll-snap-type: x mandatory;
 	touch-action: pan-x pan-y;
 	user-select: none;
 	-webkit-overflow-scrolling: touch;
 	scrollbar-width: none;
 	cursor: grab;
+}
+
+.marquee-track::before,
+.marquee-track::after {
+	content: "";
+	flex: 0 0
+		calc(50% - clamp(180px, calc(25vw - var(--card-gap) * 0.75), 320px) / 2);
 }
 
 .marquee-track::-webkit-scrollbar {
@@ -59,6 +66,13 @@
 	overflow-x: auto;
 	scroll-snap-type: x mandatory;
 	scrollbar-width: none;
+}
+
+.carousel-track::before,
+.carousel-track::after {
+	content: "";
+	flex: 0 0
+		calc(50% - clamp(180px, calc(25vw - var(--card-gap) * 0.75), 320px) / 2);
 }
 
 .carousel-track::-webkit-scrollbar {
@@ -209,6 +223,17 @@
 		flex: 0 0 clamp(200px, calc(33.333vw - var(--card-gap) * 0.666), 360px);
 		aspect-ratio: 3 / 4;
 	}
+	.carousel-track::before,
+	.carousel-track::after,
+	.marquee-track::before,
+	.marquee-track::after {
+		flex: 0 0
+			calc(
+				50% -
+				clamp(200px, calc(33.333vw - var(--card-gap) * 0.666), 360px) /
+				2
+			);
+	}
 }
 
 @container cards (max-width: 768px) {
@@ -217,6 +242,13 @@
 		flex: 0 0 clamp(160px, calc(50vw - var(--card-gap) * 0.5), 300px);
 		aspect-ratio: 3 / 4;
 	}
+	.carousel-track::before,
+	.carousel-track::after,
+	.marquee-track::before,
+	.marquee-track::after {
+		flex: 0 0
+			calc(50% - clamp(160px, calc(50vw - var(--card-gap) * 0.5), 300px) / 2);
+	}
 }
 
 @container cards (max-width: 480px) {
@@ -224,6 +256,13 @@
 	.carousel-card {
 		flex: 0 0 clamp(240px, calc(70vw - var(--card-gap) * 0.3), 320px);
 		aspect-ratio: 2 / 4;
+	}
+	.carousel-track::before,
+	.carousel-track::after,
+	.marquee-track::before,
+	.marquee-track::after {
+		flex: 0 0
+			calc(50% - clamp(240px, calc(70vw - var(--card-gap) * 0.3), 320px) / 2);
 	}
 }
 
