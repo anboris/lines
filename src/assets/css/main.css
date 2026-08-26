@@ -1,7 +1,5 @@
 @import "@fontsource-variable/inter";
 @import "@fontsource-variable/jost";
-@import url("./promo-bar.css");
-@import url("./cards.css");
 
 * {
 	box-sizing: border-box;
@@ -43,7 +41,7 @@ body {
 
 .site-layout {
 	--gap: clamp(1rem, 6vw, 3rem);
-	--content-max: 1000px;
+	--content-max: 1200px;
 
 	--full: minmax(var(--gap), 1fr);
 	--popout: minmax(0, 2rem);
