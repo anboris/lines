@@ -261,11 +261,12 @@ body {
 	order: 2;
 	align-self: flex-end; /* Only aligns this specific item to bottom */
 	text-box: trim-end cap alphabetic; /* Trims bottom space to the baseline */
+	margin-bottom: var(--card-gap);
 }
 
 @media (max-width: 768px) {
 	.programs-header {
 		flex-direction: column; /* Stacks the title and lead vertically */
-		gap: 1rem; /* Reduces spacing on mobile */
+		gap: calc(1.5 * var(--card-gap)); /* Reduces spacing on mobile */
 	}
 }
