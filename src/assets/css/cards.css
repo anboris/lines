@@ -1,6 +1,7 @@
 :root {
 	--card-gap: 1.5rem;
 	--card-radius: 10px;
+	--card-padding: 1rem;
 }
 
 /* ==========================================
@@ -154,7 +155,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	padding: 1rem;
+	padding: var(--card-padding);
 }
 
 .text-card h3,
@@ -274,40 +275,32 @@
 /* ==========================================
    CAROUSEL CARD CONTENT OVERLAY (NEW)
    ========================================== */
-
 .carousel-card-content {
 	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	padding: 1.5rem;
+	inset: 0;
+	padding: var(--card-padding);
 	background: linear-gradient(
-		to top,
-		rgba(25, 30, 37, 0.9) 0%,
-		rgba(25, 30, 37, 0.5) 50%,
-		transparent 100%
+		to bottom,
+		rgba(255, 255, 255, 0.95) 0%,
+		transparent 20%,
+		transparent 80%,
+		rgba(255, 255, 255, 0.95) 100%
 	);
-	color: #fff;
 	z-index: 2;
+	display: flex;
+	flex-direction: column;
 }
 
 .carousel-card-kicker {
-	display: inline-block;
-	opacity: 0.8;
 }
 
 .carousel-card-title {
-	font-size: var(--font-size-h3);
-	font-weight: 500;
-	line-height: 1.2;
-	margin-bottom: 0.5rem;
-	color: #fff;
 }
 
 .carousel-card-desc {
-	color: rgba(255, 255, 255, 0.85);
+	max-width: 80%;
+	margin-top: auto;
 }
-
 /* ==========================================
    CAROUSEL CARD "+" BUTTON (NEW)
    ========================================== */
@@ -426,10 +419,9 @@
 	width: fit-content;
 	height: fit-content;
 	max-width: 480px;
-	width: 90%;
-	padding: 2.5rem;
+	padding: var(--card-padding);
 	background: var(--color-background);
-	border-radius: 24px;
+	border-radius: var(--card-radius);
 	border: 0;
 	box-shadow: 0 24px 48px rgba(25, 30, 37, 0.15);
 	z-index: 1000;
@@ -502,18 +494,18 @@
 	height: 16px;
 }
 
+.carousel-popover-kicker {
+}
+
 .carousel-popover-title {
-	font-size: var(--font-size-h2);
-	font-weight: 600;
-	color: var(--color-text);
+	font-size: var(--text-lead);
+	line-height: var(--text-lead-lh);
+	letter-spacing: var(--text-lead-ls);
+	font-weight: var(--weight-lead);
 	margin-bottom: 1rem;
-	letter-spacing: -0.02em;
 }
 
 .carousel-popover-body {
-	font-size: var(--font-size-body);
-	color: var(--color-text-muted);
-	line-height: 1.6;
 	margin-bottom: 1.5rem;
 }
 
@@ -524,7 +516,6 @@
 	color: var(--color-accent);
 	text-decoration: none;
 	font-size: var(--font-size-body);
-	font-weight: 600;
 	transition: gap 0.2s;
 }
 
