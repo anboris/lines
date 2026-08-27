@@ -1,0 +1,115 @@
+/* Popover styles */
+.programs__popover {
+	position: fixed;
+	inset-area: center;
+	margin: auto;
+	background: #fff;
+	border-radius: 24px;
+	max-inline-size: 480px;
+	inline-size: 90%;
+	padding: 40px;
+	border: 0;
+	box-shadow: 0 24px 48px rgba(0, 0, 0, 0.15);
+	opacity: 0;
+	transform: scale(0.95);
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
+		overlay 0.3s ease,
+		display 0.3s ease;
+	transition-behavior: allow-discrete;
+}
+
+.programs__popover:popover-open {
+	opacity: 1;
+	transform: scale(1);
+}
+
+@starting-style {
+	.programs__popover:popover-open {
+		opacity: 0;
+		transform: scale(0.95);
+	}
+}
+
+.programs__popover::backdrop {
+	background: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(2px);
+	-webkit-backdrop-filter: blur(2px);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	transition-behavior: allow-discrete;
+}
+
+.programs__popover:popover-open::backdrop {
+	opacity: 1;
+}
+
+@starting-style {
+	.programs__popover:popover-open::backdrop {
+		opacity: 0;
+	}
+}
+
+.programs__popover-close {
+	position: absolute;
+	inset-block-start: 16px;
+	inset-inline-end: 16px;
+	inline-size: 36px;
+	block-size: 36px;
+	border-radius: 50%;
+	border: 0;
+	background: #f5f5f7;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: background 0.2s;
+	color: #1d1d1f;
+}
+
+.programs__popover-close:hover {
+	background: #e5e5ea;
+}
+
+.programs__popover-close svg {
+	inline-size: 16px;
+	block-size: 16px;
+}
+
+.programs__popover-title {
+	font-size: 28px;
+	font-weight: 600;
+	color: #1d1d1f;
+	margin-block-end: 16px;
+	letter-spacing: -0.02em;
+}
+
+.programs__popover-body {
+	font-size: 16px;
+	color: #6e6e73;
+	line-height: 1.5;
+	margin-block-end: 24px;
+}
+
+.programs__popover-cta {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	color: #06c;
+	text-decoration: none;
+	font-size: 16px;
+	letter-spacing: -0.011em;
+	line-height: 22px;
+	font-weight: 500;
+	transition: gap 0.2s;
+}
+
+.programs__popover-cta:hover {
+	gap: 10px;
+}
+
+.programs__popover-cta svg {
+	inline-size: 14px;
+	block-size: 14px;
+}
