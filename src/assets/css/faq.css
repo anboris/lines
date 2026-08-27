@@ -1,45 +1,49 @@
 /* FAQ */
 .faq {
-	max-inline-size: 1200px;
-	margin-inline: auto;
 	padding-block: 60px 80px;
-	background: #f5f5f7;
 }
 
 .faq__container {
-	padding-inline: 20px;
-	max-inline-size: 800px;
 	margin-inline: auto;
+}
+
+.faq__header {
+	text-align: center;
 }
 
 .faq__badge {
 	display: inline-block;
-	font-size: 13px;
 	font-weight: 500;
 	text-transform: uppercase;
 	letter-spacing: 0.06em;
-	color: #6e6e73;
-	background: rgba(0, 0, 0, 0.04);
+	color: #203828;
+	background: #bddcc6;
 	padding: 4px 16px;
 	border-radius: 100px;
 	margin-block-end: 12px;
+	border: 2px solid #a8cbb2;
+
+	font-size: var(--text-body);
+	line-height: var(--text-body-lh);
+	letter-spacing: var(--text-body-ls);
 }
 
 .faq__title {
-	font-size: clamp(32px, 4vw, 48px);
-	font-weight: 500;
-	line-height: 1.1;
-	letter-spacing: -0.02em;
-	color: #1d1d1f;
 	margin-block-end: 16px;
+
+	font-size: var(--text-title);
+	line-height: var(--text-title-lh);
+	letter-spacing: var(--text-title-ls);
+	font-weight: var(--weight-title);
 }
 
 .faq__description {
-	font-size: clamp(16px, 1.4vw, 20px);
-	color: #6e6e73;
-	line-height: 1.5;
-	max-inline-size: 560px;
 	margin-block-end: 40px;
+
+	font-size: var(--text-body);
+	line-height: var(--text-body-lh);
+	letter-spacing: var(--text-body-ls);
+	font-weight: var(--weight-body);
 }
 
 .faq__list {
