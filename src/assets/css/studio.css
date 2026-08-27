@@ -5,34 +5,43 @@
 .studio__container {
 }
 
+.studio__header {
+	text-align: center;
+}
+
 .studio__badge {
 	display: inline-block;
-	font-size: 13px;
 	font-weight: 500;
 	text-transform: uppercase;
-	letter-spacing: 0.06em;
-	color: #6e6e73;
-	background: rgba(0, 0, 0, 0.04);
 	padding: 4px 16px;
 	border-radius: 100px;
 	margin-block-end: 12px;
+
+	background-color: #f2ede3;
+	color: #2c2a29;
+	border: 2px solid #e7e3d9;
+
+	font-size: 15px;
+	line-height: var(--text-body-lh);
+	letter-spacing: var(--text-body-ls);
 }
 
 .studio__title {
-	font-size: clamp(32px, 4vw, 48px);
-	font-weight: 500;
-	line-height: 1.1;
-	letter-spacing: -0.02em;
-	color: #1d1d1f;
 	margin-block-end: 16px;
+
+	font-size: var(--text-title);
+	line-height: var(--text-title-lh);
+	letter-spacing: var(--text-title-ls);
+	font-weight: var(--weight-title);
 }
 
 .studio__description {
-	font-size: clamp(16px, 1.4vw, 20px);
-	color: #6e6e73;
-	line-height: 1.5;
-	max-inline-size: 560px;
 	margin-block-end: 40px;
+
+	font-size: var(--text-body);
+	line-height: var(--text-body-lh);
+	letter-spacing: var(--text-body-ls);
+	font-weight: var(--weight-body);
 }
 
 .studio__layout {
@@ -108,13 +117,13 @@
 	display: inline-flex;
 	align-items: center;
 	gap: 8px;
-	padding: 10px 16px;
+	padding: 8px 16px;
 	background: rgba(255, 255, 255, 0.85);
 	backdrop-filter: blur(16px) saturate(180%);
 	-webkit-backdrop-filter: blur(16px) saturate(180%);
 	border: 1px solid rgba(255, 255, 255, 0.4);
 	border-radius: 100px;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: 500;
 	color: #1d1d1f;
 	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -193,7 +202,6 @@
 
 @media (max-width: 380px) {
 	.studio__pill {
-		font-size: 10px;
 		padding: 6px 10px;
 	}
 
