@@ -247,9 +247,25 @@ function renderQuestion(quiz, id, depth = 1) {
     const button = document.createElement("button");
     button.innerText = option.text;
     button.className = "quiz__btn";
-    button.onclick = () => {
-      renderQuestion(quiz, option.next, depth + 1);
-    };
+
+    // Store the next ID on the button for later use
+    button.dataset.next = option.next;
+
+    // Handle click - but prevent the stuck state
+    button.addEventListener("click", function (e) {
+      // Remove selected class from all buttons in this container
+      const allBtns = btnContainer.querySelectorAll(".quiz__btn");
+      allBtns.forEach((btn) => btn.classList.remove("selected"));
+
+      // Add selected class to clicked button
+      this.classList.add("selected");
+
+      // Small delay to show the selected state before navigating
+      setTimeout(() => {
+        renderQuestion(quiz, parseInt(this.dataset.next), depth + 1);
+      }, 200);
+    });
+
     btnContainer.appendChild(button);
   });
 

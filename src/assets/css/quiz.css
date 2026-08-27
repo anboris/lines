@@ -374,3 +374,47 @@
 		justify-content: center;
 	}
 }
+
+/* Add selected state for buttons */
+.quiz__btn.selected {
+	background: rgba(0, 0, 0, 0.04);
+	border-color: #1d1d1f;
+}
+
+.quiz__btn.selected::before {
+	border-color: #1d1d1f;
+	background: #1d1d1f;
+}
+
+/* Only apply hover on devices that support hover */
+@media (hover: hover) {
+	.quiz__btn:hover {
+		background: rgba(0, 0, 0, 0.02);
+		border-color: rgba(0, 0, 0, 0.12);
+		transform: translateY(-2px);
+	}
+
+	.quiz__btn:hover::before {
+		border-color: #1d1d1f;
+		background: #1d1d1f;
+	}
+}
+
+/* Keep active state for click feedback */
+.quiz__btn:active {
+	transform: scale(0.98);
+}
+
+/* Reset hover state when button is not selected on mobile */
+@media (hover: none) {
+	.quiz__btn:hover {
+		background: transparent;
+		border-color: rgba(0, 0, 0, 0.06);
+		transform: none;
+	}
+
+	.quiz__btn:hover::before {
+		border-color: rgba(0, 0, 0, 0.12);
+		background: transparent;
+	}
+}
