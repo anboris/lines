@@ -107,7 +107,7 @@ body {
 .site-layout {
 	--gap: clamp(1rem, 6vw, 3rem);
 	--content-max: 1200px;
-	--narrow-max: 700px; /* 1. Define the narrow maximum width */
+	--narrow-max: 600px; /* 1. Define the narrow maximum width */
 
 	--full: minmax(var(--gap), 1fr);
 	--popout: minmax(0, 2rem);

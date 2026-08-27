@@ -78,18 +78,19 @@
 }
 
 .programs__popover-title {
-	font-size: 28px;
-	font-weight: 600;
-	color: #1d1d1f;
 	margin-block-end: 16px;
-	letter-spacing: -0.02em;
+	font-size: var(--text-lead);
+	line-height: var(--text-lead-lh);
+	letter-spacing: var(--text-lead-ls);
+	font-weight: var(--weight-lead);
 }
 
 .programs__popover-body {
-	font-size: 16px;
-	color: #6e6e73;
-	line-height: 1.5;
 	margin-block-end: 24px;
+	font-size: var(--text-body);
+	line-height: var(--text-body-lh);
+	letter-spacing: var(--text-body-ls);
+	font-weight: var(--weight-body);
 }
 
 .programs__popover-cta {
@@ -98,11 +99,12 @@
 	gap: 6px;
 	color: #06c;
 	text-decoration: none;
-	font-size: 16px;
-	letter-spacing: -0.011em;
-	line-height: 22px;
-	font-weight: 500;
 	transition: gap 0.2s;
+
+	font-size: var(--text-body);
+	line-height: var(--text-body-lh);
+	letter-spacing: var(--text-body-ls);
+	font-weight: var(--weight-body);
 }
 
 .programs__popover-cta:hover {
