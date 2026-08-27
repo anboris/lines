@@ -48,6 +48,7 @@
             ←
           </button>
           <button
+            type="button"
             class="carousel-arrow carousel-arrow--next"
             id="marqueeNextBtn"
           >
@@ -129,19 +130,24 @@
             естественную биомеханику тела.
           </p>
         </div>
-
         <div class="carousel-wrapper">
-          <button class="carousel-arrow carousel-arrow--prev" id="prevBtn">
+          <button
+            type="button"
+            class="carousel-arrow carousel-arrow--prev"
+            id="prevBtn"
+          >
             ←
           </button>
-          <button class="carousel-arrow carousel-arrow--next" id="nextBtn">
+          <button
+            type="button"
+            class="carousel-arrow carousel-arrow--next"
+            id="nextBtn"
+          >
             →
           </button>
-
           <div class="carousel-track" id="carouselTrack">
             <div class="carousel-card">
               <div class="carousel-card-inner">
-                <!-- FRONT -->
                 <div class="carousel-card-front">
                   <img
                     class="carousel-card-img"
@@ -152,23 +158,27 @@
                     fetchpriority="high"
                   />
                   <div class="carousel-card-content">
-                    <span class="carousel-card-kicker"
-                      >Комплексная тренировка</span
-                    >
+                    <span class="carousel-card-kicker">
+                      Комплексная тренировка
+                    </span>
                     <h3 class="carousel-card-title">Базовый уровень</h3>
 
-                    <!-- Новый контейнер для description и кнопки -->
                     <div class="carousel-card-front-actions">
                       <p class="carousel-card-desc">
                         Занятие подойдет для любого уровня подготовки
                       </p>
-                      <button class="carousel-card-btn" aria-label="Подробнее">
+                      <button
+                        type="button"
+                        class="carousel-card-btn"
+                        aria-label="Подробнее"
+                      >
                         <svg
                           viewBox="0 0 24 24"
                           fill="none"
                           stroke="currentColor"
                           stroke-width="2.5"
                         >
+                          <title>Подробнее</title>
                           <line x1="12" y1="5" x2="12" y2="19" />
                           <line x1="5" y1="12" x2="19" y2="12" />
                         </svg>
@@ -176,8 +186,6 @@
                     </div>
                   </div>
                 </div>
-
-                <!-- BACK -->
                 <div class="carousel-card-back">
                   <div class="carousel-card-content">
                     <span class="carousel-card-kicker"
@@ -185,9 +193,9 @@
                     >
                     <h3 class="carousel-card-title">Базовый уровень</h3>
                     <p class="carousel-card-back-desc">
-                      Идеальный старт для знакомства с методикой. Мы
-                      сосредоточимся на базовых паттернах движения, дыхании и
-                      создании фундамента для дальнейшей практики.
+                      Занятие подойдет для любого уровня подготовки. Мы мягко
+                      проработаем все тело, выполнив комплекс упражнений для
+                      развития силы, координации и мобильности.
                     </p>
 
                     <!-- Общий контейнер для кнопок в одну линию -->
@@ -197,6 +205,7 @@
                       </a>
 
                       <button
+                        type="button"
                         class="carousel-card-back-close"
                         aria-label="Вернуться"
                       >
@@ -208,6 +217,7 @@
                           stroke-linecap="round"
                           stroke-linejoin="round"
                         >
+                          <title>Вернуться</title>
                           <line x1="18" y1="6" x2="6" y2="18" />
                           <line x1="6" y1="6" x2="18" y2="18" />
                         </svg>
@@ -215,28 +225,175 @@
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+            <div class="carousel-card">
+              <div class="carousel-card-inner">
+                <div class="carousel-card-front">
+                  <img
+                    class="carousel-card-img"
+                    src="./src/assets/images/card-2.png"
+                    alt="Средний уровень"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+                  <div class="carousel-card-content">
+                    <span class="carousel-card-kicker">
+                      Комплексная тренировка
+                    </span>
+                    <h3 class="carousel-card-title">Средний уровень</h3>
 
-                <!-- Кнопка закрытия в том же месте, что и "+" на лицевой стороне -->
-                <button class="carousel-card-back-close" aria-label="Вернуться">
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <line x1="18" y1="6" x2="6" y2="18" />
-                    <line x1="6" y1="6" x2="18" y2="18" />
-                  </svg>
-                </button>
+                    <div class="carousel-card-front-actions">
+                      <p class="carousel-card-desc">
+                        Для тех у кого есть небольшой опыт тренировок или
+                        большой
+                      </p>
+                      <button
+                        type="button"
+                        class="carousel-card-btn"
+                        aria-label="Подробнее"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.5"
+                        >
+                          <title>Подробнее</title>
+                          <line x1="12" y1="5" x2="12" y2="19" />
+                          <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-card-back">
+                  <div class="carousel-card-content">
+                    <span class="carousel-card-kicker"
+                      >Комплексная тренировка</span
+                    >
+                    <h3 class="carousel-card-title">Средний уровень</h3>
+                    <p class="carousel-card-back-desc">
+                      Занятие подойдет тем, у кого есть небольшой опыт
+                      тренировок или большой, но немного забытый. Мы выполним
+                      ряд разноплановых упражнений для развития силы,
+                      координации и мобильности.
+                    </p>
+
+                    <div class="carousel-card-back-actions">
+                      <a href="#contacts" class="carousel-card-back-cta">
+                        Записаться
+                      </a>
+
+                      <button
+                        type="button"
+                        class="carousel-card-back-close"
+                        aria-label="Вернуться"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <title>Вернуться</title>
+                          <line x1="18" y1="6" x2="6" y2="18" />
+                          <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-card">
+              <div class="carousel-card-inner">
+                <div class="carousel-card-front">
+                  <img
+                    class="carousel-card-img"
+                    src="./src/assets/images/card-3.png"
+                    alt="Средний уровень"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="high"
+                  />
+                  <div class="carousel-card-content">
+                    <span class="carousel-card-kicker">
+                      Комплексная тренировка
+                    </span>
+                    <h3 class="carousel-card-title">Продолжающие</h3>
+
+                    <div class="carousel-card-front-actions">
+                      <p class="carousel-card-desc">
+                        Занятие подойдет тем, кто обладает большим тренировок
+                      </p>
+                      <button
+                        type="button"
+                        class="carousel-card-btn"
+                        aria-label="Подробнее"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.5"
+                        >
+                          <title>Подробнее</title>
+                          <line x1="12" y1="5" x2="12" y2="19" />
+                          <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-card-back">
+                  <div class="carousel-card-content">
+                    <span class="carousel-card-kicker"
+                      >Комплексная тренировка</span
+                    >
+                    <h3 class="carousel-card-title">Продолжающие</h3>
+                    <p class="carousel-card-back-desc">
+                      Занятие подойдет тем, кто обладает большим тренировок и
+                      готов пробовать упражнения повышенной сложности. Мы
+                      выполним ряд разноплановых упражнений для развития силы,
+                      координации и мобильности
+                    </p>
+
+                    <div class="carousel-card-back-actions">
+                      <a href="#contacts" class="carousel-card-back-cta">
+                        Записаться
+                      </a>
+
+                      <button
+                        type="button"
+                        class="carousel-card-back-close"
+                        aria-label="Вернуться"
+                      >
+                        <svg
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        >
+                          <title>Вернуться</title>
+                          <line x1="18" y1="6" x2="6" y2="18" />
+                          <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
     </main>
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     <script type="module" src="./src/main.js"></script>
   </body>
 </html>
