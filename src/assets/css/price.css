@@ -15,6 +15,23 @@
 	font-weight: var(--weight-title);
 }
 
+.pricing__badge {
+	display: inline-block;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: #1f2943;
+	background: #d8c5f0;
+	padding: 4px 16px;
+	border-radius: 100px;
+	margin-block-end: 12px;
+	border: 2px solid #bfaad6;
+
+	font-size: 16px;
+	line-height: var(--text-body-lh);
+	letter-spacing: var(--text-body-ls);
+}
+
 .pricing__description {
 	margin-inline: 20px;
 	margin-block-end: 40px;
