@@ -1,0 +1,452 @@
+<section class="pricing" id="pricing">
+  <span class="pricing__badge">абонементы</span>
+  <h2 class="pricing__title">Выберите формат занятий</h2>
+  <p class="pricing__description">
+    Гибкая система тренировок — от разовых посещений до абонементов с выбором
+    пакета
+  </p>
+
+  <!-- TABS -->
+  <div class="pricing__tabs" role="tablist">
+    <button
+      class="pricing-tab active"
+      role="tab"
+      data-pane="pane-single"
+      aria-selected="true"
+    >
+      Разовые
+    </button>
+    <button
+      class="pricing-tab"
+      role="tab"
+      data-pane="pane-group"
+      aria-selected="false"
+    >
+      Групповые
+    </button>
+    <button
+      class="pricing-tab"
+      role="tab"
+      data-pane="pane-individual"
+      aria-selected="false"
+    >
+      Индивидуальные
+    </button>
+  </div>
+
+  <!-- PANES -->
+  <div class="pricing__panes">
+    <!-- ============================================================ -->
+    <!-- PANE 1: ГРУППОВЫЕ ТРЕНИРОВКИ -->
+    <!-- ============================================================ -->
+    <div class="pricing-pane" id="pane-group" role="tabpanel">
+      <div class="pricing__grid">
+        <!-- Card: Дневной -->
+        <div class="pricing__card">
+          <span class="pricing__card-badge">Будни до 17:00</span>
+          <div class="pricing__card-name">Дневной</div>
+          <div class="pricing__card-desc">
+            Для тех, кто тренируется утром и днем
+          </div>
+
+          <div class="pricing__workout-selector">
+            <label for="day-sessions">Количество тренировок:</label>
+            <select id="day-sessions" onchange="updatePrice(this, 'day')">
+              <option value="4400" data-per-class="1100">
+                4 занятия (1 месяц)
+              </option>
+              <option value="6000" data-per-class="1000">
+                6 занятий (1 месяц)
+              </option>
+              <option value="7200" data-per-class="900">
+                8 занятий (1 месяц)
+              </option>
+              <option value="9600" data-per-class="800">
+                12 занятий (1 месяц)
+              </option>
+            </select>
+          </div>
+
+          <div class="pricing__display">
+            <div class="pricing__display-amount" id="day-price">4 400 ₽</div>
+            <div class="pricing__display-period" id="day-per-class">
+              1 100 ₽ / занятие
+            </div>
+          </div>
+
+          <ul class="pricing__features">
+            <li>1.5 часа комплексаня тренировка</li>
+            <li>1 час другие направления</li>
+            <li>
+              Пробная тренировка бесплатно при покупке абонемента в день занятия
+            </li>
+          </ul>
+          <button
+            class="pricing__btn"
+            onclick="
+              document
+                .getElementById('contacts')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            Выбрать
+          </button>
+        </div>
+
+        <!-- Card: Комплексный (Featured) -->
+        <div class="pricing__card pricing__card--featured">
+          <span class="pricing__card-badge pricing__card-badge--popular"
+            >11:00 – 22:00</span
+          >
+          <div class="pricing__card-name">Комплексный</div>
+          <div class="pricing__card-desc">Все направления и тренеры</div>
+
+          <div class="pricing__workout-selector">
+            <label for="complex-sessions">Пакет услуг:</label>
+            <select
+              id="complex-sessions"
+              onchange="updatePrice(this, 'complex')"
+            >
+              <option value="5200" data-per-class="1300">
+                4 занятия (1 месяц)
+              </option>
+              <option value="7200" data-per-class="1200">
+                6 занятий (1 месяц)
+              </option>
+              <option value="8800" data-per-class="1100">
+                8 занятий (1 месяц)
+              </option>
+              <option value="12000" data-per-class="1000">
+                12 занятий (1 месяц)
+              </option>
+              <option value="12000" data-per-class="1000">
+                12 занятий (3 месяца)
+              </option>
+              <option value="17000" data-per-class="945">
+                18 занятий (3 месяца)
+              </option>
+              <option value="22000" data-per-class="917">
+                24 занятия (3 месяца)
+              </option>
+              <option value="18000" data-per-class="Без лимита">
+                Безлимит (1 месяц)
+              </option>
+              <option value="27000" data-per-class="Без лимита">
+                Безлимит (3 месяца)
+              </option>
+            </select>
+          </div>
+
+          <div class="pricing__display">
+            <div class="pricing__display-amount" id="complex-price">
+              5 200 ₽
+            </div>
+            <div class="pricing__display-period" id="complex-per-class">
+              1 300 ₽ / занятие
+            </div>
+          </div>
+
+          <ul class="pricing__features">
+            <li>Полный доступ без ограничений</li>
+            <li>1.5 часа комлексаная тренировка</li>
+            <li>1 час другие направления</li>
+          </ul>
+          <button
+            class="pricing__btn"
+            onclick="
+              document
+                .getElementById('contacts')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            Выбрать
+          </button>
+        </div>
+
+        <!-- Card: Студенческий -->
+        <div class="pricing__card">
+          <span class="pricing__card-badge">11:00 – 19:00</span>
+          <div class="pricing__card-name">Студенческий</div>
+          <div class="pricing__card-desc">
+            Скидки для студентов дневного отделения
+          </div>
+
+          <div class="pricing__workout-selector">
+            <label for="student-sessions">Пакет услуг:</label>
+            <select
+              id="student-sessions"
+              onchange="updatePrice(this, 'student')"
+            >
+              <option value="4420" data-per-class="1105">
+                4 занятия (1 месяц)
+              </option>
+              <option value="6120" data-per-class="1020">
+                6 занятий (1 месяц)
+              </option>
+              <option value="7480" data-per-class="935">
+                8 занятий (1 месяц)
+              </option>
+              <option value="10200" data-per-class="850">
+                12 занятий (1 месяц)
+              </option>
+              <option value="10200" data-per-class="850">
+                12 занятий (3 месяца)
+              </option>
+              <option value="14450" data-per-class="803">
+                18 занятий (3 месяца)
+              </option>
+              <option value="18700" data-per-class="780">
+                24 занятия (3 месяца)
+              </option>
+              <option value="15300" data-per-class="Без лимита">
+                Безлимит (1 месяц)
+              </option>
+              <option value="22950" data-per-class="Без лимита">
+                Безлимит (3 месяца)
+              </option>
+            </select>
+          </div>
+
+          <div class="pricing__display">
+            <div class="pricing__display-amount" id="student-price">
+              4 420 ₽
+            </div>
+            <div class="pricing__display-period" id="student-per-class">
+              1 105 ₽ / занятие
+            </div>
+          </div>
+
+          <ul class="pricing__features">
+            <li>Обязательно предъявление студенческого билета</li>
+            <li>1.5 часа комлексаная тренировка</li>
+            <li>1 час другие направления</li>
+          </ul>
+          <button
+            class="pricing__btn"
+            onclick="
+              document
+                .getElementById('contacts')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            Выбрать
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PANE 2: ИНДИВИДУАЛЬНЫЕ ТРЕНИРОВКИ -->
+    <!-- ============================================================ -->
+    <div class="pricing-pane" id="pane-individual" role="tabpanel">
+      <div class="pricing__grid pricing__grid--private">
+        <!-- CARD 1: Персональная тренировка (1-on-1) -->
+        <div class="pricing__card pricing__card--featured">
+          <span class="pricing__card-badge">Максимум внимания</span>
+          <div class="pricing__card-name">
+            Персонально <span class="pricing__small-tag">1-на-1</span>
+          </div>
+          <div class="pricing__card-desc">
+            Индивидуальная программа для наилучшего результата
+          </div>
+
+          <div class="pricing__workout-selector">
+            <label for="private-sessions">Количество занятий:</label>
+            <select
+              id="private-sessions"
+              onchange="updatePrice(this, 'private')"
+            >
+              <option value="2900" data-per-class="2900">
+                1 занятие (Разовое)
+              </option>
+              <option value="10400" data-per-class="2600">
+                4 занятия (Пакет)
+              </option>
+              <option value="15000" data-per-class="2500">
+                6 занятий (Пакет)
+              </option>
+              <option value="19200" data-per-class="2400">
+                8 занятий (Пакет)
+              </option>
+            </select>
+          </div>
+
+          <div class="pricing__display">
+            <div class="pricing__display-amount" id="private-price">
+              2 900 ₽
+            </div>
+            <div class="pricing__display-period" id="private-per-class">
+              2 900 ₽ / занятие
+            </div>
+          </div>
+
+          <ul class="pricing__features">
+            <li>Продолжительность: 1 час</li>
+            <li>Найдем идеальное время для вашей тренировки</li>
+          </ul>
+          <button
+            class="pricing__btn pricing__btn--primary"
+            onclick="
+              document
+                .getElementById('contacts')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            Записаться
+          </button>
+        </div>
+
+        <!-- CARD 2: Сплит-тренировка (2-on-1) -->
+        <div class="pricing__card">
+          <span class="pricing__card-badge pricing__card-badge--popular"
+            >Для двоих</span
+          >
+          <div class="pricing__card-name">
+            Сплит <span class="pricing__small-tag">2-на-1</span>
+          </div>
+          <div class="pricing__card-desc">
+            Тренируйтесь в паре с подругой, партнёром или коллегой
+          </div>
+
+          <div class="pricing__workout-selector">
+            <label for="split-sessions">Количество занятий:</label>
+            <select id="split-sessions" onchange="updatePrice(this, 'split')">
+              <option value="3900" data-per-class="1950">
+                1 занятие (Разовое)
+              </option>
+              <option value="14400" data-per-class="1800">
+                4 занятия (Пакет)
+              </option>
+              <option value="21000" data-per-class="1750">
+                6 занятий (Пакет)
+              </option>
+              <option value="27200" data-per-class="1700">
+                8 занятий (Пакет)
+              </option>
+            </select>
+          </div>
+
+          <div class="pricing__display">
+            <div class="pricing__display-amount" id="split-price">3 900 ₽</div>
+            <div class="pricing__display-period" id="split-per-class">
+              1 950 ₽ за человека
+            </div>
+          </div>
+
+          <ul class="pricing__features">
+            <li>Продолжительность: 1 час</li>
+            <li>Цена указана за двоих человек одновременно</li>
+          </ul>
+          <button
+            class="pricing__btn"
+            onclick="
+              document
+                .getElementById('contacts')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            Записаться вдвоём
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PANE 3: РАЗОВОЕ ЗАНЯТИЕ -->
+    <!-- ============================================================ -->
+    <div class="pricing-pane active" id="pane-single" role="tabpanel">
+      <div class="pricing__grid">
+        <!-- CARD 1: Пробная тренировка -->
+        <div class="pricing__card pricing__card--trial">
+          <span class="pricing__card-badge pricing__card-badge--startup"
+            >Первый визит</span
+          >
+          <div class="pricing__card-name">Пробное занятие</div>
+          <div class="pricing__card-desc">
+            Знакомство со студией, тренерами и направлениями
+          </div>
+
+          <div class="pricing__display">
+            <div class="pricing__display-amount">800 ₽</div>
+            <div class="pricing__display-period pricing__display-period--promo">
+              Бесплатно при покупке абонемента!
+            </div>
+          </div>
+
+          <ul class="pricing__features">
+            <li>60–90 минут тренировки в зависимости от направления</li>
+            <li>Индивидуальные рекомендации тренера</li>
+          </ul>
+          <button
+            class="pricing__btn pricing__btn--primary"
+            onclick="
+              document
+                .getElementById('contacts')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            Записаться
+          </button>
+        </div>
+
+        <!-- CARD 2: Пробная неделя (FEATURED HOOK) -->
+        <div class="pricing__card pricing__card--featured pricing__card--trial">
+          <span class="pricing__card-badge pricing__card-badge--popular"
+            >Хит для новичков</span
+          >
+          <div class="pricing__card-name">Пробная неделя</div>
+          <div class="pricing__card-desc">
+            Для тех кто хочет познакомиться поближе
+          </div>
+
+          <div class="pricing__display">
+            <div class="pricing__display-amount">3 000 ₽</div>
+            <div class="pricing__display-period">7 дней для знакомства</div>
+          </div>
+
+          <ul class="pricing__features">
+            <li>Включает 3 групповых занятия по различным направлениям</li>
+            <li>Действует 7 дней с момента активации</li>
+          </ul>
+          <button
+            class="pricing__btn pricing__btn--primary"
+            onclick="
+              document
+                .getElementById('contacts')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            Попробовать
+          </button>
+        </div>
+
+        <!-- CARD 3: Разовая тренировка -->
+        <div class="pricing__card pricing__card--trial">
+          <span class="pricing__card-badge">Без обязательств</span>
+          <div class="pricing__card-name">Разовый визит</div>
+          <div class="pricing__card-desc">Для тех чья жизнь спонтанна</div>
+
+          <div class="pricing__display">
+            <div class="pricing__display-amount">1 500 ₽</div>
+            <div class="pricing__display-period">Оплата за один визит</div>
+          </div>
+
+          <ul class="pricing__features">
+            <li>Любое время: с 11:00 до 22:00</li>
+            <li>1 200 ₽ в дневное время (до 17:00)</li>
+          </ul>
+          <button
+            class="pricing__btn"
+            onclick="
+              document
+                .getElementById('contacts')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            Купить визит
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
