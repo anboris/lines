@@ -304,11 +304,6 @@
 	box-sizing: border-box;
 }
 
-/* Hide default title */
-#formwrap9091c97600126aeaf5f497e14b01f4ae > div > div:first-child {
-	display: none !important;
-}
-
 /* Inner form wrapper */
 #form9091c97600126aeaf5f497e14b01f4ae {
 	width: 100% !important;
@@ -515,4 +510,43 @@
 		font-size: 15px !important;
 		padding: 14px 24px !important;
 	}
+}
+
+/* ===== Success Message ===== */
+#formwrap9091c97600126aeaf5f497e14b01f4ae.form-success-shown
+#form9091c97600126aeaf5f497e14b01f4ae {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 0;
+}
+
+#formwrap9091c97600126aeaf5f497e14b01f4ae.form-success-shown
+	#form9091c97600126aeaf5f497e14b01f4ae
+	> div:last-child {
+	background: #e8f5e9;
+	border-radius: 16px;
+	padding: 30px 20px;
+	text-align: center;
+	font-size: 18px;
+	color: #1d1d1f;
+	position: relative;
+	max-width: 400px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+/* Add a checkmark before the text */
+#formwrap9091c97600126aeaf5f497e14b01f4ae.form-success-shown
+	#form9091c97600126aeaf5f497e14b01f4ae
+	> div:last-child::before {
+	content: "✓";
+	display: block;
+	font-size: 48px;
+	color: #2e7d32;
+	margin-bottom: 10px;
+}
+
+.form-success-shown div {
+	margin-bottom: 1rem;
 }

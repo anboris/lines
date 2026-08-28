@@ -23,29 +23,64 @@ export function initEmbeddedForm() {
 }
 
 function setupEmbeddedForm(formWrap) {
-  // 1. Change labels
+  // ===== 1. Hide the default title =====
+  const titleDiv = formWrap.querySelector(
+    "#form9091c97600126aeaf5f497e14b01f4ae > div:first-child",
+  );
+  if (titleDiv && titleDiv.textContent.includes("Форма")) {
+    titleDiv.style.display = "none";
+  }
+
+  // ===== 2. Change labels =====
   const labels = formWrap.querySelectorAll("label");
   labels.forEach((label) => {
     const text = label.textContent.trim();
-    if (text.includes("Фамилия и Имя")) {
-      label.textContent = "Ваше имя";
-    } else if (text.includes("Телефон")) {
-      label.textContent = "Телефон";
-    } else if (text.includes("Email")) {
-      label.textContent = "Email";
-    } else if (text.includes("Комментарий")) {
-      label.textContent = "Комментарий";
-    }
+    if (text.includes("Фамилия и Имя")) label.textContent = "Ваше имя";
+    else if (text.includes("Телефон")) label.textContent = "Телефон";
+    else if (text.includes("Email")) label.textContent = "Email";
+    else if (text.includes("Комментарий")) label.textContent = "Комментарий";
   });
+
+  // ===== 3. Shorten error messages =====
+  const nameError = document.getElementById(
+    "nameError9091c97600126aeaf5f497e14b01f4ae",
+  );
+  if (nameError) nameError.textContent = "Введите ваше имя";
 
   const phoneError = document.getElementById(
     "phoneError9091c97600126aeaf5f497e14b01f4ae",
   );
-  if (phoneError) {
-    phoneError.textContent = "Введите корректный номер";
-  }
+  if (phoneError) phoneError.textContent = "Введите корректный номер";
 
-  // 2. Add direction select – note the corrected selector for the fields container
+  const emailError = document.getElementById(
+    "emailError9091c97600126aeaf5f497e14b01f4ae",
+  );
+  if (emailError) emailError.textContent = "Введите корректный Email";
+
+  // ===== 4. Set placeholders =====
+  const nameInput = document.getElementById(
+    "name9091c97600126aeaf5f497e14b01f4ae",
+  );
+  if (nameInput) nameInput.placeholder = "Например, Анна";
+
+  const phoneInput = document.getElementById(
+    "phone9091c97600126aeaf5f497e14b01f4ae",
+  );
+  if (phoneInput) phoneInput.placeholder = "(___) ___-__-__";
+
+  const emailInput = document.getElementById(
+    "email9091c97600126aeaf5f497e14b01f4ae",
+  );
+  if (emailInput) emailInput.placeholder = "anna@example.com";
+
+  const commentTextarea = document.getElementById(
+    "note9091c97600126aeaf5f497e14b01f4ae",
+  );
+  if (commentTextarea)
+    commentTextarea.placeholder =
+      "Расскажите о ваших целях, пожеланиях или вопросах...";
+
+  // ===== 5. Add direction select =====
   const fieldsContainer = formWrap.querySelector(
     "#form9091c97600126aeaf5f497e14b01f4ae > div:nth-child(2)",
   );
@@ -55,13 +90,14 @@ function setupEmbeddedForm(formWrap) {
   }
 
   const selectDiv = document.createElement("div");
+  // No inline grid-column or margin-top – CSS handles layout.
 
-  const label = document.createElement("label");
-  label.style.fontSize = "14px";
-  label.style.fontWeight = "500";
-  label.style.color = "#1d1d1f";
-  label.textContent = "Интересующее направление";
-  selectDiv.appendChild(label);
+  const selectLabel = document.createElement("label");
+  selectLabel.style.fontSize = "14px";
+  selectLabel.style.fontWeight = "500";
+  selectLabel.style.color = "#1d1d1f";
+  selectLabel.textContent = "Интересующее направление";
+  selectDiv.appendChild(selectLabel);
 
   const select = document.createElement("select");
   select.id = "directionSelectCustom";
@@ -88,22 +124,41 @@ function setupEmbeddedForm(formWrap) {
   const emailField = fieldsContainer.children[2]; // third child = email
   if (emailField) {
     emailField.insertAdjacentElement("afterend", selectDiv);
+  } else {
+    console.warn("Email field not found; could not insert direction select.");
   }
 
-  // 3. Append direction to comment
-  const commentTextarea = document.getElementById(
-    "note9091c97600126aeaf5f497e14b01f4ae",
-  );
+  // ===== 6. Append direction to comment on change =====
   if (commentTextarea) {
-    select.addEventListener("change", function () {
+    select.addEventListener("change", () => {
       if (select.value) {
         const directionText = select.options[select.selectedIndex].text;
         if (!commentTextarea.value.includes(directionText)) {
           commentTextarea.value = commentTextarea.value.trim()
-            ? commentTextarea.value.trim() + "\n" + directionText
+            ? `${commentTextarea.value.trim()}\n${directionText}`
             : directionText;
         }
       }
     });
+  }
+
+  // ===== 7. Observe for success message =====
+  const formContainer = document.getElementById(
+    "form9091c97600126aeaf5f497e14b01f4ae",
+  );
+  if (formContainer) {
+    const observer = new MutationObserver(() => {
+      const successDiv = formContainer.querySelector(
+        'div[style*="text-align:center"]',
+      );
+      if (
+        successDiv &&
+        successDiv.textContent.includes("Мы свяжемся с вами в ближайшее время.")
+      ) {
+        formWrap.classList.add("form-success-shown");
+        observer.disconnect(); // Stop observing once success is detected
+      }
+    });
+    observer.observe(formContainer, { childList: true, subtree: true });
   }
 }
