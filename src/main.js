@@ -1,4 +1,5 @@
 import { initCarousel } from "./modules/carousel.js";
+import { initEmbeddedForm } from "./modules/embeddedForm.js";
 import { initMarquee } from "./modules/marquee.js";
 import { initNavigation } from "./modules/navigation.js";
 import { initPricing } from "./modules/price.js";
@@ -10,4 +11,5 @@ document.addEventListener("DOMContentLoaded", () => {
   initCarousel();
   initQuiz();
   initPricing();
+  initEmbeddedForm();
 });
