@@ -139,6 +139,7 @@
 /* Back использует тот же .carousel-card-content для идентичного layout */
 .carousel-card-back .carousel-card-content {
 	background: none; /* Убираем градиент на back */
+	background-color: white;
 }
 
 .carousel-card-back .carousel-card-kicker {

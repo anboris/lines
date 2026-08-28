@@ -17,13 +17,13 @@
 	border-radius: 100px;
 	margin-block-end: 12px;
 
-	background-color: #f2ede3;
-	color: #2c2a29;
-	border: 2px solid #e7e3d9;
-
 	font-size: 15px;
 	line-height: var(--text-body-lh);
 	letter-spacing: var(--text-body-ls);
+
+	color: #203828;
+	background: #bddcc6;
+	border: 2px solid #a8cbb2;
 }
 
 .studio__title {

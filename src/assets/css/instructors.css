@@ -14,12 +14,13 @@
 	display: inline-block;
 	font-weight: 500;
 	text-transform: uppercase;
-	color: #191e25;
-	background: #d2dbcc;
 	padding: 4px 16px;
 	border-radius: 100px;
 	margin-block-end: 12px;
-	border: 2px solid #9baba1;
+
+	color: #203828;
+	background: #bddcc6;
+	border: 2px solid #a8cbb2;
 
 	font-size: 15px;
 	line-height: var(--text-body-lh);
@@ -56,7 +57,9 @@
 	border-radius: 28px;
 	overflow: hidden;
 	border: 1px solid rgba(255, 255, 255, 0.5);
-	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+	box-shadow:
+		0 4px 12px rgba(0, 0, 0, 0.05),
+		0 1px 3px rgba(0, 0, 0, 0.02);
 	transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
