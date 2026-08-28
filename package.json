@@ -1,30 +1,32 @@
 {
-  "name": "lines",
-  "version": "1.0.0",
-  "description": "",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/anboris/lines.git"
-  },
-  "keywords": [],
-  "bugs": {
-    "url": "https://github.com/anboris/lines/issues"
-  },
-  "homepage": "https://github.com/anboris/lines#readme",
-  "devDependencies": {
-    "postcss": "^8.5.26",
-    "postcss-import": "^17.0.0",
-    "vite": "^8.2.2",
-    "vite-plugin-html-inject": "^1.1.2"
-  },
-  "dependencies": {
-    "@fontsource-variable/inter": "^5.3.0",
-    "@fontsource-variable/jost": "^5.3.0"
-  }
+	"name": "lines",
+	"version": "1.0.0",
+	"description": "",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"deploy": "npm run build && gh-pages -d dist"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/anboris/lines.git"
+	},
+	"keywords": [],
+	"bugs": {
+		"url": "https://github.com/anboris/lines/issues"
+	},
+	"homepage": "https://github.com/anboris/lines#readme",
+	"devDependencies": {
+		"gh-pages": "^6.3.0",
+		"postcss": "^8.5.26",
+		"postcss-import": "^17.0.0",
+		"vite": "^8.2.2",
+		"vite-plugin-html-inject": "^1.1.2"
+	},
+	"dependencies": {
+		"@fontsource-variable/inter": "^5.3.0",
+		"@fontsource-variable/jost": "^5.3.0"
+	}
 }
