@@ -1,15 +1,17 @@
 import { defineConfig } from "vite";
 import injectHTML from "vite-plugin-html-inject";
+import { ViteEjsPlugin } from "vite-plugin-ejs"; // [1] Add this import
+import textData from "./data.json"; // Load your central JSON file
 
 export default defineConfig({
-  base: '/lines/', 
+  base: "/lines/",
   build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
+    outDir: "dist",
+    assetsDir: "assets",
   },
   server: {
     host: "0.0.0.0",
     port: 5174,
   },
-  plugins: [injectHTML()],
+  plugins: [injectHTML(), ViteEjsPlugin(textData)],
 });
