@@ -7,70 +7,65 @@
         Уютное пространство в центре Санкт-Петербурга
       </p>
     </div>
-    <div class="studio__layout">
-      <!-- Photo Block with Working Hours & Phone Pills -->
-      <div class="studio__card studio__card--photo">
-        <img
-          src="./src/assets/images/webp/studio.webp"
-          alt="Интерьер студии"
-          class="studio__card-image"
-          loading="lazy"
-        />
-        <div class="studio__pills studio__pills--bottom">
-          <a
-            href="https://yandex.ru/maps/-/CTs6NL~x"
-            target="_blank"
-            rel="noopener"
-            class="studio__pill studio__pill--link"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path
-                d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
-              />
-              <circle cx="12" cy="10" r="3" />
-            </svg>
-            <span>Невский 160</span>
-          </a>
 
-          <div class="studio__pill">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <polyline points="12 6 12 12 16 14" />
-            </svg>
-            <span>Пн-Вс: 11:00 – 22:00</span>
-          </div>
-        </div>
+    <div class="studio__layout">
+      <!-- Row 1: Three Vertical Images -->
+      <div class="studio__image-wrapper">
+        <img src="./src/assets/images/webp/studio-1.webp" alt="Интерьер студии 1"
+          class="studio__image" loading="lazy" />
+      </div>
+      <div class="studio__image-wrapper">
+        <img src="./src/assets/images/webp/studio-2.webp" alt="Интерьер студии 2"
+          class="studio__image" loading="lazy" />
+      </div>
+      <div class="studio__image-wrapper">
+        <img src="./src/assets/images/webp/studio-3.webp" alt="Интерьер студии 3"
+          class="studio__image" loading="lazy" />
       </div>
 
-      <!-- Map Block -->
-      <div class="studio__card studio__card--map">
-        <div class="studio__map-wrapper">
-          <iframe
-            src="https://yandex.ru/map-widget/v1/?ll=30.376289%2C59.927134&z=17&pt=30.376289%2C59.927134%2Cflag&l=map"
-            width="100%"
-            height="100%"
-            frameborder="0"
-            allowfullscreen="true"
-            loading="lazy"
-            class="studio__map-iframe"
-            title="Карта студии на Яндекс.Картах"
-          ></iframe>
-          <div class="studio__map-overlay"></div>
+      <!-- Row 2: Three Text Blocks -->
+      <div class="studio__text-block">
+        <div class="studio__text-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" class="studio__icon">
+            <path
+              d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <h3 class="studio__text-title">Невский пр., 160</h3>
         </div>
+        <p class="studio__text-content">
+          Находимся в самом центре Санкт-Петербурга, в шаговой доступности от метро.
+        </p>
+      </div>
+
+      <div class="studio__text-block">
+        <div class="studio__text-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" class="studio__icon">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          <h3 class="studio__text-title">Удобное время</h3>
+        </div>
+        <p class="studio__text-content">
+          Работаем ежедневно с 11:00 до 22:00, чтобы вы могли посетить нас в любое время.
+        </p>
+      </div>
+
+      <div class="studio__text-block">
+        <div class="studio__text-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" class="studio__icon">
+            <path
+              d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 19 2c1 2 2 4.5 2 8 0 5.5-4.5 10-10 10Z" />
+            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+          </svg>
+          <h3 class="studio__text-title">Комфорт и уют</h3>
+        </div>
+        <p class="studio__text-content">
+          Пространство создано для вашего максимального комфорта и расслабления.
+        </p>
       </div>
     </div>
   </div>
