@@ -98,7 +98,7 @@
     opacity 0.3s ease;
 }
 .mobile-text-link:hover {
-  color: #0056b3;
+  color: var(--color-accent);
 }
 
 /* --- CTA BUTTON (Desktop) --- */
@@ -356,7 +356,7 @@
 }
 
 .mobile-menu-panel a:hover {
-  color: #0056b3;
+  color: var(--color-accent);
 }
 
 .mobile-menu-panel .mobile-cta {
@@ -369,8 +369,39 @@
   display: block;
   text-align: center;
   padding: 16px;
-  background: #0056b3;
+  background: #4e936f;
   color: #ffffff;
-  border-radius: 8px;
+  border-radius: 100px;
   font-size: 1.1rem;
+  font-weight: 550;
+}
+
+/* =========================================
+     TABLET STYLES (Hide specific links & tighten gaps)
+     ========================================= */
+@media (max-width: 1200px) {
+  /* Hide the specific links ONLY in the horizontal desktop nav */
+  .nav-items .nav-item--hide-tablet {
+    display: none;
+  }
+
+  /* Tighten the gap between logo and nav */
+  .nav-left {
+    gap: 30px; /* Reduced from 50px */
+  }
+
+  /* Tighten the gap between nav links */
+  .nav-items {
+    gap: 20px; /* Reduced from 30px */
+  }
+
+  /* Slightly smaller logo to save horizontal space */
+  .logo .icon {
+    width: 160px; /* Reduced from 200px */
+  }
+
+  /* Give the navbar a bit more breathing room on the sides */
+  #navbar-wrapper {
+    width: calc(100% - 32px); /* Reduced from 48px */
+  }
 }

@@ -42,9 +42,9 @@
   --text-lead-lh: 34px;
   --text-lead-ls: -0.019em;
 
-  --text-lead: 30px; /* 20px */
-  --text-lead-lh: 34px; /* 30px line-height */
-  --text-lead-ls: -0.02em;
+  --text-title: 30px; /* 20px */
+  --text-title-lh: 34px; /* 30px line-height */
+  --text-title-ls: -0.02em;
 
   --weight-body: 400;
   --weight-lead: 400;
@@ -334,5 +334,9 @@ body {
   }
   .programs-lead {
     margin-bottom: var(--card-gap);
+  }
+  .programs-title {
+    margin-block-start: 0;
+    margin-block-end: calc(1 * var(--card-gap));
   }
 }
