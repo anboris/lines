@@ -1,53 +1,96 @@
 .hero {
+  /* Full background image */
+  background-image: url("/src/assets/images/webp/hero.webp"); /* <-- Replace with your image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Dark overlay so text is readable */
+  position: relative;
+  z-index: 1;
+
+  /* Full bleed — no margin top, left, right */
+  margin: 0;
+  width: 100%;
+
+  /* Height */
+  min-height: 100vh;
+
+  /* Layout */
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  margin-top: 175px;
+
+  padding: 5rem 0;
+}
+
+/* Dark overlay for text readability */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0; /* covers full hero */
+  background-color: rgba(0, 0, 0, 0.45); /* Adjust darkness here */
+  z-index: -1;
 }
 
 .hero .container {
-  max-width: 800px;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   width: 100%;
+
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  position: relative;
+  z-index: 2; /* Sits above the overlay */
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 700px; /* Keeps text from stretching too wide */
 }
 
 .kicker {
-  background-color: #f1f0f2;
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(4px);
+  color: #fff;
   font-size: 1rem;
   border-radius: 20px;
   padding: 5px 20px;
   font-weight: 500;
-  /* Add your custom margins here */
   margin-block-end: 1rem;
 }
 
 .hero h1 {
-  text-align: center;
-  padding-block: 1rem 4rem;
+  text-align: left;
+  color: #fff;
+  padding-block: 1rem 2rem;
   font-size: 48px;
   letter-spacing: -0.022em;
-  line-height: 48px;
-  font-weight: 350;
+  line-height: 1.15;
+  font-weight: 400;
+  margin: 0;
 }
 
 @media (min-width: 768px) {
   .hero h1 {
     font-size: 60px;
-    letter-spacing: -0.022em;
-    line-height: 60px;
+    line-height: 1.15;
   }
 }
 
 @media (min-width: 1024px) {
   .hero h1 {
-    font-size: 80px;
-    letter-spacing: -0.022em;
-    line-height: 80px;
-    font-weight: 700 !important;
+    font-size: 72px;
+    line-height: 1.15;
   }
 }
 
@@ -59,7 +102,6 @@
   text-decoration: none;
   border-radius: 100px;
   font-weight: 550;
-  /* Combined and cleaned up transitions for smoother performance */
   transition:
     scale 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
     background-color 0.2s ease;
@@ -67,44 +109,22 @@
 
 .cta-button:hover {
   scale: 1.05;
-  background-color: #5fa480; /* Lighter shade */
+  background-color: #5fa480;
 }
 
 .cta-button:active {
   scale: 0.95;
-  background-color: #3d7557; /* Darker shade */
+  background-color: #3d7557;
 }
 
 .promo {
-  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1rem; /* Space between lines and text */
+  justify-content: flex-start;
+  gap: 1rem;
   margin-block: 2rem;
-  text-align: center;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.8);
   font-weight: 500;
-  margin-top: calc(1 * var(--section-spacing));
-}
-
-/* The Lines */
-.promo::before,
-.promo::after {
-  content: "";
-  width: 150px;
-  height: 1px; /* Thickness of the line */
-  background-color: #e9e9eb; /* Line color */
-  flex-shrink: 0; /* Prevents lines from squishing on small screens */
-}
-
-/* Optional: Make it responsive for very small mobile screens */
-@media (max-width: 480px) {
-  .promo::before,
-  .promo::after {
-    width: 50px; /* Shorter lines on tiny screens */
-  }
-
-  .promo {
-    gap: 0.5rem;
-  }
+  margin-top: calc(1 * var(--section-spacing, 2rem));
 }
