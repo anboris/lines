@@ -129,7 +129,6 @@
 .carousel-card-back {
   transform: rotateY(180deg);
   background: var(--color-background);
-  border: 1px solid rgba(25, 30, 37, 0.08);
 }
 
 /* ==========================================

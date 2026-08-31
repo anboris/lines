@@ -82,8 +82,8 @@
     --text-lead-lh: 34px;
     --text-lead-ls: -0.021em;
 
-    --text-title: 42px;
-    --text-title-lh: 46px;
+    --text-title: 48px;
+    --text-title-lh: 48px;
     --text-title-ls: -0.022em;
   }
 }
@@ -285,15 +285,12 @@ body {
 .programs__badge {
   display: inline-block;
   font-weight: 500;
-  text-transform: uppercase;
-  color: #203828;
-  background: #bddcc6;
+  color: #111;
+  background: #f2f1f3;
   padding: 4px 16px;
   border-radius: 100px;
   margin-block-end: 12px;
-  border: 2px solid #a8cbb2;
 
-  font-size: 15px;
   line-height: var(--text-body-lh);
   letter-spacing: var(--text-body-ls);
 
@@ -302,6 +299,7 @@ body {
   white-space: nowrap; /* 2. Forces the text to stay on a single line */
   overflow: hidden; /* 3. Hides the text that goes past the max-width */
   align-self: center; /* Only aligns this specific item to bottom */
+  margin-block-start: calc(2 * var(--card-gap));
 }
 
 .programs-title {
@@ -316,7 +314,8 @@ body {
   align-self: center; /* Only aligns this specific item to bottom */
   text-box: trim-end cap alphabetic; /* Trims bottom space to the baseline */
 
-  margin-block-end: var(--card-gap);
+  margin-block-start: calc(1 * var(--card-gap));
+  margin-block-end: calc(2 * var(--card-gap));
 }
 
 .programs-lead {
@@ -324,7 +323,8 @@ body {
   order: 1;
   align-self: center; /* Only aligns this specific item to bottom */
   text-box: trim-end cap alphabetic; /* Trims bottom space to the baseline */
-  max-width: 800px;
+  max-width: 600px;
+  margin-block-end: calc(1 * var(--card-gap));
 }
 
 @media (max-width: 768px) {
