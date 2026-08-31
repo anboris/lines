@@ -17,40 +17,66 @@
   <link rel="stylesheet" href="./src/assets/css/footer.css" />
   <link rel="stylesheet" href="./src/assets/css/instructors.css" />
   <link rel="stylesheet" href="./src/assets/css/contact.css" />
+  <link rel="stylesheet" href="./src/assets/css/navigation.css" />
 </head>
 
 <body>
-  <header class="site-layout">
-    <div class="logo-row">
-      <svg viewBox="0 0 5710 549" width="100%" height="100%">
-        <title>Лого</title>
-        <use href="./src/assets/sprite.svg#logo-brand"></use>
-      </svg>
+  <header id="navbar-wrapper">
+    <div class="nav-bg" id="navBg"></div>
+
+    <div class="nav-content">
+      <div class="nav-left">
+        <a href="#" class="logo">
+          <svg class="icon">
+            <use href="#logo"></use>
+          </svg>
+        </a>
+        <nav class="nav-items">
+          <a href="#">О нас</a>
+          <a href="#">Направления</a>
+          <a href="#">Абонементы</a>
+          <a href="#">Студия</a>
+        </nav>
+      </div>
+
+      <div class="nav-right">
+        <a href="#" class="mobile-text-link">Записаться</a>
+        <a href="#" class="cta-btn">Записаться</a>
+      </div>
+
+      <!-- Menu Button with Menu/Close SVGs -->
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu">
+        <!-- Menu Icon (Hamburger) -->
+        <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 5h16" />
+          <path d="M4 12h16" />
+          <path d="M4 19h16" />
+        </svg>
+        <!-- Close Icon (X) -->
+        <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18" />
+          <path d="m6 6 12 12" />
+        </svg>
+      </button>
     </div>
   </header>
 
-  <nav class="nav-bar full-bleed">
-    <div class="nav-track" id="navTrack">
-      <a href="#about" class="nav-item active" data-section="about">
-        О нас
-      </a>
-      <a href="#programs" class="nav-item" data-section="programs">
-        Направления
-      </a>
-      <a href="#instructors" class="nav-item" data-section="instructors">
-        Тренеры
-      </a>
-      <a href="#pricing" class="nav-item" data-section="pricing">
-        Абонементы
-      </a>
-      <a href="#faq" class="nav-item" data-section="faq"> Вопросы </a>
-      <a href="#studio" class="nav-item" data-section="studio">Студия </a>
-      <a href="#contacts" class="nav-item" data-section="contacts">
-        Контакты
-      </a>
-    </div>
-  </nav>
-
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+  <div class="mobile-menu-panel" id="mobileMenuPanel">
+    <nav>
+      <a href="#">Главная</a>
+      <a href="#">Услуги</a>
+      <a href="#">Цены</a>
+      <a href="#hello">О нас</a>
+      <div class="mobile-cta">
+        <a href="#">Записаться</a>
+      </div>
+    </nav>
+  </div>
   <main class="site-layout">
     <section class="marquee-container full-bleed" id="about">
       <div class="marquee-viewport">
