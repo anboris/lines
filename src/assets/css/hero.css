@@ -22,6 +22,7 @@
   padding: 5px 20px;
   font-weight: 500;
   /* Add your custom margins here */
+  margin-block-end: 1rem;
 }
 
 .hero h1 {
@@ -30,7 +31,7 @@
   font-size: 48px;
   letter-spacing: -0.022em;
   line-height: 48px;
-  font-weight: 700;
+  font-weight: 350;
 }
 
 @media (min-width: 768px) {

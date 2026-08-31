@@ -1,6 +1,6 @@
 <section class="pricing" id="pricing">
   <div class="pricing__header">
-    <span class="pricing__badge">абонементы</span>
+    <span class="pricing__badge">Абонементы</span>
     <h2 class="pricing__title">Выберите формат занятий</h2>
     <p class="pricing__description">
       Гибкая система тренировок — от разовых посещений до абонементов с выбором
@@ -10,28 +10,13 @@
 
   <!-- TABS -->
   <div class="pricing__tabs" role="tablist">
-    <button
-      class="pricing-tab active"
-      role="tab"
-      data-pane="pane-single"
-      aria-selected="true"
-    >
+    <button class="pricing-tab active" role="tab" data-pane="pane-single" aria-selected="true">
       Разовые
     </button>
-    <button
-      class="pricing-tab"
-      role="tab"
-      data-pane="pane-group"
-      aria-selected="false"
-    >
+    <button class="pricing-tab" role="tab" data-pane="pane-group" aria-selected="false">
       Групповые
     </button>
-    <button
-      class="pricing-tab"
-      role="tab"
-      data-pane="pane-individual"
-      aria-selected="false"
-    >
+    <button class="pricing-tab" role="tab" data-pane="pane-individual" aria-selected="false">
       Индивидуальные
     </button>
   </div>
@@ -83,32 +68,24 @@
               Пробная тренировка бесплатно при покупке абонемента в день занятия
             </li>
           </ul>
-          <button
-            class="pricing__btn"
-            onclick="
+          <button class="pricing__btn" onclick="
               document
                 .getElementById('contacts')
                 .scrollIntoView({ behavior: 'smooth' })
-            "
-          >
+            ">
             Выбрать
           </button>
         </div>
 
         <!-- Card: Комплексный (Featured) -->
         <div class="pricing__card pricing__card--featured">
-          <span class="pricing__card-badge pricing__card-badge--popular"
-            >11:00 – 22:00</span
-          >
+          <span class="pricing__card-badge pricing__card-badge--popular">11:00 – 22:00</span>
           <div class="pricing__card-name">Комплексный</div>
           <div class="pricing__card-desc">Все направления и тренеры</div>
 
           <div class="pricing__workout-selector">
             <label for="complex-sessions">Пакет услуг:</label>
-            <select
-              id="complex-sessions"
-              onchange="updatePrice(this, 'complex')"
-            >
+            <select id="complex-sessions" onchange="updatePrice(this, 'complex')">
               <option value="5200" data-per-class="1300">
                 4 занятия (1 месяц)
               </option>
@@ -153,14 +130,11 @@
             <li>1.5 часа комплексная тренировка</li>
             <li>1 час другие направления</li>
           </ul>
-          <button
-            class="pricing__btn"
-            onclick="
+          <button class="pricing__btn" onclick="
               document
                 .getElementById('contacts')
                 .scrollIntoView({ behavior: 'smooth' })
-            "
-          >
+            ">
             Выбрать
           </button>
         </div>
@@ -175,10 +149,7 @@
 
           <div class="pricing__workout-selector">
             <label for="student-sessions">Пакет услуг:</label>
-            <select
-              id="student-sessions"
-              onchange="updatePrice(this, 'student')"
-            >
+            <select id="student-sessions" onchange="updatePrice(this, 'student')">
               <option value="4420" data-per-class="1105">
                 4 занятия (1 месяц)
               </option>
@@ -223,14 +194,11 @@
             <li>1.5 часа комплексная тренировка</li>
             <li>1 час другие направления</li>
           </ul>
-          <button
-            class="pricing__btn"
-            onclick="
+          <button class="pricing__btn" onclick="
               document
                 .getElementById('contacts')
                 .scrollIntoView({ behavior: 'smooth' })
-            "
-          >
+            ">
             Выбрать
           </button>
         </div>
@@ -254,10 +222,7 @@
 
           <div class="pricing__workout-selector">
             <label for="private-sessions">Количество занятий:</label>
-            <select
-              id="private-sessions"
-              onchange="updatePrice(this, 'private')"
-            >
+            <select id="private-sessions" onchange="updatePrice(this, 'private')">
               <option value="2900" data-per-class="2900">
                 1 занятие (Разовое)
               </option>
@@ -286,23 +251,18 @@
             <li>Продолжительность: 1 час</li>
             <li>Найдем идеальное время для вашей тренировки</li>
           </ul>
-          <button
-            class="pricing__btn pricing__btn--primary"
-            onclick="
+          <button class="pricing__btn pricing__btn--primary" onclick="
               document
                 .getElementById('contacts')
                 .scrollIntoView({ behavior: 'smooth' })
-            "
-          >
+            ">
             Записаться
           </button>
         </div>
 
         <!-- CARD 2: Сплит-тренировка (2-on-1) -->
         <div class="pricing__card">
-          <span class="pricing__card-badge pricing__card-badge--popular"
-            >Для двоих</span
-          >
+          <span class="pricing__card-badge pricing__card-badge--popular">Для двоих</span>
           <div class="pricing__card-name">
             Сплит <span class="pricing__small-tag">2-на-1</span>
           </div>
@@ -339,14 +299,11 @@
             <li>Продолжительность: 1 час</li>
             <li>Цена указана за двоих человек одновременно</li>
           </ul>
-          <button
-            class="pricing__btn"
-            onclick="
+          <button class="pricing__btn" onclick="
               document
                 .getElementById('contacts')
                 .scrollIntoView({ behavior: 'smooth' })
-            "
-          >
+            ">
             Записаться вдвоём
           </button>
         </div>
@@ -360,9 +317,7 @@
       <div class="pricing__grid">
         <!-- CARD 1: Пробная тренировка -->
         <div class="pricing__card pricing__card--trial">
-          <span class="pricing__card-badge pricing__card-badge--startup"
-            >Первый визит</span
-          >
+          <span class="pricing__card-badge pricing__card-badge--startup">Первый визит</span>
           <div class="pricing__card-name">Пробное занятие</div>
           <div class="pricing__card-desc">
             Знакомство со студией, тренерами и направлениями
@@ -379,23 +334,18 @@
             <li>60–90 минут тренировки в зависимости от направления</li>
             <li>Индивидуальные рекомендации тренера</li>
           </ul>
-          <button
-            class="pricing__btn pricing__btn--primary"
-            onclick="
+          <button class="pricing__btn pricing__btn--primary" onclick="
               document
                 .getElementById('contacts')
                 .scrollIntoView({ behavior: 'smooth' })
-            "
-          >
+            ">
             Записаться
           </button>
         </div>
 
         <!-- CARD 2: Пробная неделя (FEATURED HOOK) -->
         <div class="pricing__card pricing__card--featured pricing__card--trial">
-          <span class="pricing__card-badge pricing__card-badge--popular"
-            >Хит для новичков</span
-          >
+          <span class="pricing__card-badge pricing__card-badge--popular">Хит для новичков</span>
           <div class="pricing__card-name">Пробная неделя</div>
           <div class="pricing__card-desc">
             Для тех, кто хочет познакомиться поближе
@@ -410,14 +360,11 @@
             <li>Включает 3 групповых занятия по различным направлениям</li>
             <li>Действует 7 дней с момента активации</li>
           </ul>
-          <button
-            class="pricing__btn pricing__btn--primary"
-            onclick="
+          <button class="pricing__btn pricing__btn--primary" onclick="
               document
                 .getElementById('contacts')
                 .scrollIntoView({ behavior: 'smooth' })
-            "
-          >
+            ">
             Попробовать
           </button>
         </div>
@@ -437,14 +384,11 @@
             <li>Любое время: с 11:00 до 22:00</li>
             <li>1 200 ₽ в дневное время (до 17:00)</li>
           </ul>
-          <button
-            class="pricing__btn"
-            onclick="
+          <button class="pricing__btn" onclick="
               document
                 .getElementById('contacts')
                 .scrollIntoView({ behavior: 'smooth' })
-            "
-          >
+            ">
             Купить визит
           </button>
         </div>
