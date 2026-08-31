@@ -1,13 +1,13 @@
 export function initEmbeddedForm() {
   const formWrap = document.getElementById(
-    "form9091c97600126aeaf5f497e14b01f4ae",
+    "formwrap9091c97600126aeaf5f497e14b01f4ae",
   );
   if (!formWrap) {
     let attempts = 0;
-    const maxAttempts = 5;
+    const maxAttempts = 10;
     const interval = setInterval(() => {
       const retryFormWrap = document.getElementById(
-        "form9091c97600126aeaf5f497e14b01f4ae",
+        "formwrap9091c97600126aeaf5f497e14b01f4ae",
       );
       if (retryFormWrap) {
         clearInterval(interval);
@@ -76,9 +76,10 @@ function setupEmbeddedForm(formWrap) {
   const commentTextarea = document.getElementById(
     "note9091c97600126aeaf5f497e14b01f4ae",
   );
-  if (commentTextarea)
+  if (commentTextarea) {
     commentTextarea.placeholder =
       "Расскажите о ваших целях, пожеланиях или вопросах...";
+  }
 
   // ===== 5. Add direction select =====
   const fieldsContainer = formWrap.querySelector(
@@ -90,8 +91,6 @@ function setupEmbeddedForm(formWrap) {
   }
 
   const selectDiv = document.createElement("div");
-  // No inline grid-column or margin-top – CSS handles layout.
-
   const selectLabel = document.createElement("label");
   selectLabel.style.fontSize = "14px";
   selectLabel.style.fontWeight = "500";
@@ -121,11 +120,9 @@ function setupEmbeddedForm(formWrap) {
   `;
   selectDiv.appendChild(select);
 
-  const emailField = fieldsContainer.children[2]; // third child = email
+  const emailField = fieldsContainer.children[2];
   if (emailField) {
     emailField.insertAdjacentElement("afterend", selectDiv);
-  } else {
-    console.warn("Email field not found; could not insert direction select.");
   }
 
   // ===== 6. Append direction to comment on change =====
@@ -156,9 +153,95 @@ function setupEmbeddedForm(formWrap) {
         successDiv.textContent.includes("Мы свяжемся с вами в ближайшее время.")
       ) {
         formWrap.classList.add("form-success-shown");
-        observer.disconnect(); // Stop observing once success is detected
+        observer.disconnect();
       }
     });
     observer.observe(formContainer, { childList: true, subtree: true });
+  }
+
+  // ===== 8. Add Privacy Policy Checkbox & Robust Validation =====
+  const submitBtn = document.getElementById(
+    "btn9091c97600126aeaf5f497e14b01f4ae",
+  );
+  if (submitBtn) {
+    // Функция для внедрения чекбокса (вынесена, чтобы можно было восстановить при перерисовке CRM)
+    const injectCheckbox = () => {
+      if (document.getElementById("privacyPolicyCheckbox")) return; // Уже существует
+
+      const checkboxDiv = document.createElement("div");
+      checkboxDiv.className = "checkbox-group";
+      checkboxDiv.style.marginBottom = "15px";
+      checkboxDiv.style.textAlign = "left"; // Выравнивание текста чекбокса
+
+      // ВАЖНО: замените /privacy-policy на реальный URL вашей политики
+      checkboxDiv.innerHTML = `
+        <label class="checkbox-label" style="justify-content: flex-start;">
+          <input type="checkbox" id="privacyPolicyCheckbox">
+          <span class="checkmark"></span>
+          <span class="checkbox-text">
+            Я соглашаюсь с <a href="/privacy" target="_blank" rel="noopener">политикой
+              конфиденциальности</a>
+          </span>
+        </label>
+        <div id="privacyError" class="form-error"
+          style="display: none; margin-top: 4px; font-size: 13px; color: #e74c3c;">
+          Необходимо согласие с политикой конфиденциальности
+        </div>
+      `;
+
+      submitBtn.parentElement.insertBefore(checkboxDiv, submitBtn);
+
+      // Скрываем ошибку при клике на чекбокс
+      const cb = document.getElementById("privacyPolicyCheckbox");
+      if (cb) {
+        cb.addEventListener("change", function () {
+          const err = document.getElementById("privacyError");
+          if (this.checked && err) err.style.display = "none";
+        });
+      }
+    };
+
+    // Внедряем сразу
+    injectCheckbox();
+
+    // Перехватываем клик в фазе capture (true), чтобы сработать ДО скрипта CRM
+    submitBtn.addEventListener(
+      "click",
+      function (e) {
+        const checkbox = document.getElementById("privacyPolicyCheckbox");
+        const errorDiv = document.getElementById("privacyError");
+
+        if (!checkbox || !checkbox.checked) {
+          e.preventDefault();
+          e.stopPropagation(); // Блокируем передачу клика в CRM, форма НЕ отправится
+          if (errorDiv) errorDiv.style.display = "block";
+          return false;
+        }
+
+        // Если галочка стоит, мы НЕ вызываем preventDefault/stopPropagation.
+        // Событие клика спокойно дойдет до CRM-скрипта, и форма отправится как обычно.
+        if (errorDiv) errorDiv.style.display = "none";
+      },
+      true,
+    );
+
+    // ===== 9. Safety Net: Восстановление чекбокса =====
+    // Если CRM перерисует кнопку (например, при своей внутренней ошибке валидации),
+    // наш чекбокс может исчезнуть. Этот наблюдатель вернет его на место.
+    const buttonContainer = submitBtn.parentElement;
+    if (buttonContainer) {
+      const mutationObserver = new MutationObserver(() => {
+        if (
+          !document.getElementById("privacyPolicyCheckbox") &&
+          document.getElementById("btn9091c97600126aeaf5f497e14b01f4ae")
+        ) {
+          injectCheckbox();
+        }
+      });
+      mutationObserver.observe(buttonContainer, {
+        childList: true,
+        subtree: true,
+      });
+    }
   }
 }
