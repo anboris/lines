@@ -47,8 +47,8 @@
   --text-lead-ls: -0.02em;
 
   --weight-body: 400;
-  --weight-lead: 600;
-  --weight-title: 500;
+  --weight-lead: 400;
+  --weight-title: 400;
 }
 
 /* ========== TABLET (768px+) ========== */
@@ -82,8 +82,8 @@
     --text-lead-lh: 34px;
     --text-lead-ls: -0.021em;
 
-    --text-title: 36px;
-    --text-title-lh: 48px;
+    --text-title: 42px;
+    --text-title-lh: 46px;
     --text-title-ls: -0.022em;
   }
 }
@@ -257,7 +257,7 @@ body {
 }
 
 .lead-section {
-  text-align: center;
+  padding-block: calc(1.5 * var(--section-spacing));
 }
 
 .lead-section p {
