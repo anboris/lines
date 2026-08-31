@@ -14,7 +14,7 @@
 .nav-bg {
   position: absolute;
   inset: 0;
-  background: var(--color-background);
+  background: #fff;
   border-radius: 50px;
   corner-shape: squircle;
   box-shadow: 0 0 0 rgba(0, 0, 0, 0);
