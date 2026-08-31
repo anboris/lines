@@ -48,7 +48,7 @@
 
   --weight-body: 400;
   --weight-lead: 400;
-  --weight-title: 650;
+  --weight-title: 700;
 }
 
 /* ========== TABLET (768px+) ========== */
@@ -257,14 +257,15 @@ body {
 }
 
 .lead-section {
-  padding-block: calc(1.5 * var(--section-spacing));
+  padding-block: calc(1 * var(--section-spacing));
 }
 
 .lead-section p {
   font-size: var(--text-title);
   line-height: var(--text-title-lh);
   letter-spacing: var(--text-title-ls);
-  font-weight: var(--weight-title);
+  font-weight: 400;
+  text-align: center;
 }
 
 .lead-section p span {
