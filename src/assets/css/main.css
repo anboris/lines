@@ -117,7 +117,7 @@ body {
   background: linear-gradient(
     to bottom,
     #ffffff 0%,
-    var(--color-background) 400vh,
+    var(--color-background) 500vh,
     var(--color-background) 100%
   );
   background-size: 100% 100%;
