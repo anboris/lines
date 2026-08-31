@@ -257,7 +257,8 @@ body {
 }
 
 .lead-section {
-  padding-block: calc(1 * var(--section-spacing));
+  padding-block: calc(1.5 * var(--section-spacing))
+    calc(1 * var(--section-spacing));
 }
 
 .lead-section p {

@@ -21,7 +21,7 @@
 
   /* CRITICAL CHANGE: Added top padding to clear the fixed navbar */
   /* Desktop: 100px nav height + 24px top margin + 36px buffer = 160px */
-  padding: 250px 0 80px;
+  padding: 250px 65px 80px;
 }
 
 @media (max-width: 768px) {
