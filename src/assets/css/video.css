@@ -1,0 +1,33 @@
+/* The Gray Background Rectangle */
+.video-section {
+  background-color: #f2f1f3; /* Light gray */
+  padding-block: 4rem; /* Space above and below */
+  display: flex;
+  justify-content: center;
+}
+
+/* The Inner Container for the Video */
+.video-container {
+  width: min(100% - 2rem, 800px); /* Responsive max-width */
+  aspect-ratio: 16 / 9; /* Keeps the shape consistent */
+  overflow: hidden; /* Ensures video stays inside rounded corners */
+
+  /* The Shadow Effect */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+  /* Optional: Make it look like it's floating slightly */
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.video-container:hover {
+  transform: translateY(-5px); /* Subtle lift on hover */
+}
+
+/* The Video Itself */
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Fills the container without stretching */
+  display: block;
+}

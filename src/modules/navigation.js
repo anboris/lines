@@ -1,50 +1,102 @@
 export function initNavigation() {
-  const navTrack = document.getElementById("navTrack");
-  const navItems = document.querySelectorAll(".nav-item");
-  const sections = document.querySelectorAll("section[id]"); // Only observe sections with IDs
+  const wrapper = document.getElementById("navbar-wrapper");
 
-  if (!navTrack || navItems.length === 0 || sections.length === 0) return;
+  if (!wrapper) return;
 
-  function ensureVisibleOnMobile(item) {
-    if (window.innerWidth >= 768) return;
+  const navBg = document.getElementById("navBg");
+  const menuBtn = document.getElementById("menuBtn");
+  const mobileMenuOverlay = document.getElementById("mobileMenuOverlay");
+  const mobileMenuPanel = document.getElementById("mobileMenuPanel");
 
-    const trackRect = navTrack.getBoundingClientRect();
-    const itemRect = item.getBoundingClientRect();
-    const buffer = 20;
+  let lastScrollY = window.scrollY;
+  const scrollThreshold = 50;
+  let isMenuOpen = false;
 
-    const isOffLeft = itemRect.left < trackRect.left + buffer;
-    const isOffRight = itemRect.right > trackRect.right - buffer;
+  function updateShadow() {
+    const currentScrollY = window.scrollY;
+    const isExpanded = !wrapper.classList.contains("is-hidden") || isMenuOpen;
 
-    if (isOffLeft || isOffRight) {
-      const scrollOffset =
-        itemRect.left -
-        trackRect.left -
-        trackRect.width / 2 +
-        itemRect.width / 2;
-      navTrack.scrollBy({ left: scrollOffset, behavior: "smooth" });
+    if (currentScrollY > 10 && isExpanded) {
+      navBg.classList.add("has-shadow");
+    } else {
+      navBg.classList.remove("has-shadow");
     }
   }
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          if (!id) return;
+  function closeMobileMenu() {
+    if (!isMenuOpen) return;
 
-          navItems.forEach((item) => {
-            if (item.dataset.section === id) {
-              item.classList.add("active");
-              ensureVisibleOnMobile(item);
-            } else {
-              item.classList.remove("active");
-            }
-          });
-        }
+    isMenuOpen = false;
+    wrapper.classList.remove("is-menu-open");
+    menuBtn.classList.remove("is-open");
+    if (mobileMenuOverlay) mobileMenuOverlay.classList.remove("is-open");
+    if (mobileMenuPanel) mobileMenuPanel.classList.remove("is-open");
+    document.body.style.overflow = "";
+
+    updateShadow();
+  }
+
+  function toggleMobileMenu() {
+    if (isMenuOpen) {
+      closeMobileMenu();
+    } else {
+      isMenuOpen = true;
+      wrapper.classList.add("is-menu-open");
+      menuBtn.classList.add("is-open");
+      if (mobileMenuOverlay) mobileMenuOverlay.classList.add("is-open");
+      if (mobileMenuPanel) mobileMenuPanel.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+      updateShadow();
+    }
+  }
+
+  function handleScroll() {
+    const currentScrollY = window.scrollY;
+
+    if (isMenuOpen) return;
+
+    if (currentScrollY > lastScrollY && currentScrollY > scrollThreshold) {
+      wrapper.classList.add("is-hidden");
+    } else if (currentScrollY < lastScrollY) {
+      wrapper.classList.remove("is-hidden");
+    }
+
+    updateShadow();
+    lastScrollY = currentScrollY;
+  }
+
+  function handleMenuClick() {
+    if (window.innerWidth > 768) {
+      wrapper.classList.remove("is-hidden");
+      updateShadow();
+    } else {
+      toggleMobileMenu();
+    }
+  }
+
+  function handleResize() {
+    if (isMenuOpen && window.innerWidth > 768) {
+      closeMobileMenu();
+    }
+  }
+
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  menuBtn.addEventListener("click", handleMenuClick);
+
+  if (mobileMenuOverlay) {
+    mobileMenuOverlay.addEventListener("click", closeMobileMenu);
+  }
+
+  window.addEventListener("resize", handleResize);
+
+  if (mobileMenuPanel) {
+    const menuLinks = mobileMenuPanel.querySelectorAll("a");
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        closeMobileMenu();
       });
-    },
-    { rootMargin: "-40% 0px -40% 0px", threshold: 0 },
-  );
+    });
+  }
 
-  sections.forEach((section) => observer.observe(section));
+  updateShadow();
 }
