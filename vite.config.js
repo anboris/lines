@@ -6,7 +6,7 @@ import svgSpriter from "vite-plugin-svg-spriter";
 import path from "path";
 
 export default defineConfig({
-  base: "/lines/",
+  base: "/",
   build: {
     outDir: "dist",
     assetsDir: "assets",
