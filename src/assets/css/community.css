@@ -50,7 +50,7 @@
   font-size: var(--text-lead);
   line-height: var(--text-lead-lh);
   letter-spacing: var(--text-lead-ls);
-  font-weight: var(--weight-lead);
+  font-weight: 600;
 }
 
 .community__content p {

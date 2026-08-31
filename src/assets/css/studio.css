@@ -115,7 +115,7 @@
 /* Responsive Design */
 @media (max-width: 900px) {
   .studio__layout {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 16px;
   }
 }
