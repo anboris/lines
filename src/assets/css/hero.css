@@ -5,32 +5,38 @@
   background-position: center;
   background-repeat: no-repeat;
 
-  /* Dark overlay so text is readable */
   position: relative;
   z-index: 1;
 
-  /* Full bleed — no margin top, left, right */
   margin: 0;
   width: 100%;
-
-  /* Height */
   min-height: 100vh;
 
-  /* Layout */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
 
-  padding: 5rem 0;
+  /* CRITICAL CHANGE: Changed from 'center' to 'flex-start' */
+  justify-content: flex-start;
+
+  /* CRITICAL CHANGE: Added top padding to clear the fixed navbar */
+  /* Desktop: 100px nav height + 24px top margin + 36px buffer = 160px */
+  padding: 250px 0 80px;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    /* Mobile: 64px nav height + 16px top margin + 40px buffer = 120px */
+    padding: 250px 0 60px;
+  }
 }
 
 /* Dark overlay for text readability */
 .hero::before {
   content: "";
   position: absolute;
-  inset: 0; /* covers full hero */
-  background-color: rgba(0, 0, 0, 0.45); /* Adjust darkness here */
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
   z-index: -1;
 }
 
@@ -48,14 +54,14 @@
   padding-right: 1.5rem;
 
   position: relative;
-  z-index: 2; /* Sits above the overlay */
+  z-index: 2;
 }
 
 .hero-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 700px; /* Keeps text from stretching too wide */
+  max-width: 700px;
 }
 
 .kicker {
