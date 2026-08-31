@@ -315,6 +315,9 @@
 
 .text-card h3,
 .carousel-card h3 {
+  font-size: var(--text-lead);
+  line-height: var(--text-lead-lh);
+  letter-spacing: var(--text-lead-ls);
   font-weight: var(--weight-lead);
   margin-bottom: 0.5rem;
 }
