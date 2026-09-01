@@ -27,7 +27,7 @@
 @media (max-width: 768px) {
   .hero {
     /* Mobile: 64px nav height + 16px top margin + 40px buffer = 120px */
-    padding: 250px 0 60px;
+    padding: 180px 0 60px;
   }
 }
 
