@@ -1,5 +1,7 @@
 <script>
 	import Navbar from '$lib/components/Navbar.svelte';
+	import Marquee from '$lib/components/Marquee.svelte'; // adjust path
+	import marqueeCards from '$lib/marqueeCards.json';
 </script>
 
 <Navbar />
@@ -16,4 +18,8 @@
 		Пространство, где движение становится осознанным, а тело начинает работать как единая
 		взаимосвязанная система.
 	</p>
+</section>
+
+<section class="py-10">
+	<Marquee cards={marqueeCards} />
 </section>
