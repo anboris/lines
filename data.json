@@ -1,9 +1,29 @@
 {
-  "features": {
-    "speedCard": {
-      "title": "Lightning Fast Speed",
-      "description": "Our lines process data at 100Gbps automatically."
+  "siteTitle": "Линии – Фитнес-студия в Санкт-Петербурге",
+  "navigation": [
+    {
+      "label": "О нас",
+      "url": "#about"
+    },
+    {
+      "label": "Программы",
+      "url": "#programs"
+    },
+    {
+      "label": "Тренеры",
+      "url": "#instructors"
+    },
+    {
+      "label": "Абонементы",
+      "url": "#pricing"
+    },
+    {
+      "label": "Вопросы",
+      "url": "#faq"
+    },
+    {
+      "label": "Студия",
+      "url": "#studio"
     }
-  }
+  ]
 }
-

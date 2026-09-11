@@ -1,9 +1,9 @@
-import { defineConfig } from "vite";
+import {defineConfig} from "vite";
 import injectHTML from "vite-plugin-html-inject";
-import { ViteEjsPlugin } from "vite-plugin-ejs"; // [1] Add this import
-import textData from "./data.json"; // Load your central JSON file
 import svgSpriter from "vite-plugin-svg-spriter";
 import path from "path";
+import handlebars from 'vite-plugin-handlebars';
+import fs from "fs";
 
 export default defineConfig({
   base: "/",
@@ -16,8 +16,15 @@ export default defineConfig({
     port: 5174,
   },
   plugins: [
+    handlebars({
+      partialDirectory: path.resolve(import.meta.dirname, "src/partials"),
+      context() {
+        const jsonPath = path.resolve(import.meta.dirname, "data.json");
+        const rawData = fs.readFileSync(jsonPath, 'utf-8');
+        return JSON.parse(rawData);
+      }
+    }),
     injectHTML(),
-    ViteEjsPlugin(textData),
     svgSpriter({
       svgFolder: path.resolve(import.meta.dirname, "src/assets/svg"),
     }),

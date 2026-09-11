@@ -4,89 +4,13 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>
-    Линии – Фитнес-студия в Санкт-Петербурге
-  </title>
+  <title>{{ siteTitle }}</title>
   <link rel="stylesheet" href="./src/assets/css/main.css"/>
 </head>
 
 <body>
-<header id="navbar-wrapper">
-  <div class="nav-bg" id="navBg"></div>
-
-  <div class="nav-content">
-    <div class="nav-left">
-      <a href="/" class="logo">
-        <svg class="icon">
-          <use href="#logo"></use>
-        </svg>
-      </a>
-      <nav class="nav-items">
-        <a href="#about" class="nav-item--hide-tablet">О нас</a>
-        <a href="#programs">Программы</a>
-        <a href="#instructors">Тренеры</a>
-        <a href="#pricing">Абонементы</a>
-        <a href="#faq" class="nav-item--hide-tablet">Вопросы</a>
-        <a href="#studio">Студия</a>
-      </nav>
-    </div>
-
-    <div class="nav-right">
-      <!-- <a href="#contacts" class="mobile-text-link">Записаться</a> -->
-      <a href="#contacts" class="cta-btn">Записаться</a>
-    </div>
-
-    <!-- Menu Button with Menu/Close SVGs -->
-    <button class="menu-btn" id="menuBtn" aria-label="Toggle Menu">
-      <!-- Menu Icon (Hamburger) -->
-      <svg class="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-           stroke-linecap="round" stroke-linejoin="round">
-        <path d="M4 5h16"/>
-        <path d="M4 12h16"/>
-        <path d="M4 19h16"/>
-      </svg>
-      <!-- Close Icon (X) -->
-      <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-           viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-           stroke-linecap="round" stroke-linejoin="round">
-        <path d="M18 6 6 18"/>
-        <path d="m6 6 12 12"/>
-      </svg>
-    </button>
-  </div>
-</header>
-
-<div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
-<div class="mobile-menu-panel" id="mobileMenuPanel">
-  <nav>
-
-    <a href="#about">О нас</a>
-    <a href="#programs">Программы</a>
-    <a href="#instructors">Тренеры</a>
-    <a href="#pricing">Абонементы</a>
-    <a href="#faq">Вопросы</a>
-    <a href="#studio">Студия</a>
-
-
-    <div class="mobile-cta">
-      <a href="#contacts">Записаться на пробное занятие</a>
-    </div>
-  </nav>
-</div>
-
-<section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <span class="kicker">Фитнес-студия в Санкт-Петербурге</span>
-      <h1>Пространство <br>осознанного движения</h1>
-      <a href="#contacts" class="cta-button">Записаться на пробное</a>
-      <p class="promo">
-        Пробное занятие 800 ₽ или бесплатно при покупке абонемента
-      </p>
-    </div>
-  </div>
-</section>
+{{> header }}
+{{> hero }}
 
 <main class="site-layout">
   <section class="lead-section">
