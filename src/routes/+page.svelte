@@ -4,6 +4,7 @@
 	import marqueeCards from '$lib/marqueeCards.json';
   import ProgramCards from "$lib/components/ProgramCards.svelte";
   import programCards from '$lib/programCards.json';
+	import FitnessQuiz from '$lib/components/FitnessQuiz.svelte';
 </script>
 
 <Navbar />
@@ -70,4 +71,8 @@
       <ProgramCards programs={programCards} />
     </div>
   </div>
+</section>
+
+<section>
+	<FitnessQuiz/>
 </section>
