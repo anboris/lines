@@ -23,3 +23,19 @@
 <section>
 	<Marquee cards={marqueeCards} />
 </section>
+
+<section class="bg-gray-50 px-6 py-20 my-20 sm:py-16 lg:py-20">
+  <div class="mx-auto max-w-3xl">
+    <video
+      src="/video.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+      poster="/img/video-placeholder.jpg"
+      class="block aspect-video w-full rounded-2xl object-cover shadow-lg"
+    >
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</section>
