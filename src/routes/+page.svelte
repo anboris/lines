@@ -1,6 +1,6 @@
 <script>
 	import Navbar from '$lib/components/Navbar.svelte';
-	import Marquee from '$lib/components/Marquee.svelte'; // adjust path
+	import Marquee from '$lib/components/Marquee.svelte';
 	import marqueeCards from '$lib/marqueeCards.json';
 </script>
 
