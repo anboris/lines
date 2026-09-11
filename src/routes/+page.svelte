@@ -2,6 +2,8 @@
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Marquee from '$lib/components/Marquee.svelte';
 	import marqueeCards from '$lib/marqueeCards.json';
+  import ProgramCards from "$lib/components/ProgramCards.svelte";
+  import programCards from '$lib/programCards.json';
 </script>
 
 <Navbar />
@@ -37,5 +39,35 @@
     >
       Your browser does not support the video tag.
     </video>
+  </div>
+</section>
+
+<section class="py-16 sm:py-20 lg:py-24">
+  <div class="mx-auto max-w-7xl">
+    <div class="px-6 text-center">
+      <span
+        class="inline-flex items-center rounded-full bg-mauve-800/10 px-4 py-1.5 text-sm font-medium text-mauve-800"
+      >
+        Программы
+      </span>
+
+      <h2
+        class="mx-auto mt-5 max-w-4xl text-4xl leading-tight font-medium tracking-tight text-gray-950 sm:text-5xl lg:text-6xl"
+      >
+        Одно тело. Одна система. Разные способы движения.
+      </h2>
+
+      <p
+        class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-gray-600 sm:text-xl"
+      >
+        Независимо от выбранной практики, Вы работаете по единой методике,
+        развивая подвижность, силу, координацию и осознанность через естественную
+        биомеханику тела.
+      </p>
+    </div>
+
+    <div class="mt-10 sm:mt-12">
+      <ProgramCards programs={programCards} />
+    </div>
   </div>
 </section>
