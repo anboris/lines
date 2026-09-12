@@ -3,7 +3,7 @@
 	import Marquee from '$lib/components/Marquee.svelte';
 	import marqueeCards from '$lib/marqueeCards.json';
   import ProgramCards from "$lib/components/ProgramCards.svelte";
-  import programCards from '$lib/programCards.json';
+  import programCards from "$lib/programCards.json";
 	import FitnessQuiz from '$lib/components/FitnessQuiz.svelte';
 </script>
 
