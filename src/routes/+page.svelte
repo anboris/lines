@@ -5,6 +5,7 @@
   import ProgramCards from "$lib/components/ProgramCards.svelte";
   import programCards from "$lib/programCards.json";
 	import FitnessQuiz from '$lib/components/FitnessQuiz.svelte';
+  import Pricing from "$lib/components/Pricing.svelte";
 </script>
 
 <Navbar />
@@ -75,4 +76,8 @@
 
 <section>
 	<FitnessQuiz/>
+</section>
+
+<section class="mx-auto max-w-7xl px-6 py-20 bg-gray-100">
+  <Pricing/>
 </section>
