@@ -74,10 +74,6 @@
   </div>
 </section>
 
-<section>
-	<FitnessQuiz/>
-</section>
-
 <section class="mx-auto max-w-7xl px-6 py-20 bg-gray-100">
   <Pricing/>
 </section>
