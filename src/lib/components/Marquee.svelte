@@ -12,7 +12,9 @@
   let {cards}: { cards: Card[] } = $props();
 
   const gradients = [
-    'bg-gradient-to-b from-emerald-800 to-emerald-600'
+    'bg-gradient-to-b from-[#ebe7df] to-[#dedad2]',
+    'bg-gradient-to-b from-[#d8c5f0] to-[#cfbde6]',
+    'bg-gradient-to-b from-[#bddcc6] to-[#b5d3be]'
   ];
 
   // ms of animation duration per pixel of travel — lower = faster marquee
@@ -222,10 +224,10 @@
           <div class="absolute inset-0 {gradients[gradientIndex]}"></div>
 
           <div
-            class="relative flex h-full flex-col justify-between p-5 text-white">
+            class="relative flex h-full flex-col justify-between p-5 text-neutral">
             <div>
               <h3 class="text-2xl leading-tight font-medium">{card.title}</h3>
-              <p class="mt-3 text-base text-white/80">{card.description}</p>
+              <p class="mt-3">{card.description}</p>
             </div>
 
             {#if card.cta}

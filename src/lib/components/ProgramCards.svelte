@@ -6,9 +6,8 @@
     details: string;
   }
 
-  let {programs}: { programs: Program[] } = $props();
+  let { programs }: { programs: Program[] } = $props();
 
-  // Independent flip state per card, keyed by index.
   let flipped = $state<Record<number, boolean>>({});
 
   function toggleFlip(index: number) {
@@ -21,22 +20,92 @@
     if (!track) return;
 
     const card = track.querySelector<HTMLElement>('[data-card]');
-    const gap = 16; // matches gap-4
+    const gap = 16;
     const amount = card ? card.offsetWidth + gap : track.clientWidth;
 
-    track.scrollBy({left: amount * direction, behavior: 'smooth'});
+    track.scrollBy({
+      left: amount * direction,
+      behavior: 'smooth'
+    });
   }
 </script>
 
-<div class="relative">
-  <div bind:this={track}
-       class="no-scrollbar flex gap-4 overflow-x-auto px-6 py-4">
+<div class="mx-auto max-w-7xl">
+  <div class="relative px-6">
+
+    <!-- Centered heading -->
+    <div class="text-center">
+      <h2
+        class="mx-auto max-w-4xl text-4xl leading-tight font-normal tracking-tight text-mist-900 sm:text-5xl lg:text-6xl"
+      >
+        Одно тело. Одна система. Разные способы движения.
+      </h2>
+
+      <p
+        class="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-mist-700 sm:text-xl"
+      >
+        Независимо от выбранной практики, Вы работаете по единой методике,
+        развивая подвижность, силу, координацию и осознанность через естественную
+        биомеханику тела.
+      </p>
+    </div>
+
+    <!-- Desktop controls -->
+    <div class="absolute right-6 bottom-0 hidden gap-2 md:flex">
+      <button
+        type="button"
+        aria-label="Прокрутить влево"
+        onclick={() => scrollByCard(-1)}
+        class="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black shadow-md transition-transform hover:scale-105"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          class="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M15 18l-6-6 6-6" />
+        </svg>
+      </button>
+
+      <button
+        type="button"
+        aria-label="Прокрутить вправо"
+        onclick={() => scrollByCard(1)}
+        class="flex h-10 w-10 items-center justify-center rounded-full bg-white text-black shadow-md transition-transform hover:scale-105"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          class="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M9 18l6-6-6-6" />
+        </svg>
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- Cards -->
+<div class="mt-10">
+  <div
+    bind:this={track}
+    class="no-scrollbar flex gap-4 overflow-x-auto px-6 py-4"
+  >
     {#each programs as program, index (index)}
       {@const isFlipped = flipped[index] ?? false}
 
       <div
         data-card
-        class="relative w-72 shrink-0 sm:w-80 [perspective:1200px]"
+        class="relative w-72 shrink-0 [perspective:1200px] sm:w-80"
         style="aspect-ratio: 9 / 16;"
       >
         <div
@@ -45,7 +114,7 @@
         >
           <!-- Front -->
           <div
-            class="absolute inset-0 overflow-hidden rounded-2xl shadow-lg [backface-visibility:hidden]"
+            class="absolute inset-0 shadow-md overflow-hidden rounded-2xl [backface-visibility:hidden]"
           >
             <img
               src={program.image}
@@ -54,41 +123,53 @@
             />
 
             <div
-              class="absolute inset-0 bg-[linear-gradient(to_bottom,rgb(42_33_44/0.25)_0%,transparent_30%,transparent_75%,rgb(42_33_44/0.40)_100%)]"
+              class="absolute inset-0 bg-[linear-gradient(to_bottom,rgb(156_168_171/0.0)_0%,transparent_30%,transparent_75%,rgb(156_168_171/0.0)_100%)]"
             ></div>
 
             <div class="absolute inset-x-0 top-0 p-4">
               <h3
-                class="text-2xl leading-tight font-medium text-mauve-50">{program.title}</h3>
+                class="text-2xl leading-tight font-normal text-mist-900">{program.title}</h3>
             </div>
 
             <div class="absolute right-0 bottom-0 left-0 p-4 pr-16 text-white">
-              <p class="text-base text-white/80">{program.description}</p>
+              <p class="text-base text-mist-900">
+                {program.description}
+              </p>
             </div>
 
             <button
               type="button"
               aria-label="Подробнее"
               onclick={() => toggleFlip(index)}
-              class="absolute right-4 bottom-4 flex h-10 w-10 items-center justify-center rounded-full bg-white text-black shadow-md transition-transform hover:scale-105"
+              class="absolute shadow-md right-4 bottom-4 flex h-10 w-10 items-center justify-center rounded-full bg-white text-black transition-transform hover:scale-105"
             >
-              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none"
-                   stroke="currentColor" stroke-width="2"
-                   stroke-linecap="round">
-                <path d="M12 5v14M5 12h14"/>
+              <svg
+                viewBox="0 0 24 24"
+                class="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <path d="M12 5v14M5 12h14" />
               </svg>
             </button>
           </div>
 
           <!-- Back -->
           <div
-            class="absolute inset-0 overflow-hidden rounded-2xl bg-mauve-800 p-5 shadow-lg [backface-visibility:hidden] [transform:rotateY(180deg)]"
+            class="absolute inset-0 overflow-hidden rounded-2xl bg-[#4e936f] p-5 shadow-lg [backface-visibility:hidden] [transform:rotateY(180deg)]"
           >
             <div class="flex h-full flex-col text-white">
-              <h3
-                class="text-2xl leading-tight font-medium">{program.title}</h3>
+              <h3 class="text-2xl leading-tight font-medium">
+                {program.title}
+              </h3>
+
               <p
-                class="no-scrollbar mt-3 flex-1 overflow-y-auto text-base text-white/80">{program.details}</p>
+                class="no-scrollbar mt-3 flex-1 overflow-y-auto text-base text-white/80"
+              >
+                {program.details}
+              </p>
             </div>
 
             <button
@@ -97,10 +178,15 @@
               onclick={() => toggleFlip(index)}
               class="absolute right-4 bottom-4 flex h-10 w-10 items-center justify-center rounded-full bg-white text-black shadow-md transition-transform hover:scale-105"
             >
-              <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none"
-                   stroke="currentColor" stroke-width="2"
-                   stroke-linecap="round">
-                <path d="M6 6l12 12M18 6L6 18"/>
+              <svg
+                viewBox="0 0 24 24"
+                class="h-5 w-5"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              >
+                <path d="M6 6l12 12M18 6L6 18" />
               </svg>
             </button>
           </div>
@@ -108,41 +194,15 @@
       </div>
     {/each}
   </div>
-
-  <div class="hidden justify-end gap-2 px-6 pb-2 md:flex">
-    <button
-      type="button"
-      aria-label="Прокрутить влево"
-      onclick={() => scrollByCard(-1)}
-      class="flex h-9 w-9 items-center justify-center rounded-full bg-white text-black shadow-md transition-transform hover:scale-105"
-    >
-      <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M15 18l-6-6 6-6"/>
-      </svg>
-    </button>
-
-    <button
-      type="button"
-      aria-label="Прокрутить вправо"
-      onclick={() => scrollByCard(1)}
-      class="flex h-9 w-9 items-center justify-center rounded-full bg-white text-black shadow-md transition-transform hover:scale-105"
-    >
-      <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor"
-           stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9 18l6-6-6-6"/>
-      </svg>
-    </button>
-  </div>
 </div>
 
 <style>
   .no-scrollbar {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* legacy Edge */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
   .no-scrollbar::-webkit-scrollbar {
-    display: none; /* Chrome, Safari */
+    display: none;
   }
 </style>

@@ -125,9 +125,9 @@
 <div class="fixed top-7 right-9 z-20 h-10">
 	<a
 		href="#"
-		class="absolute top-0 hidden rounded-full bg-emerald-700 px-6 py-2.5
+		class="absolute top-0 hidden rounded-full bg-[#4e936f] px-6 py-2.5
     text-white transition-all duration-300 ease-in-out hover:scale-110
-    hover:bg-emerald-900 active:scale-95 lg:block"
+    hover:bg-[#4e936f] active:scale-95 lg:block"
 		style:right={isVisible ? '0px' : '52px'}
 	>
 		Записаться
