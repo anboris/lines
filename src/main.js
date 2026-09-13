@@ -1,9 +1,10 @@
-import { initCarousel } from "./modules/carousel.js";
-import { initEmbeddedForm } from "./modules/embeddedForm.js";
-import { initMarquee } from "./modules/marquee.js";
-import { initNavigation } from "./modules/navigation.js";
-import { initPricing } from "./modules/price.js";
-import { initQuiz } from "./modules/quiz.js";
+import './style.css';
+import {initCarousel} from "./modules/carousel.js";
+import {initEmbeddedForm} from "./modules/embeddedForm.js";
+import {initMarquee} from "./modules/marquee.js";
+import {initNavigation} from "./modules/navigation.js";
+import {initPricing} from "./modules/price.js";
+import {initQuiz} from "./modules/quiz.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   initNavigation();
