@@ -1,12 +1,15 @@
-import { defineConfig } from "vite";
+import {defineConfig} from "vite";
 import injectHTML from "vite-plugin-html-inject";
-import { ViteEjsPlugin } from "vite-plugin-ejs"; // [1] Add this import
-import textData from "./data.json"; // Load your central JSON file
+import {ViteEjsPlugin} from "vite-plugin-ejs";
+import textData from "./data.json";
 import svgSpriter from "vite-plugin-svg-spriter";
 import path from "path";
 
 export default defineConfig({
   base: "/",
+  css: {
+    devSourcemap: true,
+  },
   build: {
     outDir: "dist",
     assetsDir: "assets",
