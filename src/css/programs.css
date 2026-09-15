@@ -1,0 +1,72 @@
+/* --- Section Layout --- */
+.programs-section {
+}
+
+.programs-header {
+  text-align: center;
+  padding-inline: var(--gap);
+  padding-block-end: var(--gap);
+  display: flex;
+  flex-direction: column; /* Stacks the title and lead vertically */
+}
+
+.programs__badge {
+  display: inline-block;
+  font-weight: 500;
+  color: #111;
+  background: #f2f1f3;
+  padding: 4px 16px;
+  border-radius: 100px;
+  margin-block-end: 12px;
+
+  line-height: var(--text-body-lh);
+  letter-spacing: var(--text-body-ls);
+
+  /* Add these three lines */
+  max-width: 150px; /* 1. Sets the upper width limit (change 200px to your preferred size) */
+  white-space: nowrap; /* 2. Forces the text to stay on a single line */
+  overflow: hidden; /* 3. Hides the text that goes past the max-width */
+  align-self: center; /* Only aligns this specific item to bottom */
+  margin-block-start: calc(2 * var(--card-gap));
+}
+
+.programs-title {
+  flex: 1;
+  order: 1;
+
+  font-size: var(--text-title);
+  line-height: var(--text-title-lh);
+  letter-spacing: var(--text-title-ls);
+  font-weight: var(--weight-title);
+
+  align-self: center; /* Only aligns this specific item to bottom */
+  text-box: trim-end cap alphabetic; /* Trims bottom space to the baseline */
+
+  margin-block-start: calc(1 * var(--card-gap));
+  margin-block-end: calc(2 * var(--card-gap));
+}
+
+.programs-lead {
+  flex: 1;
+  order: 1;
+  align-self: center; /* Only aligns this specific item to bottom */
+  text-box: trim-end cap alphabetic; /* Trims bottom space to the baseline */
+  max-width: 600px;
+  margin-block-end: calc(1 * var(--card-gap));
+}
+
+@media (max-width: 768px) {
+  .programs-header {
+    flex-direction: column; /* Stacks the title and lead vertically */
+    gap: calc(1.5 * var(--card-gap)); /* Reduces spacing on mobile */
+  }
+
+  .programs-lead {
+    margin-bottom: var(--card-gap);
+  }
+
+  .programs-title {
+    margin-block-start: 0;
+    margin-block-end: calc(1 * var(--card-gap));
+  }
+}

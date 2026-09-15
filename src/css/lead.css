@@ -1,0 +1,11 @@
+.lead-section {
+  padding-block: calc(1.5 * var(--section-spacing)) calc(1 * var(--section-spacing));
+}
+
+.lead-section p {
+  font-size: var(--text-title);
+  line-height: var(--text-title-lh);
+  letter-spacing: var(--text-title-ls);
+  font-weight: 400;
+  text-align: center;
+}

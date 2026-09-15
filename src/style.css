@@ -1,4 +1,10 @@
-@import "./css/main.css";
+@layer base, layout, components, utilities;
+
+@import "./css/base.css" layer(base);
+@import "./css/layout.css" layer(layout);
+
+@import "./css/programs.css";
+@import "./css/lead.css";
 @import "./css/cards.css";
 @import "./css/promo-bar.css";
 @import "./css/quiz.css";

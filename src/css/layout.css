@@ -1,0 +1,57 @@
+@layer layout {
+  .site-layout {
+    --gap: clamp(1rem, 6vw, 3rem);
+    --content-max: 1200px;
+    --narrow-max: 600px;
+
+    --full: minmax(var(--gap), 1fr);
+    --popout: minmax(0, 2rem);
+
+    --content: minmax(
+      0,
+      calc((var(--content-max) - var(--narrow-max)) / 2)
+    );
+
+    --narrow: min(
+      var(--narrow-max),
+      100% - var(--gap) * 2
+    );
+
+    display: grid;
+
+    grid-template-columns:
+      [full-start] var(--full)
+      [popout-start] var(--popout)
+      [content-start] var(--content)
+      [narrow-start] var(--narrow)
+      [narrow-end] var(--content)
+      [content-end] var(--popout)
+      [popout-end] var(--full)
+      [full-end];
+  }
+
+  .site-layout > * {
+    grid-column: content;
+  }
+
+  .site-layout > .narrow {
+    grid-column: narrow;
+  }
+
+  .site-layout > .popout {
+    grid-column: popout;
+  }
+
+  .site-layout > .full-bleed {
+    grid-column: full;
+  }
+
+  .site-layout > * + * {
+    margin-block-start: var(--section-spacing);
+  }
+
+  .site-layout > section,
+  .site-layout > aside {
+    margin-block-end: 0;
+  }
+}
